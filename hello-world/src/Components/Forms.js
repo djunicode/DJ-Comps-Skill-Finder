@@ -17,7 +17,7 @@ class Form extends Component{
             mobileNumber:'',
         };
         this.handleUsername = this.handleUsername.bind(this);
-        this.handlefirstname = this.handlefirstname.bind(this);
+        this.handlefirsName = this.handlefirstName.bind(this);
         this.handlelastName = this.handlelastName.bind(this);
         this.handlemobileNumber = this.handlemobileNumber.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
@@ -37,7 +37,7 @@ class Form extends Component{
     handlePassword(event) {
         this.setState({password: event.target.value});
     }
-    handlefirstname(event) {
+    handlefirstName(event) {
         this.setState({firstName: event.target.value});
     }
     handlelastName(event) {
@@ -48,20 +48,19 @@ class Form extends Component{
     }
 
 
-    updateMyScreen(){
+    updateMyScreen() {
         event.preventDefault();
+        if(this.state.isRegister) {
 
-        var cnt = this.state.count;
-        cnt++;
-        if(this.state.username==='' || this.state.password===''){
-            this.setState({count: this.state.count+1})
         }
         else{
+            if (this.state.username === '' || this.state.password === '') {
+                alert("Do not leave fields blank");
+            }
         }
-        this.setState({count: cnt})
+
 
     }
-
     addRegister(){
         event.preventDefault();
         var myDiv = document.getElementById('register');
@@ -75,11 +74,11 @@ class Form extends Component{
         let button = null;
         if(this.state.isRegister){
             button = <div id="reg">
-                <input type="text" placeholder="First Name" value={this.state.firstName} onChange={this.handlefirstName}/>
-                <input type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.handlelastName}/>
-                <input type="text" placeholder="SAP ID" value={this.state.sapID} onChange={this.handleSAP}/>
-                <input type="text" placeholder="Email Address" value={this.state.Email} onChange={this.handleEmail}/>
-                <input type="text" placeholder="Mobile Number" value={this.state.mobileNumber} onChange={this.handlemobileNumber}/>
+                <input type="text" placeholder="First Name" value={this.state.firstName} onChange={this.handlefirstName} required/>
+                <input type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.handlelastName} required/>
+                <input type="text" placeholder="SAP ID" value={this.state.sapID} onChange={this.handleSAP} required/>
+                <input type="text" placeholder="Email Address" value={this.state.Email} onChange={this.handleEmail} required/>
+                <input type="text" placeholder="Mobile Number" value={this.state.mobileNumber} onChange={this.handlemobileNumber} required/>
 
             </div>
         }
@@ -87,8 +86,8 @@ class Form extends Component{
             <div>
                 <form>
                     {button}
-                    <input value={this.state.username} type="text" placeholder="username" onChange={this.handleUsername}  />
-                    <input type="password" value={this.state.password} placeholder="password" onChange={this.handlePassword} />
+                    <input value={this.state.username} type="text" placeholder="username" onChange={this.handleUsername} required />
+                    <input type="password" value={this.state.password} placeholder="password" onChange={this.handlePassword} required />
                     <center>
                         <button className="btn btn-info btn-block login" type="submit" onClick={this.updateMyScreen}>
                             Login
