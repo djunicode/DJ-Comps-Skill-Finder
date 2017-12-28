@@ -17,7 +17,7 @@ class Form extends Component{
             mobileNumber:'',
         };
         this.handleUsername = this.handleUsername.bind(this);
-        this.handlefirsName = this.handlefirstName.bind(this);
+        this.handlefirstName = this.handlefirstName.bind(this);
         this.handlelastName = this.handlelastName.bind(this);
         this.handlemobileNumber = this.handlemobileNumber.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
@@ -31,7 +31,8 @@ class Form extends Component{
     }
     handleSAP(event) {
         this.setState({sapID: event.target.value});
-    }handleEmail(event) {
+    }
+    handleEmail(event) {
         this.setState({Email: event.target.value});
     }
     handlePassword(event) {
@@ -86,17 +87,17 @@ class Form extends Component{
             <div>
                 <form>
                     {button}
-                    <input value={this.state.username} type="text" placeholder="username" onChange={this.handleUsername} required />
+                    <input value={this.state.username} type="text" placeholder="Username" onChange={this.handleUsername} required />
                     <input type="password" value={this.state.password} placeholder="password" onChange={this.handlePassword} required />
                     <center>
-                        <button className="btn btn-info btn-block login" type="submit" onClick={this.updateMyScreen}>
+                        <button className="btn btn-info btn-block login" style={{textAlign: 'center'}} type="submit" onClick={this.updateMyScreen}>
                             Login
                         </button>
                         </center>
                 </form>
                 <center>
-                    <button id="register" className="btn btn-info btn-block login"  onClick={this.addRegister}>
-                        Register
+                    <button id="register" className="btn btn-info btn-block login" style={{width:'5%'}} onClick={this.addRegister}>
+                        +
                         </button>
                 </center>
             </div>
