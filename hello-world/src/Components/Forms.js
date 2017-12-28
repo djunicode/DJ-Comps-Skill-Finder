@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css'
+import ReactDOM from 'react-dom';
 class Form extends Component{
 
     constructor(props){
@@ -70,13 +71,13 @@ class Form extends Component{
                         <button className="btn btn-info btn-block login" type="submit" onClick={this.updateMyScreen}>
                             Login
                         </button>
-                        {this.state.count}
-                        <button id="register" className="btn btn-info btn-block login"  onClick={this.addRegister}>
-                            Register
-                        </button>
-                    </center>
-
+                        </center>
                 </form>
+                <center>
+                    <button id="register" className="btn btn-info btn-block login"  onClick={this.addRegister}>
+                        Register
+                        </button>
+                </center>
             </div>
         );
     }
