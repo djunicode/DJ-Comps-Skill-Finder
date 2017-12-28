@@ -1,9 +1,11 @@
-body{background: #eee url(http://subtlepatterns.com/patterns/sativa.png);}
+body{background-image:url('./background.jpg')}
 html,body{
   position: relative;
   height: 100%;
 }
-
+.hidebtn{
+  visibility: hidden
+}
 .login-container{
   position: relative;
   width: 300px;
