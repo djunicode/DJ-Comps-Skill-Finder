@@ -12,8 +12,14 @@ class Form extends Component{
             sapID: '',
             emailID: '',
             isRegister: false,
+            firstName:'',
+            lastName:'',
+            mobileNumber:'',
         };
         this.handleUsername = this.handleUsername.bind(this);
+        this.handlefirstname = this.handlefirstname.bind(this);
+        this.handlelastName = this.handlelastName.bind(this);
+        this.handlemobileNumber = this.handlemobileNumber.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
         this.handleSAP= this.handleSAP.bind(this);
         this.handleEmail= this.handleEmail.bind(this);
@@ -30,6 +36,15 @@ class Form extends Component{
     }
     handlePassword(event) {
         this.setState({password: event.target.value});
+    }
+    handlefirstname(event) {
+        this.setState({firstName: event.target.value});
+    }
+    handlelastName(event) {
+        this.setState({lastName: event.target.value});
+    }
+    handlemobileNumber(event) {
+        this.setState({mobileNumber: event.target.value});
     }
 
 
@@ -49,7 +64,10 @@ class Form extends Component{
 
     addRegister(){
         event.preventDefault();
+        var myDiv = document.getElementById('register');
         this.setState({isRegister: true});
+
+        ReactDOM.find(myDiv).className="hiddenbtn";
 
     }
     render(){
@@ -57,8 +75,12 @@ class Form extends Component{
         let button = null;
         if(this.state.isRegister){
             button = <div id="reg">
+                <input type="text" placeholder="First Name" value={this.state.firstName} onChange={this.handlefirstName}/>
+                <input type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.handlelastName}/>
                 <input type="text" placeholder="SAP ID" value={this.state.sapID} onChange={this.handleSAP}/>
                 <input type="text" placeholder="Email Address" value={this.state.Email} onChange={this.handleEmail}/>
+                <input type="text" placeholder="Mobile Number" value={this.state.mobileNumber} onChange={this.handlemobileNumber}/>
+
             </div>
         }
         return(
