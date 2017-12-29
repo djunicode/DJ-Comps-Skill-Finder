@@ -1,6 +1,7 @@
 body{background-image:url('./bkg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+  overflow: scroll;
 }
 html,body{
   position: relative;
@@ -22,8 +23,8 @@ html,body{
 }
 div.logo {
   width: 350px;
-  height: 50px;
-  background-image:url('/UNCLetters.png');
+  height: 65px;
+  background-image:url('./UNCLetters.png');
   background-size: cover;
   margin:20px; 
   padding:0;

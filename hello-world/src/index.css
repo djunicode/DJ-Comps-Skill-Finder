@@ -1,6 +1,7 @@
 body{background-image:url('./bkg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+
 }
 html,body{
   position: relative;
