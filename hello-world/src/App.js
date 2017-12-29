@@ -8,6 +8,7 @@ class App extends Component {
   render() {
     return (
           <div className="container">
+            <div className = "logo"></div>
             <div className="login-container">
                 <div id="output"></div>
                 <div className="avatar"></div>

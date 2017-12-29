@@ -90,14 +90,14 @@ class Form extends Component{
                     <input value={this.state.username} type="text" placeholder="Username" onChange={this.handleUsername} required />
                     <input type="password" value={this.state.password} placeholder="password" onChange={this.handlePassword} required />
                     <center>
-                        <button className="btn btn-info btn-block login" style={{textAlign: 'center'}} type="submit" onClick={this.updateMyScreen}>
+                        <button className="btn btn-info btn-block login" style={{textAlign: 'center', width: '100%'}} type="submit" onClick={this.updateMyScreen}>
                             Login
                         </button>
                         </center>
                 </form>
                 <center>
-                    <button id="register" className="btn btn-info btn-block login" style={{width:'5%'}} onClick={this.addRegister}>
-                        +
+                    <button id="register" className="btn btn-info btn-block login" style={{width:'100%', backgroundColor: '#e7998f'}} onClick={this.addRegister}>
+                        Register
                         </button>
                 </center>
             </div>
