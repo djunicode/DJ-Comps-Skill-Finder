@@ -31,11 +31,6 @@ div.logo {
   position: relative;
 }
 
-/*
-div.image:before {
-   content:url(http://placehold.it/350x150);
-}*/
-
 #output{
   position: absolute;
   width: 300px;
