@@ -1,4 +1,4 @@
-body{background-image:url('./bkg.jpg');
+body{background-image:url('./bkgFinal.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -12,7 +12,10 @@ html,body{
 .login-container{
   position: relative;
   width: 300px;
-  margin: 80px auto;
+  margin-top: 2px;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-left: auto;
   padding: 20px 40px 40px;
   text-align: center;
   background: #fff;
