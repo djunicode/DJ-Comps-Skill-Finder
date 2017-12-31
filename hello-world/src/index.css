@@ -13,12 +13,29 @@ html,body{
   position: relative;
   width: 300px;
   margin-top: 2px;
-  margin-right: auto;
+  margin-right: auto; 
   margin-bottom: 20px;
-  margin-left: auto;
-  padding: 20px 40px 40px;
+  margin-left: auto;    
+  padding: 20px 40px 40px;    
   text-align: center;
   background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0);
+  background-color: #ffffffa6;
+  border-radius: 10px;
+}
+div.logo {
+  width: 298px;
+  height: 80px;
+  background-image:url('./UNCLetters.png');
+  background-size: 75%;
+  background-position: center;
+  background-repeat: no-repeat; 
+  margin-left: auto;
+  margin-top: 40px;
+  margin-bottom: 1px; 
+  margin-right: auto;
+  position: relative;
+  padding: 0px 40px 0px 40px;
   border: 1px solid rgba(255, 255, 255, 0);
   background-color: #ffffffa6;
   border-radius: 10px;
