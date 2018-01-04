@@ -1,5 +1,6 @@
 __pycache__/
 *.py[cod]
 migrations/
+!__init__.py
 media/
 *env
