@@ -2,6 +2,5 @@ __pycache__/
 *.py[cod]
 **/migrations/*
 !__init__.py
-!init.py
 media/
 *env
