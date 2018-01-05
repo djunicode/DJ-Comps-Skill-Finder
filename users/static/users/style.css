@@ -1,0 +1,30 @@
+body{
+    /*background: #ffffff url("images/background.jpg");*/
+    background: #b5b8bc;
+}
+
+.navbar{
+    border-radius: 0px;
+}
+
+.navbar-brand{
+    font-family: 'Satisfy', cursive;
+    font-size: x-large;
+}
+
+.col-sm-4{
+    background: #ffffff;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 0.66pc;
+}
+.panel-default{
+    padding: 10px;
+}
+
+.col-xs-5{
+    background: #ffffff;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 1pc;
+}

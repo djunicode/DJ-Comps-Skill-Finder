@@ -1,0 +1,18 @@
+{% extends 'users/base2.html' %}
+{% block title %}{{ user.full_name }}{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Profile</h1>
+        {% if user.photo %}
+            <img src="{{ user.photo.url }}" class="img-responsive"/>
+        {% else %}
+            <h3>No Image to Display</h3>
+        {% endif %}
+        <h1>{{ user.full_name }}</h1>
+        <h3>{{ user.sap_id }}</h3>
+        <h3>{{ user.email }}</h3>
+        <h4>Skills: {% if user.skill_1 %}{{ user.skill_1 }}&nbsp;&nbsp;&nbsp;{% endif %}{% if user.skill_2 %}{{ user.skill_2 }}&nbsp;&nbsp;&nbsp;{% endif %}{% if user.skill_3 %}{{ user.skill_3 }}&nbsp;&nbsp;&nbsp;{% endif %}</h4>
+        <a href="{% url 'users:edit_profile' %}"><button class="btn btn-success" type="button">Edit Information</button></a>
+    </div>
+
+{% endblock %}

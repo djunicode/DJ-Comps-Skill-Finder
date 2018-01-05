@@ -1,0 +1,12 @@
+{% if error_message %}
+{{ error_message }}
+{% endif %}
+{% for field in form %}
+    <div class="form-group">
+        <div class="col-md-offset-5 col-md-6">
+            <span class="text-danger small">{{ field.errors }}</span>
+        </div>
+        <label class="control-label col-md-offset-3 col-md-2">{{ field.label_tag|title }}</label>
+        <div class="col-md-6">{{ field }}</div>
+    </div>
+{% endfor %}

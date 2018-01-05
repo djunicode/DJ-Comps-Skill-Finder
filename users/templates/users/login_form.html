@@ -1,0 +1,30 @@
+{% extends 'users/base1.html' %}
+{% block title %}Login Form{% endblock %}
+{% block body %}
+
+   <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-offset-2 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'users/form-template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-5 col-sm-6">
+                                <button type="submit" class="btn btn-success">Log In</button>
+                                <a href="{% url 'users:user-registration' %}"><button class="btn btn-success" type="button">Register Page</button></a>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
