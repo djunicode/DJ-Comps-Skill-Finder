@@ -8,10 +8,9 @@ services:
 
 env:
   - DJANGO=2.0 DB=postgresql
-  - DJANGO=2.0.1 DB=postgresql
 
 before_install:
-  - export DJANGO_SETTINGS_MODULE=info_portal.settings
+  - export DJANGO_SETTINGS_MODULE=skill_finder.settings
 
 install:
   - pip install -r requirements.txt
