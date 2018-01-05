@@ -17,7 +17,7 @@ install:
 
 before_script:
   - psql -c "CREATE DATABASE Skill_Finder;" -U postgres
-  - psql -c "CREATE USER root WITH CREATEUSER PASSWORD 'pass@123';" -U postgres
+  - psql -c "CREATE USER root WITH PASSWORD 'pass@123';" -U postgres
   - psql -c "ALTER USER root CREATEDB;" -U postgres
   - python3 manage.py makemigrations
   - python3 manage.py migrate
