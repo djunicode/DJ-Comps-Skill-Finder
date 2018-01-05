@@ -4,11 +4,11 @@ from django.views.generic import View, CreateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login, authenticate
 from django.urls import reverse_lazy
-#from user.forms import UpdationForm
-from user.models import Skill,User
+#from users.forms import UpdationForm
+from users.models import Skill,User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from user import forms
+from users import forms
 from  django.contrib.auth.forms import UserChangeForm
 
 # Create your views here.
