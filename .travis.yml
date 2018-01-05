@@ -16,7 +16,7 @@ install:
   - pip install -r requirements.txt
 
 before_script:
-  - psql -c "CREATE DATABASE Skill_Finder;" -U postgres
+  - psql -c "CREATE DATABASE skill_finder;" -U postgres
   - psql -c "CREATE USER root WITH PASSWORD 'pass@123';" -U postgres
   - psql -c "ALTER USER root CREATEDB;" -U postgres
   - python3 manage.py makemigrations
