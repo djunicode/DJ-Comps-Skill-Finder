@@ -10,20 +10,29 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-import os
+#import os
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
+import environ
+root = environ.Path(__file__) - 2 # three folder back (/a/b/c/ - 3 = /)
+
+env = environ.Env(DEBUG=(bool, False),) # set default values and casting
+environ.Env.read_env('.env') # reading .env file
+#print(env('SECRET_KEY'))
+SITE_ROOT = root()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'nad7kycy!op3$^p@37=xk!mcwmmv5zw6@*e$r+#m5ood2)@i78'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -75,12 +84,12 @@ WSGI_APPLICATION = 'skill_finder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'skill_finder',
-        'USER': 'root',
-        'PASSWORD': 'pass@123',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': env('ENGINE'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASS'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
     }
 }
 
