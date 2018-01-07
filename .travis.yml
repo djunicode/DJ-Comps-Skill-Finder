@@ -13,7 +13,7 @@ env:
   - DEBUG=on
   - ENGINE=django.db.backends.postgresql
   - DB_NAME=skill_finder
-  - DB_USER=postgres
+  - DB_USER=root
   - DB_PASS=pass@123
   - DB_HOST=localhost
   - DB_PORT=5432
