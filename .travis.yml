@@ -8,16 +8,8 @@ services:
   - postgresql
 
 env:
-  - DJANGO=2.0 DB=postgresql
-  - SECRET_KEY=nad7kycy!op3$^p@37=xk!mcwmmv5zw6@*e$r+#m5ood2)@i78
-  - DEBUG=on
-  - ENGINE=django.db.backends.postgresql
-  - DB_NAME=skill_finder
-  - DB_USER=root
-  - DB_PASS=pass@123
-  - DB_HOST=localhost
-  - DB_PORT=5432
-  
+  - DJANGO=2.0 DB=postgresql SECRET_KEY=nad7kycy!op3$^p@37=xk!mcwmmv5zw6@*e$r+#m5ood2)@i78 DEBUG=on ENGINE=django.db.backends.postgresql DB_NAME=skill_finder DB_USER=root DB_PASS=pass@123 DB_HOST=localhost DB_PORT=5432
+
 
 before_install:
   - export DJANGO_SETTINGS_MODULE=skill_finder.settings
