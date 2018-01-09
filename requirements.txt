@@ -1,0 +1,5 @@
+flake8
+Django==2.0
+psycopg2>=2.7.3.2
+python-decouple>=3.1
+
