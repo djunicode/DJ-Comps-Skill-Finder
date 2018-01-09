@@ -17,6 +17,7 @@ env:
   - DB_PASS=pass@123
   - DB_HOST=localhost
   - DB_PORT=5432
+  
 
 before_install:
   - export DJANGO_SETTINGS_MODULE=skill_finder.settings
