@@ -9,6 +9,8 @@ The general approach of finding people with similar interests as you can be time
     Seniors have experience of working in the field which their juniors might lack. Most colleges lack this downward flow of information where in a senior can act as a mentor to a particular junior guiding him/her towards his/her goal in the respective domain. This eliminates the time spent in trial error by the junior in order to get on the right path.
 - **Forming teams for Hackathons & Projects**
     Every hackathon brings a different set of challenges which requires the team to have members with grasp of the required tech. The process of finding such specific people having expertize in a particular field can be made easy by this application. Additionally, juniors can apply for vancancies in teams formed by seniors. The seniors can evaluate these applications on the basis of the resume and select the desired candidate.
+- **Listing of upcoming events**
+    Events such as hackathons, coding competitions are conducted at various places around the year. People who are aware about any such event can notify other users of the application by posting about the event. 
     
 ## Our Team
 
@@ -16,10 +18,10 @@ The general approach of finding people with similar interests as you can be time
 Avais Pagarkar
 
 ### TE Mentors
-Ikbal Singh, Krisha Mehta, Vatsal Doshi, Aakash Shah
+Aakash Shah, Ikbal Singh, Krisha Mehta, Vatsal Doshi
 
 ### Front End Developers
-Mudra Nagda, Viral Tagdiwala, Jinesh Shah, Devansh Dalal
+Devansh Dalal, Jinesh Shah, Mudra Nagda, Viral Tagdiwala 
 
 ### Back End Developers
-Parth Shah, Parth Doshi
+Parth Doshi, Parth Shah 
