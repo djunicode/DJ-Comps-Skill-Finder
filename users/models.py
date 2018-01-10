@@ -18,13 +18,10 @@ def path(instance, filename):
 
 
 # Creating a custom User model
-class User(AbstractUser):
+class CustomUser(AbstractUser):
     # Manually check uniqueness during input
     sap_id = models.CharField(max_length=15, unique=True)
-    # Fixed format of mobile like 1234567890
-    message = 'Phone number should be of 10 digits'
-    phone_regex = RegexValidator(regex=r'^[1-9][0-9]{9}$', message=message)
-    mobile = models.CharField(validators=[phone_regex], max_length=10, unique=True)
+    mobile = models.CharField(max_length=10, unique=True)
     photo = models.FileField(upload_to=path, blank=True, null=True)
     bio = models.TextField(max_length=500, blank=True)
     years = (
