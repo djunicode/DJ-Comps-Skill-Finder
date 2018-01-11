@@ -16,7 +16,7 @@
 
 body {
   margin: 0;
-  background-image:url('./bkg.jpg');
+  background-color: white;
   background-size: cover;
   background-repeat: no-repeat;
   overflow: scroll;
@@ -437,6 +437,7 @@ a img{
   background-color: #fafafa;
   opacity: 0.75;
   position: relative;
+  box-shadow: -3px 1px 17px rgba(0,0,0,.14);
 }
 
   .page-footer a:hover {
@@ -469,15 +470,15 @@ a img{
   cursor: pointer;
 }
 .footerimage{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    right: 50%;
-    bottom: 50%;
+    position: relative;
+    left: 42%;
     width: 20%;
+    margin-bottom: -4%;
+    z-index: 1;
+    filter: drop-shadow(1px -1px 1.5px rgba(0,0,0,.3));
+
 }
 
-/**** Mobile layout ****/
 @media (max-width: 900px) {
   .page-navigation-container {
     display: none;

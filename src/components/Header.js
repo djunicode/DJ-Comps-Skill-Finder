@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 class Header extends Component {
     render() {
         return (
-            <div>
-                <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
 
                     <div className="page-header mdl-layout__header mdl-layout__header--waterfall">
                         <div className="mdl-layout__header-row">
@@ -71,7 +71,7 @@ class Header extends Component {
                         </nav>
                     </div>
             </div>
-            </div>
+
         );
     }
 }

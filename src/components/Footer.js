@@ -3,6 +3,7 @@ class Footer extends Component {
     render() {
         return (
             <div>
+                <img src="../approach-illustration-3.png" className="footerimage"/>
                 <footer className="page-footer mdl-mega-footer">
                     <div className="mdl-mega-footer--top-section">
                         <div className="mdl-mega-footer--left-section">
@@ -45,7 +46,7 @@ class Footer extends Component {
                         <a className="page-link mdl-typography--font-light" href="">PlaceHolder</a>
                         <a className="page-link mdl-typography--font-light" href="">PlaceHolder</a>
                     </div>
-                    <img src="../approach-illustration-3.png" className="footerimage"/>
+                    
 
                 </footer>
             </div>
