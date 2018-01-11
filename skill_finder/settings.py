@@ -23,9 +23,15 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
+<<<<<<< HEAD
+=======
+
+# Application definition
+>>>>>>> de4b59b7e64193dd0a17d140a46c34a72e10b32d
 
 # Application definition
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
