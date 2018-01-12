@@ -1,0 +1,14 @@
+<form action="{% url 'users:register' %}" method='POST'>
+  {% csrf_token %}
+  First Name <input type="text" name="first_name"><br>
+  Last Name <input type="text" name="last_name"><br>
+  SAP ID <input type="text" name="sap_id"><br>
+  Mobile <input type="text" name="mobile"><br>
+  Email <input type="email" name="email"><br>
+  Password <input type="password" name="password"><br>
+  <input type="submit" name="Submit">
+</form>
+
+{% if error %}
+  <p>{{ error }}</p>
+{% endif %}
