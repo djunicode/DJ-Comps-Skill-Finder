@@ -1,8 +1,0 @@
-<form action="{% url 'users:register_skills' %}" method="POST">
-  {% csrf_token %}
-  Year <input type="text" name="year"><br>
-  Skill 1 <input type="text" name="skill_1"><br>
-  Skill 2 <input type="text" name="skill_2"><br>
-  Skill 3 <input type="text" name="skill_3"><br>
-  <input type="submit" value="Submit">
-</form>

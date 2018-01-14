@@ -72,31 +72,6 @@ def register(request):
             return render(request, 'users/register.html', {})
 
 
-# def register_skills(request):
-#     if not request.user.is_authenticated:
-#         return render(request, 'users/login.html', {})
-#     else:
-#         if request.method == 'POST':
-#             request.user.year = request.POST.get('year')
-#             # Taking input of the three skills
-#             try:
-#                 request.user.skill_1 = Skill.objects.get(skill=request.POST.get('skill_1'))
-#             except Skill.DoesNotExist:
-#                 request.user.skill_1 = None
-#             try:
-#                 request.user.skill_2 = Skill.objects.get(skill=request.POST.get('skill_2'))
-#             except Skill.DoesNotExist:
-#                 request.user.skill_2 = None
-#             try:
-#                 request.user.skill_3 = Skill.objects.get(skill=request.POST.get('skill_3'))
-#             except Skill.DoesNotExist:
-#                 request.user.skill_3 = None
-#             request.user.save()
-#             return render(request, 'users/test.html', {})
-#         else:
-#             return render(request, 'users/register_skills.html', {})
-
-
 def view_profile(request, pk):
     if not request.user.is_authenticated:
         return render(request, 'users/login.html', {})
