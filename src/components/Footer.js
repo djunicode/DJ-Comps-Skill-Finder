@@ -46,7 +46,7 @@ class Footer extends Component {
                         <a className="page-link mdl-typography--font-light" href="">PlaceHolder</a>
                         <a className="page-link mdl-typography--font-light" href="">PlaceHolder</a>
                     </div>
-                    
+
 
                 </footer>
             </div>
