@@ -9,6 +9,14 @@
   <input type="submit" name="Submit">
 </form>
 
-{% if error %}
-  <p>{{ error }}</p>
+{% if email_error %}
+  <p>{{ email_error }}</p>
+{% endif %}
+
+{% if sap_error %}
+  <p>{{ sap_error }}</p>
+{% endif %}
+
+{% if mobile_error %}
+  <p>{{ mobile_error }}</p>
 {% endif %}

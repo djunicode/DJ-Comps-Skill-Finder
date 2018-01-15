@@ -44,18 +44,18 @@ def register(request):
             password = request.POST.get('password', '')
             sap_id = request.POST.get('sap_id', '')
             mobile = request.POST.get('mobile')
+            errors = {}
             # Check if no other user has the same email id
             if CustomUser.objects.filter(username=username).exists():
-                error = 'The email is already in use by another account.'
-                return render(request, 'users/register.html', {'error': error})
+                errors['email_error'] = 'The email is already in use by another account.'
             # Check for uniqueness of SAP ID
-            elif CustomUser.objects.filter(sap_id=sap_id).exists():
-                error = 'The SAP ID is already in use by another account.'
-                return render(request, 'users/register.html', {'error': error})
+            if CustomUser.objects.filter(sap_id=sap_id).exists():
+                errors['sap_error'] = 'The SAP ID is already in use by another account.'
             # Check for uniqueness of Mobile No.
-            elif CustomUser.objects.filter(mobile=mobile).exists():
-                error = 'The mobile number is already in use by another account.'
-                return render(request, 'users/register.html', {'error': error})
+            if CustomUser.objects.filter(mobile=mobile).exists():
+                errors['mobile_error'] = 'The mobile number is already in use by another account.'
+            if len(errors) > 0:
+                return render(request, 'users/register.html', errors)
             else:
                 email = request.POST.get('email', '')
                 first_name = request.POST.get('first_name', '')
@@ -93,12 +93,13 @@ def update_profile(request, pk):
             request.user.last_name = request.POST.get('last_name')
             mobile = request.POST.get('mobile')
             sap_id = request.POST.get('sap_id')
+            errors = {}
             if CustomUser.objects.filter(mobile=mobile)[0].id != pk:
-                error = 'The mobile number is already in use by another account.'
-                return render(request, 'users/update_profile.html', {'error': error})
-            elif CustomUser.objects.filter(sap_id=sap_id)[0].id != pk:
-                error = 'The SAP ID is already in use by another account.'
-                return render(request, 'users/update_profile.html', {'error': error})
+                errors['mobile_error'] = 'The mobile number is already in use by another account.'
+            if CustomUser.objects.filter(sap_id=sap_id)[0].id != pk:
+                errors['sap_error'] = 'The SAP ID is already in use by another account.'
+            if len(errors) > 0:
+                return render(request, 'users/update_profile.html', errors)
             request.user.photo = request.FILES.get('photo', None)
             request.user.bio = request.POST.get('bio')
             request.user.year = request.POST.get('year')
