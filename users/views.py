@@ -116,4 +116,4 @@ def update_profile(request, pk):
             except Skill.DoesNotExist:
                 request.user.skill_3 = None
             request.user.save()
-            return render(request, 'users/profile.html', {'user': request.user})
+            return redirect('users:view_profile', pk=request.user.id)
