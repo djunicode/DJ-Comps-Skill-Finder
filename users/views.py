@@ -74,7 +74,7 @@ def register(request):
 
 def view_profile(request, pk):
     if not request.user.is_authenticated:
-        return render(request, 'users/login.html', {})
+        return redirect('users:login')
     else:
         user = get_object_or_404(CustomUser, pk=pk)
         return render(request, 'users/profile.html', {'user': user})
@@ -82,9 +82,9 @@ def view_profile(request, pk):
 
 def update_profile(request, pk):
     if not request.user.is_authenticated:
-        return render(request, 'users/login.html', {})
+        return redirect('users:login')
     elif request.user.pk != pk:
-        return render(request, 'users/login.html', {})
+        return redirect('users:login')
     else:
         if request.method != 'POST':
             return render(request, 'users/update_profile.html', {})
