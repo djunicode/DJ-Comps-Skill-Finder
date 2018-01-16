@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import '../App.css';
 class Footer extends Component {
     render() {
         return (
             <div>
-                <img src="../approach-illustration-3.png" className="footerimage"/>
+                <img src="../approach-illustration-3.png" className="footerimage" />
                 <footer className="page-footer mdl-mega-footer">
                     <div className="mdl-mega-footer--top-section">
                         <div className="mdl-mega-footer--left-section">
@@ -27,7 +28,7 @@ class Footer extends Component {
                             PlaceHolder
                             <i className="material-icons">arrow_drop_up</i>
                         </a>
-                        <ul className="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="version-dropdown">
+                        <ul className="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" htmlFor="version-dropdown">
                             <li className="mdl-menu__item">PlaceHolder</li>
                             <li className="mdl-menu__item">PlaceHolder</li>
                             <li className="mdl-menu__item">PlaceHolder</li>
@@ -37,7 +38,7 @@ class Footer extends Component {
                             PlaceHolder
                             <i className="material-icons">arrow_drop_up</i>
                         </a>
-                        <ul className="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="developers-dropdown">
+                        <ul className="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" htmlFor="developers-dropdown">
                             <li className="mdl-menu__item">PlaceHolder</li>
                             <li className="mdl-menu__item">PlaceHolder</li>
                             <li className="mdl-menu__item">PlaceHolder</li>

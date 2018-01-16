@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../App.css';
 class Header extends Component {
   render() {
     return (
@@ -10,7 +11,7 @@ class Header extends Component {
             </span>
             <div className="page-header-spacer mdl-layout-spacer"></div>
             <div className="page-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
-              <label className="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+              <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="search-field">
                 <i className="material-icons">search</i>
               </label>
               <div className="mdl-textfield__expandable-holder">
@@ -27,20 +28,22 @@ class Header extends Component {
             <span className="page-mobile-title mdl-layout-title">
               <img className="page-logo-image" src="../UNCLetters.png" />
             </span>
+
             <button className="page-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
               <i className="material-icons">more_vert</i>
             </button>
-            <ul className="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+            <ul className="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" htmlFor="more-button">
               <li className="mdl-menu__item">PlaceHolder</li>
               <li className="mdl-menu__item">PlaceHolder</li>
               <li disabled className="mdl-menu__item">PlaceHolder</li>
               <li className="mdl-menu__item">PlaceHolder</li>
             </ul>
+
           </div>
         </div>
         <div className="page-drawer mdl-layout__drawer">
           <span className="mdl-layout-title">
-            <img className="page-logo-image" src="images/page-logo-white.png" />
+            <img className="page-logo-image" src="../UNCLetters.png" />
           </span>
           <nav className="mdl-navigation">
             <a className="mdl-navigation__link" href="">PlaceHolder 1</a>
