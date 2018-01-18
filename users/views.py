@@ -4,6 +4,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.urls import reverse
 from .models import CustomUser, Skill
+from django.contrib.auth.decorators import login_required
 
 
 def login(request):
@@ -17,6 +18,8 @@ def login(request):
             if user:
                 if user.is_active:
                     auth_login(request, user)
+                    if request.POST.get('next'):
+                        return redirect(request.POST.get('next'))
                     return render(request, 'users/test.html', {})
                 else:
                     error = 'The account has been disabled.'
@@ -72,18 +75,18 @@ def register(request):
             return render(request, 'users/register.html', {})
 
 
+@login_required(login_url='users:login')
 def view_profile(request, pk):
-    if not request.user.is_authenticated:
-        return redirect('users:login')
-    else:
+    # if not request.user.is_authenticated:
+    #     return redirect('users:login')
+    # else:
         user = get_object_or_404(CustomUser, pk=pk)
         return render(request, 'users/profile.html', {'user': user})
 
 
+@login_required(login_url='users:login')
 def update_profile(request, pk):
-    if not request.user.is_authenticated:
-        return redirect('users:login')
-    elif request.user.pk != pk:
+    if request.user.pk != pk:
         return redirect('users:login')
     else:
         if request.method != 'POST':
