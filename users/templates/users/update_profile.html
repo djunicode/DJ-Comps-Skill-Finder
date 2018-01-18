@@ -1,4 +1,4 @@
-<form action="{% url 'users:update_profile' user.id %}" enctype="multipart/form-data" method="POST">
+<form action="{% url 'users:update_profile' %}" enctype="multipart/form-data" method="POST">
   {% csrf_token %}
   First name <input type="text" name="first_name" value="{{ user.first_name }}"><br>
   Last name <input type="text" name="last_name" value="{{ user.last_name }}"><br>

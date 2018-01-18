@@ -82,38 +82,39 @@ def view_profile(request, sap_id):
 
 
 @login_required(login_url='users:login')
-def update_profile(request, pk):
-    if request.user.pk != pk:
-        return redirect('users:login')
+def update_profile(request):
+    if request.method != 'POST':
+        return render(request, 'users/update_profile.html', {})
     else:
-        if request.method != 'POST':
-            return render(request, 'users/update_profile.html', {})
-        else:
-            request.user.first_name = request.POST.get('first_name')
-            request.user.last_name = request.POST.get('last_name')
-            mobile = request.POST.get('mobile')
-            sap_id = request.POST.get('sap_id')
-            errors = {}
-            if CustomUser.objects.filter(mobile=mobile)[0].id != pk:
+        request.user.first_name = request.POST.get('first_name')
+        request.user.last_name = request.POST.get('last_name')
+        mobile = request.POST.get('mobile')
+        sap_id = request.POST.get('sap_id')
+        errors = {}
+        if CustomUser.objects.filter(mobile=mobile).exists():
+            if CustomUser.objects.filter(mobile=mobile)[0].id != request.user.id:
                 errors['mobile_error'] = 'The mobile number is already in use by another account.'
-            if CustomUser.objects.filter(sap_id=sap_id)[0].id != pk:
+        if CustomUser.objects.filter(sap_id=sap_id).exists():
+            if CustomUser.objects.filter(sap_id=sap_id)[0].id != request.user.id:
                 errors['sap_error'] = 'The SAP ID is already in use by another account.'
-            if len(errors) > 0:
-                return render(request, 'users/update_profile.html', errors)
-            request.user.photo = request.FILES.get('photo', None)
-            request.user.bio = request.POST.get('bio')
-            request.user.year = request.POST.get('year')
-            try:
-                request.user.skill_1 = Skill.objects.get(skill=request.POST.get('skill_1'))
-            except Skill.DoesNotExist:
-                request.user.skill_1 = None
-            try:
-                request.user.skill_2 = Skill.objects.get(skill=request.POST.get('skill_2'))
-            except Skill.DoesNotExist:
-                request.user.skill_2 = None
-            try:
-                request.user.skill_3 = Skill.objects.get(skill=request.POST.get('skill_3'))
-            except Skill.DoesNotExist:
-                request.user.skill_3 = None
-            request.user.save()
-            return redirect('users:view_profile', pk=request.user.id)
+        if len(errors) > 0:
+            return render(request, 'users/update_profile.html', errors)
+        request.user.mobile = mobile
+        request.user.sap_id = sap_id
+        request.user.photo = request.FILES.get('photo', None)
+        request.user.bio = request.POST.get('bio')
+        request.user.year = request.POST.get('year')
+        try:
+            request.user.skill_1 = Skill.objects.get(skill=request.POST.get('skill_1'))
+        except Skill.DoesNotExist:
+            request.user.skill_1 = None
+        try:
+            request.user.skill_2 = Skill.objects.get(skill=request.POST.get('skill_2'))
+        except Skill.DoesNotExist:
+            request.user.skill_2 = None
+        try:
+            request.user.skill_3 = Skill.objects.get(skill=request.POST.get('skill_3'))
+        except Skill.DoesNotExist:
+            request.user.skill_3 = None
+        request.user.save()
+        return redirect('users:view_profile', sap_id=sap_id)
