@@ -76,12 +76,9 @@ def register(request):
 
 
 @login_required(login_url='users:login')
-def view_profile(request, pk):
-    # if not request.user.is_authenticated:
-    #     return redirect('users:login')
-    # else:
-        user = get_object_or_404(CustomUser, pk=pk)
-        return render(request, 'users/profile.html', {'user': user})
+def view_profile(request, sap_id):
+    user = get_object_or_404(CustomUser, sap_id=sap_id)
+    return render(request, 'users/profile.html', {'user': user})
 
 
 @login_required(login_url='users:login')
