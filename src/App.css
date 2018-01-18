@@ -1,5 +1,6 @@
 body{background-image:url('./bkg.jpg');
     background-size: cover;
+	background-attachment: fixed;
     background-repeat: no-repeat;
   overflow: scroll;
 }
