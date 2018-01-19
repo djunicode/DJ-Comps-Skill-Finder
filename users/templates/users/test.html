@@ -1,0 +1,6 @@
+<h2>Successful Login</h2>
+<p>{{ request.user.username }}</p>
+<form action="{% url 'users:logout' %}" method='POST'>
+  {% csrf_token %}
+  <input type='submit' name='logout' value='Log Out'>
+</form>
