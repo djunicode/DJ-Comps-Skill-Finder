@@ -1,15 +1,7 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# dependencies
+__pycache__/
+*.py[cod]
+**/migrations/*
+!__init__.py
+media/
+*env
 node_modules
-
-# testing
-coverage
-
-# production
-build
-
-# misc
-.DS_Store
-.env
-npm-debug.log

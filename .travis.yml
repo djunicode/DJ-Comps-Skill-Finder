@@ -1,0 +1,28 @@
+language: python
+
+python:
+  - 3.6
+
+services:
+  - postgresql
+
+env:
+  - DJANGO=2.0 DB=postgresql SECRET_KEY='nad7kycy!op3$^p@37=xk!mcwmmv5zw6@*e$r+#m5ood2)@i78' DEBUG='True' ENGINE='django.db.backends.postgresql' DB_NAME='skill_finder' DB_USER='postgres' DB_PASS='pass@123' DB_HOST='localhost' DB_PORT='5432'
+
+before_install:
+  - export DJANGO_SETTINGS_MODULE=skill_finder.settings
+
+install:
+  - pip install -r requirements.txt
+
+before_script:
+  - psql -c "CREATE DATABASE Skill_Finder;" -U postgres
+  - psql -c "CREATE USER root WITH CREATEUSER PASSWORD 'pass@123';" -U postgres
+  - psql -c "ALTER USER root CREATEDB;" -U postgres
+  - python3 manage.py makemigrations
+  - python3 manage.py migrate
+
+script:
+  - flake8
+  - python3 manage.py test
+  
