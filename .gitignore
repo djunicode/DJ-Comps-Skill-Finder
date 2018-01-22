@@ -5,3 +5,4 @@ __pycache__/
 media/
 *env
 node_modules
+.idea
