@@ -1,9 +1,11 @@
+{% load render_bundle from webpack_loader %}
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    {% load staticfiles %}
+    
     <link rel="stylesheet" type="text/css" href="{% static 'users/bootstrap.min.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'users/style.css' %}"/>
@@ -11,9 +13,12 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div id="react-app"></div>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
+{% load staticfiles %}
+{% render_bundle 'main' %}
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -36,6 +41,7 @@
 </nav>
 
 {% block body %}
+    
 {% endblock %}
 
 </body>
