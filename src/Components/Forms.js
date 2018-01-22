@@ -97,25 +97,22 @@ class Form extends Component{
         return(error.length === 0 ? '' : 'has-error');
     }
 
-
-
-
     handleUserInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
         this.setState({[name]: value},
             () => { this.validateField(name, value) });
     }
+
     addRegister(){
         event.preventDefault();
         var myDiv = document.getElementById('register');
         this.setState({isRegister: true});
-
         ReactDOM.find(myDiv).className="hiddenbtn";
-
     }
+
     render(){
-        const isRegister = this.state.isRegister;
+      //  const isRegister = this.state.isRegister;
         let button = null;
         if(this.state.isRegister){
             button = <div id="reg">
