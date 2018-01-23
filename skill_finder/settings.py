@@ -13,15 +13,24 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = '5t4jwdmosysgp)9+m)m#!$9jea_a%@)cv4)yg&sdup**qx%3^2'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG']
+DEBUG = True
 ALLOWED_HOSTS = []
 
 
 # Using a custom user model
 
 AUTH_USER_MODEL = 'users.CustomUser'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'), # We do this so that django's collectstatic copies or our bundles to the STATIC_ROOT or syncs them to whatever storage we use.
+)
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}
 
 
 # Application definition
@@ -32,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users'
+    'users',
+    'webpack_loader',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,16 +72,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'skill_finder.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+
 DATABASES = {
     'default': {
-        'ENGINE': os.environ['ENGINE'],
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PASS'],
-        'HOST': os.environ['DB_HOST'],
-        'PORT': os.environ['DB_PORT'],
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'skill_finder',
+        'USER': 'viral',
+        'PASSWORD': 'viral98',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [

@@ -1,0 +1,27 @@
+{
+  "name": "dj-comps-skill-finder",
+  "version": "1.0.0",
+  "description": "An application to find people with similar interests as you on the campus.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djunicode/DJ-Comps-Skill-Finder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djunicode/DJ-Comps-Skill-Finder/issues"
+  },
+  "homepage": "https://github.com/djunicode/DJ-Comps-Skill-Finder#readme",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.1",
+    "react": "^16.2.0",
+    "webpack": "^2.1.0-beta.22",
+    "webpack-bundle-tracker": "^0.2.1"
+  }
+}
