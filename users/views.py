@@ -5,6 +5,7 @@ from django.contrib.auth import logout as auth_logout
 from django.urls import reverse
 from .models import CustomUser, Skill
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
 
 
 def login(request):
@@ -118,3 +119,10 @@ def update_profile(request):
             request.user.skill_3 = None
         request.user.save()
         return redirect('users:view_profile', sap_id=sap_id)
+
+
+
+
+def index(request):
+    component = 'pages/index.js'
+    return render(request, 'users/index.html', {'component':component})
