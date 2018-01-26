@@ -19,7 +19,30 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'}, // to transform JSX into JS
+      {
+                test: /\.css$/,
+                loader:'style!css!'
+        },
+        {
+          test: /\.(png|jpg|gif)$/,
+          loader:
+            'file-loader'
+        },
     ],
+    rules:[
+        { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
+      },
+
+    ],
+
   },
 
   resolve: {

@@ -76,9 +76,9 @@ WSGI_APPLICATION = 'skill_finder.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'SF',
-        'USER': 'shahp98',
-        'PASSWORD': 'password',
+        'NAME': 'skill_finder',
+        'USER': 'viral',
+        'PASSWORD': 'viral98',
         'HOST': 'localhost',
         'PORT': '5432',
     }

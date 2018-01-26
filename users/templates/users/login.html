@@ -1,5 +1,5 @@
 {% load render_bundle from webpack_loader %}
-{% load static %}
+{% load staticfiles %}
 <form action="{% url 'users:login' %}" method='POST'>
   {% csrf_token %}
   <label for='username'>Username</label>
