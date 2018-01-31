@@ -12,7 +12,7 @@ from django.views.generic import TemplateView
 @ensure_csrf_cookie
 def login(request):
     if request.user.is_authenticated:
-            return render(request, 'users/test.html', {})
+        return render(request, 'users/test.html', {})
     else:
         if request.method == 'POST':
             if 'login' in request.POST:
@@ -70,44 +70,6 @@ def logout(request):
     return redirect(reverse('users:login'))
 
 
-# def register(request):
-#     if request.user.is_authenticated:
-#         return render(request, 'users/test.html', {})
-#     else:
-#         if request.method == 'POST':
-#             # Username and email fields will have the same data
-#             username = request.POST.get('email', '')
-#             password = request.POST.get('password', '')
-#             sap_id = request.POST.get('sap_id', '')
-#             mobile = request.POST.get('mobile')
-#             errors = {}
-#             # Check if no other user has the same email id
-#             if CustomUser.objects.filter(username=username).exists():
-#                 errors['email_error'] = 'The email is already in use by another account.'
-#             # Check for uniqueness of SAP ID
-#             if CustomUser.objects.filter(sap_id=sap_id).exists():
-#                 errors['sap_error'] = 'The SAP ID is already in use by another account.'
-#             # Check for uniqueness of Mobile No.
-#             if CustomUser.objects.filter(mobile=mobile).exists():
-#                 errors['mobile_error'] = 'The mobile number is already in use by another account.'
-#             if len(errors) > 0:
-#                 return render(request, 'users/register.html', errors)
-#             else:
-#                 email = request.POST.get('email', '')
-#                 first_name = request.POST.get('first_name', '')
-#                 last_name = request.POST.get('last_name', '')
-#                 user = CustomUser.objects.create(username=username, email=email, sap_id=sap_id, mobile=mobile,
-#                                                  first_name=first_name, last_name=last_name)
-#                 user.is_superuser = False
-#                 user.is_staff = False
-#                 user.set_password(password)
-#                 user.save()
-#                 auth_login(request, user)
-#                 return redirect('users:update_profile', pk=user.id)
-#         else:
-#             return render(request, 'users/register.html', {})
-
-
 @login_required(login_url='users:login')
 def view_profile(request, sap_id):
     user = get_object_or_404(CustomUser, sap_id=sap_id)
@@ -153,8 +115,6 @@ def update_profile(request):
         return redirect('users:view_profile', sap_id=sap_id)
 
 
-
-
 def index(request):
     component = 'pages/index.js'
-    return render(request, 'users/index.html', {'component':component})
+    return render(request, 'users/index.html', {'component': component})
