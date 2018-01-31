@@ -3,6 +3,7 @@ import '../App.css'
 import ReactDOM from 'react-dom';
 import {FormErrors} from './FormErrors';
 import './Form.css';
+import DjangoCSRFToken from 'django-react-csrftoken';
 class Form extends Component{
 
     constructor(props){
@@ -119,19 +120,21 @@ class Form extends Component{
         let button = null;
         if(this.state.isRegister){
             button = <div id="reg">
-                <input type="text" placeholder="First Name" value={this.state.firstName} onChange={this.handlefirstName} required/>
-                <input type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.handlelastName} required/>
-                <input type="text" placeholder="SAP ID" value={this.state.sapID} onChange={this.handleSAP} required/>
-                <input type="text" placeholder="Mobile Number" value={this.state.mobileNumber} onChange={this.handlemobileNumber} required/>
+                <input type="text" name="first_name" placeholder="First Name" value={this.state.firstName} onChange={this.handlefirstName} required/>
+                <input type="text" name="last_name" placeholder="Last Name" value={this.state.lastName} onChange={this.handlelastName} required/>
+                <input type="text" name="sap_id" placeholder="SAP ID" value={this.state.sapID} onChange={this.handleSAP} required/>
+                <input type="text" name="mobile" placeholder="Mobile Number" value={this.state.mobileNumber} onChange={this.handlemobileNumber} required/>
 
             </div>
         }
         return(
             <div>
-                <form action="{% url 'users:login' %}" method='POST'>
+                <form method='POST'>
+                 <DjangoCSRFToken/>
                   <div className="panel panel-default">
                       <FormErrors formErrors={this.state.formErrors} />
                   </div>
+
                     {button}
                     <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
                     <input  name="email" value={this.state.email} type="email" placeholder="Email" onChange={this.handleUserInput} required />
@@ -139,17 +142,21 @@ class Form extends Component{
                     <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
                     <input name="password" type="password" value={this.state.password} placeholder="Password" onChange={this.handleUserInput} required />
                     </div>
+                    <div>
+                        
+                    </div>
+
                     <center>
-                        <button className="btn btn-info btn-block login" style={{textAlign: 'center', width: '100%'}} type="submit" disabled={!this.state.formValid} >
+                        <button className="btn btn-info btn-block login" name="login" style={{textAlign: 'center', width: '100%'}} type="submit" disabled={!this.state.formValid && this.state.isRegister} >
                             Login
                         </button>
-                        </center>
-                </form>
-                <center>
-                    <button id="register" className="btn btn-info btn-block login" style={{width:'100%', backgroundColor: '#e7998f'}} onClick={this.addRegister} disabled={this.state.isRegister}>
-                        Register
+                    </center>
+                    <center>
+                        <button className="btn btn-info btn-block login" name="register" style={{textAlign: 'center', width: '100%'}} type="submit" onClick={this.addRegister} disabled={!this.state.formValid && this.state.isRegister} >
+                            Register
                         </button>
-                </center>
+                    </center>
+                </form>
             </div>
         );
     }
