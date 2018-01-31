@@ -4,4 +4,3 @@ __pycache__/
 !__init__.py
 media/
 *env
-**/.idea/*
