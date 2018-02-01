@@ -25,9 +25,9 @@ html,body{
 div.logo {
   width: 350px;
   height: 65px;
-  background-image:url('./UNCLetters.png');
+  background-image:url('/static/a297d32a303d6f4438eff786a8140879.png');
   background-size: cover;
-  margin:20px; 
+  margin:20px;
   padding:0;
   z-index: -5;
   position: relative;
@@ -76,7 +76,7 @@ div.logo {
 .avatar {
   width: 100%;
   height: 100px;
-  background-image:url('./hello.png');
+  background-image:url('/static/4a6078f1955e6ad5b0ffc06b74e46ab9.png');
   background-size: 60%;
   background-repeat: no-repeat;
     background-position: center;

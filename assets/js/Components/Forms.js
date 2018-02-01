@@ -143,16 +143,16 @@ class Form extends Component{
                     <input name="password" type="password" value={this.state.password} placeholder="Password" onChange={this.handleUserInput} required />
                     </div>
                     <div>
-                        
+
                     </div>
 
                     <center>
-                        <button className="btn btn-info btn-block login" name="login" style={{textAlign: 'center', width: '100%'}} type="submit" disabled={!this.state.formValid && this.state.isRegister} >
+                        <button className="btn btn-info btn-block login" name="login" type="submit" disabled={!this.state.formValid && this.state.isRegister} >
                             Login
                         </button>
                     </center>
                     <center>
-                        <button className="btn btn-info btn-block login" name="register" style={{textAlign: 'center', width: '100%'}} type="submit" onClick={this.addRegister} disabled={!this.state.formValid && this.state.isRegister} >
+                        <button className="btn btn-info btn-block login" name="register" type="submit" onClick={this.addRegister} disabled={!this.state.formValid && this.state.isRegister} >
                             Register
                         </button>
                     </center>
