@@ -22,16 +22,25 @@ html,body{
   background-color: #ffffffa6;
   border-radius: 10px;
 }
+
 div.logo {
-  width: 350px;
-  height: 65px;
+  width: 298px;
+  height: 80px;
   background-image:url('/static/a297d32a303d6f4438eff786a8140879.png');
-  background-size: cover;
-  margin:20px;
-  padding:0;
-  z-index: -5;
+  background-size: 75%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-left: auto;
+  margin-top: 40px;
+  margin-bottom: 1px;
+  margin-right: auto;
   position: relative;
+  padding: 0px 40px 0px 40px;
+  border: 1px solid rgba(255, 255, 255, 0);
+  background-color: #ffffffa6;
+  border-radius: 10px;
 }
+
 
 #output{
   position: absolute;

@@ -152,7 +152,7 @@ class Form extends Component{
                         </button>
                     </center>
                     <center>
-                        <button className="btn btn-info btn-block login" name="register" type="submit" onClick={this.addRegister} disabled={!this.state.formValid && this.state.isRegister} >
+                        <button className="btn btn-info btn-block login" style={{width:'100%', backgroundColor: '#e7998f'}} name="register" type="submit" onClick={this.addRegister} disabled={!this.state.formValid && this.state.isRegister} >
                             Register
                         </button>
                     </center>
