@@ -7,3 +7,4 @@ media/
 **/.idea/**
 *.iml
 **/node_modules/**
+*.pyc
