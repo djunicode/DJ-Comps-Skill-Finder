@@ -8,3 +8,4 @@ media/
 *.iml
 **/node_modules/**
 *.pyc
+secrets.sh
