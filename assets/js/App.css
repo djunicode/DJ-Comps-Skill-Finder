@@ -1,4 +1,4 @@
-body{background-image:url('/static/c48c4d72f2f32684cb9345326c2c2c8a.jpg');
+body{background-image:url('/static/background.jpg');
     background-size: cover;
 	background-attachment: fixed;
     background-repeat: no-repeat;
@@ -26,7 +26,7 @@ html,body{
 div.logo {
   width: 298px;
   height: 80px;
-  background-image:url('/static/a297d32a303d6f4438eff786a8140879.png');
+  background-image:url('/static/unicode-logo.png');
   background-size: 75%;
   background-position: center;
   background-repeat: no-repeat;
@@ -85,7 +85,7 @@ div.logo {
 .avatar {
   width: 100%;
   height: 100px;
-  background-image:url('/static/4a6078f1955e6ad5b0ffc06b74e46ab9.png');
+  background-image:url('/static/Hello.png');
   background-size: 60%;
   background-repeat: no-repeat;
     background-position: center;
