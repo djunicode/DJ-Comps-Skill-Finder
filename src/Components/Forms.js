@@ -31,6 +31,7 @@ class Form extends Component{
         this.handleSAP= this.handleSAP.bind(this);
         this.handleEmail= this.handleEmail.bind(this);
         this.addRegister = this.addRegister.bind(this);
+        this.hideFields = this.hideFields.bind(this);
     }
 
     handleSAP(event) {
@@ -108,14 +109,28 @@ class Form extends Component{
         event.preventDefault();
         var myDiv = document.getElementById('register');
         this.setState({isRegister: true});
+        document.getElementById("login").style.display = "none";
         ReactDOM.find(myDiv).className="hiddenbtn";
     }
+
+    hideFields(){
+  event.preventDefault();
+  var myDiv1 = document.getElementById('back');
+  this.setState({isRegister: false});
+  document.getElementById("login").style.display = "block";
+  ReactDOM.find(myDiv1).className="hiddenbtn";
+}
+
 
     render(){
       //  const isRegister = this.state.isRegister;
         let button = null;
         if(this.state.isRegister){
             button = <div id="reg">
+            <button id="back" className="btn btn-info btn-block login" style={{textAlign: 'center', width: '100%',margin:'0px 0px 10px 0px'}} onClick={this.hideFields}>
+                &lt;&lt; Back to Login
+            </button>
+
                 <input type="text" placeholder="First Name" value={this.state.firstName} onChange={this.handlefirstName} required/>
                 <input type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.handlelastName} required/>
                 <input type="text" placeholder="SAP ID" value={this.state.sapID} onChange={this.handleSAP} required/>
@@ -137,9 +152,11 @@ class Form extends Component{
                     <input name="password" type="password" value={this.state.password} placeholder="Password" onChange={this.handleUserInput} required />
                     </div>
                     <center>
+                    <div id="login">
                         <button className="btn btn-info btn-block login" style={{textAlign: 'center', width: '100%'}} type="submit" disabled={!this.state.formValid} >
                             Login
                         </button>
+                        </div>
                         </center>
                 </form>
                 <center>
