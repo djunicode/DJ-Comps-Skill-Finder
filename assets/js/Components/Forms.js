@@ -3,31 +3,30 @@ import '../App.css'
 import ReactDOM from 'react-dom';
 import {FormErrors} from './FormErrors';
 import './Form.css';
-import DjangoCSRFToken from 'django-react-csrftoken';
 class Form extends Component{
 
     constructor(props){
         super(props);
         this.state = {
             password:'',
-            sap_id: '',
+            sapID: '',
             email: '',
             isRegister: false,
             firstName:'',
             lastName:'',
-            mobile:'',
-            formErrors: {email: '', password: '', mobile: '', sap_id: ''},
+            mobileNumber:'',
+            formErrors: {email: '', password: ''},
             emailValid: false,
             passwordValid: false,
             phoneNumberValid: false,
             formValid: false,
-            sap_idValid: false,
+            sapIDValid: false,
         };
 
         this.handleUserInput = this.handleUserInput.bind(this);
         this.handlefirstName = this.handlefirstName.bind(this);
         this.handlelastName = this.handlelastName.bind(this);
-        this.handlemobile = this.handlemobile.bind(this);
+        this.handlemobileNumber = this.handlemobileNumber.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
         this.handleSAP= this.handleSAP.bind(this);
         this.handleEmail= this.handleEmail.bind(this);
@@ -36,7 +35,7 @@ class Form extends Component{
     }
 
     handleSAP(event) {
-        this.setState({sap_id: event.target.value});
+        this.setState({sapID: event.target.value});
     }
     handleEmail(event) {
         this.setState({email: event.target.value});
@@ -50,15 +49,15 @@ class Form extends Component{
     handlelastName(event) {
         this.setState({lastName: event.target.value});
     }
-    handlemobile(event) {
-        this.setState({mobile: event.target.value});
+    handlemobileNumber(event) {
+        this.setState({mobileNumber: event.target.value});
     }
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
         let emailValid = this.state.emailValid;
         let phoneNumberValid = this.state.phoneNumberValid;
         let passwordValid = this.state.passwordValid;
-        let sap_idValid = this.state.sap_idValid;
+        let sapIDValid = this.state.sapIDValid;
 
         switch(fieldName) {
             case 'email':
@@ -70,35 +69,34 @@ class Form extends Component{
                 fieldValidationErrors.password = passwordValid ? '': ' is too short';
                 break;
             case 'mobile':
-                phoneNumberValid = value.length >= 10;
-                fieldValidationErrors.mobile = phoneNumberValid ? '': ' is too short';
+                if(this.state.isRegister){
+                    phoneNumberValid = value.length >= 10;
+                    fieldValidationErrors.mobileNumber = phoneNumberValid ? '': ' is too short';
+                }
                 break;
-            case 'sap_id':
-                    sap_idValid = value.length >= 10;
-                    fieldValidationErrors.sap_idValid = sap_idValid ? '' : 'is invalid';
-            break;
+            case  'sapID':
+                if(this.state.isRegister){
+                    sapIDValid = value.length >= 10;
+                    fieldValidationErrors.sapIDValid = sapIDValid ? '' : 'is invalid';
+                }
+                break;
 
             default:
                 break;
         }
         this.setState({formErrors: fieldValidationErrors,
             emailValid: emailValid,
-            passwordValid: passwordValid,
-            phoneNumberValid: phoneNumberValid,
-            sap_idValid: sap_idValid
+            passwordValid: passwordValid
         }, this.validateForm);
     }
 
     validateForm() {
-        this.setState({formValid: this.state.emailValid && this.state.passwordValid && this.state.phoneNumberValid && this.state.sap_idValid});
+        this.setState({formValid: this.state.emailValid && this.state.passwordValid});
     }
 
     errorClass(error) {
         return(error.length === 0 ? '' : 'has-error');
     }
-
-
-
 
     handleUserInput = (e) => {
         const name = e.target.name;
@@ -106,12 +104,14 @@ class Form extends Component{
         this.setState({[name]: value},
             () => { this.validateField(name, value) });
     }
+
     addRegister(){
         event.preventDefault();
         var myDiv = document.getElementById('register');
         this.setState({isRegister: true});
         document.getElementById("login").style.display = "none";
         ReactDOM.find(myDiv).className="hiddenbtn";
+    }
 
     hideFields(){
   event.preventDefault();
@@ -123,7 +123,7 @@ class Form extends Component{
 
 
     render(){
-        const isRegister = this.state.isRegister;
+      //  const isRegister = this.state.isRegister;
         let button = null;
         if(this.state.isRegister){
             button = <div id="reg">
@@ -140,13 +140,10 @@ class Form extends Component{
         }
         return(
             <div>
-                <form method='POST'>
-                 <DjangoCSRFToken/>
-                 <FormErrors formErrors={this.state.formErrors} />
+                <form>
                   <div className="panel panel-default">
-
+                      <FormErrors formErrors={this.state.formErrors} />
                   </div>
-
                     {button}
                     <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
                     <input  name="email" value={this.state.email} type="email" placeholder="Email" onChange={this.handleUserInput} required />
@@ -154,10 +151,6 @@ class Form extends Component{
                     <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
                     <input name="password" type="password" value={this.state.password} placeholder="Password" onChange={this.handleUserInput} required />
                     </div>
-                    <div>
-
-                    </div>
-
                     <center>
                     <div id="login">
                         <button className="btn btn-info btn-block login" style={{textAlign: 'center', width: '100%'}} type="submit" disabled={!this.state.formValid} >
@@ -170,8 +163,7 @@ class Form extends Component{
                     <button id="register" className="btn btn-info btn-block login" style={{width:'100%', backgroundColor: '#e7998f'}} onClick={this.addRegister} disabled={this.state.isRegister}>
                         Register
                         </button>
-                    </center>
-                </form>
+                </center>
             </div>
         );
     }
