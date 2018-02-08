@@ -4,5 +4,8 @@ __pycache__/
 !__init__.py
 media/
 *env
-node_modules
-.idea
+**/.idea/**
+*.iml
+**/node_modules/**
+*.pyc
+secrets.sh

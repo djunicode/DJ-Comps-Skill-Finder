@@ -1,6 +1,19 @@
 # DJ-Comps-Skill-Finder
 An application to find people with similar interests as you on the campus.
 
+## Instructions to setup
+- git clone https://github.com/djunicode/DJ-Comps-Skill-Finder.git
+- cd DJ-Comps-Skill-Finder
+- virtualenv env --no-site-packages
+- source env/bin/activate
+- pip install -r requirements.txt
+- Create a postgres db and add the credentials to settings.py
+- python manage.py makemigrations
+- python manage.py migrate
+- npm install
+- ./node_modules/.bin/webpack --config webpack.config.js
+- python manage.py runserver
+
 ## Motivation
 The general approach of finding people with similar interests as you can be time consuming as there is a need to first talk to people and then filter the ones that are interested to work in the same domain as you. This applications aims to resolve the time consuming process and rather daunting process of approaching seniors/ peers by automatically matching up people who have interests in similar domain.
 
