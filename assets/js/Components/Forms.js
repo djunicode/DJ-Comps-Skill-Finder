@@ -153,7 +153,7 @@ render(){
 
                 <center>
                   <div id="login1">
-                    <button className="btn btn-info btn-block login" style={{textAlign: 'center', width: '100%'}} name="login" type="submit" disabled={!this.state.formValid} >
+                    <button className="btn btn-info btn-block login" style={{textAlign: 'center', width: '100%'}} name="login" type="submit" disabled={this.state.formValid} >
                         Login
                     </button>
                   </div>
