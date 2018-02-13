@@ -1,8 +1,8 @@
-body{background-image:url('./bkg.jpg') center;
+body{background-image:url('/static/background.jpg');
     background-size: cover;
 	background-attachment: fixed;
     background-repeat: no-repeat;
-
+  overflow: scroll;
 }
 html,body{
   position: relative;
@@ -22,6 +22,25 @@ html,body{
   background-color: #ffffffa6;
   border-radius: 10px;
 }
+
+div.logo {
+  width: 298px;
+  height: 80px;
+  background-image:url('/static/unicode-logo.png');
+  background-size: 75%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-left: auto;
+  margin-top: 40px;
+  margin-bottom: 1px;
+  margin-right: auto;
+  position: relative;
+  padding: 0px 40px 0px 40px;
+  border: 1px solid rgba(255, 255, 255, 0);
+  background-color: #ffffffa6;
+  border-radius: 10px;
+}
+
 
 #output{
   position: absolute;
@@ -66,7 +85,7 @@ html,body{
 .avatar {
   width: 100%;
   height: 100px;
-  background-image:url('./hello.png');
+  background-image:url('/static/Hello.png');
   background-size: 60%;
   background-repeat: no-repeat;
     background-position: center;
@@ -99,13 +118,10 @@ html,body{
 }
 
 .form-box button.login{
-  margin-top:15px;
-  width: 90%;
+  margin-top:10px;
+  width: 100%;
   text-align: center;
-
 }
-
-
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;

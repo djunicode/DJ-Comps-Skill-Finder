@@ -1,13 +1,9 @@
-<form action="{% url 'users:login' %}" method='POST'>
-  {% csrf_token %}
-  <label for='username'>Username</label>
-  <input type='text' name='username'><br>
-  <label for='password'>Password</label>
-  <input type='password' name='password'><br>
-  <input type='hidden' name='next' value="{{ request.GET.next }}">
-  <input type='submit' name='submit' value='submit'>
-</form>
-
+{% load render_bundle from webpack_loader %}
+{% load static %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<div id="react-app"></div>
+    {% render_bundle 'main' %}
 {% if error %}
   <p>{{ error }}</p>
 {% endif %}
