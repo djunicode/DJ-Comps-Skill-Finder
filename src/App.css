@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 body {
   margin: 0;
@@ -37,8 +38,221 @@ a img{
   color: #fff;
 }
 
-.page-search-box .mdl-textfield__input {
-  color: rgba(0, 0, 0, 0.87);
+
+
+.Ellipse {
+  width: auto;
+  height: auto;
+  background-image: linear-gradient(to top, #ff5ca0 19%, #ff744f);
+}
+
+.img-circle{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 25%;
+  border-radius: 250px;
+  background-color: #ffffff;
+  border: solid 3px #ffebad;
+}
+
+.description{
+  font-family: Raleway;
+  text-align: center;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.description h5{
+  color: #fff2c9;
+  font-family: Raleway;
+}
+
+.save-button{
+  width: 130px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 20px;
+  background-color: #fff2c9;
+  color: #ffa28b;
+  font-size: 22px;
+}
+
+.save-button:hover{
+  background-color: white;
+}
+
+.profile-view{
+  display: inline;
+  font-family: Raleway;
+  font-size: 25px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ff6699;
+  text-decoration: none;
+}
+
+form{
+  text-align: center;
+  padding: 20px;
+}
+
+.skills{
+  text-align: center;
+}
+
+.skills h1{
+  font-family: Raleway;
+  font-size: 40px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #a8a8a8;
+}
+
+.skills p{
+  font-family: Raleway;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #27ae60;
+}
+
+.interests{
+  text-align: center;
+}
+
+.interests p{
+  font-family: Raleway;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #f2994a;
+}
+
+.interests h1{
+  font-family: Raleway;
+  font-size: 40px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #a8a8a8;
+}
+
+.profile{
+  text-align: center;
+}
+
+.profile input{
+  border: white;
+  font-size: 20px;
+  border-bottom: 1px solid #bdbdbd ;
+  width: 300px;
+}
+
+.profile h1{
+  font-family: Raleway;
+  font-size: 40px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #a8a8a8;
+  text-align: center;
+}
+
+.profile label{
+  font-family: Raleway;
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #bdbdbd;
+}
+
+.mdl-selectfield__label{
+  font-family: Raleway;
+  font-size: 30px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #bdbdbd;
+}
+
+.mdl-selectfield__select{
+  text-indent: 50px;
+  width: 200px;
+  border:none;
+  color: #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
+  font-family: Raleway;
+  font-size: 20px;
+}
+
+.skill-label{
+  font-family: Raleway;
+  font-size: 23px;
+  font-weight: bold;
+  color: #ffffff;
+  width: 100px;
+  color: white;
+  border-radius:32px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-image: linear-gradient(to right, #41d0f0, #76e3a3);
+}
+
+.skill-select, .interest-select{
+  width: 300px;
+  text-indent: 100px;
+}
+
+.interest-label{
+  font-family: Raleway;
+  font-size: 23px;
+  font-weight: bold;
+  color: #ffffff;
+  width: 100px;
+  color: white;
+  border-radius:32px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-image: linear-gradient(to right, #ffa88c, #ffae7a 28%, #ffe187);
+}
+
+.mdl-selectfield__select option{
+  font-family: Raleway;
+  font-size: 23px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: black;
 }
 
 .page-header .mdl-menu__container {
@@ -73,8 +287,8 @@ a img{
 
 .page-header {
   overflow: visible;
-  background-color: white;
-  opacity: 0.75;
+  background-color: #ff744f; 
+  position: fixed;
 }
 
 .page-header .material-icons {
@@ -89,7 +303,8 @@ a img{
 .page-header .mdl-navigation__link {
   color: #757575;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 20px;
+  font-family: Raleway;
 }
 
 .page-navigation-container {
@@ -122,7 +337,7 @@ a img{
   display: inline-block;
   height: 60px;
   line-height: 68px;
-  background-color: transparent !important;
+  background-color: transparent !important; 
   border-bottom: 4px solid transparent;
 }
 
@@ -455,6 +670,7 @@ a img{
   filter: drop-shadow(1px -1px 1.5px rgba(0,0,0,.3));
 
 }
+
 
 @media (max-width: 900px) {
   .page-navigation-container {
