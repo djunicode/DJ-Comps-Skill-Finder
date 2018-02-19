@@ -3,8 +3,8 @@ import '../App.css';
 class Header extends Component {
   render() {
     return (
-      <div className="demo-layout-transparent mdl-layout mdl-js-layout mdl-layout--fixed-header Ellipse">
-        <div className="page-header mdl-layout__header mdl-layout__header--waterfall">
+      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header Ellipse">
+        <div className="page-header mdl-layout__header mdl-layout__header--scroll">
           <div className="mdl-layout__header-row">
             <span className="page-title mdl-layout-title">
               <img className="page-logo-image" src="../UNCLetters.png" alt="page-logo" />
@@ -30,7 +30,6 @@ class Header extends Component {
             <span className="page-mobile-title mdl-layout-title">
               <img className="page-logo-image" src="../UNCLetters.png" alt="page-logo"/>
             </span>
-
             <button className="page-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
               <i className="material-icons">more_vert</i>
             </button>
@@ -41,46 +40,19 @@ class Header extends Component {
               <li className="mdl-menu__item">PlaceHolder</li>
             </ul>
           </div>
-         
         </div>
-        <div className="page-drawer mdl-layout__drawer">
-          <span className="mdl-layout-title">
-            <img className="page-logo-image" src="../UNCLetters.png" alt="page-logo" />
-          </span>
-          <nav className="mdl-navigation">
-            <a className="mdl-navigation__link" href="">PlaceHolder 1</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder 2</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder 3</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder 4</a>
-            <div className="page-drawer-separator"></div>
-            <span className="mdl-navigation__link" href="">PlaceHolder</span>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <div className="page-drawer-separator"></div>
-            <span className="mdl-navigation__link" href="">PlaceHolder</span>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <div className="page-drawer-separator"></div>
-            <span className="mdl-navigation__link" href="">PlaceHolder</span>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-          </nav>
+        
+        <br/><br/><br/><br/>
+        <img src="profile.png" className="img-circle" alt="User Profile"/>
+        <div className="description">
+          <h1>Snoopy</h1>
+          <h5>I love coding and cat videos</h5>
         </div>
+        <br/>
+        <button className="follow-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+          FOLLOW
+        </button>
         <br/><br/>
-        <img src="profile.png" className="img-circle" alt="User Profile Picture"/>
-          <div className="description">
-            <h2>Snoopy</h2>
-            <h6>"I love coding and cat videos"</h6>
-          </div>
-          <br/>
-          <button className="follow-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-            FOLLOW
-          </button>
-          <br/><br/>
       </div>
     );
   }
