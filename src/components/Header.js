@@ -41,33 +41,9 @@ class Header extends Component {
             </ul>
           </div>
         </div>
-        <div className="page-drawer mdl-layout__drawer">
-          <span className="mdl-layout-title">
-            <img className="page-logo-image" src="../UNCLetters.png" alt="page-logo" />
-          </span>
-          <nav className="mdl-navigation">
-            <a className="mdl-navigation__link" href="">PlaceHolder 1</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder 2</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder 3</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder 4</a>
-            <div className="page-drawer-separator"></div>
-            <span className="mdl-navigation__link" href="">PlaceHolder</span>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <div className="page-drawer-separator"></div>
-            <span className="mdl-navigation__link" href="">PlaceHolder</span>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <div className="page-drawer-separator"></div>
-            <span className="mdl-navigation__link" href="">PlaceHolder</span>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-            <a className="mdl-navigation__link" href="">PlaceHolder</a>
-          </nav>
-        </div>  
+
+          
+
         <br/><br/><br/><br/>
         <img src="profile.png" className="img-circle" alt="User Profile"/>
         <div className="description">

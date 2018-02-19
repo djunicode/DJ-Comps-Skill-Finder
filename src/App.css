@@ -287,7 +287,7 @@ form{
 
 .page-header {
   overflow: visible;
-  background-color: #ff744f; 
+
   position: fixed;
 }
 
@@ -297,7 +297,7 @@ form{
 
 .page-header .mdl-layout__drawer-button {
   background: transparent;
-  color: #767777;
+  
 }
 
 .page-header .mdl-navigation__link {
@@ -337,7 +337,7 @@ form{
   display: inline-block;
   height: 60px;
   line-height: 68px;
-  background-color: transparent !important; 
+  background-color: transparent !important;
   border-bottom: 4px solid transparent;
 }
 
@@ -662,7 +662,7 @@ form{
 }
 .footerimage{
   position: relative;
-  
+
   left: 42%;
   width: 20%;
   margin-bottom: -4%;
