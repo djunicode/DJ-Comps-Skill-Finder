@@ -69,6 +69,7 @@ class Main extends Component {
     render() {
         return (
         	<div>
+            <form method="POST">
         		<a href="" className="profile-view"><i className="material-icons">keyboard_arrow_left</i>Profile View</a>
         		<br/><br/><br/><br/><br/><br/><br/><br/>
             <center>
@@ -196,6 +197,12 @@ class Main extends Component {
 					<label for="behance" className="mdl-selectfield__label" value={this.state.behance} onChange={this.handleBehance}>Behance</label>&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" name="behance" id="behance" /><br/>
 				</div>
+        <br/>
+        <br/>
+        <button type="submit" className="save-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+          SAVE
+        </button>
+      </form>
         	</div>
        	);
     }

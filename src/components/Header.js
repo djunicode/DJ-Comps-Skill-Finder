@@ -42,7 +42,7 @@ class Header extends Component {
           </div>
         </div>
 
-          
+
 
         <br/><br/><br/><br/>
         <img src="profile.png" className="img-circle" alt="User Profile"/>
@@ -51,10 +51,8 @@ class Header extends Component {
           <h5>I love coding and cat videos</h5>
         </div>
         <br/>
-        <button className="save-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-          SAVE
-        </button>
-        <br/><br/>
+
+      
       </div>
     );
   }
