@@ -6,7 +6,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-        <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div >
           <a name="top"></a>
           <Header />
           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
