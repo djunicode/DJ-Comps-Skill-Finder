@@ -41,11 +41,11 @@ class Header extends Component {
             </ul>
           </div>
         </div>
-        
+
         <br/><br/><br/><br/>
         <img src="profile.png" className="img-circle" alt="User Profile"/>
         <div className="description">
-          <h1>Snoopy</h1>
+          <h1>Snoopy<a href="#" className="mdl-badge" data-badge="SE"></a></h1>
           <h5>I love coding and cat videos</h5>
         </div>
         <br/>
