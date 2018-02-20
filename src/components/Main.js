@@ -1,6 +1,27 @@
 import React, { Component } from 'react';
 import '../App.css';
+import axios from 'axios';
+
 class Main extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            skill1:'Skill1',
+            skill2:'Skill2',
+            skill3:'Skill3',
+            interest1: 'Interest1',
+            interest2: 'Interest2',
+            interest3:'Interest3'
+        };
+    }
+    componentDidMount(){
+      axios.get('')
+      .then(response => this.setState({skill: response.data.skill}))
+    }
+    componentDidUpdate(){
+      axios.get('')
+      .then(response => this.setState({skill: response.data.skill}))
+    }
     render() {
         return (
         	<div>
@@ -15,17 +36,17 @@ class Main extends Component {
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col skills-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">HTML</span>
+              <span className="mdl-chip__text">{this.state.skill1}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col skills-chips ">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">CSS</span>
+              <span className="mdl-chip__text">{this.state.skill2}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col skills-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">JavaScript</span>
+              <span className="mdl-chip__text">{this.state.skill3}</span>
             </span>
           </div>
        </div>
@@ -37,17 +58,17 @@ class Main extends Component {
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col interests-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">Python</span>
+              <span className="mdl-chip__text">{this.state.interest1}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col interests-chips ">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">Django</span>
+              <span className="mdl-chip__text">{this.state.interest2}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col interests-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">PHP</span>
+              <span className="mdl-chip__text">{this.state.interest3}</span>
             </span>
           </div>
        </div>
