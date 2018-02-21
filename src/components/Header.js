@@ -43,16 +43,11 @@ class Header extends Component {
         </div>
 
         <br/><br/><br/><br/>
-        <img src="profile.png" className="img-circle" alt="User Profile"/>
         <div className="description">
-          <h1>Snoopy<a href="#" className="mdl-badge" data-badge="SE"></a></h1>
-          <h5>I love coding and cat videos</h5>
+          <h1>Teams</h1>
+          <h5>Make a team or join one!</h5>
         </div>
-        <br/>
-        <button className="follow-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-          FOLLOW
-        </button>
-        <br/><br/>
+        <br/><br/><br/>
       </div>
     );
   }

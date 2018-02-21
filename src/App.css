@@ -45,15 +45,6 @@ a img{
   background-image: linear-gradient(to top, #ff5ca0 19%, #ff744f);
 }
 
-.img-circle{
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 25%;
-  border-radius: 250px;
-  background-color: #ffffff;
-  border: solid 3px #ffebad;
-}
-
 .description{
   font-family: Raleway;
   text-align: center;
@@ -62,26 +53,63 @@ a img{
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
+}
+
+.description h1{
+  width: auto;
+  height: auto;
+  font-size: 72px;
   color: #ffffff;
 }
 
-.description h6{
+.description h5{
+  width: auto;
+  height: auto;
+  font-size: 36px;
   color: #fff2c9;
 }
 
-.follow-button{
-  width: 150px;
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 20px;
-  background-color: #fff2c9;
-  color: #ffa28b;
-  font-size: 22px;
+.title{
+  font-size: 72px;
+  font-weight: 500;
+  color: #ffa95c;
 }
 
-.follow-button:hover{
-  background-color: white;
+.mdl-selectfield__label{
+  font-size: 30px;
+  font-weight: 500;
+  color: #bdbdbd;
+}
+
+.add{
+  height: 30px;
+  background-color: #ffcb9c;
+}
+.search{
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 11px;
+  color: #ffad63;
+  background-color: #fff;
+  border-color: #ffad63;
+}
+
+.diff{
+  font-size: 24px;
+  color: #ffb675;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ccc;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #ccc;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ccc;
 }
 
 .back-button{
@@ -96,18 +124,10 @@ a img{
 form{
   text-align: center;
   padding: 20px;
-  display: 
+  display:
 }
 
-.header{
-  font-family: Raleway;
-  text-align: center;
-  font-size: 40px;
-  font-weight: 900;
-  color: #a8a8a8;
-}
-
-.skills-chips, .interests-chips{
+.skills-chips .interests-chips{
   display: inline-block;
   text-align: center;
   margin-right: auto;
@@ -154,7 +174,7 @@ form{
   text-align: center;
   display: block;
   margin-right: auto;
-  margin-left: auto;  
+  margin-left: auto;
 }
 
 .first-link label{
@@ -233,7 +253,7 @@ form{
 
 .page-header {
   overflow: visible;
-  position: fixed; 
+  position: fixed;
 }
 
 .page-header .material-icons {
@@ -281,7 +301,7 @@ form{
   display: inline-block;
   height: 60px;
   line-height: 68px;
-  background-color: transparent !important; 
+  background-color: transparent !important;
   border-bottom: 4px solid transparent;
 }
 
@@ -606,7 +626,7 @@ form{
 }
 .footerimage{
   position: relative;
-  
+
   left: 42%;
   width: 20%;
   margin-bottom: -4%;
