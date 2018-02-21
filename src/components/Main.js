@@ -8,11 +8,11 @@ class Main extends Component {
         		<a href="#" className="back-button"><i className="material-icons">keyboard_arrow_left</i>Back</a>
         		<br/><br/><br/><br/>
         		<center>
-              <span className="description title">Create a Project team</span>
+              <span className="description title">Create a Hackathon team</span>
               <br/><br/><br/><br/>
 
               <span className="description mdl-selectfield mdl-js-selectfield">
-                <label className="mdl-selectfield__label" for="projname">Project name</label>&nbsp;&nbsp;&nbsp;
+                <label className="mdl-selectfield__label" for="projname">Hackathon name</label>&nbsp;&nbsp;&nbsp;
               </span>
               <div className="mdl-textfield mdl-js-textfield getmdl-select">
               <input type="text" className="mdl-textfield__input" id="projname"/>
@@ -63,11 +63,11 @@ class Main extends Component {
               <br/><br/><br/>
 
               <span className="description mdl-selectfield mdl-js-selectfield">
-                <label className="mdl-selectfield__label" for="projd">Project description</label>
+                <label className="mdl-selectfield__label" for="projd">Team description</label>
               </span>
               <br/>
               <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <textarea className="mdl-textfield__input" type="text" rows= "8" id="projd" placeHolder="This is what applicants will see as your project description. Keep it updated and clearly state your requirements."></textarea>
+              <textarea className="mdl-textfield__input" type="text" rows= "8" id="projd" placeHolder="This is what applicants will see as your team description. Keep it updated and clearly state your requirements."></textarea>
               <input type="hidden" name="projd"/>
               <label className="mdl-textfield__label" for="projd"></label>
               </div>
@@ -91,7 +91,7 @@ class Main extends Component {
               <i className="material-icons">add</i>
               </button>
 
-              <br/><br/><br/><br/><br/><br/>
+              <br/><br/><br/><br/><br/>
 
               <button class="mdl-button mdl-js-button search mdl-button--raised mdl-js-ripple-effect">
               Search for members
