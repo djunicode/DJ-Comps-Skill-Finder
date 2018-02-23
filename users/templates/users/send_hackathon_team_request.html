@@ -1,13 +1,21 @@
-{% load widget_tweaks %}
+
+
+<h1>{{ team.name }}</h1>
+<h2>{{ team.hackathon.name }}</h2>
 
 <form action="{% url 'users:send_hackteam_request' team.id %}" method="post">
     {% csrf_token %}
-    {% render_field form.non_field_errors %}<br>
-    {% render_field form.skills.errors %}
-    {% render_field form.skills.label %}
-    {% render_field form.skills %}<br>
-    {% render_field form.message.error %}
-    {% render_field form.message.label %}
-    {% render_field form.message %}<br>
-    <input type="submit" value="Submit">
+    <br>
+
+    Skills
+    <select name="skills" required="" id="id_skills" multiple="multiple">
+        {% for skill in skills %}
+  <option value="{{ skill.id }}">{{ skill.skill }}</option>
+{% endfor %}
+
+</select><br>
+
+    Message
+    <textarea name="message" cols="40" rows="10" id="id_message"></textarea><br>
+    <input value="Submit" type="submit">
 </form>

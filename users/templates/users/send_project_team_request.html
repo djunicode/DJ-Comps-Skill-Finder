@@ -1,6 +1,9 @@
-{% load widget_tweaks %}
+<!-- {% load widget_tweaks %} -->
 
-<form action="{% url 'users:send_project_team_request' team.id %}" method="post">
+<h1>{{ team.project.name }}</h1>
+<h2>{{ team.name }}</h2>
+
+<!-- <form action="{% url 'users:send_project_team_request' team.id %}" method="post">
     {% csrf_token %}
     {% render_field form.non_field_errors %}<br>
     {% render_field form.skills.errors %}
@@ -10,4 +13,23 @@
     {% render_field form.message.label %}
     {% render_field form.message %}<br>
     <input type="submit" value="Submit">
+</form> -->
+
+<form action="{% url 'users:send_project_team_request' team.id %}" method="post">
+    {% csrf_token %}
+    <br>
+
+    Skills
+    <select name="skills" required="" id="id_skills" multiple="multiple">
+  <option value="1">PHP</option>
+
+  <option value="2">Django</option>
+
+  <option value="3">Python</option>
+
+</select><br>
+
+    Message
+    <textarea name="message" cols="40" rows="10" id="id_message"></textarea><br>
+    <input value="Submit" type="submit">
 </form>

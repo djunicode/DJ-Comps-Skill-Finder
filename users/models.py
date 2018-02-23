@@ -73,7 +73,7 @@ class ProjectTeam(models.Model):
     closed = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.project.name + ": " + self.name + ": " + self.leader
+        return str(self.project.name) + ": " + self.name + ": " + str(self.leader.username)
 
     @classmethod
     def create(cls, name, leader, project, current_members=None, skills_required=None):

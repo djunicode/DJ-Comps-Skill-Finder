@@ -308,7 +308,8 @@ def send_hackteam_request(request, pk):
             return redirect('users:view_hackathon_team', pk=pk)
     else:
         form = HackathonTeamRequestForm(team=team)
-    return render(request, 'users/send_hackathon_team_request.html', {'form': form, 'team': team})
+    return render(request, 'users/send_hackathon_team_request.html', {'form': form, 'team': team,
+                                                                      'skills': team.skills_required.all()})
 
 
 @login_required(login_url='users:login')
@@ -397,7 +398,8 @@ def send_project_team_request(request, pk):
             return redirect('users:view_project_team', pk=pk)
     else:
         form = ProjectTeamRequestForm(team=team)
-    return render(request, 'users/send_project_team_request.html', {'form': form, 'team': team})
+    return render(request, 'users/send_project_team_request.html', {'form': form, 'team': team,
+                                                                    'skills': team.skills_required.all})
 
 
 @login_required(login_url='users:login')
