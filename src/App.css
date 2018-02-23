@@ -87,9 +87,17 @@ a img{
   color: #fff;
 }
 
+.join:hover{
+  color: #fff;
+  background-color: #ff9933;
+}
 .create{
   color: #52d5ff;
   background-color: #fff;
+}
+.create:hover{
+  background-color: #fff;
+  color: #fcd96d;
 }
 
 img{
