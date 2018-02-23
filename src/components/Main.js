@@ -10,17 +10,17 @@ class Main extends Component {
             skill2:'Skill2',
             skill3:'Skill3',
             interest1: 'Interest1',
-            interest2: 'Interest2',
+            interest2: 'Interest2',           
             interest3:'Interest3'
         };
     }
     componentDidMount(){
       axios.get('')
-      .then(response => this.setState({skill: response.data.skill}))
+      .then(response => this.setState({"skill1" : response.data.skill1, "skill2" : response.data.skill2, "skill3" : response.data.skill3, "interest1" : response.data.interest1, "interest2" : response.data.interest2, "interest3" : response.data.interest3}))
     }
     componentDidUpdate(){
       axios.get('')
-      .then(response => this.setState({skill: response.data.skill}))
+      .then(response => this.setState({"skill1" : response.data.skill1, "skill2" : response.data.skill2, "skill3" : response.data.skill3, "interest1" : response.data.interest1, "interest2" : response.data.interest2, "interest3" : response.data.interest3}))
     }
     render() {
         return (
