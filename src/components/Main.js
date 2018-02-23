@@ -101,6 +101,7 @@ class Main extends Component {
             <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a>
             <div className="mdl-layout-spacer"></div>
             <a className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</a>
+          <a className=" mdl-js-ripple-effect Choose-skill">Skills</a>
           </div>
         </div>
       );
@@ -108,22 +109,21 @@ class Main extends Component {
 }
         return (
 
-		<div className="main-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+		<div className="main-layout mdl-js-layout mdl-layout--fixed-drawer">
 			<div className="mdl-layout__drawer">
-			    <span className="mdl-layout-title">Sent Requests</span>
-			    <nav className="mdl-navigation">
+			  <span className="mdl-layout-title">Sent Requests</span>
+			  <nav className="mdl-navigation">
 			       {this.state.sentRequests.map(obj =>
            <a className="mdl-navigation__link" href="">{obj}</a>
          )}
 
 			    </nav>
-			    <span className="mdl-layout-title">Received Requests</span>
-            <nav className="mdl-navigation">
+			  <span className="mdl-layout-title">Received Requests</span>
+        <nav className="mdl-navigation">
   			       {this.state.recievedRequests.map(obj =>
              <a className="mdl-navigation__link" href="">{obj}</a>
            )}
-
-  			    </nav>
+  			</nav>
 			</div>
 			<main className="mdl-layout__content">
 			<div className="page-content">
