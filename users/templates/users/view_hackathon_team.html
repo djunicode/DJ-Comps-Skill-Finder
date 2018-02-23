@@ -1,0 +1,18 @@
+<h1>{{ team.name }}</h1>
+<h2>{{ team.hackathon.name }}</h2>
+<h3>Vacancies = {{ team.vacancies }}</h3>
+{% for skill in team.skills_required.all %}
+    <p>{{ skill.skill }}</p>
+{% endfor %}
+
+{{ team.leader }}
+
+{% for member in team.current_members.all %}
+    <p>{{ member }}</p>
+{% endfor %}
+
+{% if request.user not in team.current_members.all and request.user != team.leader %}
+    <form action="{% url 'users:send_hackteam_request' team.id %}" method="get">
+        <input type="submit" value="Surrender now!! OR Just send me a request">
+    </form>
+{% endif %}

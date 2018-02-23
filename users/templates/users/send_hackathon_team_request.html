@@ -1,0 +1,13 @@
+{% load widget_tweaks %}
+
+<form action="{% url 'users:send_hackteam_request' team.id %}" method="post">
+    {% csrf_token %}
+    {% render_field form.non_field_errors %}<br>
+    {% render_field form.skills.errors %}
+    {% render_field form.skills.label %}
+    {% render_field form.skills %}<br>
+    {% render_field form.message.error %}
+    {% render_field form.message.label %}
+    {% render_field form.message %}<br>
+    <input type="submit" value="Submit">
+</form>

@@ -1,0 +1,15 @@
+{% load widget_tweaks %}
+
+<h1>{{ project.name }}</h1>
+
+<form action="{% url 'users:add_project_team' project.id %}" method="post">
+    {% csrf_token %}
+    {% render_field form.non_field_errors %}
+    {% render_field form.name.errors %}
+    {% render_field form.name.label %}
+    {% render_field form.name %}<br>
+    {% render_field form.skills_required.errors %}
+    {% render_field form.skills_required.label %}
+    {% render_field form.skills_required %}<br>
+    <input type="submit" value="Surrender now!!">
+</form>
