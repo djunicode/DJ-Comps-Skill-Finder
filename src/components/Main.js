@@ -45,7 +45,7 @@ class Main extends Component {
               <br/><br/>
 
               <span className="description mdl-selectfield mdl-js-selectfield">
-                <label className="mdl-selectfield__label" for="number">Number of members</label>&nbsp;&nbsp;&nbsp;
+                <label className="mdl-selectfield__label" for="number">Number of members</label>
               </span>
               <div className="mdl-textfield mdl-js-textfield getmdl-select">
               <input type="text" className="mdl-textfield__input" pattern="-?[1-3]*(\.[1-3]+)?" id="number"/>
@@ -58,7 +58,6 @@ class Main extends Component {
               <option className="mdl-menu__item" data-val="3" value="3">3</option>
               </ul>
               </div>
-              <i for="number" className="material-icons">keyboard_arrow_down</i>
 
               <br/><br/><br/>
 
@@ -85,15 +84,13 @@ class Main extends Component {
               <label for="skill1" className="mdl-textfield__label"></label>
               </div>
               &nbsp;&nbsp;&nbsp;&nbsp;
-              <i for="number" className="material-icons">keyboard_arrow_down</i>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <button className="mdl-button mdl-js-button mdl-button--fab add mdl-js-ripple-effect">
+              <button className="add mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
               <i className="material-icons">add</i>
               </button>
 
-              <br/><br/><br/><br/><br/><br/>
+              <br/><br/><br/><br/><br/>
 
-              <button class="mdl-button mdl-js-button search mdl-button--raised mdl-js-ripple-effect">
+              <button className="search mdl-button mdl-js-button mdl-js-ripple-effect">
               Search for members
               </button>
 

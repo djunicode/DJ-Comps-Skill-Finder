@@ -84,14 +84,23 @@ a img{
 .add{
   height: 30px;
   background-color: #ffcb9c;
+  color: #fff;
 }
+
+.add:hover{
+  background-color: #ff9933;
+}
+
 .search{
   font-size: 24px;
   font-weight: 500;
   border-radius: 11px;
-  color: #ffad63;
-  background-color: #fff;
-  border-color: #ffad63;
+  color: #fff;
+  background-color: #ffcb9c;
+}
+
+.search:hover{
+  background-color: #ff9933;
 }
 
 .diff{
