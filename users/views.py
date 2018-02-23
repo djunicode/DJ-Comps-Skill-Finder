@@ -263,16 +263,21 @@ def search(request):
 def add_hackathon_team(request):
     if request.method == 'POST':
         form = HackathonTeamForm(request.POST)
-        print(form['skills_required'])
         if form.is_valid():
             team = form.save(commit=False)
             team.leader = request.user
             team.save()
             form.save_m2m()
             return redirect('users:view_hackathon_team', pk=team.id)
+        else:
+            return render(request, 'users/add_hackathon_team.html', {'form': form,
+                                                                     'hackathons': Hackathon.objects.all(),
+                                                                     'skills': Skill.objects.all(),
+                                                                     'error': 'A team with the same name exists.'})
     else:
         form = HackathonTeamForm()
-    return render(request, 'users/add_hackathon_team.html', {'form': form})
+    return render(request, 'users/add_hackathon_team.html', {'form': form, 'hackathons': Hackathon.objects.all(),
+                                                             'skills': Skill.objects.all()})
 
 
 @login_required(login_url='users:login')
@@ -342,6 +347,8 @@ def add_project_team(request, pk):
         project = Project.objects.get(id=pk)
     except Project.DoesNotExist:
         return redirect('users:login')
+    if ProjectTeam.objects.filter(project=project):
+        return redirect('users:login')
     if request.user != project.creator:
         return redirect('users:login')
     if request.method == 'POST':
@@ -354,9 +361,12 @@ def add_project_team(request, pk):
             team.save()
             form.save_m2m()
             return redirect('users:view_project_team', pk=team.id)
+        else:
+            return render(request, 'users/add_project_team.html', {'form': form, 'project': project})
     else:
         form = ProjectTeamForm()
-    return render(request, 'users/add_project_team.html', {'form': form, 'project': project})
+    return render(request, 'users/add_project_team.html', {'form': form, 'project': project,
+                                                           'skills': Skill.objects.all()})
 
 
 @login_required(login_url='users:login')
