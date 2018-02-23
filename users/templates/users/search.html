@@ -1,0 +1,19 @@
+<form action="" method="get">
+  <label for="skill">Skills</label>
+  <select name='skill'>
+      {% for skill in skills %}
+        <option value="{{ skill.id }}" {% if skill.id == s %}selected="selected"{% endif %}>
+            {{ skill.skill }}
+        </option>
+      {% endfor %}
+  </select>
+  <br>
+  <input type="submit">
+</form>
+
+{% for user in qs %}
+ <h1>{{ user.username }}</h1>
+ <p>{{ user.skill_1 }}</p>
+ <p>{{ user.skill_2 }}</p>
+ <p>{{ user.skill_3 }}</p>
+{% endfor %}

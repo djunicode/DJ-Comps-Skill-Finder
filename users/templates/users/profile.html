@@ -1,1 +1,127 @@
 <h1>{{ user.username }}</h1>
+
+{% if request.user.id != user.id %}
+  {% if user.mentor.all.count >= 3 %}
+    <h1>The mentor is already at peak capacity.</h1>
+  {% elif pending_requests >= 5 %}
+    <h1>You have already sent many requests. Cancel a few to send more.</h1>
+  {% elif not user.is_mentor %}
+    <h1>The user is not a mentor.</h1>
+  {% else %}
+   <form action="{% url 'users:send_request' user.sap_id %}" method="post">
+     {% csrf_token %}
+     <input type="text" name="message"><br>
+     <label>Skill</label><br>
+     <select name="skill_set_select">
+       <option value="{{ user.skill_1.id }}">{{ user.skill_1.skill }}</option>
+       <option value="{{ user.skill_2.id }}">{{ user.skill_2.skill }}</option>
+       <option value="{{ user.skill_3.id }}">{{ user.skill_3.skill }}</option>
+     </select><br>
+     <input type="submit" value="Send Request">
+   </form>
+  {% endif %}
+{% endif %}
+
+{% if request.user.id == user.id %}
+  <h1>Requests sent</h1>
+  {% for r in requests_sent %}
+    <p>{{ r.receiver.username }}</p>
+    <form action="{% url 'users:cancel_request' r.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Cancel Request">
+    </form>
+  {% endfor %}
+  <br>
+  <h1>Requests received</h1>
+  {% for r in requests_received %}
+    <p>{{ r.sender.username }}</p>
+    <form action="{% url 'users:accept_request' r.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Accept">
+    </form>
+    <form action="{% url 'users:reject_request' r.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Reject">
+    </form>
+  {% endfor %}
+  <h1>User's Mentors</h1>
+  {% for r in current_mentors %}
+    <p>{{ r.mentor.username }}</p>
+    <form action="{% url 'users:terminate_relationship' r.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Terminate">
+    </form>
+  {% endfor %}
+  <br>
+  <h1>User's Mentees</h1>
+  {% for r in current_mentees %}
+    <p>{{ r.mentee.username }}</p>
+    <form action="{% url 'users:terminate_relationship' r.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Terminate">
+    </form>
+  {% endfor %}
+  <br>
+  {% if error_message %}
+    <h3>{{ error_message }}</h3>
+    {% endif %}
+{% endif %}
+
+{% if request.user.id == user.id %}
+  <h1>Requests sent</h1>
+  {% for r in requests_sent %}
+    <p>{{ r.receiver.username }}</p>
+    <form action="{% url 'users:cancel_request' r.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Cancel Request">
+    </form>
+  {% endfor %}
+  <br>
+  <h1>Requests received</h1>
+  {% for r in requests_received %}
+    <p>{{ r.sender.username }}</p>
+    <form action="{% url 'users:accept_request' r.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Accept">
+    </form>
+    <form action="{% url 'users:reject_request' r.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Reject">
+    </form>
+  {% endfor %}
+  <h1>User's Mentors</h1>
+  {% for r in current_mentors %}
+    <p>{{ r.mentor.username }}</p>
+    <form action="{% url 'users:terminate_relationship' r.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Terminate">
+    </form>
+  {% endfor %}
+  <br>
+  <h1>User's Mentees</h1>
+  {% for r in current_mentees %}
+    <p>{{ r.mentee.username }}</p>
+    <form action="{% url 'users:terminate_relationship' r.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Terminate">
+    </form>
+  {% endfor %}
+  <br>
+  <h1>User's Projects</h1>
+  {% for p in projects %}
+      <p><strong>{{ p.name }}</strong></p>
+      <p><i>{{ p.link }}</i></p>
+  {% endfor %}
+    <br>
+  <h1>User's Skills for Mentoring</h1>
+    {{ user.skill_1.skill }}<br>
+    {{ user.skill_2.skill }}<br>
+    {{ user.skill_3.skill }}<br>
+  <h1>User's Interests</h1>
+  {% for i in interests %}
+      <p>{{ i.interest }}</p>
+  {% endfor %}
+  {% if error_message %}
+      <h3>{{ error_message }}</h3>
+  {% endif %}
+{% endif %}
