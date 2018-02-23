@@ -15,6 +15,7 @@ class Main extends Component {
             skill3:'',
             sapID: '',
             year:'',
+            user:'',
         };
 
         this.handleSAP= this.handleSAP.bind(this);
@@ -67,6 +68,7 @@ class Main extends Component {
     }
 
     render() {
+
         return (
         	<div>
             <form method="POST">
@@ -180,7 +182,10 @@ class Main extends Component {
           </div>
           <br/><br/><br/>
 
-
+            {this.state.users.map(user =>
+                <a href={`/user/${user.username}/`}>
+                    {user.username}
+                </a>)}
 
       </center>
 
