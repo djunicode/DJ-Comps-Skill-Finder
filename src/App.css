@@ -70,55 +70,52 @@ a img{
 }
 
 .title{
-  font-size: 72px;
+  font-size: 48px;
   font-weight: 500;
-  color: #ffa95c;
+  color: #ffaf69;
 }
 
-.mdl-selectfield__label{
-  font-size: 30px;
+.text{
+  font-size: 24px;
   font-weight: 500;
   color: #bdbdbd;
 }
 
-.add{
-  height: 30px;
-  background-color: #ffcb9c;
+.join{
+  border-radius: 10px;
+  background-color: #fcd96d;
+  color: #fff;
 }
-.search{
-  font-size: 24px;
-  font-weight: 500;
-  border-radius: 11px;
-  color: #ffad63;
+
+.create{
+  color: #52d5ff;
   background-color: #fff;
-  border-color: #ffad63;
 }
 
-.diff{
-  font-size: 24px;
-  color: #ffb675;
+img{
+  vertical-align: middle;
+  justify-content: center;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #ccc;
-    opacity: 1; /* Firefox */
+.teamwork{
+  width: inherit;
+  vertical-align: middle;
+  justify-content: center;
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #ccc;
+.hack{
+  width: inherit;
+  vertical-align: middle;
+  justify-content: center;
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: #ccc;
+.bg{
+  background-color: black;
 }
 
-.back-button{
-  font-family: Raleway;
-  font-size: 25px;
-  font-weight: bold;
-  float: left;
-  color: #ff6699;
-  text-decoration: none;
+.align{
+  vertical-align: middle;
+  justify-content: center;
 }
 
 form{
