@@ -47,9 +47,8 @@ a img{
 }
 
 .mdl-layout__drawer{
+  text-align: left;
   height: 100%;
-  width: auto;
-  overflow: hidden;
   background-color: #ffffff;
 }
 
@@ -58,6 +57,13 @@ a img{
   font-size: 20px;
   font-weight: 600;
   color: #000000;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link{
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: normal;
+  color: #666666;
 }
 
 .title{
@@ -88,12 +94,13 @@ a img{
 }
 
 .mdl-grid{
-  height: -webkit-fill-available;
+  display: inline-flex;
+  height: auto;
   justify-content: center;
 }
 
 .medium-card{
-  width: 300px;
+  width: 350px;
   height: auto;
   align-items: center;
   padding-bottom: 35px;

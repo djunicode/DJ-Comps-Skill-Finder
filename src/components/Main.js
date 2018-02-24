@@ -8,158 +8,179 @@ class Main extends Component {
             <form>
             <center>
               <h1 className="title">Join a Hackathon Team</h1>
-              <br/>
-              <span>
-                <a href="" className="filter-link"><i className="filter-link material-icons">filter_list</i></a>
-                <a className="clear-tag mdl-navigation__link" href="">Hackathon<i className="material-icons">clear</i></a>
-              </span>
-              <br/><br/><br/><br/><br/><br/><br/>
-              <div className="mdl-grid">
-                <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
-                  <div className = "mdl-card__title">
-                    <h1 className = "mdl-card__title-text">Peanuts</h1>
-                  </div>
-                  <div className="mdl-card__subtitle-text">
-                    <h5>Smart India Hackathon</h5>
-                    <p>Name1, Name2, Name3, Name4</p>
-                  </div>
-                  <div className = "mdl-card__supporting-text">
-                    <div className="header">
-                      <h5>Description</h5>
-                      <p>We are a team of 4 SEs,  looking for frontend developers</p>
+              <br/><br/><br/>
+              <div className="main-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+              <div className="mdl-layout__drawer">
+                <span className="mdl-layout-title">Sent Requests</span>
+                <nav className="mdl-navigation">
+                  <a className="mdl-navigation__link" href="">Name1</a>
+                  <a className="mdl-navigation__link" href="">Name2</a>
+                  <a className="mdl-navigation__link" href="">Name3</a>
+                </nav>
+                <br/><br/>
+                <span className="mdl-layout-title">Received Requests</span>
+                <nav className="mdl-navigation">
+                  <a className="mdl-navigation__link" href="">Name4</a>
+                  <a className="mdl-navigation__link" href="">Name5</a>
+                  <a className="mdl-navigation__link" href="">Name6</a>
+                </nav>
+              </div>
+              <main className="mdl-layout__content">
+              <div className="page-content">
+                <span>
+                  <a href="" className="filter-link"><i className="filter-link material-icons">filter_list</i></a>
+                  <a className="clear-tag mdl-navigation__link" href="">Hackathon<i className="material-icons">clear</i></a>
+                </span>
+                <br/><br/><br/><br/><br/><br/><br/>
+                <div className="mdl-grid">
+                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
+                    <div className = "mdl-card__title">
+                      <h1 className = "mdl-card__title-text">Peanuts</h1>
                     </div>
-                    <div className="header">
-                      <h5>Skills required</h5>
-                      <p>Skill1, Skill2, Skill3, Skill4</p>
+                    <div className="mdl-card__subtitle-text">
+                      <h5>Smart India Hackathon</h5>
+                      <p>Name1, Name2, Name3, Name4</p>
                     </div>
-                  </div>
-                  <div className = "mdl-card__actions">
-                     <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                      Join
-                     </a>
-                  </div>
-                </div>
-                <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
-                  <div className = "mdl-card__title">
-                    <h1 className = "mdl-card__title-text">Peanuts</h1>
-                  </div>
-                  <div className="mdl-card__subtitle-text">
-                    <h5>Smart India Hackathon</h5>
-                    <p>Name1, Name2, Name3, Name4</p>
-                  </div>
-                  <div className = "mdl-card__supporting-text">
-                    <div className="header">
-                      <h5>Description</h5>
-                      <p>We are a team of 4 SEs,  looking for frontend developers</p>
+                    <div className = "mdl-card__supporting-text">
+                      <div className="header">
+                        <h5>Description</h5>
+                        <p>We are a team of 4 SEs,  looking for frontend developers</p>
+                      </div>
+                      <div className="header">
+                        <h5>Skills required</h5>
+                        <p>Skill1, Skill2, Skill3, Skill4</p>
+                      </div>
                     </div>
-                    <div className="header">
-                      <h5>Skills required</h5>
-                      <p>Skill1, Skill2, Skill3, Skill4</p>
-                    </div>
-                  </div>
-                  <div className = "mdl-card__actions">
-                     <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                      Join
-                     </a>
-                  </div>
-                </div>
-                <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
-                  <div className = "mdl-card__title">
-                    <h1 className = "mdl-card__title-text">Peanuts</h1>
-                  </div>
-                  <div className="mdl-card__subtitle-text">
-                    <h5>Smart India Hackathon</h5>
-                    <p>Name1, Name2, Name3, Name4</p>
-                  </div>
-                  <div className = "mdl-card__supporting-text">
-                    <div className="header">
-                      <h5>Description</h5>
-                      <p>We are a team of 4 SEs,  looking for frontend developers</p>
-                    </div>
-                    <div className="header">
-                      <h5>Skills required</h5>
-                      <p>Skill1, Skill2, Skill3, Skill4</p>
+                    <div className = "mdl-card__actions">
+                       <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Join
+                       </a>
                     </div>
                   </div>
-                  <div className = "mdl-card__actions">
-                     <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                      Join
-                     </a>
-                  </div>
-                </div>
-                <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
-                  <div className = "mdl-card__title">
-                    <h1 className = "mdl-card__title-text">Peanuts</h1>
-                  </div>
-                  <div className="mdl-card__subtitle-text">
-                    <h5>Smart India Hackathon</h5>
-                    <p>Name1, Name2, Name3, Name4</p>
-                  </div>
-                  <div className = "mdl-card__supporting-text">
-                    <div className="header">
-                      <h5>Description</h5>
-                      <p>We are a team of 4 SEs,  looking for frontend developers</p>
+                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
+                    <div className = "mdl-card__title">
+                      <h1 className = "mdl-card__title-text">Peanuts</h1>
                     </div>
-                    <div className="header">
-                      <h5>Skills required</h5>
-                      <p>Skill1, Skill2, Skill3, Skill4</p>
+                    <div className="mdl-card__subtitle-text">
+                      <h5>Smart India Hackathon</h5>
+                      <p>Name1, Name2, Name3, Name4</p>
                     </div>
-                  </div>
-                  <div className = "mdl-card__actions">
-                     <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                      Join
-                     </a>
-                  </div>
-                </div>
-                <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
-                  <div className = "mdl-card__title">
-                    <h1 className = "mdl-card__title-text">Peanuts</h1>
-                  </div>
-                  <div className="mdl-card__subtitle-text">
-                    <h5>Smart India Hackathon</h5>
-                    <p>Name1, Name2, Name3, Name4</p>
-                  </div>
-                  <div className = "mdl-card__supporting-text">
-                    <div className="header">
-                      <h5>Description</h5>
-                      <p>We are a team of 4 SEs,  looking for frontend developers</p>
+                    <div className = "mdl-card__supporting-text">
+                      <div className="header">
+                        <h5>Description</h5>
+                        <p>We are a team of 4 SEs,  looking for frontend developers</p>
+                      </div>
+                      <div className="header">
+                        <h5>Skills required</h5>
+                        <p>Skill1, Skill2, Skill3, Skill4</p>
+                      </div>
                     </div>
-                    <div className="header">
-                      <h5>Skills required</h5>
-                      <p>Skill1, Skill2, Skill3, Skill4</p>
+                    <div className = "mdl-card__actions">
+                       <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Join
+                       </a>
                     </div>
                   </div>
-                  <div className = "mdl-card__actions">
-                     <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                      Join
-                     </a>
-                  </div>
-                </div>
-                <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
-                  <div className = "mdl-card__title">
-                    <h1 className = "mdl-card__title-text">Peanuts</h1>
-                  </div>
-                  <div className="mdl-card__subtitle-text">
-                    <h5>Smart India Hackathon</h5>
-                    <p>Name1, Name2, Name3, Name4</p>
-                  </div>
-                  <div className = "mdl-card__supporting-text">
-                    <div className="header">
-                      <h5>Description</h5>
-                      <p>We are a team of 4 SEs,  looking for frontend developers</p>
+                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
+                    <div className = "mdl-card__title">
+                      <h1 className = "mdl-card__title-text">Peanuts</h1>
                     </div>
-                    <div className="header">
-                      <h5>Skills required</h5>
-                      <p>Skill1, Skill2, Skill3, Skill4</p>
+                    <div className="mdl-card__subtitle-text">
+                      <h5>Smart India Hackathon</h5>
+                      <p>Name1, Name2, Name3, Name4</p>
+                    </div>
+                    <div className = "mdl-card__supporting-text">
+                      <div className="header">
+                        <h5>Description</h5>
+                        <p>We are a team of 4 SEs,  looking for frontend developers</p>
+                      </div>
+                      <div className="header">
+                        <h5>Skills required</h5>
+                        <p>Skill1, Skill2, Skill3, Skill4</p>
+                      </div>
+                    </div>
+                    <div className = "mdl-card__actions">
+                       <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Join
+                       </a>
                     </div>
                   </div>
-                  <div className = "mdl-card__actions">
-                     <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                      Join
-                     </a>
+                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
+                    <div className = "mdl-card__title">
+                      <h1 className = "mdl-card__title-text">Peanuts</h1>
+                    </div>
+                    <div className="mdl-card__subtitle-text">
+                      <h5>Smart India Hackathon</h5>
+                      <p>Name1, Name2, Name3, Name4</p>
+                    </div>
+                    <div className = "mdl-card__supporting-text">
+                      <div className="header">
+                        <h5>Description</h5>
+                        <p>We are a team of 4 SEs,  looking for frontend developers</p>
+                      </div>
+                      <div className="header">
+                        <h5>Skills required</h5>
+                        <p>Skill1, Skill2, Skill3, Skill4</p>
+                      </div>
+                    </div>
+                    <div className = "mdl-card__actions">
+                       <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Join
+                       </a>
+                    </div>
+                  </div>
+                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
+                    <div className = "mdl-card__title">
+                      <h1 className = "mdl-card__title-text">Peanuts</h1>
+                    </div>
+                    <div className="mdl-card__subtitle-text">
+                      <h5>Smart India Hackathon</h5>
+                      <p>Name1, Name2, Name3, Name4</p>
+                    </div>
+                    <div className = "mdl-card__supporting-text">
+                      <div className="header">
+                        <h5>Description</h5>
+                        <p>We are a team of 4 SEs,  looking for frontend developers</p>
+                      </div>
+                      <div className="header">
+                        <h5>Skills required</h5>
+                        <p>Skill1, Skill2, Skill3, Skill4</p>
+                      </div>
+                    </div>
+                    <div className = "mdl-card__actions">
+                       <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Join
+                       </a>
+                    </div>
+                  </div>
+                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
+                    <div className = "mdl-card__title">
+                      <h1 className = "mdl-card__title-text">Peanuts</h1>
+                    </div>
+                    <div className="mdl-card__subtitle-text">
+                      <h5>Smart India Hackathon</h5>
+                      <p>Name1, Name2, Name3, Name4</p>
+                    </div>
+                    <div className = "mdl-card__supporting-text">
+                      <div className="header">
+                        <h5>Description</h5>
+                        <p>We are a team of 4 SEs,  looking for frontend developers</p>
+                      </div>
+                      <div className="header">
+                        <h5>Skills required</h5>
+                        <p>Skill1, Skill2, Skill3, Skill4</p>
+                      </div>
+                    </div>
+                    <div className = "mdl-card__actions">
+                       <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Join
+                       </a>
+                    </div>
                   </div>
                 </div>
               </div>
+              </main>
+            </div>
             </center>
 		        </form>
         	</div>
