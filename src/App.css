@@ -45,6 +45,26 @@ a img{
   background-image: linear-gradient(to top, #ff5ca0 19%, #ff744f);
 }
 
+.mdl-layout__drawer{
+  text-align: left;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.mdl-layout__drawer .mdl-layout-title{
+  font-family: Raleway;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link{
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: normal;
+  color: #666666;
+}
+
 .title{
   font-family: Raleway;
   font-size: 65px;
@@ -73,11 +93,13 @@ a img{
 }
 
 .mdl-grid{
+  display: inline-flex;
+  height: auto;
   justify-content: center;
 }
 
 .medium-card{
-  width: 450px;
+  width: 350px;
   height: auto;
   align-items: center;
   padding-bottom: 35px;
@@ -87,7 +109,7 @@ a img{
 
 .mdl-card__title .mdl-card__title-text{
   font-family: Raleway;
-  font-size: 35px;
+  font-size: 30px;
   font-weight: 800;
   text-decoration: underline;
   text-decoration-style: #3399ff;
@@ -96,28 +118,28 @@ a img{
 
 .mdl-card__subtitle-text h5{
   font-family: Raleway;
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 600;
   color: #ffc896;
 }
 
 .mdl-card__subtitle-text p{
   font-family: Raleway;
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 600;
   color: #ffdb6e;
 }
 
 .mdl-card__supporting-text .header h5{
   font-family: Raleway;
-  font-size: 24px;
+  font-size: 19px;
   font-weight: 700;
   color: #cfcfcf;
 }
 
 .mdl-card__supporting-text .header p{
   font-family: Raleway;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 500;
   color: #828282;
 }
@@ -131,7 +153,7 @@ a img{
 
 .mdl-card__actions .mdl-button{
   color: #ffffff;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .description h1{
@@ -482,9 +504,6 @@ a img{
 .page-more-section .page-section-title {
   margin-left: 12px;
   padding-bottom: 24px;
-}
-
-.page-card-container {
 }
 
 .page-card-container .mdl-card__media {
