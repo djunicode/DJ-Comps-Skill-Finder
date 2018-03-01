@@ -62,17 +62,10 @@ a img{
   color: #ffffff;
 }
 
-.description h5{
-  width: auto;
-  height: auto;
-  font-size: 36px;
-  color: #fff2c9;
-}
-
 .title{
-  font-size: 72px;
+  font-size: 36px;
   font-weight: 500;
-  color: #ffa95c;
+  color: #bdbdbd;
 }
 
 .mdl-selectfield__label{
@@ -81,53 +74,34 @@ a img{
   color: #bdbdbd;
 }
 
-.add{
-  height: 30px;
-  background-color: #ffcb9c;
-  color: #fff;
-}
-
-.add:hover{
-  background-color: #ff9933;
-}
-
-.search{
+.name{
   font-size: 24px;
-  font-weight: 500;
-  border-radius: 11px;
-  color: #fff;
-  background-color: #ffcb9c;
+  color: #828282;
 }
 
-.search:hover{
-  background-color: #ff9933;
+.mdl-card__supporting-text{
+  font-size: 12px;
+  color: #828282;
 }
 
-.diff{
-  font-size: 24px;
-  color: #ffb675;
+.accept{
+  font-size: 15px;
+  color: #6fcf97;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #ccc;
-    opacity: 1; /* Firefox */
+.decline{
+  font-size: 15px;
+  color: #2eb9e5;
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #ccc;
+.pending{
+  font-size: 15px;
+  color: #f2994a;
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: #ccc;
-}
-
-.back-button{
-  font-family: Raleway;
-  font-size: 25px;
-  font-weight: bold;
-  float: left;
-  color: #ff6699;
-  text-decoration: none;
+.tname{
+  font-size: 15px;
+  color: #bdbdbd;
 }
 
 form{

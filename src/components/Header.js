@@ -44,8 +44,7 @@ class Header extends Component {
 
         <br/><br/><br/><br/>
         <div className="description">
-          <h1>Teams</h1>
-          <h5>Make a team or join one!</h5>
+          <h1>Home</h1>
         </div>
         <br/><br/><br/>
       </div>
