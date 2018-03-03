@@ -104,6 +104,19 @@ a img{
   color: #bdbdbd;
 }
 
+.bg{
+  background-color: black;
+}
+
+.mdl-grid{
+  justify-content: center;
+  
+}
+
+.mdl-cell{
+  width: auto;
+}
+
 form{
   text-align: center;
   padding: 20px;

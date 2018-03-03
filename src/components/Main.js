@@ -11,7 +11,7 @@ class Main extends Component {
 
               <div className="mdl-grid description">
 
-                <div className="mdl-cell mdl-cell--3-col">
+                <div className="mdl-cell mdl-cell--3-col bg">
                   <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
                     <h4 className="name">Sally Brown</h4>
                     <div className="mdl-card__supporting-text">
