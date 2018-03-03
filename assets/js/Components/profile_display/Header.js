@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+import './App.css';
 class Header extends Component {
   render() {
     return (
@@ -7,7 +7,8 @@ class Header extends Component {
         <div className="page-header mdl-layout__header mdl-layout__header--scroll">
           <div className="mdl-layout__header-row">
             <span className="page-title mdl-layout-title">
-              <img className="page-logo-image" src="../UNCLetters.png" alt="page-logo" />
+              <img className="page-logo-image" src="/static/profile_updation/UNCLetters.png" alt="page-logo" />
+            {/*TODO: Fix image path*/}
             </span>
             <div className="page-header-spacer mdl-layout-spacer"></div>
             <div className="page-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">

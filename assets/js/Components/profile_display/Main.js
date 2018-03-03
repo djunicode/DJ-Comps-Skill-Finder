@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+import './App.css';
 import axios from 'axios';
 
 class Main extends Component {
@@ -15,12 +15,12 @@ class Main extends Component {
         };
     }
     componentDidMount(){
-      axios.get('')
-      .then(response => this.setState({"skill1" : response.data.skill1, "skill2" : response.data.skill2, "skill3" : response.data.skill3, "interest1" : response.data.interest1, "interest2" : response.data.interest2, "interest3" : response.data.interest3}))
+      //axios.get('')
+      //.then(response => this.setState({"skill1" : response.data.skill1, "skill2" : response.data.skill2, "skill3" : response.data.skill3, "interest1" : response.data.interest1, "interest2" : response.data.interest2, "interest3" : response.data.interest3}))
     }
     componentDidUpdate(){
-      axios.get('')
-      .then(response => this.setState({"skill1" : response.data.skill1, "skill2" : response.data.skill2, "skill3" : response.data.skill3, "interest1" : response.data.interest1, "interest2" : response.data.interest2, "interest3" : response.data.interest3}))
+      //axios.get('')
+      //.then(response => this.setState({"skill1" : response.data.skill1, "skill2" : response.data.skill2, "skill3" : response.data.skill3, "interest1" : response.data.interest1, "interest2" : response.data.interest2, "interest3" : response.data.interest3}))
     }
     render() {
         return (
