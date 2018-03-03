@@ -1,23 +1,13 @@
-<form action="{% url 'users:update_profile' %}" enctype="multipart/form-data" method="POST">
-  {% csrf_token %}
-  First name <input type="text" name="first_name" value="{{ user.first_name }}"><br>
-  Last name <input type="text" name="last_name" value="{{ user.last_name }}"><br>
-  Mobile <input type="text" name="mobile" value="{{ user.mobile }}"><br>
-  SAP ID <input type="text" name="sap_id" value="{{ user.sap_id }}"><br>
-  Bio <input type="text" name="bio" value="{{ user.bio }}"><br>
-  Year <input type="text" name="year" value="{{ user.year }}"><br>
-  <!-- Need help here to decide what to show -->
-  Skill 1 <input type="text" name="skill_1"><br>
-  Skill 2 <input type="text" name="skill_2"><br>
-  Skill 3 <input type="text" name="skill_3"><br>
-  Photo <input type="file" name="photo"><br>
-  <input type="submit" value="Submit now">
-</form>
 
-{% if mobile_error %}
- <p>{{ mobile_error }}</p>
+
+{% load render_bundle from webpack_loader %}
+{% load static %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<div id="react-app"></div>
+    {% render_bundle 'Update' %}
+{% if error %}
+  <p>{{ error }}</p>
 {% endif %}
 
-{% if sap_error %}
-  <p>{{ sap_error }}</p>
-{% endif %}
+
