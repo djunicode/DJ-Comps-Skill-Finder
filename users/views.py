@@ -1,3 +1,6 @@
+import json
+from django.core import serializers
+from django.forms import model_to_dict
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
@@ -12,7 +15,22 @@ from django.views.generic import TemplateView
 @ensure_csrf_cookie
 def login(request):
     if request.user.is_authenticated:
-        return render(request, 'users/test.html', {})
+        skill_set = Skill.objects.all()
+        skill_set = list(skill_set)
+        skill_set = serializers.serialize('json', skill_set)
+        current_user = CustomUser.objects.get(sap_id=request.user.sap_id)
+        print(current_user.__dict__)
+        current_user = model_to_dict(current_user)
+        print(current_user)
+        if current_user['photo']:
+            current_user['photo'] = current_user['photo'].url
+        current_user = json.dumps(current_user, indent=4, default=str)
+        print(current_user)
+        skill_set = json.dumps(skill_set)
+        context = {'user': current_user, 'skills': skill_set}
+        context = json.dumps(context)
+        print(context)
+        return render(request, 'users/login.html', {'prop': context})
     else:
         if request.method == 'POST':
             if 'login' in request.POST:
@@ -62,7 +80,22 @@ def login(request):
                     auth_login(request, user)
                     return redirect('users:update_profile')
         else:
-            return render(request, 'users/login.html', {})
+            skill_set = Skill.objects.all()
+            skill_set = list(skill_set)
+            skill_set = serializers.serialize('json', skill_set)
+            current_user = CustomUser.objects.get(sap_id=request.user.sap_id)
+            print(current_user.__dict__)
+            current_user = model_to_dict(current_user)
+            print(current_user)
+            if current_user['photo']:
+                current_user['photo'] = current_user['photo'].url
+            current_user = json.dumps(current_user, indent=4, default=str)
+            print(current_user)
+            skill_set = json.dumps(skill_set)
+            context = {'user': current_user, 'skills': skill_set}
+            context = json.dumps(context)
+            print(context)
+            return render(request, 'users/login.html', {'prop': context})
 
 
 def logout(request):
