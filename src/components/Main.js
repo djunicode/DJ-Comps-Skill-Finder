@@ -1,6 +1,38 @@
 import React, { Component } from 'react';
 import '../App.css';
 class Main extends Component {
+
+    constructor(props){
+        super(props);
+        
+
+        this.handleProjJoin= this.handleProjJoin.bind(this);
+        this.handleProjCreate= this.handleProjCreate.bind(this);
+        this.handleHackJoin= this.handleHackJoin.bind(this);
+        this.handleHackCreate= this.handleHackCreate.bind(this);
+
+    }
+
+    handleProjJoin(event){
+      event.preventDefault();
+      window.location = '';
+    }
+
+    handleProjCreate(event){
+      event.preventDefault();
+      window.location = '';
+    }
+
+    handleHackJoin(event){
+      event.preventDefault();
+      window.location = '';
+    }
+
+    handleHackCreate(event){
+      event.preventDefault();
+      window.location = '';
+    }
+
     render() {
         return (
         	<div>
@@ -11,11 +43,11 @@ class Main extends Component {
                   <h1 className="descripton title">Projects</h1>
                   <h5 className="text">Join or create teams to make projects.</h5>
                   <br/>
-                  <button className="mdl-button mdl-js-button mdl-js-ripple-effect descripton text join">
+                  <button className="mdl-button mdl-js-button mdl-js-ripple-effect descripton text join" onClick={this.handleProjJoin}>
                    Join
                   </button>
                   &nbsp;&nbsp;
-                  <button className="mdl-button mdl-js-button mdl-js-ripple-effect descripton text create">
+                  <button className="mdl-button mdl-js-button mdl-js-ripple-effect descripton text create" onClick={this.handleProjCreate}>
                    Create
                   </button>
                 </div>
@@ -32,11 +64,11 @@ class Main extends Component {
                   <h1 className="descripton title">Hackathons</h1>
                   <h5 className="text">Join or create teams to particiate in hackathons.</h5>
                   <br/>
-                  <button className="mdl-button mdl-js-button mdl-js-ripple-effect descripton text join">
+                  <button className="mdl-button mdl-js-button mdl-js-ripple-effect descripton text join" onClick={this.handleHackJoin}>
                    Join
                   </button>
                   &nbsp;&nbsp;
-                  <button className="mdl-button mdl-js-button mdl-js-ripple-effect descripton text create">
+                  <button className="mdl-button mdl-js-button mdl-js-ripple-effect descripton text create" onClick={this.handleHackCreate}>
                    Create
                   </button>
                 </div>
