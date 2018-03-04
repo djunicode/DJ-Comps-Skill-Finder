@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 
+ /*
+  *White space on the left side of the page in mobile rendering
+  *Project links merging on zooming in 
+  *Improper chips indentation
+  *Skills and Interests not displayed
+ */
+
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 body {
@@ -43,6 +50,10 @@ a img{
   width: auto;
   height: auto;
   background-image: linear-gradient(to top, #ff5ca0 19%, #ff744f);
+}
+
+.mdl-layout{
+  width: auto;
 }
 
 .img-circle{
@@ -96,7 +107,6 @@ a img{
 form{
   text-align: center;
   padding: 20px;
-  display: 
 }
 
 .header{

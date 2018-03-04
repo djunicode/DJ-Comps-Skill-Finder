@@ -4,7 +4,7 @@ class Footer extends Component {
     render() {
         return (
             <div>
-                <img src="../approach-illustration-3.png" className="footerimage" alt="page-logo" />
+                <img src="/static/profile_updation/approach-illustration-3.png" className="footerimage" alt="page-logo" />
                 <footer className="page-footer mdl-mega-footer">
                     <div className="mdl-mega-footer--top-section">
                         <div className="mdl-mega-footer--left-section">
