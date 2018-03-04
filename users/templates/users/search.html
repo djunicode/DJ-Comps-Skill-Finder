@@ -1,4 +1,4 @@
-<form action="" method="get">
+<!-- <form action="" method="get">
   <label for="skill">Skills</label>
   <select name='skill'>
       {% for skill in skills %}
@@ -16,4 +16,37 @@
  <p>{{ user.skill_1 }}</p>
  <p>{{ user.skill_2 }}</p>
  <p>{{ user.skill_3 }}</p>
-{% endfor %}
+{% endfor %} -->
+
+{% load render_bundle from webpack_loader %}
+{% load static %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+<script type="text/javascript">
+    //var props = unescape({{prop|safe}})
+    var props = {{ prop|safe }};
+    // var second = [];
+    // var third = [];
+    // var student;
+    // for (student in JSON.parse(props.second)) {
+    //     second.push(JSON.parse(student));
+    // }
+    // for (student in JSON.parse(props.third)) {
+    //     third.push(JSON.parse(student));
+    // }
+    var second = JSON.parse(props.second)
+    var third = JSON.parse(props.third)
+    var received = JSON.parse(props.received)
+    var sent = JSON.parse(props.sent)
+    // var second = props.second
+    // var third = props.third
+    //var skills = JSON.parse(props.skills)
+    console.log(props)
+</script>
+
+<div id="react-app"></div>
+    {% render_bundle 'Search' %}
+{% if error %}
+  <p>{{ error }}</p>
+{% endif %}
