@@ -8,7 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.generic import TemplateView
 from itertools import chain
-
+import json
+from django.forms import model_to_dict
+from django.core import serializers
 
 @ensure_csrf_cookie
 def login(request):
@@ -112,36 +114,64 @@ def mentor(request):
 @login_required(login_url='users:login')
 def update_profile(request):
     if request.method != 'POST':
-        return render(request, 'users/update_profile.html', {})
+        skill_set = Skill.objects.all()
+        skills = {}
+        for skill in skill_set:
+            skills[str(skill.pk)] = skill.skill
+        # skill_set = list(skill_set)
+        # skill_set = serializers.serialize('json', skill_set)
+        # print(skill_set)
+        print(skills)
+        skill_set = json.dumps(skills, indent=4)
+        current_user = CustomUser.objects.get(sap_id=request.user.sap_id)
+        # print(current_user.__dict__)
+        current_user = model_to_dict(current_user)
+        current_user['password'] = ''
+        # print(current_user)
+        if current_user['photo']:
+            current_user['photo'] = current_user['photo'].url
+        # else:
+        # current_user['photo'] = ''
+        current_user = json.dumps(current_user, indent=4, default=str)
+        # current_user = dumps(current_user, indent=4, default=json_serial)
+        # print(current_user)
+        context = {'user': current_user, 'skills': skill_set}
+        context = json.dumps(context)
+        # print(context)
+        return render(request, 'users/update_profile.html', {'prop': context})
     else:
-        request.user.first_name = request.POST.get('first_name')
-        request.user.last_name = request.POST.get('last_name')
-        mobile = request.POST.get('mobile')
+        # request.user.first_name = request.POST.get('first_name')
+        # request.user.last_name = request.POST.get('last_name')
+        # mobile = request.POST.get('mobile')
         sap_id = request.POST.get('sap_id')
+        print("sap_id",request.POST)
         errors = {}
-        if CustomUser.objects.filter(mobile=mobile).exists():
-            if CustomUser.objects.filter(mobile=mobile)[0].id != request.user.id:
-                errors['mobile_error'] = 'The mobile number is already in use by another account.'
+        # if CustomUser.objects.filter(mobile=mobile).exists():
+        #     if CustomUser.objects.filter(mobile=mobile)[0].id != request.user.id:
+        #         errors['mobile_error'] = 'The mobile number is already in use by another account.'
         if CustomUser.objects.filter(sap_id=sap_id).exists():
             if CustomUser.objects.filter(sap_id=sap_id)[0].id != request.user.id:
                 errors['sap_error'] = 'The SAP ID is already in use by another account.'
         if len(errors) > 0:
             return render(request, 'users/update_profile.html', errors)
-        request.user.mobile = mobile
+        # request.user.mobile = mobile
         request.user.sap_id = sap_id
-        request.user.photo = request.FILES.get('photo', None)
-        request.user.bio = request.POST.get('bio')
+        # request.user.photo = request.FILES.get('photo', None)
+        # request.user.bio = request.POST.get('bio')
         request.user.year = request.POST.get('year')
         try:
-            request.user.skill_1 = Skill.objects.get(skill=request.POST.get('skill_1'))
+            request.user.skill_1 = Skill.objects.get(skill=request.POST.get('skill1'))
         except Skill.DoesNotExist:
             request.user.skill_1 = None
         try:
-            request.user.skill_2 = Skill.objects.get(skill=request.POST.get('skill_2'))
+            request.user.skill_2 = Skill.objects.get(skill=request.POST.get('skill2'))
+            print(request.user.skill_2)
         except Skill.DoesNotExist:
             request.user.skill_2 = None
+        print(request.POST.get('skill_2'))
+        print('Front-End: HTML, CSS, JavaScript')
         try:
-            request.user.skill_3 = Skill.objects.get(skill=request.POST.get('skill_3'))
+            request.user.skill_3 = Skill.objects.get(skill=request.POST.get('skill3'))
         except Skill.DoesNotExist:
             request.user.skill_3 = None
         request.user.save()

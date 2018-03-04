@@ -4,6 +4,17 @@
 {% load static %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+
+<script type="text/javascript">
+    //var props = unescape({{prop|safe}})
+    var props = {{ prop|safe }}
+    var user = JSON.parse(props.user)
+    var skills = JSON.parse(props.skills)
+    console.log(props)
+</script>
+
+
 <div id="react-app"></div>
     {% render_bundle 'Update' %}
 {% if error %}
