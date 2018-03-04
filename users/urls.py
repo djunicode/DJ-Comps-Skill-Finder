@@ -26,4 +26,7 @@ urlpatterns = [
     path('projects/teams/request/<int:pk>/accept/', views.accept_project_request, name='accept_project_request'),
     path('projects/teams/request/<int:pk>/reject/', views.reject_project_request, name='reject_project_request'),
     path('projects/teams/request/<int:pk>/cancel/', views.cancel_project_request, name='cancel_project_request'),
+    path('project/add/', views.create_project, name='project_add'),
+    path('project/<int:pk>/update', views.UpdateProject.as_view(), name='project_update'),
+    path('project/<int:pk>/delete', views.delete_project, name='project_delete'),
 ]

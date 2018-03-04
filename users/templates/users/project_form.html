@@ -1,0 +1,35 @@
+{% if error %}
+{{ error }}
+{% endif %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if form.name.errors %}
+        {{ form.name.errors }}<br>
+    {% endif %}
+    <label>{{ form.name.label_tag|title }}</label>
+    {{ form.name }}<br>
+    {% if form.description.errors %}
+        {{ form.description.errors }}<br>
+    {% endif %}
+    <label>{{ form.description.label_tag|title }}</label>
+    {{ form.description }}<br>
+    {% if form.skills_used.errors %}
+        {{ form.skills_used.errors }}<br>
+    {% endif %}
+    <label>{{ form.skills_used.label_tag|title }}</label>
+    <div>
+        {% for checkbox in form.skills_used %}
+            <label for="{{ checkbox.id_for_label }}">{{ checkbox.choice_label }}</label>
+            <span>{{ checkbox.tag }}
+{#                <input type="checkbox" name="skills_used" value="{{ checkbox.choices }}" id="{{ checkbox.id_for_label }}"/>#}
+            </span> &nbsp &nbsp &nbsp
+        {% endfor %}
+        {% comment %}{{ form.skills_used }}{% endcomment %}
+    </div><br>
+    {% if form.link.errors %}
+        {{ form.link.errors }}<br>
+    {% endif %}
+    <label>{{ form.link.label_tag|title }}</label>
+    {{ form.link }}<br>
+    <input type='submit' name='submit' value='submit'>
+</form>

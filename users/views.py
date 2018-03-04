@@ -1,13 +1,15 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.urls import reverse
+from django.views.generic import UpdateView
 from .models import CustomUser, Skill, MentorRequest, Relationship, Project, Interest
 from .models import Hackathon, HackathonTeam, HackathonTeamRequest
 from .models import ProjectTeam, ProjectTeamRequest
 from django.contrib.auth.decorators import login_required
-from .forms import MentorRequestForm, HackathonTeamForm, HackathonTeamRequestForm
+from .forms import MentorRequestForm, HackathonTeamForm, HackathonTeamRequestForm, ProjectForm
 from .forms import ProjectTeamForm, ProjectTeamRequestForm
 import django_filters
 from itertools import chain
@@ -235,6 +237,42 @@ def search(request):
     q3 = queryset.filter(skill_3__id=skill)
     qs = f7(list(chain(q1, q2, q3)))
     return render(request, 'users/search.html', {'qs': qs, 'skills': Skill.objects.all(), 's': int(skill)})
+
+
+@login_required
+def create_project(request):
+    form = ProjectForm(request.POST or None)
+    if form.is_valid():
+        project = form.save(commit=False)
+        project.creator = request.user
+        if Project.objects.filter(name=request.POST.get('name'), creator=request.user).exists():
+            error = 'Project already Listed'
+            context = {'form': form,  'error': error}
+            return render(request, 'users/project_form.html', context)
+        project.save()
+        return redirect('users:view_profile', sap_id=request.user.sap_id)
+    context = {'form': form}
+    return render(request, 'users/project_form.html', context)
+
+
+class UpdateProject(LoginRequiredMixin, UpdateView):
+    template_name = 'users/project_form.html'
+    form_class = ProjectForm
+    model = Project
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.creator = self.request.user
+        self.object.save()
+        form.save_m2m()
+        return redirect('users:view_profile', sap_id=self.request.user.sap_id)
+
+
+@login_required
+def delete_project(request, pk):
+    project = get_object_or_404(Project, pk=pk)
+    project.delete()
+    return redirect('users:view_profile', sap_id=request.user.sap_id)
 
 
 # @login_required(login_url='users:login')

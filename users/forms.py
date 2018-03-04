@@ -1,5 +1,5 @@
 from django import forms
-from .models import MentorRequest, HackathonTeam, HackathonTeamRequest
+from .models import MentorRequest, HackathonTeam, HackathonTeamRequest, Skill, Project
 from django.core.exceptions import ValidationError
 from .models import ProjectTeam, ProjectTeamRequest
 
@@ -8,6 +8,14 @@ class MentorRequestForm(forms.ModelForm):
     class Meta():
         model = MentorRequest
         fields = ['message']
+
+
+class ProjectForm(forms.ModelForm):
+    all_skills = Skill.objects.all()
+    skills_used = forms.ModelMultipleChoiceField(queryset=all_skills, widget=forms.CheckboxSelectMultiple, label='Skills Used')
+    class Meta:
+        model = Project
+        fields = ['name', 'skills_used', 'description', 'link']
 
 
 class HackathonTeamForm(forms.ModelForm):

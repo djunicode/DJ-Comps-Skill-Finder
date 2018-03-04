@@ -144,6 +144,12 @@
     </form>
   {% endfor %}
   <br>
+  <h1>User's Projects</h1>
+  {% for p in projects %}
+      <p><strong>{{ p.name }}</strong></p>
+      <p><i>{{ p.link }}</i></p>
+  {% endfor %}
+  <br>
   {% if error_message %}
     <h3>{{ error_message }}</h3>
     {% endif %}
