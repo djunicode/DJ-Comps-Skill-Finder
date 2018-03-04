@@ -30,7 +30,7 @@ def login(request):
                         auth_login(request, user)
                         if request.POST.get('next'):
                             return redirect(request.POST.get('next'))
-                        return render(request, 'users/test.html', {})
+                        return redirect('users:view_profile', sap_id=user.sap_id)
                     else:
                         error = 'The account has been disabled.'
                         return render(request, 'users/login.html',
@@ -91,10 +91,6 @@ def view_profile(request, sap_id):
     return render(request, 'users/profile.html', context)
 
 
-
-
-
-
 @login_required(login_url='users:login')
 def mentor(request):
     user = request.user
@@ -110,8 +106,6 @@ def mentor(request):
                'current_mentors': current_mentors, 'current_mentees': current_mentees, 'interests': interests,
                'projects': projects}
     return render(request, 'users/mentor.html', context)
-
-
 
 
 @login_required(login_url='users:login')
@@ -147,7 +141,7 @@ def update_profile(request):
         # request.user.last_name = request.POST.get('last_name')
         # mobile = request.POST.get('mobile')
         sap_id = request.POST.get('sap_id')
-        print("sap_id",request.POST)
+        print("sap_id", request.POST)
         errors = {}
         # if CustomUser.objects.filter(mobile=mobile).exists():
         #     if CustomUser.objects.filter(mobile=mobile)[0].id != request.user.id:
@@ -186,8 +180,6 @@ def index(request):
     return render(request, 'users/index.html', {'component': component})
 
 
-
-
 @login_required(login_url='users:login')
 def send_request(request, sap_id):
     if request.method == 'POST':
@@ -214,7 +206,7 @@ def accept_request(request, pk):
         mentee = mentor_request.sender
         mentor = mentor_request.receiver
         skill = mentor_request.skill
-        Relationship.objects.add_relationship(mentor,mentee,skill)
+        Relationship.objects.add_relationship(mentor, mentee, skill)
         return redirect('users:view_profile', sap_id=request.user.sap_id)
     return redirect('users:view_profile', sap_id=request.user.sap_id)
 
@@ -238,8 +230,7 @@ def cancel_request(request, pk):
     return redirect('users:view_profile', sap_id=request.user.sap_id)
 
 
-
-@login_required
+@login_required(login_url='users:login')
 def terminate_relationship(request, pk, template_name='#'):
     if request.method == 'POST':
         try:
@@ -247,8 +238,8 @@ def terminate_relationship(request, pk, template_name='#'):
             Relationship.objects.remove_relationship(pk)
             return redirect('users:view_profile', sap_id=request.user.sap_id)
         except (Relationship.DoesNotExist, CustomUser.DoesNotExist, Skill.DoesNotExist):
-            return view_profile(request, request.user.sap_id, error_message = 'Relationship Does not Exist')
-            #return render(request, 'users/profile.html', {'error_message': 'Relationship Does not Exist'})
+            return view_profile(request, request.user.sap_id, error_message='Relationship Does not Exist')
+            # return render(request, 'users/profile.html', {'error_message': 'Relationship Does not Exist'})
 
     return render(request, template_name, {'pk': pk})
 
@@ -261,7 +252,7 @@ def create_project(request):
         project.creator = request.user
         if Project.objects.filter(name=request.POST.get('name'), creator=request.user).exists():
             error = 'Project already Listed'
-            context = {'form': form,  'error': error}
+            context = {'form': form, 'error': error}
             return render(request, 'users/project_form.html', context)
         project.save()
         return redirect('users:view_profile', sap_id=request.user.sap_id)
@@ -331,7 +322,6 @@ def search(request):
     return render(request, 'users/search.html', {'qs': qs, 'skills': Skill.objects.all(), 's': int(skill)})
 
 
-
 # @login_required
 # class ProjectUpdate(LoginRequiredMixin, UpdateView):
 #     model = Project
@@ -346,7 +336,7 @@ def search(request):
 #     success_url = reverse(view_profile, args=[])
 
 # class UserFilter(django_filters.FilterSet):
-#     skill = django_filters.ModelChoiceFilter(queryset=Skill.objects.all(), name='skill_1', label='Skill', method='chk')
+#     skill = django_filters.ModelChoiceFilter(queryset=Skill.objects.all(), name='skill_1', label='Skill',method='chk')
 #
 #     # This is a hack, but it'll work till I can figure out a better way.
 #     def chk(self, queryset, name, value):

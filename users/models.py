@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from datetime import datetime
 from django.urls import reverse
 
+
 # Creating a Skill model for allowing a user to have multiple unique skills
 class Skill(models.Model):
     skill = models.CharField(max_length=50, unique=True)
