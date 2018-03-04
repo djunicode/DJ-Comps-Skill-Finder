@@ -113,9 +113,12 @@ class Main extends Component {
            )}
   			</nav>
 			</div>
+
 			<main className="mdl-layout__content">
 			<div className="page-content">
+
 				<div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                <form method="get">
 					<label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="search">
 					  <i className="material-icons">search</i>
 					</label>
@@ -123,6 +126,10 @@ class Main extends Component {
 					  <input className="mdl-textfield__input" type="text" id="search" name="skill"/>
 					  <label className="mdl-textfield__label" htmlFor="search">Search</label>
 					</div>
+                    <button type="submit" className="save-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                      SEARCH
+                    </button>
+                </form>
             <div>
               <button className="clear-tag mdl-navigation__link" onClick={this.handleTEMentor}>Switch Years</button>
 

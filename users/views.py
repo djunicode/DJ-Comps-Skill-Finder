@@ -348,9 +348,9 @@ def search(request):
         return render(request, 'users/search.html', {'prop': context})
         # return render(request, 'users/search.html', {'qs': qs, 'skills': Skill.objects.all()})
     skill = request.GET.get('skill')
-    q1 = queryset.filter(skill_1__icontains=skill)
-    q2 = queryset.filter(skill_2__icontains=skill)
-    q3 = queryset.filter(skill_3__icontains=skill)
+    q1 = queryset.filter(skill_1__skill__icontains=skill)
+    q2 = queryset.filter(skill_2__skill__icontains=skill)
+    q3 = queryset.filter(skill_3__skill__icontains=skill)
     qs = f7(list(chain(q1, q2, q3)))
     second = []
     third = []
