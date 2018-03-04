@@ -15,8 +15,8 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('relationship/terminate/<int:pk>/', views.terminate_relationship, name='terminate_relationship'),
 	path('mentor/', views.mentor, name='mentor'),
-    # path('project/add/', views.create_project, name='project_add'),
-    # #path('project/<int:pk>/update', views.update_project, name='project_update'),
-    # path('project/<int:pk>/update', views.UpdateProject.as_view(), name='project_update'),
-    # path('project/<int:pk>/delete', views.delete_project, name='project_delete')
+    path('project/add/', views.create_project, name='project_add'),
+    # path('project/<int:pk>/update', views.update_project, name='project_update'),
+    path('project/<int:pk>/update', views.UpdateProject.as_view(), name='project_update'),
+    path('project/<int:pk>/delete', views.delete_project, name='project_delete')
 ]

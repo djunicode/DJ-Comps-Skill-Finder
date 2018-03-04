@@ -9,12 +9,11 @@ class App extends Component {
         <div >
           <a name="top"></a>
           <Header />
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/><br/><br/><br/>
           <Main />
-          <br/><br/><br/><br/>
-          <br/><br/><br/>
-
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           <Footer />
         </div>
     );

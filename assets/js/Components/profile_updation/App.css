@@ -31,6 +31,10 @@
  * limitations under the License.
  */
 
+/*
+*Large gap between main and header component in mobile rendering
+*/
+
 body {
   margin: 0;
   background-color: white;

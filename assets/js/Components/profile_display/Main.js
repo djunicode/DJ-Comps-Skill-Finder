@@ -27,7 +27,7 @@ class Main extends Component {
         	<div>
         	<form>
         		<a href="#" className="back-button"><i className="material-icons">keyboard_arrow_left</i>Back</a>
-        		<br/><br/>
+        		<br/><br/><br/><br/><br/>
         		<center>
         		<div className="header">
 					<h2>SKILLS</h2>

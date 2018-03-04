@@ -6,12 +6,12 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-        <div className="mdl-layout mdl-js-layout">
+        <div>
           <a name="top"></a>
           <Header />
           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          <br/><br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           <Main />
           <br/><br/><br/><br/>
           <Footer />
