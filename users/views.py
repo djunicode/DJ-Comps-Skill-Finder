@@ -300,11 +300,31 @@ def f7(seq):
     return [x for x in seq if not(x in seen or seen_add(x))]
 
 
+def process_user(u):
+    current_user = model_to_dict(u)
+    current_user['password'] = ''
+    if current_user['photo']:
+        current_user['photo'] = current_user['photo'].url
+    # current_user = json.dumps(current_user, indent=4, default=str)
+    return current_user
+
+
 @login_required(login_url='users:login')
 def search(request):
+    context = {}
     user = request.user
     qs = []
     queryset = CustomUser.objects.filter(is_mentor=True)
+    received = []
+    sent = []
+    for r in user.requests_received.filter(accepted=False, rejected=False):
+        received.append(process_user(r.sender))
+    for r in user.requests_sent.filter(accepted=False, rejected=False):
+        sent.append(process_user(r.receiver))
+    received = json.dumps(received, indent=4, default=str)
+    sent = json.dumps(sent, indent=4, default=str)
+    context['received'] = received
+    context['sent'] = sent
     if not request.GET.get('skill'):
         interests = user.user_interests.filter(is_now_skill=False)
         for i in interests:
@@ -313,13 +333,39 @@ def search(request):
             q3 = queryset.filter(skill_3=i.interest)
             qs += list(chain(q1, q2, q3))
         qs = f7(qs)
-        return render(request, 'users/search.html', {'qs': qs, 'skills': Skill.objects.all()})
+        second = []
+        third = []
+        for u in qs:
+            current_user = process_user(u)
+            if u.year == 'SE':
+                second.append(current_user)
+            elif u.year == 'TE':
+                third.append(current_user)
+        second = json.dumps(second, indent=4, default=str)
+        third = json.dumps(third, indent=4, default=str)
+        context['second'] = second
+        context['third'] = third
+        return render(request, 'users/search.html', {'prop': context})
+        # return render(request, 'users/search.html', {'qs': qs, 'skills': Skill.objects.all()})
     skill = request.GET.get('skill')
-    q1 = queryset.filter(skill_1__id=skill)
-    q2 = queryset.filter(skill_2__id=skill)
-    q3 = queryset.filter(skill_3__id=skill)
+    q1 = queryset.filter(skill_1__icontains=skill)
+    q2 = queryset.filter(skill_2__icontains=skill)
+    q3 = queryset.filter(skill_3__icontains=skill)
     qs = f7(list(chain(q1, q2, q3)))
-    return render(request, 'users/search.html', {'qs': qs, 'skills': Skill.objects.all(), 's': int(skill)})
+    second = []
+    third = []
+    for u in qs:
+        current_user = process_user(u)
+        if u.year == 'SE':
+            second.append(current_user)
+        elif u.year == 'TE':
+            third.append(current_user)
+    second = json.dumps(second, indent=4, default=str)
+    third = json.dumps(third, indent=4, default=str)
+    context['second'] = second
+    context['third'] = third
+    return render(request, 'users/search.html', {'prop': context})
+    # return render(request, 'users/search.html', {'qs': qs, 'skills': Skill.objects.all(), 's': int(skill)})
 
 
 # @login_required

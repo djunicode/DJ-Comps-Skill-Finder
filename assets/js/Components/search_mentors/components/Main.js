@@ -4,31 +4,19 @@ class Main extends Component {
   constructor(props){
         super(props);
         this.state = {
-            sentRequests:['Krisha',
-                        'Ikbal',
-                        'Vatsal',
-                        'Aakash',
-                      ],
-            recievedRequests:['Avais',
-                        'Rudhresh',
-                        'Swapneel',
-                      ],
-            availableSEMentors:[
-                          'Viral',
-                          'Parth',
-                          'Milind',
-                          'Maithili',
-                          'Pratik',
-                          'Prats',
-
-                        ],
-                        availableTEMentors:[
-                                      'Saumya',
-                                      'Anant',
-                                      'Sarmistha',
-                                      'Aakansha',
-                                      'Shreya',
-                                    ],
+            // sentRequests:['Krisha',
+            //             'Ikbal',
+            //             'Vatsal',
+            //             'Aakash',
+            //           ],
+            // recievedRequests:['Avais',
+            //             'Rudhresh',
+            //             'Swapneel',
+            //           ],
+            sentRequests: sent,
+            recievedRequests: received,
+            availableSEMentors: second,
+            availableTEMentors: third,
             SEMentors: false,
             TEMentors: true,
 
@@ -68,10 +56,10 @@ class Main extends Component {
         this.state.availableSEMentors.map(obj =>
         <div className="mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-shadow--2dp">
           <figure className="mdl-card__media">
-            <img src="profile.png" alt="profile photo" />
+            <img src={obj.photo} alt="profile photo" />
           </figure>
           <div className="mdl-card__title">
-            <h1 className="mdl-card__title-text">{obj}</h1>
+            <h1 className="mdl-card__title-text">{obj.first_name}</h1>
           </div>
           <div className="mdl-card__supporting-text">
             <p>Mentor Skills.</p>
@@ -89,10 +77,10 @@ class Main extends Component {
         this.state.availableTEMentors.map(obj =>
         <div className="mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-shadow--2dp">
           <figure className="mdl-card__media">
-            <img src="profile.png" alt="profile photo" />
+            <img src={obj.photo} alt="profile photo" />
           </figure>
           <div className="mdl-card__title">
-            <h1 className="mdl-card__title-text">{obj}</h1>
+            <h1 className="mdl-card__title-text">{obj.first_name}</h1>
           </div>
           <div className="mdl-card__supporting-text">
             <p>Mentor Skills.</p>
@@ -114,14 +102,14 @@ class Main extends Component {
 			  <span className="mdl-layout-title">Sent Requests</span>
 			  <nav className="mdl-navigation">
 			       {this.state.sentRequests.map(obj =>
-           <a className="mdl-navigation__link" href="">{obj}</a>
+           <a className="mdl-navigation__link" href="">{obj.first_name}</a>
          )}
 
 			    </nav>
 			  <span className="mdl-layout-title">Received Requests</span>
         <nav className="mdl-navigation">
   			       {this.state.recievedRequests.map(obj =>
-             <a className="mdl-navigation__link" href="">{obj}</a>
+             <a className="mdl-navigation__link" href="">{obj.first_name}</a>
            )}
   			</nav>
 			</div>
@@ -132,7 +120,7 @@ class Main extends Component {
 					  <i className="material-icons">search</i>
 					</label>
 					<div className="mdl-textfield__expandable-holder">
-					  <input className="mdl-textfield__input" type="text" id="search" />
+					  <input className="mdl-textfield__input" type="text" id="search" name="skill"/>
 					  <label className="mdl-textfield__label" htmlFor="search">Search</label>
 					</div>
             <div>
