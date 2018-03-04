@@ -1,0 +1,58 @@
+<!-- {% load widget_tweaks %}
+
+<form action="{% url 'users:add_hackathon_team' %}" method="post">
+    {% csrf_token %}
+    {% render_field form.non_field_errors %}
+    {% render_field form.name.errors %}
+    {% render_field form.name.label %}
+    {% render_field form.name %}<br>
+    {% render_field form.hackathon.errors %}
+    {% render_field form.hackathon.label %}
+    {% render_field form.hackathon %}<br>
+    {% render_field form.vacancies.errors %}
+    {% render_field form.vacancies.label %}
+    {% render_field form.vacancies %}<br>
+    {% render_field form.skills_required.errors %}
+    {% render_field form.skills_required.label %}
+    {% render_field form.skills_required %}<br>
+    {% render_field form.cutoff_date.errors %}
+    {% render_field form.cutoff_date.label %}
+    {% render_field form.cutoff_date %}<br>
+    <input type="submit" value="Surrender now!!">
+</form> -->
+{% if error %}
+    <h1>{{ error }}</h1>
+{% endif %}
+<body><form action="{% url 'users:add_hackathon_team' %}" method="post">
+    {% csrf_token %}
+
+
+    Name
+    <input name="name" maxlength="30" required="" id="id_name" type="text"><br>
+
+    Hackathon
+    <select name="hackathon" required="" id="id_hackathon">
+        {% for hackathon in hackathons %}
+
+  <option value="{{ hackathon.id }}">{{ hackathon.name }}</option>
+
+  {% endfor %}
+
+</select><br>
+
+    Vacancies
+    <input name="vacancies" value="0" min="0" required="" id="id_vacancies" type="number"><br>
+
+    Skills required
+    <select name="skills_required" required="" id="id_skills_required" multiple="multiple">
+        {% for skill in skills %}
+  <option value="{{ skill.id }}">{{ skill.skill }}</option>
+        {% endfor %}
+
+</select><br>
+
+    Cutoff date
+    <input name="cutoff_date" id="id_cutoff_date" type="text"><br>
+    <input value="Surrender now!!" type="submit">
+</form>
+</body>

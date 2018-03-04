@@ -13,6 +13,12 @@ import json
 from django.forms import model_to_dict
 from django.core import serializers
 from users.forms import ProjectForm
+from .models import Hackathon, HackathonTeam, HackathonTeamRequest
+from .models import ProjectTeam, ProjectTeamRequest
+from .forms import MentorRequestForm, HackathonTeamForm, HackathonTeamRequestForm
+from .forms import ProjectTeamForm, ProjectTeamRequestForm
+import django_filters
+from itertools import chain
 
 
 def process_user(u):
@@ -119,12 +125,11 @@ def mentor(request):
     requests_received = user.requests_received.filter(receiver__sap_id=sap_id, accepted=False, rejected=False)
     current_mentors = user.mentee.filter(mentee__sap_id=sap_id)
     current_mentees = user.mentor.filter(mentor__sap_id=sap_id)
-    interests = Interest.objects.filter(user__sap_id=sap_id)
-    projects = Project.objects.filter(creator__sap_id=sap_id)
+    pending_requests = request.user.requests_sent.filter(accepted=False, rejected=False).count()
     context = {'user': user, 'requests_sent': requests_sent, 'requests_received': requests_received,
-               'current_mentors': current_mentors, 'current_mentees': current_mentees, 'interests': interests,
-               'projects': projects}
-    return render(request, 'users/mentor.html', context)
+               'current_mentors': current_mentors, 'current_mentees': current_mentees,
+               'pending_requests': pending_requests}
+    return render(request, 'users/profile.html', context)
 
 
 @login_required(login_url='users:login')
@@ -190,6 +195,18 @@ def update_profile(request):
             request.user.skill_3 = Skill.objects.get(skill=request.POST.get('skill3'))
         except Skill.DoesNotExist:
             request.user.skill_3 = None
+        # Adding interests, currently 3
+        for i in range(3):
+            try:
+                s = 'interest_' + str(i + 1)
+                interest = Skill.objects.get(skill=request.POST.get(s))
+                interest = Interest.objects.create(interest=interest, user=request.user)
+            except Skill.DoesNotExist:
+                interest = None
+        request.user.twitter_url = request.POST.get('twitter')
+        request.user.linkedin_url = request.POST.get('linkedin')
+        request.user.github_url = request.POST.get('github')
+        request.user.behance_url = request.POST.get('behance')
         request.user.save()
         return redirect('users:view_profile', sap_id=sap_id)
 
@@ -242,7 +259,7 @@ def reject_request(request, pk):
 
 @login_required(login_url='users:login')
 def cancel_request(request, pk):
-    if request.method == 'POST':
+    if request.method == 'POST':  # Improve security here by checking if the sender is the one logged in OR POST
         mentor_request = get_object_or_404(MentorRequest, id=pk)
         mentor_request.delete()
         return redirect('users:view_profile', sap_id=request.user.sap_id)
@@ -419,4 +436,3 @@ def search(request):
 # def search(request):
 #     f = UserFilter(request.GET, queryset=CustomUser.objects.all())
 #     return render(request, 'users/search.html', {'filter': f})
-#

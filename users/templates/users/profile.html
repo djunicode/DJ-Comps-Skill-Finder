@@ -24,6 +24,88 @@
 {% endif %}
 
 {% if request.user.id == user.id %}
+    <h1>Hackathon Teams as a leader</h1>
+    {% for team in user.leader_teams.all %}
+        <h2>{{ team.name }}</h2>
+        <h4>{{ team.hackathon.name }}</h4>
+        {% for r in team.hack_requests_received.all %}
+            {% if r.accepted is False %}
+                {% if r.rejected is False %}
+                    <p>{{ r.sender.username }}</p>
+                    <form action="{% url 'users:accept_hack_request' r.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Accept Request">
+                    </form>
+                    <form action="{% url 'users:reject_hack_request' r.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Reject Request">
+                    </form>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    <h1>Hackathon Teams as a member</h1>
+    {% for team in user.member_teams.all %}
+        <h2>{{ team.name }}</h2>
+        <h4>{{ team.hackathon.name }}</h4>
+    {% endfor %}
+
+    <h1>Pending Requests sent for Hackathons</h1>
+    {% for r in user.hack_requests_sent.all %}
+        {% if r.accepted is False %}
+            {% if r.rejected is False %}
+                <h2>{{ r.team.name }}</h2>
+                <h4>{{ r.team.hackathon.name }}</h4>
+                <form action="{% url 'users:cancel_hack_request' r.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Cancel Request">
+                </form>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+    <h1>Project Teams as a leader</h1>
+    {% for team in user.project_leader_teams.all %}
+        <h2>{{ team.name }}</h2>
+        <h4>{{ team.project.name }}</h4>
+        {% for r in team.project_requests_received.all %}
+            {% if r.accepted is False %}
+                {% if r.rejected is False %}
+                    <p>{{ r.sender.username }}</p>
+                    <form action="{% url 'users:accept_project_request' r.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Accept Request">
+                    </form>
+                    <form action="{% url 'users:reject_project_request' r.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Reject Request">
+                    </form>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    <h1>Project Teams as a member</h1>
+    {% for team in user.project_member_teams.all %}
+        <h2>{{ team.name }}</h2>
+        <h4>{{ team.project.name }}</h4>
+    {% endfor %}
+
+    <h1>Pending Requests sent for Projects</h1>
+    {% for r in user.project_requests_sent.all %}
+        {% if r.accepted is False %}
+            {% if r.rejected is False %}
+                <h2>{{ r.team.name }}</h2>
+                <h4>{{ r.team.project.name }}</h4>
+                <form action="{% url 'users:cancel_hack_request' r.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Cancel Request">
+                </form>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
   <h1>Requests sent</h1>
   {% for r in requests_sent %}
     <p>{{ r.receiver.username }}</p>

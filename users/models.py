@@ -56,12 +56,152 @@ class Interest(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=50)
     skills_used = models.ManyToManyField(Skill)
-    creator = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='creator')
+    creator = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     description = models.CharField(max_length=200, null=True, blank=True)
     link = models.URLField(null=False, blank=False)
 
-    def get_absolute_url(self):
-        return reverse('users:view_profile', kwargs={'pk': self.pk})
+    def __str__(self):
+        return self.name
+
+
+# I need help here. Should the guy who created the project be the only one to create a project team?
+class ProjectTeam(models.Model):
+    name = models.CharField(max_length=30)
+    leader = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='project_leader_teams')
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='project_teams')
+    current_members = models.ManyToManyField(CustomUser, related_name='member_project_teams')
+    skills_required = models.ManyToManyField(Skill, related_name='project_requirements')
+    closed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.project.name) + ": " + self.name + ": " + str(self.leader.username)
+
+    @classmethod
+    def create(cls, name, leader, project, current_members=None, skills_required=None):
+        team, created = cls.objects.get_or_create(name=name,
+                                                  leader=leader,
+                                                  project=project)
+        if created:
+            team.skills_required.add(skills_required)
+        team.save()
+
+    def add_member(self, member):
+            self.current_members.add(member)
+            self.save()
+
+
+class ProjectTeamRequest(models.Model):
+    sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='project_requests_sent')
+    team = models.ForeignKey(ProjectTeam, on_delete=models.CASCADE, related_name='project_requests_received')
+    skills = models.ManyToManyField(Skill, related_name='project_team_requests')
+    created_on = models.DateTimeField(default=datetime.now)
+    message = models.TextField(blank=True, null=True)
+    accepted = models.BooleanField(default=False)
+    rejected = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.sender.username + ' --> ' + self.team.name
+
+    @classmethod
+    def create(cls, sender, team, skills=None, message=''):
+        request, created = cls.objects.get_or_create(sender=sender, team=team, message=message)
+        if created:
+            request.skills.add(skills)
+        request.save()
+
+    def accept(self):
+        self.accepted = True
+        self.save()
+
+    def reject(self):
+        self.rejected = False
+        self.save()
+
+
+class Hackathon(models.Model):
+    name = models.CharField(max_length=100)
+    url = models.URLField(null=True, blank=True)
+    description = models.CharField(max_length=200, null=True, blank=True)
+    date = models.DateField(blank=True, null=True)  # Keeping it null and blank just to simplify creation of Hackathons
+    created_on = models.DateTimeField(default=datetime.now)
+    creator = models.ForeignKey(CustomUser, null=True, blank=True, on_delete=models.SET_NULL, related_name='hackathons')
+
+    def __str__(self):
+        return self.name
+
+    @classmethod
+    def create(cls, creator, name, date=None, url=None, description=''):
+        hackathon, created = cls.objects.get_or_create(name=name,
+                                                       date=date,
+                                                       url=url,
+                                                       description=description,
+                                                       creator=creator)
+        if created:
+            hackathon.save()
+
+    def add_member(self, member):
+        self.current_members.add(member)
+        self.save()
+
+
+class HackathonTeam(models.Model):
+    name = models.CharField(max_length=30)
+    leader = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='leader_teams')
+    hackathon = models.ForeignKey(Hackathon, on_delete=models.CASCADE, related_name='hack_teams')
+    vacancies = models.PositiveIntegerField(default=0)
+    current_members = models.ManyToManyField(CustomUser, related_name='member_teams')
+    skills_required = models.ManyToManyField(Skill, related_name='hack_requirements')
+    cutoff_date = models.DateTimeField(null=True, blank=True)  # Someone may not wish to have a cut-off date
+    closed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.hackathon.name + ": " + self.name
+
+    @classmethod
+    def create(cls, name, leader, hackathon, current_members=None, skills_required=None, cutoff_date=None, vacancies=0):
+        team, created = cls.objects.get_or_create(name=name,
+                                                  leader=leader,
+                                                  hackathon=hackathon,
+                                                  vacancies=vacancies,
+                                                  cutoff_date=cutoff_date)
+        if created:
+            team.skills_required.add(skills_required)
+        team.save()
+
+    def add_member(self, member):
+            self.current_members.add(member)
+            self.vacancies -= 1
+            if self.vacancies == 0:
+                self.closed = True
+            self.save()
+
+
+class HackathonTeamRequest(models.Model):
+    sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='hack_requests_sent')
+    team = models.ForeignKey(HackathonTeam, on_delete=models.CASCADE, related_name='hack_requests_received')
+    skills = models.ManyToManyField(Skill, related_name='hack_team_requests')
+    created_on = models.DateTimeField(default=datetime.now)
+    message = models.TextField(blank=True, null=True)
+    accepted = models.BooleanField(default=False)
+    rejected = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.sender.username + ' --> ' + self.team.name
+
+    @classmethod
+    def create(cls, sender, team, skills=None, message=''):
+        request, created = cls.objects.get_or_create(sender=sender, team=team, message=message)
+        if created:
+            request.skills.add(skills)
+        request.save()
+
+    def accept(self):
+        self.accepted = True
+        self.save()
+
+    def reject(self):
+        self.rejected = False
+        self.save()
 
 
 class MentorRequest(models.Model):
