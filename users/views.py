@@ -15,6 +15,15 @@ from django.core import serializers
 from users.forms import ProjectForm
 
 
+def process_user(u):
+    current_user = model_to_dict(u)
+    current_user['password'] = ''
+    if current_user['photo']:
+        current_user['photo'] = current_user['photo'].url
+    # current_user = json.dumps(current_user, indent=4, default=str)
+    return current_user
+
+
 @ensure_csrf_cookie
 def login(request):
     if request.user.is_authenticated:
@@ -78,17 +87,27 @@ def logout(request):
 
 @login_required(login_url='users:login')
 def view_profile(request, sap_id):
+    context = {}
     user = get_object_or_404(CustomUser, sap_id=sap_id)
-    requests_sent = user.requests_sent.filter(sender__sap_id=sap_id, accepted=False, rejected=False)
-    requests_received = user.requests_received.filter(receiver__sap_id=sap_id, accepted=False, rejected=False)
-    current_mentors = user.mentee.filter(mentee__sap_id=sap_id)
-    current_mentees = user.mentor.filter(mentor__sap_id=sap_id)
+    context['user'] = json.dumps(process_user(user), indent=4, default=str)
+    # requests_sent = user.requests_sent.filter(sender__sap_id=sap_id, accepted=False, rejected=False)
+    # requests_received = user.requests_received.filter(receiver__sap_id=sap_id, accepted=False, rejected=False)
+    # current_mentors = user.mentee.filter(mentee__sap_id=sap_id)
+    # current_mentees = user.mentor.filter(mentor__sap_id=sap_id)
+    context['skill1'] = user.skill_1.skill
+    context['skill2'] = user.skill_2.skill
+    context['skill3'] = user.skill_3.skill
     interests = Interest.objects.filter(user__sap_id=sap_id)
+    interests = [i.interest.skill for i in interests]
+    context['interests'] = json.dumps(interests, indent=4, default=str)
     projects = Project.objects.filter(creator__sap_id=sap_id)
-    context = {'user': user, 'requests_sent': requests_sent, 'requests_received': requests_received,
-               'current_mentors': current_mentors, 'current_mentees': current_mentees, 'interests': interests,
-               'projects': projects}
-    return render(request, 'users/profile.html', context)
+    projects = [json.dumps(p, indent=4, default=str) for p in projects]
+    context['projects'] = projects
+    # context = {'user': user, 'requests_sent': requests_sent, 'requests_received': requests_received,
+    #            'current_mentors': current_mentors, 'current_mentees': current_mentees, 'interests': interests,
+    #            'projects': projects}
+    print(context)
+    return render(request, 'users/profile.html', {'prop': context})
 
 
 @login_required(login_url='users:login')
@@ -298,15 +317,6 @@ def f7(seq):
     seen = set()
     seen_add = seen.add
     return [x for x in seq if not(x in seen or seen_add(x))]
-
-
-def process_user(u):
-    current_user = model_to_dict(u)
-    current_user['password'] = ''
-    if current_user['photo']:
-        current_user['photo'] = current_user['photo'].url
-    # current_user = json.dumps(current_user, indent=4, default=str)
-    return current_user
 
 
 @login_required(login_url='users:login')

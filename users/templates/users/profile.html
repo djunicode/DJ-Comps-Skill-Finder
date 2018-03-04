@@ -133,6 +133,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+<script type="text/javascript">
+    //var props = unescape({{prop|safe}})
+    var props = {{ prop|safe }}
+    var user = JSON.parse(props.user)
+    // var skill1 = JSON.parse(props.skill1)
+    // var skill2 = JSON.parse(props.skill2)
+    // var skill3 = JSON.parse(props.skill3)
+    var interests = JSON.parse(props.interests)
+    // var projects = JSON.parse(props.projects)
+    console.log(props)
+</script>
+
 <div id="react-app"></div>
     {% render_bundle 'Display' %}
 {% if error %}

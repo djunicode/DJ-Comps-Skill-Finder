@@ -6,12 +6,12 @@ class Main extends Component {
     constructor(props){
         super(props);
         this.state = {
-            skill1:'Skill1',
-            skill2:'Skill2',
-            skill3:'Skill3',
-            interest1: 'Interest1',
-            interest2: 'Interest2',           
-            interest3:'Interest3'
+            skill1: props.skill1,
+            skill2: props.skill2,
+            skill3: props.skill3,
+            interest1: interests[0],
+            interest2: interests[1],
+            interest3: interests[2],
         };
     }
     componentDidMount(){
@@ -36,17 +36,19 @@ class Main extends Component {
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col skills-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{this.state.skill1}</span>
+              <span className="mdl-chip__text">{props.skill1}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col skills-chips ">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{this.state.skill2}</span>
+            // I have no idea why this.state is not working. Someone else can figure it out
+              // <span className="mdl-chip__text">{this.state.skill2}</span>
+              <span className="mdl-chip__text">{props.skill2}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col skills-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{this.state.skill3}</span>
+              <span className="mdl-chip__text">{props.skill3}</span>
             </span>
           </div>
        </div>
@@ -58,17 +60,17 @@ class Main extends Component {
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col interests-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{this.state.interest1}</span>
+              <span className="mdl-chip__text">{interests[0]}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col interests-chips ">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{this.state.interest2}</span>
+              <span className="mdl-chip__text">{interests[1]}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col interests-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{this.state.interest3}</span>
+              <span className="mdl-chip__text">{interests[2]}</span>
             </span>
           </div>
        </div>

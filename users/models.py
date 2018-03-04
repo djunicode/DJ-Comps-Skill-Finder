@@ -50,7 +50,7 @@ class Interest(models.Model):
     is_now_skill = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.interest.skill
+        return self.user.username + ": " + self.interest.skill
 
 
 class Project(models.Model):
