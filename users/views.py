@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
@@ -6,11 +7,13 @@ from django.urls import reverse
 from .models import CustomUser, Skill, MentorRequest, Relationship, Project, Interest
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, UpdateView, DeleteView
 from itertools import chain
 import json
 from django.forms import model_to_dict
 from django.core import serializers
+from users.forms import ProjectForm
+
 
 @ensure_csrf_cookie
 def login(request):
@@ -266,18 +269,17 @@ def create_project(request):
     return render(request, 'users/project_form.html', context)
 
 
+class UpdateProject(LoginRequiredMixin, UpdateView):
+    template_name = 'users/project_form.html'
+    form_class = ProjectForm
+    model = Project
 
-# class UpdateProject(LoginRequiredMixin, UpdateView):
-#     template_name = 'users/project_form.html'
-#     form_class = ProjectForm
-#     model = Project
-
-#     def form_valid(self, form):
-#         self.object = form.save(commit=False)
-#         self.object.creator = self.request.user
-#         self.object.save()
-#         form.save_m2m()
-#         return redirect('users:view_profile', sap_id=self.request.user.sap_id)
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.creator = self.request.user
+        self.object.save()
+        form.save_m2m()
+        return redirect('users:view_profile', sap_id=self.request.user.sap_id)
 
 
 # @login_required
@@ -294,11 +296,11 @@ def create_project(request):
 #         return render(request, 'users/project_form.html', {'form': form, 'error': error})
 
 
-# @login_required
-# def delete_project(request, pk):
-#     project = get_object_or_404(Project, pk=pk)
-#     project.delete()
-#     return redirect('users:view_profile', sap_id=request.user.sap_id)
+@login_required
+def delete_project(request, pk):
+    project = get_object_or_404(Project, pk=pk)
+    project.delete()
+    return redirect('users:view_profile', sap_id=request.user.sap_id)
 
 
 def f7(seq):
@@ -338,6 +340,7 @@ def search(request):
 # class ProjectDelete(LoginRequiredMixin, DeleteView):
 #     model = Project
 #     success_url = reverse_lazy('users:view_profile')
+#
 # class ProjectDelete(LoginRequiredMixin, DeleteView):
 #     model = Project
 #     success_url = reverse(view_profile, args=[])
