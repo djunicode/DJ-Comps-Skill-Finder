@@ -17,7 +17,6 @@ from .models import Hackathon, HackathonTeam, HackathonTeamRequest
 from .models import ProjectTeam, ProjectTeamRequest
 from .forms import MentorRequestForm, HackathonTeamForm, HackathonTeamRequestForm
 from .forms import ProjectTeamForm, ProjectTeamRequestForm
-import django_filters
 
 
 def process_user(u):
@@ -122,6 +121,11 @@ def view_profile(request, sap_id):
     #            'projects': projects}
     print(context)
     return render(request, 'users/profile.html', {'prop': context})
+
+
+@login_required(login_url='users:login')
+def view_teams_landing(request):
+    return render(request, 'users/teams_landing.html', {})
 
 
 @login_required(login_url='users:login')
