@@ -71,6 +71,7 @@ class ProjectTeam(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='project_teams')
     current_members = models.ManyToManyField(CustomUser, related_name='member_project_teams')
     skills_required = models.ManyToManyField(Skill, related_name='project_requirements')
+    vacancies = models.PositiveIntegerField(default=0)
     closed = models.BooleanField(default=False)
 
     def __str__(self):
@@ -170,9 +171,6 @@ class HackathonTeam(models.Model):
 
     def add_member(self, member):
             self.current_members.add(member)
-            self.vacancies -= 1
-            if self.vacancies == 0:
-                self.closed = True
             self.save()
 
 

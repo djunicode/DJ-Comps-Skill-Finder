@@ -487,6 +487,15 @@ def accept_hack_request(request, pk):
     if request.method == 'POST':
         hack_request = get_object_or_404(HackathonTeamRequest, id=pk)
         hack_request.accepted = True
+        hack_request.team.vacancies -= 1
+        hack_request.team.save()
+        hack_request.save()
+        if hack_request.team.vacancies <= 0:
+            hack_request.team.closed = True
+            hack_request.team.save()
+            for r in hack_request.team.hack_requests_received.filter(accepted=False, rejected=False):
+                r.rejected = True
+                r.save()
         hack_request.team.add_member(hack_request.sender)
         hack_request.save()
         return redirect('users:view_hackathon_team', pk=hack_request.team.id)
@@ -577,6 +586,15 @@ def accept_project_request(request, pk):
     if request.method == 'POST':
         project_request = get_object_or_404(ProjectTeamRequest, id=pk)
         project_request.accepted = True
+        project_request.team.vacancies -= 1
+        project_request.team.save()
+        project_request.save()
+        if project_request.team.vacancies <= 0:
+            project_request.team.closed = True
+            project_request.team.save()
+            for r in project_request.team.project_requests_received.filter(accepted=False, rejected=False):
+                r.rejected = True
+                r.save()
         project_request.team.add_member(project_request.sender)
         project_request.save()
         return redirect('users:view_project_team', pk=project_request.team.id)
