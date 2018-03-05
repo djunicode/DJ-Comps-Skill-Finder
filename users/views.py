@@ -394,6 +394,201 @@ def search(request):
     # return render(request, 'users/search.html', {'qs': qs, 'skills': Skill.objects.all(), 's': int(skill)})
 
 
+# @login_required(login_url='users:login')
+# def add_hackathon(request):
+#     if request.method == 'GET':
+#         return render(request, 'users/create_hackathon.html', {})
+#     name = request.POST.get('name')
+#     url = request.POST.get('url')
+#     date = request.POST.get('date')
+#     if Hackathon.objects.filter(name__iexact=name, date=date).exists():
+#         return render(request, 'users/create_hackathon.html', {'error': 'This Hackathon already exists.'})
+#     elif Hackathon.objects.filter(url=url, date=date).exists():
+#         return render(request, 'users/create_hackathon.html', {'error': 'This Hackathon already exists.'})
+#     description = request.POST.get('description', '')
+#     hackathon = Hackathon.create(request.user, name, date, url, description)
+#     hackathon.save()
+#     return redirect('users:view_hackathon', pk=hackathon.id)
+#
+#
+# def view_hackathon(request, pk):
+#     hackathon = get_object_or_404(Hackathon, id=pk)
+#     return render(request, 'users/view_hackathon.html', {'hackathon': hackathon})
+
+# if HackathonTeam.objects.filter(name__iexact=name, hackathon=hackathon).exists():
+@login_required(login_url='users:login')
+def add_hackathon_team(request):
+    if request.method == 'POST':
+        form = HackathonTeamForm(request.POST)
+        if form.is_valid():
+            team = form.save(commit=False)
+            team.leader = request.user
+            team.save()
+            form.save_m2m()
+            return redirect('users:view_hackathon_team', pk=team.id)
+        else:
+            return render(request, 'users/add_hackathon_team.html', {'form': form,
+                                                                     'hackathons': Hackathon.objects.all(),
+                                                                     'skills': Skill.objects.all(),
+                                                                     'error': 'A team with the same name exists.'})
+    else:
+        form = HackathonTeamForm()
+    return render(request, 'users/add_hackathon_team.html', {'form': form, 'hackathons': Hackathon.objects.all(),
+                                                             'skills': Skill.objects.all()})
+
+
+@login_required(login_url='users:login')
+def view_hackathon_team(request, pk):
+    team = get_object_or_404(HackathonTeam, id=pk)
+    return render(request, 'users/view_hackathon_team.html', {'team': team})
+
+
+@login_required(login_url='users:login')
+def send_hackteam_request(request, pk):
+    try:
+        team = HackathonTeam.objects.get(id=pk)
+    except HackathonTeam.DoesNotExist:  # redirecting to login as a placeholder
+        return redirect('users:login')
+    if request.user in team.current_members.all() or request.user == team.leader:
+        return redirect('users:login')
+    # Checking if a pending request exists
+    if HackathonTeamRequest.objects.filter(team=team, sender=request.user, accepted=False, rejected=False).exists():
+        return redirect('users:login')
+    if request.method == 'POST':
+        form = HackathonTeamRequestForm(team, request.POST)  # This is a bit of a hack
+        if form.is_valid():
+            hack_request = form.save(commit=False)
+            hack_request.sender = request.user
+            hack_request.team = team
+            hack_request.save()
+            form.save_m2m()
+            return redirect('users:view_hackathon_team', pk=pk)
+    else:
+        form = HackathonTeamRequestForm(team=team)
+    return render(request, 'users/send_hackathon_team_request.html', {'form': form, 'team': team,
+                                                                      'skills': team.skills_required.all()})
+
+
+@login_required(login_url='users:login')
+def accept_hack_request(request, pk):
+    if request.method == 'POST':
+        hack_request = get_object_or_404(HackathonTeamRequest, id=pk)
+        hack_request.accepted = True
+        hack_request.team.add_member(hack_request.sender)
+        hack_request.save()
+        return redirect('users:view_hackathon_team', pk=hack_request.team.id)
+    return redirect('users:login')
+
+
+@login_required(login_url='users:login')
+def reject_hack_request(request, pk):
+    if request.method == 'POST':
+        hack_request = get_object_or_404(HackathonTeamRequest, id=pk)
+        hack_request.rejected = True
+        hack_request.save()
+        return redirect('users:view_profile', sap_id=request.user.sap_id)
+    return redirect('users:login')
+
+
+@login_required(login_url='users:login')
+def cancel_hack_request(request, pk):
+    if request.method == 'POST':
+        hack_request = get_object_or_404(HackathonTeamRequest, id=pk)
+        hack_request.delete()
+        return redirect('users:view_profile', sap_id=request.user.sap_id)
+    return redirect('users:login')
+
+
+@login_required(login_url='users:login')
+def add_project_team(request, pk):
+    try:
+        project = Project.objects.get(id=pk)
+    except Project.DoesNotExist:
+        return redirect('users:login')
+    if ProjectTeam.objects.filter(project=project):
+        return redirect('users:login')
+    if request.user != project.creator:
+        return redirect('users:login')
+    if request.method == 'POST':
+        form = ProjectTeamForm(request.POST)
+        print(form['skills_required'])
+        if form.is_valid():
+            team = form.save(commit=False)
+            team.leader = request.user
+            team.project = project
+            team.save()
+            form.save_m2m()
+            return redirect('users:view_project_team', pk=team.id)
+        else:
+            return render(request, 'users/add_project_team.html', {'form': form, 'project': project})
+    else:
+        form = ProjectTeamForm()
+    return render(request, 'users/add_project_team.html', {'form': form, 'project': project,
+                                                           'skills': Skill.objects.all()})
+
+
+@login_required(login_url='users:login')
+def view_project_team(request, pk):
+    team = get_object_or_404(ProjectTeam, id=pk)
+    return render(request, 'users/view_project_team.html', {'team': team})
+
+
+@login_required(login_url='users:login')
+def send_project_team_request(request, pk):
+    try:
+        team = ProjectTeam.objects.get(id=pk)
+    except ProjectTeam.DoesNotExist:  # redirecting to login as a placeholder
+        return redirect('users:login')
+    if request.user in team.current_members.all() or request.user == team.leader:
+        return redirect('users:login')
+    # Checking if a pending request exists
+    if ProjectTeamRequest.objects.filter(team=team, sender=request.user, accepted=False, rejected=False).exists():
+        return redirect('users:login')
+    if request.method == 'POST':
+        form = ProjectTeamRequestForm(team, request.POST)  # This is a bit of a hack
+        if form.is_valid():
+            project_request = form.save(commit=False)
+            project_request.sender = request.user
+            project_request.team = team
+            project_request.save()
+            form.save_m2m()
+            return redirect('users:view_project_team', pk=pk)
+    else:
+        form = ProjectTeamRequestForm(team=team)
+    return render(request, 'users/send_project_team_request.html', {'form': form, 'team': team,
+                                                                    'skills': team.skills_required.all})
+
+
+@login_required(login_url='users:login')
+def accept_project_request(request, pk):
+    if request.method == 'POST':
+        project_request = get_object_or_404(ProjectTeamRequest, id=pk)
+        project_request.accepted = True
+        project_request.team.add_member(project_request.sender)
+        project_request.save()
+        return redirect('users:view_project_team', pk=project_request.team.id)
+    return redirect('users:login')
+
+
+@login_required(login_url='users:login')
+def reject_project_request(request, pk):
+    if request.method == 'POST':
+        project_request = get_object_or_404(ProjectTeamRequest, id=pk)
+        project_request.rejected = True
+        project_request.save()
+        return redirect('users:view_profile', sap_id=request.user.sap_id)
+    return redirect('users:login')
+
+
+@login_required(login_url='users:login')
+def cancel_project_request(request, pk):
+    if request.method == 'POST':
+        project_request = get_object_or_404(ProjectTeamRequest, id=pk)
+        project_request.delete()
+        return redirect('users:view_profile', sap_id=request.user.sap_id)
+    return redirect('users:login')
+
+
 # @login_required
 # class ProjectUpdate(LoginRequiredMixin, UpdateView):
 #     model = Project
