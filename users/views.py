@@ -18,7 +18,6 @@ from .models import ProjectTeam, ProjectTeamRequest
 from .forms import MentorRequestForm, HackathonTeamForm, HackathonTeamRequestForm
 from .forms import ProjectTeamForm, ProjectTeamRequestForm
 import django_filters
-from itertools import chain
 
 
 def process_user(u):
