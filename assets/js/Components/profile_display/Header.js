@@ -44,7 +44,7 @@ class Header extends Component {
         </div>
 
         <br/><br/><br/><br/>
-        <img src="/static/profile_updation/profile.png" className="img-circle" alt="User Profile"/>
+        <img src={user.photo} className="img-circle" alt="User Profile"/>
         <div className="description">
           <h1>{user.first_name}<a href="#" className="mdl-badge" data-badge={user.year}></a></h1>
           <h5>{user.bio}</h5>
