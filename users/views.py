@@ -447,6 +447,7 @@ def add_hackathon_team(request):
             form.save_m2m()
             return redirect('users:view_hackathon_team', pk=team.id)
         else:
+            # [TODO] Convert the hackathon queryset to a smaller one according to date
             return render(request, 'users/add_hackathon_team.html', {'form': form,
                                                                      'hackathons': Hackathon.objects.all(),
                                                                      'skills': Skill.objects.all(),

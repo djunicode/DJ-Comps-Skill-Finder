@@ -154,6 +154,7 @@ class HackathonTeam(models.Model):
     skills_required = models.ManyToManyField(Skill, related_name='hack_requirements')
     cutoff_date = models.DateTimeField(null=True, blank=True)  # Someone may not wish to have a cut-off date
     closed = models.BooleanField(default=False)
+    description = models.TextField(max_length=300, blank=True, null=True)
 
     def __str__(self):
         return self.hackathon.name + ": " + self.name

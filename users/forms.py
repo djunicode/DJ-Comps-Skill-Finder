@@ -24,7 +24,7 @@ class ProjectForm(forms.ModelForm):
 class HackathonTeamForm(forms.ModelForm):
     class Meta:
         model = HackathonTeam
-        exclude = ['leader', 'current_members', 'closed']
+        exclude = ['leader', 'current_members', 'closed', 'cutoff_date']
 
     def clean(self):
         cleaned_data = super(HackathonTeamForm, self).clean()
