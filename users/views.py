@@ -123,6 +123,13 @@ def view_profile(request, sap_id):
     return render(request, 'users/profile.html', {'prop': context})
 
 
+# Test profile view
+# @login_required(login_url='users:login')
+# def view_profile(request, sap_id):
+#     user = get_object_or_404(CustomUser, sap_id=sap_id)
+#     return render(request, 'users/test.html', {'user': user, 'projects': Project.objects.filter(creator=user)})
+
+
 @login_required(login_url='users:login')
 def view_teams_landing(request):
     return render(request, 'users/teams_landing.html', {})
@@ -522,30 +529,33 @@ def cancel_hack_request(request, pk):
 
 
 @login_required(login_url='users:login')
-def add_project_team(request, pk):
-    try:
-        project = Project.objects.get(id=pk)
-    except Project.DoesNotExist:
-        return redirect('users:login')
-    if ProjectTeam.objects.filter(project=project):
-        return redirect('users:login')
-    if request.user != project.creator:
-        return redirect('users:login')
+def add_project_team(request):
+    projects = Project.objects.filter(creator=request.user)
+    result = []
+    for project in projects:
+        if not ProjectTeam.objects.filter(project=project).exists():
+            result.append(project)
+    projects = result
     if request.method == 'POST':
+        project = Project.objects.get(id=request.POST.get('project'))
+        if ProjectTeam.objects.filter(project=project).exists():
+            return redirect('users:login')
+        # if request.user != project.creator:
+        #     return redirect('users:login')
         form = ProjectTeamForm(request.POST)
         print(form['skills_required'])
         if form.is_valid():
             team = form.save(commit=False)
             team.leader = request.user
-            team.project = project
+            # team.project = project
             team.save()
             form.save_m2m()
             return redirect('users:view_project_team', pk=team.id)
         else:
-            return render(request, 'users/add_project_team.html', {'form': form, 'project': project})
+            return render(request, 'users/add_project_team.html', {'form': form, 'projects': projects})
     else:
         form = ProjectTeamForm()
-    return render(request, 'users/add_project_team.html', {'form': form, 'project': project,
+    return render(request, 'users/add_project_team.html', {'form': form, 'projects': projects,
                                                            'skills': Skill.objects.all()})
 
 

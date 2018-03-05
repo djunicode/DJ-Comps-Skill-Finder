@@ -50,7 +50,7 @@ class HackathonTeamRequestForm(forms.ModelForm):
 class ProjectTeamForm(forms.ModelForm):
     class Meta:
         model = ProjectTeam
-        exclude = ['leader', 'current_members', 'closed', 'project']
+        exclude = ['leader', 'current_members', 'closed']
 
     def clean(self):
         cleaned_data = super(ProjectTeamForm, self).clean()
