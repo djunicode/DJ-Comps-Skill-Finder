@@ -5,18 +5,18 @@ class Main extends Component {
   constructor(props){
         super(props);
         this.state = {
-            linkedIn: '',
-            behance:'',
-            github:'',
+            linkedIn: user.linkedin_url || '' ,
+            behance: user.behance_url || '',
+            github: user.github_url || '',
             interest1: '',
             interest2: '',
             interest3:'',
-            skill1:'',
-            skill2:'',
-            skill3:'',
-            sap_id: '',
-            year:'',
-            user:'',
+            skill1: skills[user.skill_1] || '',
+            skill2: skills[user.skill_2] || '',
+            skill3: skills[user.skill_3] || '',
+            sapID: parseInt(user.sap_id)|| '',
+            year: user.year || '',
+            user: '',
         };
 
         this.handleSAP= this.handleSAP.bind(this);
@@ -35,7 +35,7 @@ class Main extends Component {
     }
 
     handleSAP(event) {
-        this.setState({sap_id: event.target.value});
+        this.setState({sapID: event.target.value});
     }
     handleSkill1(event) {
         this.setState({skill1: event.target.value});
@@ -89,7 +89,7 @@ class Main extends Component {
             <option className="mdl-menu__item" data-val="SE" value="SE">SE</option>
             <option className="mdl-menu__item" data-val="TE" value="TE">TE</option>
             <option className="mdl-menu__item" data-val="BE" value="BE">BE</option>
-            <option className="mdl-menu__item" data-val="Alumni" value="Alumni">Alumni</option>
+            <option className="mdl-menu__item" data-val="AL" value="AL">Alumni</option>
         </ul>
     </div>
 
@@ -97,7 +97,7 @@ class Main extends Component {
 
 			        <span className="mdl-selectfield mdl-js-selectfield">
 			        	<label className="mdl-selectfield__label" htmlFor="sap-id">SAP ID</label>&nbsp;&nbsp;&nbsp;
-						<input className="mdl-selectfield__select" name="sap_id" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sap-id" value={this.state.sap_id} onChange={this.handleSAP}/>
+						<input className="mdl-selectfield__select" name="sap_id" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sap-id" value={this.state.sapID} onChange={this.handleSAP}/>
 						<span className="mdl-textfield__error">Input is not a number!</span>
 					</span>
 
@@ -114,9 +114,11 @@ class Main extends Component {
               <input type="hidden" value={this.state.skill1} name="skill1" />
               <label htmlFor="skill1" className="mdl-textfield__label"></label>
               <ul htmlFor="skill1" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill1} >
-                <option className="mdl-menu__item" data-val="HTML" value="HTML">HTML</option>
-                <option className="mdl-menu__item" data-val="CSS" value="CSS">CSS</option>
-                <option className="mdl-menu__item" data-val="JAVASCRIPT" value="JAVASCRIPT">JAVASCRIPT</option>
+                {Object.values(skills).map(skill => (
+                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
+              ))}
+              {/* Todo solve warning*/}
+
               </ul>
           </div>
         <br/><br/><br/>
@@ -126,9 +128,10 @@ class Main extends Component {
               <input type="hidden" value={this.state.skill2} name="skill2" / >
               <label htmlFor="skill2" className="mdl-textfield__label"></label>
               <ul htmlFor="skill2" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill2}>
-                <option className="mdl-menu__item" data-val="HTML" value="HTML">HTML</option>
-                <option className="mdl-menu__item" data-val="CSS" value="CSS">CSS</option>
-                <option className="mdl-menu__item" data-val="JAVASCRIPT" value="JAVASCRIPT">JAVASCRIPT</option>
+                {Object.values(skills).map(skill => (
+                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
+                ))}
+              {/* Todo solve warning*/}
               </ul>
           </div>
           <br/><br/><br/>
@@ -138,9 +141,10 @@ class Main extends Component {
               <input type="hidden" value={this.state.skill3} name="skill3" / >
               <label htmlFor="skill3" className="mdl-textfield__label"></label>
               <ul htmlFor="skill3" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill3} >
-                <option className="mdl-menu__item" data-val="HTML" value="HTML">HTML</option>
-                <option className="mdl-menu__item" data-val="CSS" value="CSS">CSS</option>
-                <option className="mdl-menu__item" data-val="JAVASCRIPT" value="JAVASCRIPT">JAVASCRIPT</option>
+                {Object.values(skills).map(skill => (
+                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
+                ))}
+              {/* Todo solve warning*/}
               </ul>
           </div>
 			    </center>

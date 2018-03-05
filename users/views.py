@@ -555,9 +555,23 @@ def add_project_team(request):
         else:
             return render(request, 'users/add_project_team.html', {'form': form, 'projects': projects})
     else:
+        context = {}
         form = ProjectTeamForm()
+        user = get_object_or_404(CustomUser, sap_id=sap_id)
+        context['user'] = json.dumps(process_user(user), indent=4, default=str)
+        context['projects'] = json.dumps(projects, indent=4, default=str)
+        skills = Skill.objects.all()
+        result = []
+        r = {}
+        for skill in skills:
+            r['id'] = skill.id
+            r['skill'] = skill.skill
+            # r = json.dumps(r, indent=4, default=str)
+            result.append(r)
+        skills = json.dumps(result, indent=4)
+        context['skills'] = skills
     return render(request, 'users/add_project_team.html', {'form': form, 'projects': projects,
-                                                           'skills': Skill.objects.all()})
+                                                           'skills': skills})
 
 
 @login_required(login_url='users:login')
