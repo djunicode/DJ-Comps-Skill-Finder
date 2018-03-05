@@ -25,7 +25,7 @@ class Header extends Component {
                 <a className="mdl-navigation__link" href="">Find a Mentor</a>
                 <a className="mdl-navigation__link" href="">Make a Team</a>
                 <a className="mdl-navigation__link" href="">Events</a>
-                <a className="mdl-navigation__link" href="">Snoopy<i className="material-icons">person</i></a>
+                <a className="mdl-navigation__link" href="">{user.first_name}<i className="material-icons">person</i></a>
               </nav>
             </div>
             <span className="page-mobile-title mdl-layout-title">
@@ -46,8 +46,8 @@ class Header extends Component {
         <br/><br/><br/><br/>
         <img src="/static/profile_updation/profile.png" className="img-circle" alt="User Profile"/>
         <div className="description">
-          <h1>Snoopy<a href="#" className="mdl-badge" data-badge="SE"></a></h1>
-          <h5>I love coding and cat videos</h5>
+          <h1>{user.first_name}<a href="#" className="mdl-badge" data-badge={user.year}></a></h1>
+          <h5>{user.bio}</h5>
         </div>
         <br/>
         <button className="follow-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">

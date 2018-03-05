@@ -99,9 +99,18 @@ def view_profile(request, sap_id):
     # requests_received = user.requests_received.filter(receiver__sap_id=sap_id, accepted=False, rejected=False)
     # current_mentors = user.mentee.filter(mentee__sap_id=sap_id)
     # current_mentees = user.mentor.filter(mentor__sap_id=sap_id)
-    context['skill1'] = user.skill_1.skill
-    context['skill2'] = user.skill_2.skill
-    context['skill3'] = user.skill_3.skill
+    if user.skill_1:
+        context['skill1'] = user.skill_1.skill
+    else:
+        context['skill1'] = ''
+    if user.skill_2:
+        context['skill2'] = user.skill_2.skill
+    else:
+        context['skill2'] = ''
+    if user.skill_3:
+        context['skill3'] = user.skill_3.skill
+    else:
+        context['skill3'] = ''
     interests = Interest.objects.filter(user__sap_id=sap_id)
     interests = [i.interest.skill for i in interests]
     context['interests'] = json.dumps(interests, indent=4, default=str)
