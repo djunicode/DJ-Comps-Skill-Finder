@@ -79,9 +79,29 @@ class Main extends Component {
                   </div>
                 </div>
 
-              </div>
-              <br/><br/><br/><br/>
+                <div className="mdl-cell mdl-cell--3-col">
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
+                        Accept
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Decline
+                      </a>
+                    </div>
+                  </div>
+                </div>
 
+              </div>
+              <br/><br/>
+
+              <hr/>
+
+              <br/>
               <h3 className="description title">Sent mentor requests</h3>
 
               <div className="mdl-grid description">
@@ -154,11 +174,33 @@ class Main extends Component {
                   </div>
                 </div>
 
+                <div className="mdl-cell mdl-cell--3-col">
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                        Pending
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Close
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
               </div>
-              <br/><br/><br/><br/>
+              <br/><br/>
 
+              <hr/>
 
-              <h3 className="description title">Project team requests</h3>
+              <br/>
+
+              <h2 className="description title">Project team requests</h2>
+              <br/>
+              <h3 className="description title">1] Received mentor requests</h3>
 
               <div className="mdl-grid description">
 
@@ -234,10 +276,131 @@ class Main extends Component {
                   </div>
                 </div>
 
-              </div>
-              <br/><br/><br/><br/>
+                <div className="mdl-cell mdl-cell--3-col">
+                  <h6 className="tname">Project name</h6>
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
+                        Accept
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Decline
+                      </a>
+                    </div>
+                  </div>
+                </div>
 
-              <h3 className="description title">Hackathon team requests</h3>
+              </div>
+              <br/>
+              <h3 className="description title">2] Sent mentor requests</h3>
+
+              <div className="mdl-grid description">
+
+                <div className="mdl-cell mdl-cell--3-col">
+                <h6 className="tname">Project name</h6>
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                        Pending
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Close
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mdl-cell mdl-cell--3-col">
+                <h6 className="tname">Project name</h6>
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                        Pending
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Close
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mdl-cell mdl-cell--3-col">
+                <h6 className="tname">Project name</h6>
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                        Pending
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Close
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mdl-cell mdl-cell--3-col">
+                <h6 className="tname">Project name</h6>
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                        Pending
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Close
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mdl-cell mdl-cell--3-col">
+                <h6 className="tname">Project name</h6>
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                        Pending
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Close
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <br/><br/>
+
+              <hr/>
+
+              <br/>
+
+              <h2 className="description title">Hackathon team requests</h2>
+              <br/>
+              <h3 className="description title">1] Received mentor requests</h3>
 
               <div className="mdl-grid description">
 
@@ -313,8 +476,122 @@ class Main extends Component {
                   </div>
                 </div>
 
-              </div>
+                <div className="mdl-cell mdl-cell--3-col">
+                  <h6 className="tname">Hackathon name</h6>
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
+                        Accept
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Decline
+                      </a>
+                    </div>
+                  </div>
+                </div>
 
+              </div>
+              <br/>
+
+              <h3 className="description title">2] Sent mentor requests</h3>
+
+              <div className="mdl-grid description">
+
+                <div className="mdl-cell mdl-cell--3-col">
+                <h6 className="tname">Hackathon name</h6>
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                        Pending
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Close
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mdl-cell mdl-cell--3-col">
+                <h6 className="tname">Hackathon name</h6>
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                        Pending
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Close
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mdl-cell mdl-cell--3-col">
+                <h6 className="tname">Hackathon name</h6>
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                        Pending
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Close
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mdl-cell mdl-cell--3-col">
+                <h6 className="tname">Hackathon name</h6>
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                        Pending
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Close
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mdl-cell mdl-cell--3-col">
+                <h6 className="tname">Hackathon name</h6>
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">Sally Brown</h4>
+                    <div className="mdl-card__supporting-text">
+                      Display the skill they choose
+                    </div>
+                    <div className="mdl-card__actions">
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                        Pending
+                      </a>
+                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                        Close
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
 
 				    </center>
 			     </form>
