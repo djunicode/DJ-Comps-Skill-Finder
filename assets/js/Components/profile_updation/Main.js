@@ -73,7 +73,7 @@ class Main extends Component {
         	<div>
             <form method="POST">
         		<a href="" className="profile-view"><i className="material-icons">keyboard_arrow_left</i>Profile View</a>
-        		<br/><br/><br/><br/><br/><br/><br/><br/>
+        		<br/><br/><br/><br/><br/>
             <center>
               <span className="mdl-selectfield mdl-js-selectfield">
                 <label className="mdl-selectfield__label" htmlFor="year">YEAR</label>&nbsp;&nbsp;&nbsp;
@@ -186,7 +186,7 @@ class Main extends Component {
 
       </center>
 
-				<br/><br/><br/><br/><br/>
+				<br/><br/><br/>
 				<div className="profile">
 					<h1>PROFILE LINKS</h1>
 					<br/><br/>
