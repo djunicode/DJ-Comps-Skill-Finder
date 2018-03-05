@@ -123,6 +123,18 @@ def view_profile(request, sap_id):
     return render(request, 'users/profile.html', {'prop': context})
 
 
+# Test profile view
+# @login_required(login_url='users:login')
+# def view_profile(request, sap_id):
+#     user = get_object_or_404(CustomUser, sap_id=sap_id)
+#     return render(request, 'users/test.html', {'user': user, 'projects': Project.objects.filter(creator=user)})
+
+
+@login_required(login_url='users:login')
+def view_teams_landing(request):
+    return render(request, 'users/teams_landing.html', {})
+
+
 @login_required(login_url='users:login')
 def mentor(request):
     user = request.user
@@ -435,6 +447,7 @@ def add_hackathon_team(request):
             form.save_m2m()
             return redirect('users:view_hackathon_team', pk=team.id)
         else:
+            # [TODO] Convert the hackathon queryset to a smaller one according to date
             return render(request, 'users/add_hackathon_team.html', {'form': form,
                                                                      'hackathons': Hackathon.objects.all(),
                                                                      'skills': Skill.objects.all(),
@@ -482,6 +495,15 @@ def accept_hack_request(request, pk):
     if request.method == 'POST':
         hack_request = get_object_or_404(HackathonTeamRequest, id=pk)
         hack_request.accepted = True
+        hack_request.team.vacancies -= 1
+        hack_request.team.save()
+        hack_request.save()
+        if hack_request.team.vacancies <= 0:
+            hack_request.team.closed = True
+            hack_request.team.save()
+            for r in hack_request.team.hack_requests_received.filter(accepted=False, rejected=False):
+                r.rejected = True
+                r.save()
         hack_request.team.add_member(hack_request.sender)
         hack_request.save()
         return redirect('users:view_hackathon_team', pk=hack_request.team.id)
@@ -508,31 +530,48 @@ def cancel_hack_request(request, pk):
 
 
 @login_required(login_url='users:login')
-def add_project_team(request, pk):
-    try:
-        project = Project.objects.get(id=pk)
-    except Project.DoesNotExist:
-        return redirect('users:login')
-    if ProjectTeam.objects.filter(project=project):
-        return redirect('users:login')
-    if request.user != project.creator:
-        return redirect('users:login')
+def add_project_team(request):
+    projects = Project.objects.filter(creator=request.user)
+    result = []
+    for project in projects:
+        if not ProjectTeam.objects.filter(project=project).exists():
+            result.append(project)
+    projects = result
     if request.method == 'POST':
+        project = Project.objects.get(id=request.POST.get('project'))
+        if ProjectTeam.objects.filter(project=project).exists():
+            return redirect('users:login')
+        # if request.user != project.creator:
+        #     return redirect('users:login')
         form = ProjectTeamForm(request.POST)
         print(form['skills_required'])
         if form.is_valid():
             team = form.save(commit=False)
             team.leader = request.user
-            team.project = project
+            # team.project = project
             team.save()
             form.save_m2m()
             return redirect('users:view_project_team', pk=team.id)
         else:
-            return render(request, 'users/add_project_team.html', {'form': form, 'project': project})
+            return render(request, 'users/add_project_team.html', {'form': form, 'projects': projects})
     else:
+        context = {}
         form = ProjectTeamForm()
-    return render(request, 'users/add_project_team.html', {'form': form, 'project': project,
-                                                           'skills': Skill.objects.all()})
+        user = get_object_or_404(CustomUser, sap_id=sap_id)
+        context['user'] = json.dumps(process_user(user), indent=4, default=str)
+        context['projects'] = json.dumps(projects, indent=4, default=str)
+        skills = Skill.objects.all()
+        result = []
+        r = {}
+        for skill in skills:
+            r['id'] = skill.id
+            r['skill'] = skill.skill
+            # r = json.dumps(r, indent=4, default=str)
+            result.append(r)
+        skills = json.dumps(result, indent=4)
+        context['skills'] = skills
+    return render(request, 'users/add_project_team.html', {'form': form, 'projects': projects,
+                                                           'skills': skills})
 
 
 @login_required(login_url='users:login')
@@ -572,6 +611,15 @@ def accept_project_request(request, pk):
     if request.method == 'POST':
         project_request = get_object_or_404(ProjectTeamRequest, id=pk)
         project_request.accepted = True
+        project_request.team.vacancies -= 1
+        project_request.team.save()
+        project_request.save()
+        if project_request.team.vacancies <= 0:
+            project_request.team.closed = True
+            project_request.team.save()
+            for r in project_request.team.project_requests_received.filter(accepted=False, rejected=False):
+                r.rejected = True
+                r.save()
         project_request.team.add_member(project_request.sender)
         project_request.save()
         return redirect('users:view_project_team', pk=project_request.team.id)

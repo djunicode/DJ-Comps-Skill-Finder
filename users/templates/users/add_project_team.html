@@ -1,14 +1,20 @@
+{% comment %}
 
 <h1>{{ project.name }}</h1>
 
 
-<form action="{% url 'users:add_project_team' project.id %}" method="post">
+<form action="{% url 'users:add_project_team' %}" method="post">
     {% csrf_token %}
-
-
+    Project
+    <select name="project" id="id_project" required="">
+        {% for p in projects %}
+            <option value="{{ p.id }}">{{ p.name }}</option>
+        {% endfor %}
+    </select><br>
     Name
     <input name="name" maxlength="30" required="" id="id_name" type="text"><br>
-
+    Vacancies
+    <input name="vacancies" value="0" min="0" required="" id="id_vacancies" type="number"><br>
     Skills required
     <select name="skills_required" required="" id="id_skills_required" multiple="multiple">
         {% for skill in skills %}
@@ -18,3 +24,5 @@
 </select><br>
     <input value="Surrender now!!" type="submit">
 </form>
+{% endcomment %}
+

@@ -32,6 +32,7 @@ class CustomUser(AbstractUser):
         ('SE', 'Second Year'),
         ('TE', 'Third Year'),
         ('BE', 'Fourth Year'),
+        ('AL', 'Alumini'),
     )
     year = models.CharField(max_length=2, choices=years, default='FE')
     is_mentor = models.BooleanField(default=False)
@@ -64,14 +65,16 @@ class Project(models.Model):
         return self.name
 
 
-# I need help here. Should the guy who created the project be the only one to create a project team?
+# I need help here. Should the guy who created the project be the only one to create a project team? => YESSSS
 class ProjectTeam(models.Model):
     name = models.CharField(max_length=30)
     leader = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='project_leader_teams')
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='project_teams')
     current_members = models.ManyToManyField(CustomUser, related_name='member_project_teams')
     skills_required = models.ManyToManyField(Skill, related_name='project_requirements')
+    vacancies = models.PositiveIntegerField(default=0)
     closed = models.BooleanField(default=False)
+    description = models.TextField(max_length=300)
 
     def __str__(self):
         return str(self.project.name) + ": " + self.name + ": " + str(self.leader.username)
@@ -153,6 +156,7 @@ class HackathonTeam(models.Model):
     skills_required = models.ManyToManyField(Skill, related_name='hack_requirements')
     cutoff_date = models.DateTimeField(null=True, blank=True)  # Someone may not wish to have a cut-off date
     closed = models.BooleanField(default=False)
+    description = models.TextField(max_length=300, blank=True, null=True)
 
     def __str__(self):
         return self.hackathon.name + ": " + self.name
@@ -170,9 +174,6 @@ class HackathonTeam(models.Model):
 
     def add_member(self, member):
             self.current_members.add(member)
-            self.vacancies -= 1
-            if self.vacancies == 0:
-                self.closed = True
             self.save()
 
 

@@ -35,7 +35,7 @@ class Main extends Component {
     }
 
     handleSAP(event) {
-        this.setState({sapID: event.target.value});
+        this.setState({sap_id: event.target.value});
     }
     handleSkill1(event) {
         this.setState({skill1: event.target.value});
@@ -97,7 +97,7 @@ class Main extends Component {
 
 			        <span className="mdl-selectfield mdl-js-selectfield">
 			        	<label className="mdl-selectfield__label" htmlFor="sap-id">SAP ID</label>&nbsp;&nbsp;&nbsp;
-						<input className="mdl-selectfield__select" name="sap_id" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sap-id" value={this.state.sapID} onChange={this.handleSAP}/>
+						<input className="mdl-selectfield__select" name="sap_id" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sap-id" value={this.state.sap_id} onChange={this.handleSAP}/>
 						<span className="mdl-textfield__error">Input is not a number!</span>
 					</span>
 
