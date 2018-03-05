@@ -89,7 +89,6 @@ class Main extends Component {
             <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a>
             <div className="mdl-layout-spacer"></div>
             <a className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</a>
-          <a className=" mdl-js-ripple-effect Choose-skill">Skills</a>
           </div>
         </div>
       );
@@ -117,8 +116,12 @@ class Main extends Component {
 			<main className="mdl-layout__content">
 			<div className="page-content">
 
-				<div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                <form method="get">
+
+        <form method="get">
+        <button type="submit" className="search-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+          SEARCH
+        </button>
+        <div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
 					<label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="search">
 					  <i className="material-icons">search</i>
 					</label>
@@ -126,16 +129,12 @@ class Main extends Component {
 					  <input className="mdl-textfield__input" type="text" id="search" name="skill"/>
 					  <label className="mdl-textfield__label" htmlFor="search">Search</label>
 					</div>
-                    <button type="submit" className="save-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-                      SEARCH
-                    </button>
-                </form>
+        </div>
+        </form>
             <div>
               <button className="clear-tag mdl-navigation__link" onClick={this.handleTEMentor}>Switch Years</button>
-
             </div>
-				</div>
-
+        <br/><br/><br/>
 				<div className="mdl-grid">
           {Mentors}
         </div>
