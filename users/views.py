@@ -570,8 +570,7 @@ def add_project_team(request):
             result.append(r)
         skills = json.dumps(result, indent=4)
         context['skills'] = skills
-    return render(request, 'users/add_project_team.html', {'form': form, 'projects': projects,
-                                                           'skills': skills})
+    return render(request, 'users/add_project_team.html', {'prop': context})
 
 
 @login_required(login_url='users:login')
