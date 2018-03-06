@@ -32,6 +32,7 @@ class CustomUser(AbstractUser):
         ('SE', 'Second Year'),
         ('TE', 'Third Year'),
         ('BE', 'Fourth Year'),
+        ('AL', 'Alumini'),
     )
     year = models.CharField(max_length=2, choices=years, default='FE')
     is_mentor = models.BooleanField(default=False)
@@ -64,7 +65,7 @@ class Project(models.Model):
         return self.name
 
 
-# I need help here. Should the guy who created the project be the only one to create a project team?
+# I need help here. Should the guy who created the project be the only one to create a project team? => YESSSS
 class ProjectTeam(models.Model):
     name = models.CharField(max_length=30)
     leader = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='project_leader_teams')
@@ -73,6 +74,7 @@ class ProjectTeam(models.Model):
     skills_required = models.ManyToManyField(Skill, related_name='project_requirements')
     vacancies = models.PositiveIntegerField(default=0)
     closed = models.BooleanField(default=False)
+    description = models.TextField(max_length=300)
 
     def __str__(self):
         return str(self.project.name) + ": " + self.name + ": " + str(self.leader.username)

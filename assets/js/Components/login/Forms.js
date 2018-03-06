@@ -126,6 +126,7 @@ class Form extends Component{
     render(){
         const isRegister = this.state.isRegister;
         let button = null;
+        let regi = null;
         if(this.state.isRegister){
             button = <div id="reg">
             <button id="back" className="btn btn-info btn-block login" style={{textAlign: 'center', width: '100%',margin:'0px 0px 10px 0px'}} onClick={this.hideFields}>
@@ -135,6 +136,9 @@ class Form extends Component{
                 <input type="text" name="last_name" placeholder="Last Name" value={this.state.lastName} onChange={this.handlelastName} required/>
                 <input type="number" className={`form-group ${this.errorClass(this.state.formErrors.sap_id)}`}   name="sap_id" placeholder="SAP ID" value={this.state.sap_id} onChange={this.handleUserInput} required/>
                 <input type="number" className={`form-group ${this.errorClass(this.state.formErrors.mobile)}`}   name="mobile" placeholder="Mobile Number" value={this.state.mobile} onChange={this.handleUserInput} required/>
+            </div>
+            regi = <div id="register">
+              <button className="btn btn-info btn-block login" name="register" type="submit" value="register" disabled={!this.state.formValid}>Register</button>
             </div>
         }
         return(
@@ -159,15 +163,17 @@ class Form extends Component{
 
                     <center>
                     <div id="login1">
-                        <button className="btn btn-info btn-block login" name="login" type="submit" disabled={!this.state.formValid && this.state.isRegister} >
+                        <button className="btn btn-info btn-block login" name="login" type="submit" disabled={!this.state.formValid && this.state.isRegister} value="login" >
                             Login
                         </button>
-                        </div>
-                    </center>
-                    <center>
-                        <button className="btn btn-info btn-block login" style={{width:'100%', backgroundColor: '#e7998f'}} name="register" type="submit" onClick={this.addRegister} disabled={!this.state.formValid && this.state.isRegister} >
+                        <button className="btn btn-info btn-block login" style={{width:'100%', backgroundColor: '#e7998f'}} name="register" value="register" type="submit" onClick={this.addRegister} disabled={!this.state.formValid && this.state.isRegister} >
                             Register
                         </button>
+
+                  </div>
+                  </center>
+                    <center>
+                      {regi}
                     </center>
                 </form>
             </div>

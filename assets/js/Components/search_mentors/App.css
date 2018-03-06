@@ -46,13 +46,15 @@ a img{
 }
 
 .clear-tag{
-  float: right;
   font-size: 20px;
   border-radius: 11px;
   background-color: #ffa18f;
-  margin-top: 20px;
-  margin-right: 10px;
   padding: 10px;
+  margin-left: 30px;
+}
+
+.search-button{
+  left: 40px;
 }
 
 .mdl-layout__drawer{
@@ -69,9 +71,7 @@ a img{
   display: inline-block;
 }
 
-.main-layout{
-  overflow-y: hidden;
-}
+
 
 .mdl-layout .page-header .mdl-layout__header-row .page-navigation-container .mdl-navigation a{
   color: black;
@@ -82,7 +82,6 @@ a img{
   font-family: PlayfairDisplay;
   text-align: center;
 }
-
 
 .mdl-layout h1{
   text-align: center;
