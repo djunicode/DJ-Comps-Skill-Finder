@@ -6,6 +6,7 @@ class Main extends Component {
         super(props);
         this.state = {
             hackathon: '',
+            hackathon_name: '',
             name:'',
             // teamlead:'',
             vacancies: '',
@@ -14,6 +15,7 @@ class Main extends Component {
         };
 
         this.handleHackathon= this.handleHackathon.bind(this);
+        // this.handleHackathon_name= this.handleHackathon_name.bind(this);
         this.handleName= this.handleName.bind(this);
         // this.handleTeamlead= this.handleTeamlead.bind(this);
         this.handleVacancies= this.handleVacancies.bind(this);
@@ -24,6 +26,10 @@ class Main extends Component {
     handleHackathon(event) {
         this.setState({hackathon: event.target.value});
     }
+
+    // handleHackathon_name(event) {
+    //     this.setState({hackathon_name: event.target.value});
+    // }
 
     handleName(event) {
         this.setState({name: event.target.value});
@@ -61,7 +67,8 @@ class Main extends Component {
               </span>
               <div className="mdl-textfield mdl-js-textfield getmdl-select">
               {/* There must be some hack around this */}
-              <input type="number" className="mdl-textfield__input" id="id_hackathon" value={this.state.hackathon} onChange={this.handleHackathon}/>
+              {/* This hack is awesome!!!! */}
+              <input type="text" className="mdl-textfield__input" id="id_hackathon" value={list_hack[this.state.hackathon]} onChange={this.handleHackathon}/>
               <input type="hidden" value={this.state.hackathon} name="hackathon"/>
               <label for="id_hackathon" className="mdl-textfield__label"></label>
               <ul htmlFor="id_hackathon" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleHackathon} >

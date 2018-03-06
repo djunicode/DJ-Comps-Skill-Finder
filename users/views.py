@@ -439,9 +439,13 @@ def search(request):
 @login_required(login_url='users:login')
 def add_hackathon_team(request):
     context = {}
+    list_hack = {}
     context['user'] = json.dumps(process_user(request.user), indent=4, default=str)
     hackathons = [model_to_dict(h) for h in Hackathon.objects.all()]
+    for h in hackathons:
+        list_hack[h['id']] = h['name']
     context['hackathons'] = json.dumps(hackathons, indent=4, default=str)
+    context['list_hack'] = json.dumps(list_hack, indent=4, default=str)
     skill_set = Skill.objects.all()
     skills = []
     for skill in skill_set:
