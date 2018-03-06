@@ -445,11 +445,12 @@ def add_hackathon_team(request):
     skill_set = Skill.objects.all()
     skills = []
     for skill in skill_set:
-        skills.append({'id': str(skill.id), 'skill': skill.skill})
+        skills.append({'id': skill.id, 'skill': skill.skill})
     skills = json.dumps(skills, indent=4, default=str)
     context['skills'] = skills
     context['error'] = ''
     if request.method == 'POST':
+        print(request.POST)
         form = HackathonTeamForm(request.POST)
         if form.is_valid():
             team = form.save(commit=False)
