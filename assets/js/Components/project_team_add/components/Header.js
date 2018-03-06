@@ -7,7 +7,7 @@ class Header extends Component {
         <div className="page-header mdl-layout__header mdl-layout__header--scroll">
           <div className="mdl-layout__header-row">
             <span className="page-title mdl-layout-title">
-              <img className="page-logo-image" src="../UNCLetters.png" alt="page-logo" />
+              <img className="page-logo-image" src="/static/teams_landing/UNCLetters.png" alt="page-logo" />
             </span>
             <div className="page-header-spacer mdl-layout-spacer"></div>
             <div className="page-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
@@ -28,7 +28,7 @@ class Header extends Component {
               </nav>
             </div>
             <span className="page-mobile-title mdl-layout-title">
-              <img className="page-logo-image" src="../UNCLetters.png" alt="page-logo"/>
+              <img className="page-logo-image" src="/static/teams_landing/UNCLetters.png" alt="page-logo"/>
             </span>
             <button className="page-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
               <i className="material-icons">more_vert</i>

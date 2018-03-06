@@ -533,12 +533,17 @@ def cancel_hack_request(request, pk):
 def add_project_team(request):
     projects = Project.objects.filter(creator=request.user)
     result = []
+    p = {}
     for project in projects:
         if not ProjectTeam.objects.filter(project=project).exists():
-            result.append(project)
+            p = {}
+            p['id'] = project.id
+            p['name'] = project.name
+            p = json.dumps(p, default=str)
+            result.append(p)
     projects = result
     if request.method == 'POST':
-        project = Project.objects.get(id=request.POST.get('project'))
+        project = Project.objects.get(id=int(request.POST.get('project')))
         if ProjectTeam.objects.filter(project=project).exists():
             return redirect('users:login')
         # if request.user != project.creator:
@@ -557,19 +562,26 @@ def add_project_team(request):
     else:
         context = {}
         form = ProjectTeamForm()
-        user = get_object_or_404(CustomUser, sap_id=sap_id)
+        user = get_object_or_404(CustomUser, sap_id=request.user.sap_id)
         context['user'] = json.dumps(process_user(user), indent=4, default=str)
         context['projects'] = json.dumps(projects, indent=4, default=str)
         skills = Skill.objects.all()
         result = []
         r = {}
-        for skill in skills:
-            r['id'] = skill.id
-            r['skill'] = skill.skill
-            # r = json.dumps(r, indent=4, default=str)
+        for sk in skills:
+            r = {}
+            r['id'] = sk.id
+            r['skill'] = sk.skill
+            r = json.dumps(r, indent=4, default=str)
+            print(r)
             result.append(r)
-        skills = json.dumps(result, indent=4)
-        context['skills'] = skills
+            print(result)
+        # skills = json.dumps(result, indent=4, default=str)
+        # context['skills'] = skills
+        skills = result
+        print(skills)
+        context['skills'] = json.dumps(skills, indent=4, default=str)
+        print(context['skills'])
     return render(request, 'users/add_project_team.html', {'prop': context})
 
 

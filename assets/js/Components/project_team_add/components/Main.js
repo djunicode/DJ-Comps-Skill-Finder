@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import '../App.css';
+import DjangoCSRFToken from 'django-react-csrftoken';
 class Main extends Component {
     constructor(props){
         super(props);
         this.state = {
             projname: '',
             teamname:'',
-            teamlead:'',
+            teamlead: user.first_name || '',
             noofmem: '',
             projdesc: '',
             skill1:'',
@@ -45,6 +46,7 @@ class Main extends Component {
         return (
         	<div>
         	 <form method = "POST">
+                 <DjangoCSRFToken/>
         		<a href="#" className="back-button"><i className="material-icons">keyboard_arrow_left</i>Back</a>
         		<br/><br/><br/><br/>
         		<center>
@@ -55,8 +57,16 @@ class Main extends Component {
                 <label className="mdl-selectfield__label" for="projname">Project name</label>&nbsp;&nbsp;&nbsp;
               </span>
               <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input type="text" className="mdl-textfield__input" id="projname" value={this.state.projname} onChange={this.handleProjname}/>
+              <input type="text" className="mdl-textfield__input" id="projname" value={this.state.projname} onChange={this.handleProjname} /> {/**/}
+              <input type="hidden" value={this.state.projname} name="projname" />
               <label for="projname" className="mdl-textfield__label"></label>
+              <ul htmlFor="projname" className="mdl-menu mdl-menu--bottom-left mdl-js-menu"  > {/*onClick={this.handleProjname}*/}
+                {Object.values(projects).map(project => (
+                    <option className="mdl-menu__item" data-val={JSON.parse(project).id} value={JSON.parse(project).id}>{JSON.parse(project).name}</option>
+              ))}
+              {/* Todo solve warning*/}
+
+              </ul>
               </div>
 
               <br/><br/>
@@ -87,7 +97,7 @@ class Main extends Component {
                 <label className="mdl-selectfield__label" for="number">No. of members</label>&nbsp;&nbsp;&nbsp;
               </span>
               <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input type="text" className="mdl-textfield__input" pattern="-?[1-3]*(\.[1-3]+)?" id="number" value={this.state.noofmem} readonly />
+              <input type="text" className="mdl-textfield__input" pattern="-?[1-3]*(\.[1-3]+)?" id="number" value={this.state.noofmem} readOnly />
               <input type="hidden" value={this.state.noofmem} name="number"/>
               <label for="number" className="mdl-textfield__label"></label>
               <span class="mdl-textfield__error">Input is not in the range!</span>
