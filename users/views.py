@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.urls import reverse
-from .models import CustomUser, Skill, MentorRequest, Relationship, Project, Interest
+from .models import CustomUser, Skill, MentorRequest, Relationship, Project
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.generic import TemplateView, UpdateView, DeleteView
@@ -110,9 +110,21 @@ def view_profile(request, sap_id):
         context['skill3'] = user.skill_3.skill
     else:
         context['skill3'] = ''
-    interests = Interest.objects.filter(user__sap_id=sap_id)
-    interests = [i.interest.skill for i in interests]
-    context['interests'] = json.dumps(interests, indent=4, default=str)
+    if user.interest_1:
+        context['interest1'] = user.interest_1.skill
+    else:
+        context['interest1'] = ''
+    if user.interest_2:
+        context['interest2'] = user.interest_2.skill
+    else:
+        context['interest2'] = ''
+    if user.interest_3:
+        context['interest3'] = user.interest_3.skill
+    else:
+        context['interest3'] = ''
+    # interests = Interest.objects.filter(user__sap_id=sap_id)
+    # interests = [i.interest.skill for i in interests]
+    # context['interests'] = json.dumps(interests, indent=4, default=str)
     projects = Project.objects.filter(creator__sap_id=sap_id)
     projects = [json.dumps(p, indent=4, default=str) for p in projects]
     context['projects'] = projects
@@ -199,6 +211,10 @@ def update_profile(request):
         # request.user.photo = request.FILES.get('photo', None)
         # request.user.bio = request.POST.get('bio')
         request.user.year = request.POST.get('year')
+        if request.POST.get('year') == 'FE':
+            request.user.is_mentor = False
+        else:
+            request.user.is_mentor = True
         try:
             request.user.skill_1 = Skill.objects.get(skill=request.POST.get('skill1'))
         except Skill.DoesNotExist:
@@ -214,14 +230,26 @@ def update_profile(request):
             request.user.skill_3 = Skill.objects.get(skill=request.POST.get('skill3'))
         except Skill.DoesNotExist:
             request.user.skill_3 = None
+        try:
+            request.user.interest_1 = Skill.objects.get(skill=request.POST.get('interest1'))
+        except Skill.DoesNotExist:
+            request.user.interest_1 = None
+        try:
+            request.user.interest_2 = Skill.objects.get(skill=request.POST.get('interest2'))
+        except Skill.DoesNotExist:
+            request.user.interest_2 = None
+        try:
+            request.user.interest_3 = Skill.objects.get(skill=request.POST.get('interest3'))
+        except Skill.DoesNotExist:
+            request.user.interest_3 = None
         # Adding interests, currently 3
-        for i in range(3):
-            try:
-                s = 'interest_' + str(i + 1)
-                interest = Skill.objects.get(skill=request.POST.get(s))
-                interest = Interest.objects.create(interest=interest, user=request.user)
-            except Skill.DoesNotExist:
-                interest = None
+        # for i in range(3):
+        #     try:
+        #         s = 'interest_' + str(i + 1)
+        #         interest = Skill.objects.get(skill=request.POST.get(s))
+        #         interest = Interest.objects.create(interest=interest, user=request.user)
+        #     except Skill.DoesNotExist:
+        #         interest = None
         request.user.twitter_url = request.POST.get('twitter')
         request.user.linkedin_url = request.POST.get('linkedin')
         request.user.github_url = request.POST.get('github')
@@ -372,11 +400,18 @@ def search(request):
     context['received'] = received
     context['sent'] = sent
     if not request.GET.get('skill'):
-        interests = user.user_interests.filter(is_now_skill=False)
+        interests = []
+        if request.user.interest_1 is not None:
+            interests.append(request.user.interest_1)
+        if request.user.interest_2 is not None:
+            interests.append(request.user.interest_2)
+        if request.user.interest_3 is not None:
+            interests.append(request.user.interest_3)
+        # interests = user.user_interests.filter(is_now_skill=False)
         for i in interests:
-            q1 = queryset.filter(skill_1=i.interest)
-            q2 = queryset.filter(skill_2=i.interest)
-            q3 = queryset.filter(skill_3=i.interest)
+            q1 = queryset.filter(skill_1=i.skill)
+            q2 = queryset.filter(skill_2=i.skill)
+            q3 = queryset.filter(skill_3=i.skill)
             qs += list(chain(q1, q2, q3))
         qs = f7(qs)
         second = []

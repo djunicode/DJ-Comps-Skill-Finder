@@ -39,19 +39,22 @@ class CustomUser(AbstractUser):
     skill_1 = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True, related_name='skill_1')
     skill_2 = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True, related_name='skill_2')
     skill_3 = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True, related_name='skill_3')
+    interest_1 = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True, related_name='interest_1')
+    interest_2 = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True, related_name='interest_2')
+    interest_3 = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True, related_name='interest_3')
     github_url = models.URLField(blank=True, null=True)
     linkedin_url = models.URLField(blank=True, null=True)
     twitter_url = models.URLField(blank=True, null=True)
     behance_url = models.URLField(blank=True, null=True)
 
 
-class Interest(models.Model):
-    interest = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name='skill_interests')
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='user_interests')
-    is_now_skill = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.user.username + ": " + self.interest.skill
+# class Interest(models.Model):
+#     interest = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name='skill_interests')
+#     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='user_interests')
+#     is_now_skill = models.BooleanField(default=False)
+#
+#     def __str__(self):
+#         return self.user.username + ": " + self.interest.skill
 
 
 class Project(models.Model):

@@ -9,9 +9,9 @@ class Main extends Component {
             skill1: props.skill1,
             skill2: props.skill2,
             skill3: props.skill3,
-            interest1: interests[0],
-            interest2: interests[1],
-            interest3: interests[2],
+            interest1: props.interest1,
+            interest2: props.interest2,
+            interest3: props.interest3,
         };
     }
     componentDidMount(){
@@ -60,17 +60,17 @@ class Main extends Component {
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col interests-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{interests[0]}</span>
+              <span className="mdl-chip__text">{props.interest1}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col interests-chips ">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{interests[1]}</span>
+              <span className="mdl-chip__text">{props.interest2}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col interests-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{interests[2]}</span>
+              <span className="mdl-chip__text">{props.interest3}</span>
             </span>
           </div>
        </div>

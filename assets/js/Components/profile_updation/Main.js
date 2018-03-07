@@ -8,9 +8,9 @@ class Main extends Component {
             linkedIn: user.linkedin_url || '' ,
             behance: user.behance_url || '',
             github: user.github_url || '',
-            interest1: '',
-            interest2: '',
-            interest3:'',
+            interest1: skills[user.interest_1] || '',
+            interest2: skills[user.interest_2] || '',
+            interest3:skills[user.interest_3] || '',
             skill1: skills[user.skill_1] || '',
             skill2: skills[user.skill_2] || '',
             skill3: skills[user.skill_3] || '',
@@ -160,9 +160,9 @@ class Main extends Component {
             <input type="hidden" value={this.state.interest1}   name="interest1" / >
             <label htmlFor="interest1" className="mdl-textfield__label"></label>
             <ul htmlFor="interest1" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleInterest1} >
-              <option className="mdl-menu__item" id="HTML" value="HTML">HTML</option>
-              <option className="mdl-menu__item" data-val="CSS" value="CSS">CSS</option>
-              <option className="mdl-menu__item" data-val="JAVASCRIPT" value="JAVASCRIPT">JAVASCRIPT</option>
+              {Object.values(skills).map(skill => (
+                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
+                ))}
             </ul>
         </div>
       <br/><br/><br/>
@@ -172,9 +172,9 @@ class Main extends Component {
             <input type="hidden" value={this.state.interest2} name="interest2" / >
             <label htmlFor="interest2" className="mdl-textfield__label"></label>
             <ul htmlFor="interest2" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleInterest2}>
-              <option className="mdl-menu__item"  value="HTML">HTML</option>
-              <option className="mdl-menu__item"  value="CSS">CSS</option>
-              <option className="mdl-menu__item"  value="JAVASCRIPT">JAVASCRIPT</option>
+              {Object.values(skills).map(skill => (
+                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
+                ))}
             </ul>
         </div>
         <br/><br/><br/>
@@ -184,9 +184,9 @@ class Main extends Component {
               <input type="hidden" value={this.state.interest3} name="interest3" / >
               <label htmlFor="interest3" className="mdl-textfield__label"></label>
               <ul htmlFor="interest3" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleInterest3}>
-                <option className="mdl-menu__item"  value="HTML">HTML</option>
-                <option className="mdl-menu__item"  value="CSS">CSS</option>
-                <option className="mdl-menu__item"  value="JAVASCRIPT">JAVASCRIPT</option>
+                {Object.values(skills).map(skill => (
+                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
+                ))}
               </ul>
           </div>
           <br/><br/><br/>
