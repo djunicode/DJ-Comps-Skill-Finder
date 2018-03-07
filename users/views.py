@@ -438,7 +438,23 @@ def search(request):
 # if HackathonTeam.objects.filter(name__iexact=name, hackathon=hackathon).exists():
 @login_required(login_url='users:login')
 def add_hackathon_team(request):
+    context = {}
+    list_hack = {}
+    context['user'] = json.dumps(process_user(request.user), indent=4, default=str)
+    hackathons = [model_to_dict(h) for h in Hackathon.objects.all()]
+    for h in hackathons:
+        list_hack[h['id']] = h['name']
+    context['hackathons'] = json.dumps(hackathons, indent=4, default=str)
+    context['list_hack'] = json.dumps(list_hack, indent=4, default=str)
+    skill_set = Skill.objects.all()
+    skills = []
+    for skill in skill_set:
+        skills.append({'id': skill.id, 'skill': skill.skill})
+    skills = json.dumps(skills, indent=4, default=str)
+    context['skills'] = skills
+    context['error'] = ''
     if request.method == 'POST':
+        print(request.POST)
         form = HackathonTeamForm(request.POST)
         if form.is_valid():
             team = form.save(commit=False)
@@ -448,14 +464,17 @@ def add_hackathon_team(request):
             return redirect('users:view_hackathon_team', pk=team.id)
         else:
             # [TODO] Convert the hackathon queryset to a smaller one according to date
-            return render(request, 'users/add_hackathon_team.html', {'form': form,
-                                                                     'hackathons': Hackathon.objects.all(),
-                                                                     'skills': Skill.objects.all(),
-                                                                     'error': 'A team with the same name exists.'})
+            context['error'] = 'A team with the same name exists.'
+            return render(request, 'users/add_hackathon_team.html', {'prop': context})
+            # return render(request, 'users/add_hackathon_team.html', {'form': form,
+            #                                                          'hackathons': Hackathon.objects.all(),
+            #                                                          'skills': Skill.objects.all(),
+            #                                                          'error': 'A team with the same name exists.'})
     else:
         form = HackathonTeamForm()
-    return render(request, 'users/add_hackathon_team.html', {'form': form, 'hackathons': Hackathon.objects.all(),
-                                                             'skills': Skill.objects.all()})
+        return render(request, 'users/add_hackathon_team.html', {'prop': context})
+    # return render(request, 'users/add_hackathon_team.html', {'form': form, 'hackathons': Hackathon.objects.all(),
+    #                                                          'skills': Skill.objects.all()})
 
 
 @login_required(login_url='users:login')

@@ -1,25 +1,4 @@
-<!-- {% load widget_tweaks %}
-
-<form action="{% url 'users:add_hackathon_team' %}" method="post">
-    {% csrf_token %}
-    {% render_field form.non_field_errors %}
-    {% render_field form.name.errors %}
-    {% render_field form.name.label %}
-    {% render_field form.name %}<br>
-    {% render_field form.hackathon.errors %}
-    {% render_field form.hackathon.label %}
-    {% render_field form.hackathon %}<br>
-    {% render_field form.vacancies.errors %}
-    {% render_field form.vacancies.label %}
-    {% render_field form.vacancies %}<br>
-    {% render_field form.skills_required.errors %}
-    {% render_field form.skills_required.label %}
-    {% render_field form.skills_required %}<br>
-    {% render_field form.cutoff_date.errors %}
-    {% render_field form.cutoff_date.label %}
-    {% render_field form.cutoff_date %}<br>
-    <input type="submit" value="Surrender now!!">
-</form> -->
+{% comment %}
 {% if error %}
     <h1>{{ error }}</h1>
 {% endif %}
@@ -58,3 +37,31 @@
     <input value="Surrender now!!" type="submit">
 </form>
 </body>
+{% endcomment %}
+
+{% load render_bundle from webpack_loader %}
+{% load static %}
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+
+
+<script type="text/javascript">
+    //var props = unescape({{prop|safe}})
+    var props = {{ prop|safe }}
+    var user = JSON.parse(props.user)
+    var hackathons = JSON.parse(props.hackathons)
+    var list_hack = JSON.parse(props.list_hack)
+    var skills = JSON.parse(props.skills)
+    var error = props.error
+    console.log(props)
+</script>
+
+<div id="react-app"></div>
+    {% render_bundle 'Hackathon_Team_Creation' %}
+{% if error %}
+  <p>{{ error }}</p>
+{% endif %}

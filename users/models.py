@@ -74,7 +74,7 @@ class ProjectTeam(models.Model):
     skills_required = models.ManyToManyField(Skill, related_name='project_requirements')
     vacancies = models.PositiveIntegerField(default=0)
     closed = models.BooleanField(default=False)
-    description = models.TextField(max_length=300)
+    description = models.TextField(max_length=300, null=True, blank=True)
 
     def __str__(self):
         return str(self.project.name) + ": " + self.name + ": " + str(self.leader.username)
