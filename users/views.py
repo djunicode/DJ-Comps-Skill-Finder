@@ -409,9 +409,9 @@ def search(request):
             interests.append(request.user.interest_3)
         # interests = user.user_interests.filter(is_now_skill=False)
         for i in interests:
-            q1 = queryset.filter(skill_1=i.skill)
-            q2 = queryset.filter(skill_2=i.skill)
-            q3 = queryset.filter(skill_3=i.skill)
+            q1 = queryset.filter(skill_1=i.id)
+            q2 = queryset.filter(skill_2=i.id)
+            q3 = queryset.filter(skill_3=i.id)
             qs += list(chain(q1, q2, q3))
         qs = f7(qs)
         second = []
