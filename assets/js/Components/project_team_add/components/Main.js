@@ -57,10 +57,10 @@ class Main extends Component {
                 <label className="mdl-selectfield__label" for="projname">Project name</label>&nbsp;&nbsp;&nbsp;
               </span>
               <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input type="text" className="mdl-textfield__input" id="projname" value={this.state.projname} onChange={this.handleProjname} /> {/**/}
+              <input type="text" className="mdl-textfield__input" id="projname" value={hack[this.state.projname]} onChange={this.handleProjname} /> {/**/}
               <input type="hidden" value={this.state.projname} name="projname" />
               <label for="projname" className="mdl-textfield__label"></label>
-              <ul htmlFor="projname" className="mdl-menu mdl-menu--bottom-left mdl-js-menu"  > {/*onClick={this.handleProjname}*/}
+              <ul htmlFor="projname" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleProjname} > {/**/}
                 {Object.values(projects).map(project => (
                     <option className="mdl-menu__item" data-val={JSON.parse(project).id} value={JSON.parse(project).id}>{JSON.parse(project).name}</option>
               ))}

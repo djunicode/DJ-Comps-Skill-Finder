@@ -553,6 +553,7 @@ def add_project_team(request):
     projects = Project.objects.filter(creator=request.user)
     result = []
     p = {}
+    hack = {}
     for project in projects:
         if not ProjectTeam.objects.filter(project=project).exists():
             p = {}
@@ -560,6 +561,7 @@ def add_project_team(request):
             p['name'] = project.name
             p = json.dumps(p, default=str)
             result.append(p)
+            hack[str(project.id)] = project.name
     projects = result
     if request.method == 'POST':
         project = Project.objects.get(id=int(request.POST.get('project')))
@@ -584,6 +586,7 @@ def add_project_team(request):
         user = get_object_or_404(CustomUser, sap_id=request.user.sap_id)
         context['user'] = json.dumps(process_user(user), indent=4, default=str)
         context['projects'] = json.dumps(projects, indent=4, default=str)
+        context['hack'] = json.dumps(hack, indent=4, default=str)
         skills = Skill.objects.all()
         result = []
         r = {}
