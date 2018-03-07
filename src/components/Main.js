@@ -2,6 +2,51 @@ import React, { Component } from 'react';
 import '../App.css';
 
 class Main extends Component {
+  constructor(props){
+        super(props);
+        this.state = {
+            sentRequests:['Krisha',
+                        'Ikbal',
+                        'Vatsal',
+                        'Aakash',
+                      ],
+            recievedRequests:['Avais',
+                        'Rudhresh',
+                        'Swapneel',
+                      ],
+            availableProjects:[
+                                {
+                                    teamName: "Test Project 1",
+                                    Hackathon: "SmartIndia",
+                                    teamMembers: [
+                                      'Member 1',
+                                      'Member 2'
+                                    ],
+                                    description:"Test description",
+                                    skillsRequired: [
+                                      'Skill 1',
+                                      'Skill 2'
+                                    ],
+                                },
+                                {
+                                    teamName: "Test Project 1",
+                                    Hackathon: "SmartIndia",
+                                    teamMembers: [
+                                      'Member 1',
+                                      'Member 2'
+                                    ],
+                                    description:"Test description",
+                                    skillsRequired: [
+                                      'Skill 1',
+                                      'Skill 2'
+                                    ],
+                                }
+
+                              ]
+
+
+        };
+    }
     render() {
         return (
         	<div>
@@ -13,16 +58,16 @@ class Main extends Component {
               <div className="mdl-layout__drawer">
                 <span className="mdl-layout-title">Sent Requests</span>
                 <nav className="mdl-navigation">
-                  <a className="mdl-navigation__link" href="">Name1</a>
-                  <a className="mdl-navigation__link" href="">Name2</a>
-                  <a className="mdl-navigation__link" href="">Name3</a>
+                  {this.state.sentRequests.map(obj =>
+                      <a className="mdl-navigation__link" href="">{obj}</a>
+                    )}
                 </nav>
                 <br/><br/>
                 <span className="mdl-layout-title">Received Requests</span>
                 <nav className="mdl-navigation">
-                  <a className="mdl-navigation__link" href="">Name4</a>
-                  <a className="mdl-navigation__link" href="">Name5</a>
-                  <a className="mdl-navigation__link" href="">Name6</a>
+                  {this.state.recievedRequests.map(obj =>
+                    <a className="mdl-navigation__link" href="">{obj}</a>
+                  )}
                 </nav>
               </div>
               <main className="mdl-layout__content">
@@ -33,22 +78,23 @@ class Main extends Component {
                 </span>
                 <br/><br/><br/><br/><br/><br/><br/>
                 <div className="mdl-grid">
-                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
+                  {this.state.availableProjects.map(obj2 =>
+                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp">
                     <div className = "mdl-card__title">
-                      <h1 className = "mdl-card__title-text">Peanuts</h1>
+                      <h1 className = "mdl-card__title-text">{obj2.teamName}</h1>
                     </div>
                     <div className="mdl-card__subtitle-text">
-                      <h5>Hello: A voice assisstant</h5>
-                      <p>Name1, Name2, Name3, Name4</p>
+                      <h5>{obj2.Hackathon}</h5>
+                      <p>{obj2.teamMembers}</p>
                     </div>
                     <div className = "mdl-card__supporting-text">
                       <div className="header">
                         <h5>Description</h5>
-                        <p>We are a team of 4 SEs,  wanting to create a voice assisstant that collects data...</p>
+                        <p>{obj2.description}</p>
                       </div>
                       <div className="header">
                         <h5>Skills required</h5>
-                        <p>Skill1, Skill2</p>
+                        <p>{obj2.skillsRequired}</p>
                       </div>
                     </div>
                     <div className = "mdl-card__actions">
@@ -56,127 +102,8 @@ class Main extends Component {
                         Join
                        </a>
                     </div>
-                  </div>
-                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
-                    <div className = "mdl-card__title">
-                      <h1 className = "mdl-card__title-text">Peanuts</h1>
-                    </div>
-                    <div className="mdl-card__subtitle-text">
-                      <h5>Hello: A voice assisstant</h5>
-                      <p>Name1, Name2, Name3, Name4</p>
-                    </div>
-                    <div className = "mdl-card__supporting-text">
-                      <div className="header">
-                        <h5>Description</h5>
-                        <p>We are a team of 4 SEs,  wanting to create a voice assisstant that collects data...</p>
-                      </div>
-                      <div className="header">
-                        <h5>Skills required</h5>
-                        <p>Skill1, Skill2</p>
-                      </div>
-                    </div>
-                    <div className = "mdl-card__actions">
-                       <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        Join
-                       </a>
-                    </div>
-                  </div>
-                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
-                    <div className = "mdl-card__title">
-                      <h1 className = "mdl-card__title-text">Peanuts</h1>
-                    </div>
-                    <div className="mdl-card__subtitle-text">
-                      <h5>Hello: A voice assisstant</h5>
-                      <p>Name1, Name2, Name3, Name4</p>
-                    </div>
-                    <div className = "mdl-card__supporting-text">
-                      <div className="header">
-                        <h5>Description</h5>
-                        <p>We are a team of 4 SEs,  wanting to create a voice assisstant that collects data...</p>
-                      </div>
-                      <div className="header">
-                        <h5>Skills required</h5>
-                        <p>Skill1, Skill2</p>
-                      </div>
-                    </div>
-                    <div className = "mdl-card__actions">
-                       <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        Join
-                       </a>
-                    </div>
-                  </div>
-                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
-                    <div className = "mdl-card__title">
-                      <h1 className = "mdl-card__title-text">Peanuts</h1>
-                    </div>
-                    <div className="mdl-card__subtitle-text">
-                      <h5>Hello: A voice assisstant</h5>
-                      <p>Name1, Name2, Name3, Name4</p>
-                    </div>
-                    <div className = "mdl-card__supporting-text">
-                      <div className="header">
-                        <h5>Description</h5>
-                        <p>We are a team of 4 SEs,  wanting to create a voice assisstant that collects data...</p>
-                      </div>
-                      <div className="header">
-                        <h5>Skills required</h5>
-                        <p>Skill1, Skill2</p>
-                      </div>
-                    </div>
-                    <div className = "mdl-card__actions">
-                       <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        Join
-                       </a>
-                    </div>
-                  </div>
-                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
-                    <div className = "mdl-card__title">
-                      <h1 className = "mdl-card__title-text">Peanuts</h1>
-                    </div>
-                    <div className="mdl-card__subtitle-text">
-                      <h5>Hello: A voice assisstant</h5>
-                      <p>Name1, Name2, Name3, Name4</p>
-                    </div>
-                    <div className = "mdl-card__supporting-text">
-                      <div className="header">
-                        <h5>Description</h5>
-                        <p>We are a team of 4 SEs,  wanting to create a voice assisstant that collects data...</p>
-                      </div>
-                      <div className="header">
-                        <h5>Skills required</h5>
-                        <p>Skill1, Skill2</p>
-                      </div>
-                    </div>
-                    <div className = "mdl-card__actions">
-                       <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        Join
-                       </a>
-                    </div>
-                  </div>
-                  <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp"> 
-                    <div className = "mdl-card__title">
-                      <h1 className = "mdl-card__title-text">Peanuts</h1>
-                    </div>
-                    <div className="mdl-card__subtitle-text">
-                      <h5>Hello: A voice assisstant</h5>
-                      <p>Name1, Name2, Name3, Name4</p>
-                    </div>
-                    <div className = "mdl-card__supporting-text">
-                      <div className="header">
-                        <h5>Description</h5>
-                        <p>We are a team of 4 SEs,  wanting to create a voice assisstant that collects data...</p>
-                      </div>
-                      <div className="header">
-                        <h5>Skills required</h5>
-                        <p>Skill1, Skill2</p>
-                      </div>
-                    </div>
-                    <div className = "mdl-card__actions">
-                       <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        Join
-                       </a>
-                    </div>
-                  </div>
+                  </div>)}
+
                 </div>
               </div>
               </main>
