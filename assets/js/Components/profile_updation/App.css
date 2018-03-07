@@ -33,6 +33,11 @@
 
 /*
 *Large gap between main and header component in mobile rendering
+edit name
+react 
+proj links
+dropdowns more options
+profile view link
 */
 
 body {
@@ -603,10 +608,8 @@ a img{
   letter-spacing: normal;
   color: #ffffff;
 }
-
-.description h5{
-  color: #fff2c9;
-  font-family: Raleway;
+.upload{
+  background-color: white;
 }
 
 .save-button{
@@ -618,6 +621,11 @@ a img{
   background-color: #fff2c9;
   color: #ffa28b;
   font-size: 22px;
+}
+
+.hii{
+  font-size: 25px;
+  size: 25px;
 }
 
 .save-button:hover{
@@ -635,6 +643,10 @@ a img{
   letter-spacing: normal;
   color: #ff6699;
   text-decoration: none;
+}
+
+#bio{
+  text-align: center;
 }
 
 form{

@@ -8,6 +8,8 @@ class Main extends Component {
             linkedIn: user.linkedin_url || '' ,
             behance: user.behance_url || '',
             github: user.github_url || '',
+            twitter: '',
+            stack: '',
             interest1: '',
             interest2: '',
             interest3:'',
@@ -17,6 +19,8 @@ class Main extends Component {
             sapID: parseInt(user.sap_id)|| '',
             year: user.year || '',
             user: '',
+            bio: '',
+            mob: '',
         };
 
         this.handleSAP= this.handleSAP.bind(this);
@@ -30,7 +34,10 @@ class Main extends Component {
         this.handleGithub = this.handleGithub.bind(this);
         this.handleLinkedIn = this.handleLinkedIn.bind(this);
         this.handleBehance = this.handleBehance.bind(this);
-
+        this.handleBio= this.handleBio.bind(this);
+        this.handleTwitter= this.handleTwitter.bind(this);
+        this.handleStack= this.handleStack.bind(this);
+        this.handleMob= this.handleMob.bind(this);
 
     }
 
@@ -67,6 +74,18 @@ class Main extends Component {
     handleYear(event) {
         this.setState({year: event.target.value});
     }
+    handleBio(event) {
+        this.setState({bio: event.target.value});
+    }
+    handleTwitter(event) {
+        this.setState({twitter: event.target.value});
+    }
+    handleStack(event) {
+        this.setState({stack: event.target.value});
+    }
+    handleMob(event) {
+        this.setState({mob: event.target.value});
+    }
 
     render() {
 
@@ -74,9 +93,10 @@ class Main extends Component {
         	<div>
             <form method="POST">
             <DjangoCSRFToken/>
-        		<a href="" className="profile-view"><i className="material-icons">keyboard_arrow_left</i>Profile View</a>
-        		<br/><br/><br/><br/><br/>
+        		<a href="" className="profile-view">Profile View<i className="material-icons">keyboard_arrow_right</i></a>
+        		<br/><br/>
             <center>
+            <br/><br/><br/><br/>
               <span className="mdl-selectfield mdl-js-selectfield">
                 <label className="mdl-selectfield__label" htmlFor="year">YEAR</label>&nbsp;&nbsp;&nbsp;
               </span>
@@ -93,7 +113,7 @@ class Main extends Component {
         </ul>
     </div>
 
-			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			        <br/><br/><br/>
 
 			        <span className="mdl-selectfield mdl-js-selectfield">
 			        	<label className="mdl-selectfield__label" htmlFor="sap-id">SAP ID</label>&nbsp;&nbsp;&nbsp;
@@ -101,8 +121,24 @@ class Main extends Component {
 						<span className="mdl-textfield__error">Input is not a number!</span>
 					</span>
 
+          <br/><br/><br/><br/>
+
+          <span className="mdl-selectfield mdl-js-selectfield">
+            <label className="mdl-selectfield__label" htmlFor="mob">Mobile No.</label>&nbsp;&nbsp;&nbsp;
+            <input className="mdl-selectfield__select" name="mob" type="text" pattern="\d{10}" id="mob" value={this.state.mob} onChange={this.handleMob}/>
+            <span className="mdl-textfield__error">Enter a 10 digit no.!</span>
+          </span>
+
+          <br/><br/><br/>
+
+          <div className="mdl-textfield mdl-js-textfield">
+                  <textarea className="mdl-textfield__input" value={this.state.bio} onChange={this.handleBio} rows="3" type="text" id="bio"></textarea>
+                  <label className="mdl-selectfield__label mdl-textfield__label" for="bio">Bio Description...</label>
+          </div> 
+
+
           </center>
-    			<br/><br/><br/><br/><br/>
+    			<br/><br/><br/>
 				<div className="skills">
 					<h1>SKILLS</h1>
 					<p>Got bragging rights?<br/>Fill in your skills.</p>
@@ -204,9 +240,11 @@ class Main extends Component {
 					<label htmlFor="github" className="mdl-selectfield__label">Github</label>&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" name="github" id="github" value={this.state.github} onChange={this.handleGithub} /><br/><br/><br/>
 					<label htmlFor="twitter" className="mdl-selectfield__label">Twitter</label>&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="text" name="twitter" id="twitter" /><br/><br/><br/>
-					<label htmlFor="behance" className="mdl-selectfield__label" value={this.state.behance} onChange={this.handleBehance}>Behance</label>&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="text" name="behance" id="behance" /><br/>
+					<input type="text" name="twitter" id="twitter" value={this.state.twitter} onChange={this.handleTwitter} /><br/><br/><br/>
+					<label htmlFor="behance" className="mdl-selectfield__label">Behance</label>&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="text" name="behance" id="behance" value={this.state.behance} onChange={this.handleBehance} /><br/><br/><br/>
+          <label htmlFor="stack" className="mdl-selectfield__label">Stack Overflow</label>&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" name="stack" id="stack" value={this.state.stack} onChange={this.handleStack} /><br/>
 				</div>
         <br/>
         <br/>
