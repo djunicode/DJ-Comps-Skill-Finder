@@ -14,13 +14,6 @@
  * limitations under the License.
  */
 
- /*
-  *White space on the left side of the page in mobile rendering
-  *Project links merging on zooming in 
-  *Improper chips indentation
-  *Skills and Interests not displayed
- */
-
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 body {
@@ -52,23 +45,6 @@ a img{
   background-image: linear-gradient(to top, #ff5ca0 19%, #ff744f);
 }
 
-.mdl-layout{
-  width: auto;
-}
-
-.mdl-chip__text{
-  width: auto;
-}
-
-.img-circle{
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 25%;
-  border-radius: 250px;
-  background-color: #ffffff;
-  border: solid 3px #ffebad;
-}
-
 .description{
   font-family: Raleway;
   text-align: center;
@@ -77,31 +53,72 @@ a img{
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
+}
+
+.description h1{
+  width: auto;
+  height: auto;
+  font-size: 72px;
   color: #ffffff;
 }
 
-.description h6{
+.description h5{
+  width: auto;
+  height: auto;
+  font-size: 36px;
   color: #fff2c9;
 }
 
-.images{
-  max-width: 55px;
-  max-height: 55px ;
+.title{
+  font-size: 72px;
+  font-weight: 500;
+  color: #ffa95c;
 }
 
-.follow-button{
-  width: 150px;
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 20px;
-  background-color: #fff2c9;
-  color: #ffa28b;
-  font-size: 22px;
+.mdl-selectfield__label{
+  font-size: 30px;
+  font-weight: 500;
+  color: #bdbdbd;
 }
 
-.follow-button:hover{
-  background-color: white;
+.add{
+  height: 30px;
+  background-color: #ffcb9c;
+  color: #fff;
+}
+
+.add:hover{
+  background-color: #ff9933;
+}
+
+.search{
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 11px;
+  color: #fff;
+  background-color: #ffcb9c;
+}
+
+.search:hover{
+  background-color: #ff9933;
+}
+
+.diff{
+  font-size: 24px;
+  color: #ffb675;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ccc;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #ccc;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ccc;
 }
 
 .back-button{
@@ -116,104 +133,7 @@ a img{
 form{
   text-align: center;
   padding: 20px;
-}
-
-.header{
-  font-family: Raleway;
-  text-align: center;
-  font-size: 40px;
-  font-weight: 900;
-  color: #a8a8a8;
-}
-
-.skills-chips, .interests-chips{
-  display: inline-block;
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.interests-chips .mdl-chip {
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-  background-color: #ffac91;
-}
-
-.interests-chips .mdl-chip:hover{
-  background-color: #ff9e99;
-  width: 220px;
-  height: 220px;
-  border-radius: 125px;
-}
-
-.skills-chips .mdl-chip {
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-  background-color: #ffc797;
-}
-
-.skills-chips .mdl-chip:hover{
-  background-color: #ffac91;
-  width: 220px;
-  height: 220px;
-  border-radius: 125px;
-}
-
-.mdl-chip .mdl-chip__text{
-  padding-top: 80px;
-  font-family: Raleway;
-  font-size: 40px;
-  font-weight: 800;
-  color: #ffffff;
-}
-
-.project-links{
-  text-align: center;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;  
-}
-
-.first-link label{
-  font-family: Raleway;
-  font-size: 30px;
-  color: #73ddff;
-  text-decoration: underline;
-}
-
-.first-link p{
-  font-family: Raleway;
-  font-size: 20px;
-  color: #828282;
-}
-
-.first-link a{
-  font-family: Raleway;
-  font-size: 20px;
-  color: #bdbdbd;
-  text-decoration: none;
-}
-
-.second-link label{
-  font-family: Raleway;
-  font-size: 30px;
-  color: #73ddff;
-  text-decoration: underline;
-}
-
-.second-link p{
-  font-family: Raleway;
-  font-size: 20px;
-  color: #828282;
-}
-
-.second-link a{
-  font-family: Raleway;
-  font-size: 20px;
-  color: #bdbdbd;
-  text-decoration: none;
+  display:
 }
 
 .page-search-box .mdl-textfield__input {
@@ -252,7 +172,7 @@ form{
 
 .page-header {
   overflow: visible;
-  position: fixed; 
+  position: fixed;
 }
 
 .page-header .material-icons {
@@ -300,7 +220,7 @@ form{
   display: inline-block;
   height: 60px;
   line-height: 68px;
-  background-color: transparent !important; 
+  background-color: transparent !important;
   border-bottom: 4px solid transparent;
 }
 
@@ -625,7 +545,7 @@ form{
 }
 .footerimage{
   position: relative;
-  
+
   left: 42%;
   width: 20%;
   margin-bottom: -4%;

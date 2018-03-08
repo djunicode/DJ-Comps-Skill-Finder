@@ -9,9 +9,9 @@ class Main extends Component {
             skill1: props.skill1,
             skill2: props.skill2,
             skill3: props.skill3,
-            interest1: interests[0],
-            interest2: interests[1],
-            interest3: interests[2],
+            interest1: props.interest1,
+            interest2: props.interest2,
+            interest3: props.interest3,
         };
     }
     componentDidMount(){
@@ -27,8 +27,15 @@ class Main extends Component {
         	<div>
         	<form>
         		<a href="#" className="back-button"><i className="material-icons">keyboard_arrow_left</i>Back</a>
-        		<br/><br/><br/><br/><br/>
+        	   <br/><br/><br/>
+             <div>
+                <a href="#"><img align="right" className= "images" src="/static/profile_display/sof.png" alt="link"/></a>
+                <a href="#"><img align="right" className= "images" src="/static/profile_display/twitter.png" alt="link"/></a>
+                <a href="#"><img align="right" className= "images" src="/static/profile_display/github.png" alt="link"/></a>
+                <a href="#"><img align="right" className= "images" src="/static/profile_display/linkedin.png" alt="link"/></a>
+            </div>
         		<center>
+            <br/><br/><br/>
         		<div className="header">
 					<h2>SKILLS</h2>
 				</div>
@@ -60,17 +67,17 @@ class Main extends Component {
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col interests-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{interests[0]}</span>
+              <span className="mdl-chip__text">{props.interest1}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col interests-chips ">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{interests[1]}</span>
+              <span className="mdl-chip__text">{props.interest2}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col interests-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{interests[2]}</span>
+              <span className="mdl-chip__text">{props.interest3}</span>
             </span>
           </div>
        </div>

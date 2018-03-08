@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 class Header extends Component {
   render() {
     return (
@@ -7,7 +7,7 @@ class Header extends Component {
         <div className="page-header mdl-layout__header mdl-layout__header--scroll">
           <div className="mdl-layout__header-row">
             <span className="page-title mdl-layout-title">
-              <img className="page-logo-image" src="/static/profile_updation/UNCLetters.png" alt="page-logo" />
+              <img className="page-logo-image" src="/static/teams_landing/UNCLetters.png" alt="page-logo" />
             </span>
             <div className="page-header-spacer mdl-layout-spacer"></div>
             <div className="page-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
@@ -28,7 +28,7 @@ class Header extends Component {
               </nav>
             </div>
             <span className="page-mobile-title mdl-layout-title">
-              <img className="page-logo-image" src="/static/profile_updation/UNCLetters.png" alt="page-logo"/>
+              <img className="page-logo-image" src="/static/teams_landing/UNCLetters.png" alt="page-logo"/>
             </span>
             <button className="page-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
               <i className="material-icons">more_vert</i>
@@ -42,18 +42,12 @@ class Header extends Component {
           </div>
         </div>
 
-
         <br/><br/><br/><br/>
-        <img src="/static/profile_updation/profile.png" className="img-circle" alt="User Profile"/>
-        <br/>
-        <center><button className="upload"><div id="tt3" className="icon material-icons">cloud_upload</div>
-        <div className="mdl-tooltip" data-mdl-for="tt3">
-          Upload <strong>profile picture</strong>
-        </div></button></center>
         <div className="description">
-          <h1>{user.first_name}</h1>
+          <h1>Teams</h1>
+          <h5>Make a team or join one!</h5>
         </div>
-        <br/>
+        <br/><br/><br/>
       </div>
     );
   }
