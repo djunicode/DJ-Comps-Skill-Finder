@@ -22,6 +22,7 @@ urlpatterns = [
     path('project/<int:pk>/delete', views.delete_project, name='project_delete'),
     path('hackathons/teams/<int:pk>/', views.view_hackathon_team, name='view_hackathon_team'),
     path('hackathons/teams/add/', views.add_hackathon_team, name='add_hackathon_team'),
+    path('hackathons/teams/', views.all_hackathon_teams, name='all_hackathon_teams'),
     path('hackathons/teams/<int:pk>/request/', views.send_hackteam_request, name='send_hackteam_request'),
     path('hackathons/teams/request/<int:pk>/accept/', views.accept_hack_request, name='accept_hack_request'),
     path('hackathons/teams/request/<int:pk>/reject/', views.reject_hack_request, name='reject_hack_request'),

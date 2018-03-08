@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
-import ImageUploader from './ImageUploader';
-import './App.css';
+import '../App.css';
 class Header extends Component {
   render() {
     return (
@@ -44,18 +42,12 @@ class Header extends Component {
           </div>
         </div>
 
-
-        <br/><br/><br/><br/>
-        <img src="/static/profile_updation/profile.png" className="img-circle" alt="User Profile"/>
-        <br/>
-        <center>
-          <ImageUploader/>
-        </center>
-        
+        <br/><br/><br/><br/><br/><br/><br/><br/>
         <div className="description">
-          <h1>{user.first_name}</h1>
+          <h1>Teams</h1>
+          <h3>Make a team or join one!</h3>
         </div>
-        <br/>
+        <br/><br/><br/><br/><br/>
       </div>
     );
   }

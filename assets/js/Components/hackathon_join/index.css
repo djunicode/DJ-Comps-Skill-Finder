@@ -14,17 +14,6 @@
  * limitations under the License.
  */
 
- /*
-  *White space on the right side of the page in mobile rendering
-  *Project links merging on zooming in 
-  *Improper chips indentation
-  *Interests not displayed
-  *back and icons clickability
-  *bubble size
- */
-
-@import url(https://fonts.googleapis.com/css?family=Raleway);
-
 body {
   margin: 0;
   background-color: white;
@@ -46,182 +35,6 @@ a img{
 ::selection {
   background-color: #6ab344;
   color: #fff;
-}
-
-.Ellipse {
-  width: auto;
-  height: auto;
-  background-image: linear-gradient(to top, #ff5ca0 19%, #ff744f);
-}
-
-.mdl-layout{
-  width: auto;
-}
-
-.mdl-chip__text{
-  width: auto;
-}
-
-.img-circle{
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 25%;
-  border-radius: 250px;
-  background-color: #ffffff;
-  border: solid 3px #ffebad;
-}
-
-.description{
-  font-family: Raleway;
-  text-align: center;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #ffffff;
-}
-
-.description h1{
-  font-size: 47px;
-  color: white;
-}
-
-.description h5{
-  font-size: 26px;
-  color: #fff2c9;
-}
-
-.images{
-  max-width: 55px;
-  max-height: 55px ;
-}
-
-.follow-button{
-  width: 150px;
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 20px;
-  background-color: #fff2c9;
-  color: #ffa28b;
-  font-size: 22px;
-}
-
-.follow-button:hover{
-  background-color: white;
-}
-
-.back-button{
-  font-family: Raleway;
-  font-size: 25px;
-  font-weight: bold;
-  float: left;
-  color: #ff6699;
-  text-decoration: none;
-}
-
-form{
-  text-align: center;
-  padding: 20px;
-}
-
-.header{
-  font-family: Raleway;
-  text-align: center;
-  font-size: 40px;
-  font-weight: 900;
-  color: #a8a8a8;
-}
-
-.skills-chips, .interests-chips{
-  display: inline-block;
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.interests-chips .mdl-chip {
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-  background-color: #ffac91;
-}
-
-.interests-chips .mdl-chip:hover{
-  background-color: #ff9e99;
-  width: 220px;
-  height: 220px;
-  border-radius: 125px;
-}
-
-.skills-chips .mdl-chip {
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-  background-color: #ffc797;
-}
-
-.skills-chips .mdl-chip:hover{
-  background-color: #ffac91;
-  width: 220px;
-  height: 220px;
-  border-radius: 125px;
-}
-
-.mdl-chip .mdl-chip__text{
-  padding-top: 80px;
-  font-family: Raleway;
-  font-size: 40px;
-  font-weight: 800;
-  color: #ffffff;
-}
-
-.project-links{
-  text-align: center;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;  
-}
-
-.first-link label{
-  font-family: Raleway;
-  font-size: 30px;
-  color: #73ddff;
-  text-decoration: underline;
-}
-
-.first-link p{
-  font-family: Raleway;
-  font-size: 20px;
-  color: #828282;
-}
-
-.first-link a{
-  font-family: Raleway;
-  font-size: 20px;
-  color: #bdbdbd;
-  text-decoration: none;
-}
-
-.second-link label{
-  font-family: Raleway;
-  font-size: 30px;
-  color: #73ddff;
-  text-decoration: underline;
-}
-
-.second-link p{
-  font-family: Raleway;
-  font-size: 20px;
-  color: #828282;
-}
-
-.second-link a{
-  font-family: Raleway;
-  font-size: 20px;
-  color: #bdbdbd;
-  text-decoration: none;
 }
 
 .page-search-box .mdl-textfield__input {
@@ -260,7 +73,8 @@ form{
 
 .page-header {
   overflow: visible;
-  position: fixed; 
+  background-color: white;
+  opacity: 0.75;
 }
 
 .page-header .material-icons {
@@ -269,13 +83,13 @@ form{
 
 .page-header .mdl-layout__drawer-button {
   background: transparent;
+  color: #767777;
 }
 
-.page-navigation .mdl-navigation__link{
-  font-family: Raleway;
-  font-size: 20px;
+.page-header .mdl-navigation__link {
   color: #757575;
   font-weight: 700;
+  font-size: 14px;
 }
 
 .page-navigation-container {
@@ -308,7 +122,7 @@ form{
   display: inline-block;
   height: 60px;
   line-height: 68px;
-  background-color: transparent !important; 
+  background-color: transparent !important;
   border-bottom: 4px solid transparent;
 }
 
@@ -633,7 +447,6 @@ form{
 }
 .footerimage{
   position: relative;
-  
   left: 42%;
   width: 20%;
   margin-bottom: -4%;
@@ -641,7 +454,6 @@ form{
   filter: drop-shadow(1px -1px 1.5px rgba(0,0,0,.3));
 
 }
-
 
 @media (max-width: 900px) {
   .page-navigation-container {

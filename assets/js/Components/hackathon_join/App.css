@@ -14,15 +14,6 @@
  * limitations under the License.
  */
 
- /*
-  *White space on the right side of the page in mobile rendering
-  *Project links merging on zooming in 
-  *Improper chips indentation
-  *Interests not displayed
-  *back and icons clickability
-  *bubble size
- */
-
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 body {
@@ -49,179 +40,138 @@ a img{
 }
 
 .Ellipse {
+  text-align: center;
   width: auto;
   height: auto;
   background-image: linear-gradient(to top, #ff5ca0 19%, #ff744f);
 }
 
-.mdl-layout{
-  width: auto;
-}
-
-.mdl-chip__text{
-  width: auto;
-}
-
-.img-circle{
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 25%;
-  border-radius: 250px;
+.mdl-layout__drawer{
+  text-align: left;
+  height: 100%;
   background-color: #ffffff;
-  border: solid 3px #ffebad;
 }
 
-.description{
+.mdl-layout__drawer .mdl-layout-title{
   font-family: Raleway;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link{
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: normal;
+  color: #666666;
+}
+
+.title{
+  font-family: Raleway;
+  font-size: 65px;
   text-align: center;
+  font-weight: 550;
+  color: #ffa95c;
+}
+
+.clear-tag{
+  float: right;
+  font-size: 20px;
+  border-radius: 11px;
+  background-color: #ffa18f;
+  margin-right: 40px;
+  padding: 15px;
+  font-family: Raleway;
   font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
   color: #ffffff;
+}
+
+.filter-link{
+  float: right;
+  font-size: 50px;
+  margin-right: 30px;
+  color: #000000;
+}
+
+.mdl-grid{
+  display: inline-flex;
+  height: auto;
+  justify-content: center;
+}
+
+.medium-card{
+  width: 350px;
+  height: auto;
+  align-items: center;
+  padding-bottom: 35px;
+  padding-top: 15px;
+  margin: 25px;
+}
+
+.mdl-card__title .mdl-card__title-text{
+  font-family: Raleway;
+  font-size: 30px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-style: #3399ff;
+  color: #f2994a;
+}
+
+.mdl-card__subtitle-text h5{
+  font-family: Raleway;
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffc896;
+}
+
+.mdl-card__subtitle-text p{
+  font-family: Raleway;
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffdb6e;
+}
+
+.mdl-card__supporting-text .header h5{
+  font-family: Raleway;
+  font-size: 19px;
+  font-weight: 700;
+  color: #cfcfcf;
+}
+
+.mdl-card__supporting-text .header p{
+  font-family: Raleway;
+  font-size: 15px;
+  font-weight: 500;
+  color: #828282;
+}
+
+.mdl-card__actions{
+  border-radius: 12px;
+  background-color: #66d0f2;
+  width: auto;
+  height: auto;
+}
+
+.mdl-card__actions .mdl-button{
+  color: #ffffff;
+  font-size: 13px;
 }
 
 .description h1{
-  font-size: 47px;
-  color: white;
-}
-
-.description h5{
-  font-size: 26px;
-  color: #fff2c9;
-}
-
-.images{
-  max-width: 55px;
-  max-height: 55px ;
-}
-
-.follow-button{
-  width: 150px;
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 20px;
-  background-color: #fff2c9;
-  color: #ffa28b;
-  font-size: 22px;
-}
-
-.follow-button:hover{
-  background-color: white;
-}
-
-.back-button{
   font-family: Raleway;
-  font-size: 25px;
+  text-align: center;
+  letter-spacing: normal;
   font-weight: bold;
-  float: left;
-  color: #ff6699;
-  text-decoration: none;
-}
-
-form{
-  text-align: center;
-  padding: 20px;
-}
-
-.header{
-  font-family: Raleway;
-  text-align: center;
-  font-size: 40px;
-  font-weight: 900;
-  color: #a8a8a8;
-}
-
-.skills-chips, .interests-chips{
-  display: inline-block;
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.interests-chips .mdl-chip {
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-  background-color: #ffac91;
-}
-
-.interests-chips .mdl-chip:hover{
-  background-color: #ff9e99;
-  width: 220px;
-  height: 220px;
-  border-radius: 125px;
-}
-
-.skills-chips .mdl-chip {
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-  background-color: #ffc797;
-}
-
-.skills-chips .mdl-chip:hover{
-  background-color: #ffac91;
-  width: 220px;
-  height: 220px;
-  border-radius: 125px;
-}
-
-.mdl-chip .mdl-chip__text{
-  padding-top: 80px;
-  font-family: Raleway;
-  font-size: 40px;
-  font-weight: 800;
+  font-size: 65px;
   color: #ffffff;
 }
 
-.project-links{
+.description h3{
+  font-family: Raleway;
   text-align: center;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;  
-}
-
-.first-link label{
-  font-family: Raleway;
-  font-size: 30px;
-  color: #73ddff;
-  text-decoration: underline;
-}
-
-.first-link p{
-  font-family: Raleway;
-  font-size: 20px;
-  color: #828282;
-}
-
-.first-link a{
-  font-family: Raleway;
-  font-size: 20px;
-  color: #bdbdbd;
-  text-decoration: none;
-}
-
-.second-link label{
-  font-family: Raleway;
-  font-size: 30px;
-  color: #73ddff;
-  text-decoration: underline;
-}
-
-.second-link p{
-  font-family: Raleway;
-  font-size: 20px;
-  color: #828282;
-}
-
-.second-link a{
-  font-family: Raleway;
-  font-size: 20px;
-  color: #bdbdbd;
-  text-decoration: none;
+  letter-spacing: normal;
+  color: #fff2c9;
+  font-weight: normal;
 }
 
 .page-search-box .mdl-textfield__input {

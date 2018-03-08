@@ -710,9 +710,11 @@ form{
 
 .profile input{
   border: white;
-  font-size: 20px;
   border-bottom: 1px solid #bdbdbd ;
-  width: 300px;
+  
+  color: #767676;
+  font-family: Raleway;
+  font-size: 10px;
 }
 
 .profile h1{
@@ -728,6 +730,7 @@ form{
 }
 
 .profile label{
+  text-align: center;
   font-family: Raleway;
     font-size: 20px;
     font-weight: 600;
@@ -747,13 +750,22 @@ form{
   line-height: normal;
   letter-spacing: normal;
   color: #bdbdbd;
+  text-align: center;
 }
 
+.mdl-textfield__input{
+  text-align: center;
+  color: #767676;
+  font-family: Raleway;
+  font-size: 20px;
+}
+
+
 .mdl-selectfield__select{
-  text-indent: 50px;
+  text-align: center;
   width: 200px;
   border:none;
-  color: #bdbdbd;
+  color: #767676;
   border-bottom: 1px solid #bdbdbd;
   font-family: Raleway;
   font-size: 20px;

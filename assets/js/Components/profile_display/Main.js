@@ -29,10 +29,11 @@ class Main extends Component {
         		<a href="#" className="back-button"><i className="material-icons">keyboard_arrow_left</i>Back</a>
         	   <br/><br/><br/>
              <div>
-                <a href="#"><img align="right" className= "images" src="/static/profile_display/sof.png" alt="link"/></a>
-                <a href="#"><img align="right" className= "images" src="/static/profile_display/twitter.png" alt="link"/></a>
-                <a href="#"><img align="right" className= "images" src="/static/profile_display/github.png" alt="link"/></a>
-                <a href="#"><img align="right" className= "images" src="/static/profile_display/linkedin.png" alt="link"/></a>
+             {/* <a href="{user.behance_url}"><img align="right" className= "images" src="/static/profile_display/beh.png" alt="behance_url"/></a>
+            */}  <a href={user.stack_url}><img align="right" className= "images" src="/static/profile_display/sof.png" alt="stack_url"/></a>
+                <a href={user.twitter_url}><img align="right" className= "images" src="/static/profile_display/twitter.png" alt="twitter_url"/></a>
+                <a href={user.github_url}><img align="right" className= "images" src="/static/profile_display/github.png" alt="github_url"/></a>
+                <a href={user.linkedin_url}><img align="right" className= "images" src="/static/profile_display/linkedin.png" alt="linkedin_url"/></a>
             </div>
         		<center>
             <br/><br/><br/>
