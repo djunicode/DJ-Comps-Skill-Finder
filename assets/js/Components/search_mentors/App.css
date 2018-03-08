@@ -38,11 +38,29 @@ a img{
   color: #fff;
 }
 
-.paage-content .mdl-textfield .mdl-textfield__expandable-holder input{
+.Ellipse{
+  background-image: linear-gradient(to bottom, #ff5ca0 19%, #ff744f);
+  width: 100%;
+  height: auto;
+}
+
+.page-content .mdl-textfield .mdl-textfield__expandable-holder input{
   width: 100px;
   font-family: Raleway;
-  font-size: 40px;
-  color: #ebd3f4;
+  font-size: 18px;
+}
+
+.mdl-layout__content{
+  width: 100%;
+  margin-left: 0px;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+  padding: 20px 15px;
+}
+
+.mdl-layout__drawer.is-visible{
+  overflow-y: visible;
 }
 
 .clear-tag{
@@ -60,7 +78,8 @@ a img{
 .mdl-layout__drawer{
   background-color: white;
   overflow: hidden;
-
+  width:auto;
+  height: 100%;
 }
 
 .page-content .mdl-textfield, .mdl-card{
@@ -69,18 +88,46 @@ a img{
 
 .vertical-tab, .page-content{
   display: inline-block;
+  margin-left: 2%;
 }
 
+.requests{
+  width: auto;
+}
 
+.requests-button{
+  padding: 14px;
+  height: auto;
+  color: #6fcf97;
+}
+
+.accept-button{
+  padding: 14px;
+  height: auto;
+  color: #6fcf97;
+}
+
+.decline-button{
+  padding: 14px;
+  height: auto;
+  color: #f2994a;
+}
 
 .mdl-layout .page-header .mdl-layout__header-row .page-navigation-container .mdl-navigation a{
-  color: black;
-  font-family: Raleway;
+    font-family: Raleway;
+    font-size: 18px;
+    color: #757575;
+    font-weight: 700;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+  
 }
 
 .Ellipse h1{
   font-family: PlayfairDisplay;
   text-align: center;
+  color: #ffffff;
 }
 
 .mdl-layout h1{
@@ -146,10 +193,6 @@ a img{
   font-size: 12px;
   font-weight: 500;
   color: #828282;
-}
-
-.page-content{
-  float: right;
 }
 
 .vertical-tab{
