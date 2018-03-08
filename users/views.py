@@ -17,6 +17,7 @@ from .models import Hackathon, HackathonTeam, HackathonTeamRequest
 from .models import ProjectTeam, ProjectTeamRequest
 from .forms import MentorRequestForm, HackathonTeamForm, HackathonTeamRequestForm
 from .forms import ProjectTeamForm, ProjectTeamRequestForm
+# from django.db.models import Q
 
 
 def process_user(u):
@@ -483,8 +484,74 @@ def view_hackathon_team(request, pk):
     return render(request, 'users/view_hackathon_team.html', {'team': team})
 
 
+# @login_required(login_url='users:login')
+# def send_hackteam_request(request, pk):
+#     try:
+#         team = HackathonTeam.objects.get(id=pk)
+#     except HackathonTeam.DoesNotExist:  # redirecting to login as a placeholder
+#         return redirect('users:login')
+#     if request.user in team.current_members.all() or request.user == team.leader:
+#         return redirect('users:login')
+#     # Checking if a pending request exists
+#     if HackathonTeamRequest.objects.filter(team=team, sender=request.user, accepted=False, rejected=False).exists():
+#         return redirect('users:login')
+#     if request.method == 'POST':
+#         form = HackathonTeamRequestForm(team, request.POST)  # This is a bit of a hack
+#         if form.is_valid():
+#             hack_request = form.save(commit=False)
+#             hack_request.sender = request.user
+#             hack_request.team = team
+#             hack_request.save()
+#             form.save_m2m()
+#             return redirect('users:view_hackathon_team', pk=pk)
+#     else:
+#         form = HackathonTeamRequestForm(team=team)
+#     return render(request, 'users/send_hackathon_team_request.html', {'form': form, 'team': team,
+#                                                                       'skills': team.skills_required.all()})
+
+
+@login_required(login_url='users:login')
+def all_hackathon_teams(request):
+    context = {}
+    user = process_user(request.user)
+    context['user'] = json.dumps(user, indent=4, default=str)
+    requests_received = []
+    for team in request.user.leader_teams.all():
+        for r in team.hack_requests_received.filter(accepted=False, rejected=False):
+            x = model_to_dict(r)
+            x['team_name'] = team.name
+            x['sender_name'] = r.sender.first_name
+            requests_received.append(x)
+    requests_sent = request.user.hack_requests_sent.filter(accepted=False, rejected=False)
+    temp = []
+    for r in requests_sent:
+        x = model_to_dict(r)
+        x['team_name'] = r.team.name
+        x['leader_name'] = r.team.leader.first_name
+        temp.append(x)
+    context['requests_received'] = json.dumps(requests_received, indent=4, default=str)
+    context['requests_sent'] = json.dumps(temp, indent=4, default=str)
+    # teams = HackathonTeam.objects.filter(closed=False).filter(~Q(leader=request.user))
+    teams = HackathonTeam.objects.filter(closed=False).exclude(leader=request.user)
+    teams = [model_to_dict(team) for team in teams]
+    list_hack = {}
+    for h in Hackathon.objects.all():
+        list_hack[h.id] = h.name
+    context['list_hack'] = json.dumps(list_hack)
+    context['teams'] = json.dumps(teams, indent=4, default=str)
+    skills_dict = {}
+    for skill in Skill.objects.all():
+        skills_dict[skill.id] = skill.skill
+    context['skills_dict'] = json.dumps(skills_dict, indent=4, default=str)
+    if request.method == 'POST':
+        print("post request bouncing off of the same url")
+    return render(request, 'users/all_hackathon_teams.html', {'prop': context})
+
+
 @login_required(login_url='users:login')
 def send_hackteam_request(request, pk):
+    if request.method == 'GET':
+        return redirect('users:all_hackathon_teams')
     try:
         team = HackathonTeam.objects.get(id=pk)
     except HackathonTeam.DoesNotExist:  # redirecting to login as a placeholder
@@ -494,19 +561,9 @@ def send_hackteam_request(request, pk):
     # Checking if a pending request exists
     if HackathonTeamRequest.objects.filter(team=team, sender=request.user, accepted=False, rejected=False).exists():
         return redirect('users:login')
-    if request.method == 'POST':
-        form = HackathonTeamRequestForm(team, request.POST)  # This is a bit of a hack
-        if form.is_valid():
-            hack_request = form.save(commit=False)
-            hack_request.sender = request.user
-            hack_request.team = team
-            hack_request.save()
-            form.save_m2m()
-            return redirect('users:view_hackathon_team', pk=pk)
-    else:
-        form = HackathonTeamRequestForm(team=team)
-    return render(request, 'users/send_hackathon_team_request.html', {'form': form, 'team': team,
-                                                                      'skills': team.skills_required.all()})
+    r = HackathonTeamRequest(team=team, sender=request.user)
+    r.save()
+    return redirect('users:all_hackathon_teams')
 
 
 @login_required(login_url='users:login')
