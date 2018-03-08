@@ -209,7 +209,7 @@ def update_profile(request):
         request.user.mobile = mobile
         request.user.sap_id = sap_id
         # request.user.photo = request.FILES.get('photo', None)
-        # request.user.bio = request.POST.get('bio')
+        request.user.bio = request.POST.get('bio')
         request.user.year = request.POST.get('year')
         if request.POST.get('year') == 'FE':
             request.user.is_mentor = False

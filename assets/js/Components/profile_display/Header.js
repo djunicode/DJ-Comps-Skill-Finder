@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-class Header extends Component {
+class Header extends Component { 
   render() {
     return (
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header Ellipse">

@@ -728,6 +728,7 @@ form{
 }
 
 .profile label{
+  text-align: center;
   font-family: Raleway;
     font-size: 20px;
     font-weight: 600;
@@ -747,10 +748,16 @@ form{
   line-height: normal;
   letter-spacing: normal;
   color: #bdbdbd;
+  text-align: center;
+}
+
+.mdl-textfield__input{
+  text-align: center;
+  color: #bdbdbd;
 }
 
 .mdl-selectfield__select{
-  text-indent: 50px;
+  text-align: center;
   width: 200px;
   border:none;
   color: #bdbdbd;
