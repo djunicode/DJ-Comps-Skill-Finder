@@ -99,7 +99,7 @@ class Main extends Component {
             <br/><br/>
             <div className="justify">
               <span className="mdl-selectfield mdl-js-selectfield">
-                <label className="mdl-selectfield__label" htmlFor="year">YEAR</label>&nbsp;&nbsp;&nbsp;
+                <label className="mdl-selectfield__label" htmlFor="year">YEAR</label>
               </span><br/>
               <div className="mdl-textfield mdl-js-textfield getmdl-select">
         <input type="text" className="mdl-textfield__input" id="year" value={this.state.year} readOnly />
@@ -117,7 +117,7 @@ class Main extends Component {
 			        <br/><br/><br/>
 
 			        <span className="mdl-selectfield mdl-js-selectfield">
-			        	<label className="mdl-selectfield__label" htmlFor="sap-id">SAP ID</label>&nbsp;&nbsp;&nbsp;<br/>
+			        	<label className="mdl-selectfield__label" htmlFor="sap-id">SAP ID</label><br/><br/>
 						<input className="mdl-selectfield__select" name="sap_id" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sap-id" value={this.state.sapID} onChange={this.handleSAP}/>
 						<span className="mdl-textfield__error">Input is not a number!</span>
 					</span>
@@ -125,7 +125,7 @@ class Main extends Component {
           <br/><br/><br/><br/>
 
           <span className="mdl-selectfield mdl-js-selectfield">
-            <label className="mdl-selectfield__label" htmlFor="mob">Mobile No.</label>&nbsp;&nbsp;&nbsp;<br/>
+            <label className="mdl-selectfield__label" htmlFor="mob">Mobile No.</label><br/><br/>
             <input className="mdl-selectfield__select" name="mob" type="text" pattern="\d{10}" id="mob" value={this.state.mob} onChange={this.handleMob}/>
             <span className="mdl-textfield__error">Enter a 10 digit no.!</span>
           </span>
@@ -243,15 +243,14 @@ class Main extends Component {
 					<input type="text" name="twitter" id="twitter" value={this.state.twitter} onChange={this.handleTwitter} /><br/><br/><br/>
 					<label htmlFor="behance" className="mdl-selectfield__label">Behance</label>&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" name="behance" id="behance" value={this.state.behance} onChange={this.handleBehance} /><br/><br/><br/>
-                    <label htmlFor="stack" className="mdl-selectfield__label">Stack Overflow</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="text" name="stack" id="stack" value={this.state.stack} onChange={this.handleStack} /><br/>
+          <label htmlFor="stack" className="mdl-selectfield__label">Stack Overflow</label>&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" name="stack" id="stack" value={this.state.stack} onChange={this.handleStack} /><br/>
 				</div>
         <br/>
         <br/>
         <br/>
         <br/>
-        <br/>
-        <br/>
+        
         <button type="submit" className="save-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
           SAVE
         </button>

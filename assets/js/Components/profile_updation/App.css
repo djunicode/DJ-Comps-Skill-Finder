@@ -710,9 +710,11 @@ form{
 
 .profile input{
   border: white;
-  font-size: 20px;
   border-bottom: 1px solid #bdbdbd ;
-  width: 300px;
+  
+  color: #767676;
+  font-family: Raleway;
+  font-size: 10px;
 }
 
 .profile h1{
@@ -753,14 +755,17 @@ form{
 
 .mdl-textfield__input{
   text-align: center;
-  color: #bdbdbd;
+  color: #767676;
+  font-family: Raleway;
+  font-size: 20px;
 }
+
 
 .mdl-selectfield__select{
   text-align: center;
   width: 200px;
   border:none;
-  color: #bdbdbd;
+  color: #767676;
   border-bottom: 1px solid #bdbdbd;
   font-family: Raleway;
   font-size: 20px;

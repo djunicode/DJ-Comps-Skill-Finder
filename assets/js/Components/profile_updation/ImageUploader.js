@@ -35,7 +35,8 @@ class ImageUploader extends Component {
         type="file" 
         onChange={this.fileSelectedHandler}
         ref={fileInput => this.fileInput = fileInput}/>
-        <button onClick={() => this.fileInput.click()}>Pick File</button>
+        <button onClick={() => this.fileInput.click()}>Pick a File</button>
+        &nbsp;&nbsp;
         <button onClick={this.fileUploadHandler}>Upload Pic!</button>
       </div>
     );
