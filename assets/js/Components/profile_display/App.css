@@ -56,6 +56,10 @@ a img{
   width: auto;
 }
 
+.mdl-chip__text{
+  width: auto;
+}
+
 .img-circle{
   margin-right: auto;
   margin-left: auto;
@@ -78,6 +82,11 @@ a img{
 
 .description h6{
   color: #fff2c9;
+}
+
+.images{
+  max-width: 55px;
+  max-height: 55px ;
 }
 
 .follow-button{

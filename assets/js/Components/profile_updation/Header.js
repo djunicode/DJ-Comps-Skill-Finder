@@ -43,16 +43,17 @@ class Header extends Component {
         </div>
 
 
-
         <br/><br/><br/><br/>
         <img src="/static/profile_updation/profile.png" className="img-circle" alt="User Profile"/>
+        <br/>
+        <center><button className="upload"><div id="tt3" className="icon material-icons">cloud_upload</div>
+        <div className="mdl-tooltip" data-mdl-for="tt3">
+          Upload <strong>profile picture</strong>
+        </div></button></center>
         <div className="description">
           <h1>{user.first_name}</h1>
-          <h5>I love coding and panda videos</h5>
         </div>
         <br/>
-
-      
       </div>
     );
   }

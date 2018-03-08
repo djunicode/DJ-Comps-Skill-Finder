@@ -27,8 +27,15 @@ class Main extends Component {
         	<div>
         	<form>
         		<a href="#" className="back-button"><i className="material-icons">keyboard_arrow_left</i>Back</a>
-        		<br/><br/><br/><br/><br/>
+        	   <br/><br/><br/>
+             <div>
+                <a href="#"><img align="right" className= "images" src="/static/profile_display/sof.png" alt="link"/></a>
+                <a href="#"><img align="right" className= "images" src="/static/profile_display/twitter.png" alt="link"/></a>
+                <a href="#"><img align="right" className= "images" src="/static/profile_display/github.png" alt="link"/></a>
+                <a href="#"><img align="right" className= "images" src="/static/profile_display/linkedin.png" alt="link"/></a>
+            </div>
         		<center>
+            <br/><br/><br/>
         		<div className="header">
 					<h2>SKILLS</h2>
 				</div>

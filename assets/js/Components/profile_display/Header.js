@@ -50,10 +50,9 @@ class Header extends Component {
           <h5>{user.bio}</h5>
         </div>
         <br/>
-        <button className="follow-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+    {/*  <button className="follow-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
           FOLLOW
-        </button>
-        <br/><br/>
+        </button>    */}
       </div>
     );
   }
