@@ -194,19 +194,19 @@ def update_profile(request):
     else:
         # request.user.first_name = request.POST.get('first_name')
         # request.user.last_name = request.POST.get('last_name')
-        # mobile = request.POST.get('mobile')
+        mobile = request.POST.get('mob')
         sap_id = request.POST.get('sap_id')
         print("sap_id", request.POST)
         errors = {}
-        # if CustomUser.objects.filter(mobile=mobile).exists():
-        #     if CustomUser.objects.filter(mobile=mobile)[0].id != request.user.id:
-        #         errors['mobile_error'] = 'The mobile number is already in use by another account.'
+        if CustomUser.objects.filter(mobile=mobile).exists():
+            if CustomUser.objects.filter(mobile=mobile)[0].id != request.user.id:
+                errors['mobile_error'] = 'The mobile number is already in use by another account.'
         if CustomUser.objects.filter(sap_id=sap_id).exists():
             if CustomUser.objects.filter(sap_id=sap_id)[0].id != request.user.id:
                 errors['sap_error'] = 'The SAP ID is already in use by another account.'
         if len(errors) > 0:
             return render(request, 'users/update_profile.html', errors)
-        # request.user.mobile = mobile
+        request.user.mobile = mobile
         request.user.sap_id = sap_id
         # request.user.photo = request.FILES.get('photo', None)
         # request.user.bio = request.POST.get('bio')
@@ -254,6 +254,7 @@ def update_profile(request):
         request.user.linkedin_url = request.POST.get('linkedin')
         request.user.github_url = request.POST.get('github')
         request.user.behance_url = request.POST.get('behance')
+        request.user.stack_url = request.POST.get('stack')
         request.user.save()
         return redirect('users:view_profile', sap_id=sap_id)
 

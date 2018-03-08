@@ -46,6 +46,7 @@ class CustomUser(AbstractUser):
     linkedin_url = models.URLField(blank=True, null=True)
     twitter_url = models.URLField(blank=True, null=True)
     behance_url = models.URLField(blank=True, null=True)
+    stack_url = models.URLField(blank=True, null=True)
 
 
 # class Interest(models.Model):

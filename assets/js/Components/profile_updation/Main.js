@@ -8,8 +8,8 @@ class Main extends Component {
             linkedIn: user.linkedin_url || '' ,
             behance: user.behance_url || '',
             github: user.github_url || '',
-            twitter: '',
-            stack: '',
+            twitter: user.twitter_url || '',
+            stack: user.stack_url || '',
             interest1: skills[user.interest_1] || '',
             interest2: skills[user.interest_2] || '',
             interest3:skills[user.interest_3] || '',
@@ -19,8 +19,8 @@ class Main extends Component {
             sapID: parseInt(user.sap_id)|| '',
             year: user.year || '',
             user: '',
-            bio: '',
-            mob: '',
+            bio: user.bio || '',
+            mob: user.mobile || ''
         };
 
         this.handleSAP= this.handleSAP.bind(this);
@@ -132,7 +132,7 @@ class Main extends Component {
           <br/><br/><br/>
 
           <div className="mdl-textfield mdl-js-textfield">
-                  <textarea className="mdl-textfield__input" value={this.state.bio} onChange={this.handleBio} rows="3" type="text" id="bio"></textarea>
+                  <textarea className="mdl-textfield__input" value={this.state.bio} onChange={this.handleBio} rows="3" type="text" id="bio" name='bio'></textarea>
                   <label className="mdl-selectfield__label mdl-textfield__label" for="bio">Bio Description...</label>
           </div> 
 
@@ -243,8 +243,8 @@ class Main extends Component {
 					<input type="text" name="twitter" id="twitter" value={this.state.twitter} onChange={this.handleTwitter} /><br/><br/><br/>
 					<label htmlFor="behance" className="mdl-selectfield__label">Behance</label>&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" name="behance" id="behance" value={this.state.behance} onChange={this.handleBehance} /><br/><br/><br/>
-          <label htmlFor="stack" className="mdl-selectfield__label">Stack Overflow</label>&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="text" name="stack" id="stack" value={this.state.stack} onChange={this.handleStack} /><br/>
+                    <label htmlFor="stack" className="mdl-selectfield__label">Stack Overflow</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="stack" id="stack" value={this.state.stack} onChange={this.handleStack} /><br/>
 				</div>
         <br/>
         <br/>
