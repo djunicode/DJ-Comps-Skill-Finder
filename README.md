@@ -37,4 +37,4 @@ Aakash Shah, Ikbal Singh, Krisha Mehta, Vatsal Doshi
 Devansh Dalal, Jinesh Shah, Mudra Nagda, Viral Tagdiwala
 
 ### Back End Developers
-Parth Doshi, Parth Shah
+Parth Doshi, Pratik Mulchandani, Parth Shah
