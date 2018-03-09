@@ -209,7 +209,7 @@ def update_profile(request):
         request.user.mobile = mobile
         request.user.sap_id = sap_id
         # request.user.photo = request.FILES.get('photo', None)
-        # request.user.bio = request.POST.get('bio')
+        request.user.bio = request.POST.get('bio')
         request.user.year = request.POST.get('year')
         if request.POST.get('year') == 'FE':
             request.user.is_mentor = False
@@ -224,8 +224,7 @@ def update_profile(request):
             print(request.user.skill_2)
         except Skill.DoesNotExist:
             request.user.skill_2 = None
-        print(request.POST.get('skill_2'))
-        print('Front-End: HTML, CSS, JavaScript')
+        print(request.POST.get('bio'))
         try:
             request.user.skill_3 = Skill.objects.get(skill=request.POST.get('skill3'))
         except Skill.DoesNotExist:
@@ -712,6 +711,27 @@ def cancel_project_request(request, pk):
         project_request.delete()
         return redirect('users:view_profile', sap_id=request.user.sap_id)
     return redirect('users:login')
+
+
+@login_required(login_url='users:login')
+def project_join_view(request):
+    if request.method != 'POST':
+        user = request.user
+        received = []
+        sent = []
+        context = {}
+        head = ProjectTeam.objects.filter(leader=user)
+        for h in head:
+            for r in h.project_requests_received.filter(accepted=False, rejected=False):
+                received.append(process_user(r.sender))
+        for r in user.project_requests_sent.filter(accepted=False, rejected=False):
+            team = model_to_dict(r.team)
+            sent.append(team)
+        received = json.dumps(received, indent=4, default=str)
+        sent = json.dumps(sent, indent=4, default=str)
+        context['received'] = received
+        context['sent'] = sent
+        return render(request, 'users/project_join.html', {'prop': context})
 
 
 # @login_required

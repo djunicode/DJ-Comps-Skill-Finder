@@ -12,7 +12,8 @@ module.exports = {
       Search: './assets/js/Components/search_mentors/index',
       Teams_Landing: './assets/js/Components/teams_landing/index',
       Project_Teams_Create: './assets/js/Components/project_team_add/index',
-      Hackathon_Team_Creation: './assets/js/Components/hackathon_team_creation/index'
+      Hackathon_Team_Creation: './assets/js/Components/hackathon_team_creation/index',
+      Project_Join: './assets/js/Components/project_join/index'
   },
   // entry point of our app. assets/js/index.js should require other js modules and dependencies it needs
 
