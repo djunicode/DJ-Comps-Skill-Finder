@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {bindAll} from 'lodash';
-import $ from 'jquery';
 import './App.css';
 import axios from 'axios';
 
