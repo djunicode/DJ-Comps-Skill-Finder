@@ -15,10 +15,12 @@
  */
 
  /*
-  *White space on the left side of the page in mobile rendering
+  *White space on the right side of the page in mobile rendering
   *Project links merging on zooming in 
   *Improper chips indentation
-  *Skills and Interests not displayed
+  *Interests not displayed
+  *back and icons clickability
+  *bubble size
  */
 
 @import url(https://fonts.googleapis.com/css?family=Raleway);
@@ -80,7 +82,13 @@ a img{
   color: #ffffff;
 }
 
-.description h6{
+.description h1{
+  font-size: 47px;
+  color: white;
+}
+
+.description h5{
+  font-size: 26px;
   color: #fff2c9;
 }
 

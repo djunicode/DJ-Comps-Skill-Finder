@@ -34,16 +34,20 @@ class Header extends Component {
               <i className="material-icons">more_vert</i>
             </button>
             <ul className="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" htmlFor="more-button">
-              <li className="mdl-menu__item">Home</li>
-              <li className="mdl-menu__item">Find A Mentor</li>
-              <li className="mdl-menu__item">Make a Team</li>
-              <li className="mdl-menu__item">Events</li>
+              <li className="mdl-menu__item">PlaceHolder</li>
+              <li className="mdl-menu__item">PlaceHolder</li>
+              <li disabled className="mdl-menu__item">PlaceHolder</li>
+              <li className="mdl-menu__item">PlaceHolder</li>
             </ul>
           </div>
         </div>
-        <br/><br/><br/><br/>
-        <h1>Mentors</h1>
-        <br/><br/>
+
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <div className="description">
+          <h1>Teams</h1>
+          <h3>Make a team or join one!</h3>
+        </div>
+        <br/><br/><br/><br/><br/>
       </div>
     );
   }

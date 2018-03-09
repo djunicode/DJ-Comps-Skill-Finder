@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import ImageUploader from './ImageUploader';
 import './App.css';
 class Header extends Component {
   render() {
@@ -46,10 +48,10 @@ class Header extends Component {
         <br/><br/><br/><br/>
         <img src="/static/profile_updation/profile.png" className="img-circle" alt="User Profile"/>
         <br/>
-        <center><button className="upload"><div id="tt3" className="icon material-icons">cloud_upload</div>
-        <div className="mdl-tooltip" data-mdl-for="tt3">
-          Upload <strong>profile picture</strong>
-        </div></button></center>
+        <center>
+          <ImageUploader/>
+        </center>
+        
         <div className="description">
           <h1>{user.first_name}</h1>
         </div>

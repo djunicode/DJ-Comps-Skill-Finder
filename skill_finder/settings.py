@@ -14,9 +14,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+<<<<<<< HEAD
+SECRET_KEY = "nad7kycy!op3$^p@37=xk!mcwmmv5zw6@*e$r+#m5ood2)@i78"
+=======
+SECRET_KEY = '5t4jwdmosysgp)9+m)m#!$9jea_a%@)cv4)yg&sdup**qx%3^2'
+>>>>>>> c7550f250c346a9d913aa2ff7acd36eb242eb278
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG']
+DEBUG = True
 ALLOWED_HOSTS = []
 
 
@@ -80,12 +84,8 @@ WSGI_APPLICATION = 'skill_finder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ['ENGINE'],
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PASS'],
-        'HOST': os.environ['DB_HOST'],
-        'PORT': os.environ['DB_PORT'],
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

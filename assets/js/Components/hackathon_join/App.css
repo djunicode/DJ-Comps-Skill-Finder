@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- @import url(https://fonts.googleapis.com/css?family=Raleway);
+
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 
 body {
   margin: 0;
@@ -38,223 +39,139 @@ a img{
   color: #fff;
 }
 
-.Ellipse{
-  background-image: linear-gradient(to bottom, #ff5ca0 19%, #ff744f);
-  width: 100%;
+.Ellipse {
+  text-align: center;
+  width: auto;
   height: auto;
-}
-
-.page-content .mdl-textfield .mdl-textfield__expandable-holder input{
-  width: 100px;
-  font-family: Raleway;
-  font-size: 18px;
-}
-
-.mdl-layout__content{
-  width: 100%;
-  margin-left: 0px;
-}
-
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
-  padding: 20px 15px;
-}
-
-.mdl-layout__drawer.is-visible{
-  overflow-y: visible;
-}
-
-.clear-tag{
-  font-size: 20px;
-  border-radius: 11px;
-  background-color: #ffa18f;
-  padding: 10px;
-  margin-left: 30px;
-}
-
-.search-button{
-  left: 40px;
+  background-image: linear-gradient(to top, #ff5ca0 19%, #ff744f);
 }
 
 .mdl-layout__drawer{
-  background-color: white;
-  overflow: hidden;
-  width:auto;
+  text-align: left;
   height: 100%;
+  background-color: #ffffff;
 }
 
-.page-content .mdl-textfield, .mdl-card{
-  left: 50px;
+.mdl-layout__drawer .mdl-layout-title{
+  font-family: Raleway;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
 }
 
-.vertical-tab, .page-content{
-  display: inline-block;
-  margin-left: 2%;
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link{
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: normal;
+  color: #666666;
 }
 
-.requests{
-  width: auto;
-}
-
-.requests-button{
-  padding: 14px;
-  height: auto;
-  color: #6fcf97;
-}
-
-.accept-button{
-  padding: 14px;
-  height: auto;
-  color: #6fcf97;
-}
-
-.decline-button{
-  padding: 14px;
-  height: auto;
-  color: #f2994a;
-}
-
-.mdl-layout .page-header .mdl-layout__header-row .page-navigation-container .mdl-navigation a{
-    font-family: Raleway;
-    font-size: 18px;
-    color: #757575;
-    font-weight: 700;
-}
-
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
-  
-}
-
-.Ellipse h1{
-  font-family: PlayfairDisplay;
+.title{
+  font-family: Raleway;
+  font-size: 65px;
   text-align: center;
+  font-weight: 550;
+  color: #ffa95c;
+}
+
+.clear-tag{
+  float: right;
+  font-size: 20px;
+  border-radius: 11px;
+  background-color: #ffa18f;
+  margin-right: 40px;
+  padding: 15px;
+  font-family: Raleway;
+  font-weight: bold;
   color: #ffffff;
 }
 
-.mdl-layout h1{
-  text-align: center;
+.filter-link{
+  float: right;
+  font-size: 50px;
+  margin-right: 30px;
+  color: #000000;
 }
 
-.mdl-card{
-  width: auto;
-  box-shadow: 3px 4px 13px 0 rgba(189, 189, 189, 0.33);
+.mdl-grid{
+  display: inline-flex;
+  height: auto;
+  justify-content: center;
 }
 
-.mdl-card__media {
+.medium-card{
+  width: 350px;
+  height: auto;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  max-width: 100%;
-  background-color: white;
+  padding-bottom: 35px;
+  padding-top: 15px;
+  margin: 25px;
 }
 
-.mdl-card__media img {
-  max-width: 100%;
-  max-height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.mdl-card__actions {
-  display: flex;
-  box-sizing:border-box;
-  align-items: center;
-  max-width: 100%;
-}
-
-.mdl-grid .mdl-card .mdl-card__title .mdl-card__title-text{
+.mdl-card__title .mdl-card__title-text{
   font-family: Raleway;
-  font-size: 24px;
-  font-weight: bold;
-  margin-left: auto;
-  margin-right: auto;
-  color: #828282;
-  overflow: hidden;
-
+  font-size: 30px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-style: #3399ff;
+  color: #f2994a;
 }
 
-.mdl-card__actions .profile-button{
+.mdl-card__subtitle-text h5{
   font-family: Raleway;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
-  color: #6fcf97;
+  color: #ffc896;
 }
 
-.mdl-card__actions .request-button{
+.mdl-card__subtitle-text p{
   font-family: Raleway;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
-  color: #2eb9e5
+  color: #ffdb6e;
 }
 
-.mdl-card__supporting-text{
-  text-align: center;
+.mdl-card__supporting-text .header h5{
   font-family: Raleway;
-  font-size: 12px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #cfcfcf;
+}
+
+.mdl-card__supporting-text .header p{
+  font-family: Raleway;
+  font-size: 15px;
   font-weight: 500;
   color: #828282;
 }
 
-.vertical-tab{
-  float: left;
+.mdl-card__actions{
+  border-radius: 12px;
+  background-color: #66d0f2;
+  width: auto;
+  height: auto;
 }
 
-.mdl-tabs__panel {
-  display: none;
-}
-.vertical-mdl-tabs {
-    margin-top: 30px;
-}
-.vertical-mdl-tabs .mdl-tabs__tab-bar {
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    padding-bottom: 35px;
-    height: inherit;
-    border-bottom: none;
-    border-right: 1px solid rgba(10, 11, 49, 0.20);
+.mdl-card__actions .mdl-button{
+  color: #ffffff;
+  font-size: 13px;
 }
 
-.vertical-mdl-tabs .mdl-tabs__tab {
-    width: 100%;
-    height: 35px;
-    line-height: 35px;
-    box-sizing: border-box;
-    letter-spacing: 2px;
-}
-
-.vertical-mdl-tabs .mdl-tabs__tab:hover {
-  background: rgba(158, 158, 158, 0.34);
-  color: black;
-}
-
-.vertical-mdl-tabs.mdl-tabs.is-upgraded a.mdl-tabs__tab.is-active {
-    border-right: 3px solid #ED462F;
-}
-.vertical-mdl-tabs.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
-    content: inherit;
-    height: 0;
-}
-
-.vertical-mdl-tabs.mdl-tabs.is-upgraded .mdl-tabs__panel.is-active, .mdl-tabs__panel {
-    padding: 0 30px;
-}
-
-.vertical-mdl-tabs.mdl-tabs .mdl-tabs__tab {
-    text-align: left;
-}
-
-.text-center {
+.description h1{
+  font-family: Raleway;
   text-align: center;
+  letter-spacing: normal;
+  font-weight: bold;
+  font-size: 65px;
+  color: #ffffff;
 }
 
-.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
-   color: #E21549;
-}
-
-.page-header{
-  position: fixed;
-  overflow-y: hidden;
+.description h3{
+  font-family: Raleway;
+  text-align: center;
+  letter-spacing: normal;
+  color: #fff2c9;
+  font-weight: normal;
 }
 
 .page-search-box .mdl-textfield__input {
@@ -265,6 +182,7 @@ a img{
   z-index: 50;
   margin: 0 !important;
 }
+
 
 .mdl-textfield--expandable {
   width: auto;
@@ -292,7 +210,7 @@ a img{
 
 .page-header {
   overflow: visible;
-  opacity: 0.75;
+  position: fixed; 
 }
 
 .page-header .material-icons {
@@ -301,13 +219,13 @@ a img{
 
 .page-header .mdl-layout__drawer-button {
   background: transparent;
-  color: #767777;
 }
 
-.page-header .mdl-navigation__link {
+.page-navigation .mdl-navigation__link{
+  font-family: Raleway;
+  font-size: 20px;
   color: #757575;
   font-weight: 700;
-  font-size: 14px;
 }
 
 .page-navigation-container {
@@ -340,9 +258,8 @@ a img{
   display: inline-block;
   height: 60px;
   line-height: 68px;
-  background-color: transparent !important;
+  background-color: transparent !important; 
   border-bottom: 4px solid transparent;
-  font-size: 16px;
 }
 
 .page-navigation .mdl-navigation__link:hover {
@@ -675,6 +592,7 @@ a img{
 
 }
 
+
 @media (max-width: 900px) {
   .page-navigation-container {
     display: none;
@@ -749,77 +667,4 @@ a img{
   .page-footer .mdl-mega-footer--bottom-section {
     display: none;
   }
-}
-.navbar {
-    overflow: hidden;
-    background-color: #333;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.navbar a {
-    float: left;
-    font-size: 16px;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-.dropdown {
-    float: left;
-    overflow: hidden;
-}
-
-.dropdown .dropbtn {
-    font-size: 16px;    
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.Choose-skill {
-  width: 116px;
-  height: 25px;
-  font-family: Raleway;
-  font-size: 20px;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #e0e0e0;
 }

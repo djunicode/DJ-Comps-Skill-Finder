@@ -97,21 +97,42 @@ class Main extends Component {
         return (
 
 		<div className="main-layout mdl-js-layout mdl-layout--fixed-drawer">
-			<div className="mdl-layout__drawer">
-			  <span className="mdl-layout-title">Sent Requests</span>
-			  <nav className="mdl-navigation">
-			       {this.state.sentRequests.map(obj =>
-           <a className="mdl-navigation__link" href="">{obj.first_name}</a>
-         )}
-
-			    </nav>
-			  <span className="mdl-layout-title">Received Requests</span>
+      <div className="mdl-layout__drawer">
+        <span className="mdl-layout-title">Sent Requests</span>
         <nav className="mdl-navigation">
-  			       {this.state.recievedRequests.map(obj =>
+             {this.state.sentRequests.map(obj =>
+          <div className="mdl-grid">
+          <div className="mdl-cell--8-col">
+           <a className=" mdl-navigation__link" href="">{obj.first_name}</a>
+           </div>
+           <div className="mdl-cell--4-col">
+          <button className="requests-button mdl-button mdl-js-button">
+          Accepted
+          </button>
+          </div>
+           </div>
+         )}
+          </nav>
+          <br/>
+        <span className="mdl-layout-title">Received Requests</span>
+        <nav className="mdl-navigation">
+               {this.state.recievedRequests.map(obj =>
+          <div className="mdl-grid">
+            <div className="mdl-cell--4-col">
              <a className="mdl-navigation__link" href="">{obj.first_name}</a>
+           </div>
+           <div className="requests mdl-cell--8-col">
+          <button className="accept-button mdl-button mdl-js-button">
+            Accept
+          </button>          
+          <button className="decline-button mdl-button mdl-js-button">
+            Decline
+          </button>
+          </div>  
+        </div>
            )}
-  			</nav>
-			</div>
+        </nav>
+      </div>
 
 			<main className="mdl-layout__content">
 			<div className="page-content">
