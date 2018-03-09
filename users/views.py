@@ -53,6 +53,7 @@ def login(request):
                     error = 'Invalid Username/Password'
                     return render(request, 'users/login.html', {'error': error})
             elif 'register' in request.POST:
+                # [TODO] Add a year field in both the front-end and the back-end
                 username = request.POST.get('email', '')
                 password = request.POST.get('password', '')
                 sap_id = request.POST.get('sap_id', '')
@@ -270,16 +271,19 @@ def send_request(request, sap_id):
     if request.method == 'POST':
         receiver = get_object_or_404(CustomUser, sap_id=sap_id)
         if request.user.id == receiver.id:
-            return redirect('users:view_profile', sap_id=request.user.sap_id)
-        skill_id = request.POST.get('skill_set_select')
-        try:
-            skill = Skill.objects.get(id=skill_id)
-        except Skill.DoesNotExist:
-            skill = None
-        MentorRequest.create_request(sender=request.user, receiver=receiver, skill=skill,
-                                     message=request.POST.get('messsage', ''))
-        return redirect('users:view_profile', sap_id=request.user.sap_id)
-    return redirect('users:view_profile', sap_id=request.user.sap_id)
+            return redirect('users:search')
+        # [TODO] To be used when we have a skill dropdown
+        # skill_id = request.POST.get('skill_set_select')
+        # try:
+        #     skill = Skill.objects.get(id=skill_id)
+        # except Skill.DoesNotExist:
+        #     skill = None
+        # MentorRequest.create_request(sender=request.user, receiver=receiver, skill=skill,
+        #                              message=request.POST.get('messsage', ''))
+        r = MentorRequest(sender=request.user, receiver=receiver)
+        r.save()
+        return redirect('users:search')
+    return redirect('users:search')
 
 
 @login_required(login_url='users:login')
@@ -292,8 +296,10 @@ def accept_request(request, pk):
         mentor = mentor_request.receiver
         skill = mentor_request.skill
         Relationship.objects.add_relationship(mentor, mentee, skill)
-        return redirect('users:view_profile', sap_id=request.user.sap_id)
-    return redirect('users:view_profile', sap_id=request.user.sap_id)
+        return redirect('users:search')
+        # return redirect('users:view_profile', sap_id=request.user.sap_id)
+    return redirect('users:search')
+    # return redirect('users:view_profile', sap_id=request.user.sap_id)
 
 
 @login_required(login_url='users:login')
@@ -302,8 +308,10 @@ def reject_request(request, pk):
         mentor_request = get_object_or_404(MentorRequest, id=pk)
         mentor_request.reject()
         mentor_request.save()
-        return redirect('users:view_profile', sap_id=request.user.sap_id)
-    return redirect('users:view_profile', sap_id=request.user.sap_id)
+        # return redirect('users:view_profile', sap_id=request.user.sap_id)
+        return redirect('users:search')
+    # return redirect('users:view_profile', sap_id=request.user.sap_id)
+    return redirect('users:search')
 
 
 @login_required(login_url='users:login')
@@ -311,8 +319,8 @@ def cancel_request(request, pk):
     if request.method == 'POST':  # Improve security here by checking if the sender is the one logged in OR POST
         mentor_request = get_object_or_404(MentorRequest, id=pk)
         mentor_request.delete()
-        return redirect('users:view_profile', sap_id=request.user.sap_id)
-    return redirect('users:view_profile', sap_id=request.user.sap_id)
+        return redirect('users:search')
+    return redirect('users:search')
 
 
 @login_required(login_url='users:login')
@@ -394,9 +402,13 @@ def search(request):
     received = []
     sent = []
     for r in user.requests_received.filter(accepted=False, rejected=False):
-        received.append(process_user(r.sender))
+        x = process_user(r.sender)
+        x['request_id'] = r.id
+        received.append(x)
     for r in user.requests_sent.filter(accepted=False, rejected=False):
-        sent.append(process_user(r.receiver))
+        x = process_user(r.receiver)
+        x['request_id'] = r.id
+        sent.append(x)
     received = json.dumps(received, indent=4, default=str)
     sent = json.dumps(sent, indent=4, default=str)
     context['received'] = received
