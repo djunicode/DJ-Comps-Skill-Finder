@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
+import DjangoCSRFToken from 'django-react-csrftoken';
+
 class Main extends Component {
   constructor(props){
         super(props);
@@ -67,7 +69,10 @@ class Main extends Component {
           <div className="mdl-card__actions mdl-card--border">
             <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a>
             <div className="mdl-layout-spacer"></div>
-            <a className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</a>
+            <form action={"/site/requests/" + obj.sap_id + "/"} method="post">
+            <DjangoCSRFToken />
+            <button type="submit" className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</button>
+            </form>
           </div>
         </div>
       );
@@ -88,7 +93,10 @@ class Main extends Component {
           <div className="mdl-card__actions mdl-card--border">
             <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a>
             <div className="mdl-layout-spacer"></div>
-            <a className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</a>
+            <form action={"/site/requests/" + obj.sap_id + "/"} method="post">
+            <DjangoCSRFToken />
+            <button type="submit" className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</button>
+            </form>
           </div>
         </div>
       );
@@ -106,9 +114,12 @@ class Main extends Component {
            <a className=" mdl-navigation__link" href="">{obj.first_name}</a>
            </div>
            <div className="mdl-cell--4-col">
+           <form action={"/site/requests/" + obj.request_id + "/cancel/"} method="post">
+           <DjangoCSRFToken />
           <button className="requests-button mdl-button mdl-js-button">
-          Accepted
+          Cancel
           </button>
+          </form>
           </div>
            </div>
          )}
@@ -122,13 +133,19 @@ class Main extends Component {
              <a className="mdl-navigation__link" href="">{obj.first_name}</a>
            </div>
            <div className="requests mdl-cell--8-col">
+           <form action={"/site/requests/" + obj.request_id + "/accept/"} method="post">
+           <DjangoCSRFToken />
           <button className="accept-button mdl-button mdl-js-button">
             Accept
-          </button>          
+          </button>
+          </form>
+          <form action={"/site/requests/" + obj.request_id + "/reject/"} method="post">
+          <DjangoCSRFToken />
           <button className="decline-button mdl-button mdl-js-button">
             Decline
           </button>
-          </div>  
+          </form>
+          </div>
         </div>
            )}
         </nav>
