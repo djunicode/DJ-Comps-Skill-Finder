@@ -27,7 +27,6 @@ class Main extends Component {
         	<div>
         	<form>
         		<a href="#" className="back-button"><i className="material-icons">keyboard_arrow_left</i>Back</a>
-        	   <br/><br/><br/>
              <div>
              {/* <a href="{user.behance_url}"><img align="right" className= "images" src="/static/profile_display/beh.png" alt="behance_url"/></a>
             */}  <a href={user.stack_url}><img align="right" className= "images" src="/static/profile_display/sof.png" alt="stack_url"/></a>

@@ -46,11 +46,8 @@ class Header extends Component {
 
 
         <br/><br/><br/><br/>
-        <img src="/static/profile_updation/profile.png" className="img-circle" alt="User Profile"/>
-        <br/>
-        <center>
-          <ImageUploader/>
-        </center>
+        <ImageUploader/>
+        
         
         <div className="description">
           <h1>{user.first_name}</h1>
