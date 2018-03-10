@@ -581,7 +581,10 @@ a img{
   color: #fff;
 }
 
-
+.mdl_layout{
+  height: auto;
+  max-height: auto;
+}
 
 .Ellipse {
   width: auto;
