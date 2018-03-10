@@ -252,7 +252,7 @@ def update_profile(request):
         #     except Skill.DoesNotExist:
         #         interest = None
         request.user.twitter_url = request.POST.get('twitter')
-        request.user.linkedin_url = request.POST.get('linkedin')
+        request.user.linkedin_url = request.POST.get('linkedIn')
         request.user.github_url = request.POST.get('github')
         request.user.behance_url = request.POST.get('behance')
         request.user.stack_url = request.POST.get('stack')
