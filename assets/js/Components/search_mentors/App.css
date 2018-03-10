@@ -16,6 +16,7 @@
  @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 body {
+  overflow-x: hidden;
   margin: 0;
   background-color: white;
   background-size: cover;
@@ -61,6 +62,15 @@ a img{
 
 .mdl-layout__drawer.is-visible{
   overflow-y: visible;
+  height: 100%;
+}
+
+.mdl-navigation .mdl-cell .mdl-cell--4-col{
+  width: auto;
+}
+
+.mdl-card .mdl-card__actions .mdl-cell .mdl-cell--4-col{
+  width: auto;
 }
 
 .clear-tag{
@@ -80,6 +90,7 @@ a img{
   overflow: hidden;
   width:auto;
   height: 100%;
+  box-shadow: none;
 }
 
 .page-content .mdl-textfield, .mdl-card{
@@ -95,7 +106,7 @@ a img{
   width: auto;
 }
 
-.requests-button{
+.cancel-button{
   padding: 14px;
   height: auto;
   color: #6fcf97;
@@ -159,7 +170,7 @@ a img{
   display: flex;
   box-sizing:border-box;
   align-items: center;
-  max-width: 100%;
+  width: inherit;
 }
 
 .mdl-grid .mdl-card .mdl-card__title .mdl-card__title-text{
@@ -184,7 +195,8 @@ a img{
   font-family: Raleway;
   font-size: 14px;
   font-weight: 600;
-  color: #2eb9e5
+  color: #2eb9e5;
+  top: 8px;
 }
 
 .mdl-card__supporting-text{
@@ -698,6 +710,10 @@ a img{
   .page.page-search-box.is-focused ~ .page-mobile-title,
   .page-search-box.is-focused + .page-navigation-container + .page-mobile-title {
     opacity: 0;
+  }
+
+  .mdl-cell--4-col, .mdl-cell--4-col-tablet.mdl-cell--4-col-tablet {
+    width: auto;
   }
 
   .page-more-button {
