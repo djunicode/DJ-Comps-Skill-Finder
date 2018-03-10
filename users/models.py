@@ -277,7 +277,7 @@ class Relationship(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     mentor = models.ForeignKey(CustomUser, related_name='mentor', on_delete=models.CASCADE)
     mentee = models.ForeignKey(CustomUser, related_name='mentee', on_delete=models.CASCADE)
-    skill = models.ForeignKey(Skill, related_name='mentoring_skill', on_delete=models.CASCADE)
+    skill = models.ForeignKey(Skill, related_name='mentoring_skill', on_delete=models.CASCADE, blank=True, null=True)
 
     objects = RelationshipManager()
 
