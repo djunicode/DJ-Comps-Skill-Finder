@@ -9,9 +9,15 @@
 
 
 <script type="text/javascript">
-    //var props = unescape({{prop|safe}})
-    // var props = {{ prop|safe }}
-    // var user = JSON.parse(props.user)
+    // var props = unescape({{prop|safe}})
+    var props = {{ prop|safe }}
+    var user = JSON.parse(props.user)
+    var mentor_requests_received = JSON.parse(props.mentor_requests_received)
+    var mentor_requests_sent = JSON.parse(props.mentor_requests_sent)
+    var hackathon_requests_received = JSON.parse(props.hackathon_requests_received)
+    var hackathon_requests_sent = JSON.parse(props.hackathon_requests_sent)
+    var project_requests_received = JSON.parse(props.project_requests_received)
+    var project_requests_sent = JSON.parse(props.project_requests_sent)
     // var hackathons = JSON.parse(props.hackathons)
     // var list_hack = JSON.parse(props.list_hack)
     // var skills = JSON.parse(props.skills)
