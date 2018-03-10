@@ -235,8 +235,8 @@ class Main extends Component {
 				<div className="profile">
 					<h1>PROFILE LINKS</h1>
 					<br/><br/>
-					<label htmlFor="linkedln" className="mdl-selectfield__label">Linkedln</label>&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="text" name="linkedln" id="linkedln" value={this.state.linkedIn} onChange={this.handleLinkedIn}/><br/><br/><br/>
+					<label htmlFor="linkedIn" className="mdl-selectfield__label">LinkedIn</label>&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="text" name="linkedIn" id="linkedIn" value={this.state.linkedIn} onChange={this.handleLinkedIn} /><br/><br/><br/>
 					<label htmlFor="github" className="mdl-selectfield__label">Github</label>&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" name="github" id="github" value={this.state.github} onChange={this.handleGithub} /><br/><br/><br/>
 					<label htmlFor="twitter" className="mdl-selectfield__label">Twitter</label>&nbsp;&nbsp;&nbsp;&nbsp;

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {bindAll} from 'lodash';
-import $ from 'jquery';
 import './App.css';
 import axios from 'axios';
 
@@ -8,6 +7,7 @@ class ImageUploader extends Component {
   constructor(props){
         super(props);
         this.state = {
+          pic: user.photo || "/static/profile_updation/profile.png",
           selectedFile: null
         };
 
@@ -24,20 +24,25 @@ class ImageUploader extends Component {
     fileUploadHandler(event) {
       const fd = new FormData();
       fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
-      axios.post('',fd);
+     {/* axios.post('',fd);*/}
     }
 
   render(){
     return(
       <div>
+        
+        <center>
+        <img src= {this.state.pic} className="img-circle" alt="User Profile"/>
+        <br/><br/><br/>
         <input 
-        style={{display: 'none'}} 
+        
         type="file" 
         onChange={this.fileSelectedHandler}
-        ref={fileInput => this.fileInput = fileInput}/>
-        <button onClick={() => this.fileInput.click()}>Pick a File</button>
-        &nbsp;&nbsp;
+        />
+        
         <button onClick={this.fileUploadHandler}>Upload Pic!</button>
+        </center>
+        
       </div>
     );
   }

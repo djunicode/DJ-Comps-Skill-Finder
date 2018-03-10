@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
-import ImageUploader from './ImageUploader';
-import './App.css';
+import '../App.css';
 class Header extends Component {
   render() {
     return (
@@ -30,7 +28,7 @@ class Header extends Component {
               </nav>
             </div>
             <span className="page-mobile-title mdl-layout-title">
-              <img className="page-logo-image" src="/static/profile_updation/UNCLetters.png" alt="page-logo"/>
+              <img className="page-logo-image" src="../UNCLetters.png" alt="page-logo"/>
             </span>
             <button className="page-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
               <i className="material-icons">more_vert</i>
@@ -44,15 +42,12 @@ class Header extends Component {
           </div>
         </div>
 
-
-        <br/><br/><br/><br/>
-        <ImageUploader/>
-        
-        
+        <br/><br/><br/><br/><br/><br/><br/><br/>
         <div className="description">
-          <h1>{user.first_name}</h1>
+          <h1>Teams</h1>
+          <h3>Make a team or join one!</h3>
         </div>
-        <br/>
+        <br/><br/><br/><br/><br/>
       </div>
     );
   }
