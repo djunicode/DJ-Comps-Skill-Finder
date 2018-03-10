@@ -158,13 +158,19 @@ def view_dashboard(request):
     sent = []
     for r in user.requests_received.filter(accepted=False, rejected=False):
         x = process_user(r.sender)
-        x['skill'] = r.skill.skill
+        if r.skill:
+            x['skill'] = r.skill.skill
+        else:
+            x['skill'] = ''
         x['request_id'] = r.id
         received.append(x)
     for r in user.requests_sent.filter(accepted=False, rejected=False):
         x = process_user(r.receiver)
         x['request_id'] = r.id
-        x['skill'] = r.skill.skill
+        if r.skill:
+            x['skill'] = r.skill.skill
+        else:
+            x['skill'] = ''
         sent.append(x)
     received = json.dumps(received, indent=4, default=str)
     sent = json.dumps(sent, indent=4, default=str)
