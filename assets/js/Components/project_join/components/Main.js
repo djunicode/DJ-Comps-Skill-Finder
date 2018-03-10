@@ -103,7 +103,7 @@ class Main extends Component {
                     <form action={"/site/projects/teams/" + obj2.id + "/request/"} method="post">
                     <DjangoCSRFToken />
                     <div className = "mdl-card__actions">
-                       <button type="submit" className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                       <button type="submit" disabled={obj2.disabled} className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Join
                        </button>
                     </div>

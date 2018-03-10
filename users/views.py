@@ -659,13 +659,25 @@ def all_hackathon_teams(request):
     context['requests_received'] = json.dumps(requests_received, indent=4, default=str)
     context['requests_sent'] = json.dumps(temp, indent=4, default=str)
     # teams = HackathonTeam.objects.filter(closed=False).filter(~Q(leader=request.user))
-    teams = HackathonTeam.objects.filter(closed=False).exclude(leader=request.user)
-    teams = [model_to_dict(team) for team in teams]
+    # teams = HackathonTeam.objects.filter(closed=False).exclude(leader=request.user)
+    teams = HackathonTeam.objects.filter(closed=False).order_by('-id')
+    temp = []
+    for team in teams:
+        x = model_to_dict(team)
+        x['leader_name'] = team.leader.first_name
+        x['leader_sap'] = team.leader.sap_id
+        x['disabled'] = ''
+        if team.hack_requests_received.filter(sender=request.user, accepted=False, rejected=False):
+            x['disabled'] = 'disabled'
+        elif team in request.user.leader_teams.all() or team in request.user.member_teams.all():
+            x['disabled'] = 'disabled'
+        temp.append(x)
+    # teams = [model_to_dict(team) for team in teams]
     list_hack = {}
     for h in Hackathon.objects.all():
         list_hack[h.id] = h.name
     context['list_hack'] = json.dumps(list_hack)
-    context['teams'] = json.dumps(teams, indent=4, default=str)
+    context['teams'] = json.dumps(temp, indent=4, default=str)
     skills_dict = {}
     for skill in Skill.objects.all():
         skills_dict[skill.id] = skill.skill
@@ -885,12 +897,20 @@ def project_join_view(request):
     context = {}
     user = process_user(request.user)
     context['user'] = json.dumps(user, indent=4, default=str)
-    teams = ProjectTeam.objects.filter(closed=False).exclude(leader=request.user)
+    # teams = ProjectTeam.objects.filter(closed=False).exclude(leader=request.user)
+    teams = ProjectTeam.objects.filter(closed=False).order_by('-id')
     result = []
     # teams = [model_to_dict(team) for team in teams]
     for team in teams:
-        if not team.project_requests_received.filter(sender=request.user).exists():
-            result.append(model_to_dict(team))
+        x = model_to_dict(team)
+        x['leader_name'] = team.leader.first_name
+        x['leader_sap'] = team.leader.sap_id
+        x['disabled'] = ''
+        if team.project_requests_received.filter(sender=request.user, accepted=False, rejected=False):
+            x['disabled'] = 'disabled'
+        elif team in request.user.project_leader_teams.all() or team in request.user.member_project_teams.all():
+            x['disabled'] = 'disabled'
+        result.append(x)
     teams = result
     list_hack = {}
     for p in Project.objects.all():
