@@ -614,6 +614,16 @@ a img{
 .upload{
   background-color: white;
 }
+/*
+select id="scroll" size=""*/
+#scroll{
+    text-align: center;
+    height:auto; 
+    overflow-y :scroll; 
+    overflow-x: auto; 
+    position:relative;
+    width:300px;
+}
 
 .save-button{
   width: 130px;
