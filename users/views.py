@@ -721,8 +721,9 @@ def accept_hack_request(request, pk):
                 r.save()
         hack_request.team.add_member(hack_request.sender)
         hack_request.save()
-        return redirect('users:view_hackathon_team', pk=hack_request.team.id)
-    return redirect('users:login')
+        # return redirect('users:view_hackathon_team', pk=hack_request.team.id)
+        return redirect('users:all_hackathon_teams')
+    return redirect('users:all_hackathon_teams')
 
 
 @login_required(login_url='users:login')
@@ -731,8 +732,9 @@ def reject_hack_request(request, pk):
         hack_request = get_object_or_404(HackathonTeamRequest, id=pk)
         hack_request.rejected = True
         hack_request.save()
-        return redirect('users:view_profile', sap_id=request.user.sap_id)
-    return redirect('users:login')
+        # return redirect('users:view_profile', sap_id=request.user.sap_id)
+        return redirect('users:all_hackathon_teams')
+    return redirect('users:all_hackathon_teams')
 
 
 @login_required(login_url='users:login')
@@ -740,8 +742,9 @@ def cancel_hack_request(request, pk):
     if request.method == 'POST':
         hack_request = get_object_or_404(HackathonTeamRequest, id=pk)
         hack_request.delete()
-        return redirect('users:view_profile', sap_id=request.user.sap_id)
-    return redirect('users:login')
+        # return redirect('users:view_profile', sap_id=request.user.sap_id)
+        return redirect('users:all_hackathon_teams')
+    return redirect('users:all_hackathon_teams')
 
 
 @login_required(login_url='users:login')
@@ -850,7 +853,7 @@ def send_project_team_request(request, pk):
         return redirect('users:login')
     r = ProjectTeamRequest(team=team, sender=request.user)
     r.save()
-    return redirect('users:all_hackathon_teams')
+    return redirect('users:project_team_join')
 
 
 @login_required(login_url='users:login')
@@ -869,8 +872,9 @@ def accept_project_request(request, pk):
                 r.save()
         project_request.team.add_member(project_request.sender)
         project_request.save()
-        return redirect('users:view_project_team', pk=project_request.team.id)
-    return redirect('users:login')
+        # return redirect('users:view_project_team', pk=project_request.team.id)
+        return redirect('users:project_team_join')
+    return redirect('users:project_team_join')
 
 
 @login_required(login_url='users:login')
@@ -879,8 +883,9 @@ def reject_project_request(request, pk):
         project_request = get_object_or_404(ProjectTeamRequest, id=pk)
         project_request.rejected = True
         project_request.save()
-        return redirect('users:view_profile', sap_id=request.user.sap_id)
-    return redirect('users:login')
+        # return redirect('users:view_profile', sap_id=request.user.sap_id)
+        return redirect('users:project_team_join')
+    return redirect('users:project_team_join')
 
 
 @login_required(login_url='users:login')
@@ -888,8 +893,9 @@ def cancel_project_request(request, pk):
     if request.method == 'POST':
         project_request = get_object_or_404(ProjectTeamRequest, id=pk)
         project_request.delete()
-        return redirect('users:view_profile', sap_id=request.user.sap_id)
-    return redirect('users:login')
+        # return redirect('users:view_profile', sap_id=request.user.sap_id)
+        return redirect('users:project_team_join')
+    return redirect('users:project_team_join')
 
 
 @login_required(login_url='users:login')
