@@ -5,6 +5,7 @@ app_name = 'users'
 urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
+    path('profile/image/upload/', views.image_upload, name='image_upload'),
     path('profile/update/', views.update_profile, name='update_profile'),
     path('profile/<str:sap_id>/', views.view_profile, name='view_profile'),
     path('index/', views.index, name='index'),
@@ -33,4 +34,6 @@ urlpatterns = [
     path('projects/teams/request/<int:pk>/accept/', views.accept_project_request, name='accept_project_request'),
     path('projects/teams/request/<int:pk>/reject/', views.reject_project_request, name='reject_project_request'),
     path('projects/teams/request/<int:pk>/cancel/', views.cancel_project_request, name='cancel_project_request'),
+    path('dashboard/', views.view_dashboard, name='view_dashboard'),
+    path('projects/teams/', views.project_join_view, name='project_team_join'),
 ]

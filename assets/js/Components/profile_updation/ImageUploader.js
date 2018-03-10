@@ -1,46 +1,22 @@
-import React, {Component} from 'react';
-import {bindAll} from 'lodash';
-import $ from 'jquery';
-import './App.css';
-import axios from 'axios';
+import React, { Component } from 'react';
+import ImagesUploader from 'react-images-uploader';
+import 'react-images-uploader/styles.css';
+import 'react-images-uploader/font.css';
 
-class ImageUploader extends Component {
-  constructor(props){
-        super(props);
-        this.state = {
-          selectedFile: null
-        };
-
-        this.fileSelectedHandler= this.fileSelectedHandler.bind(this);
-        this.fileUploadHandler= this.fileUploadHandler.bind(this);
+export default class ImageUploader extends Component {
+    render() {
+        return (
+            <ImagesUploader
+                url="http://localhost:9090/notmultiple"
+                optimisticPreviews
+                multiple={false}
+                onLoadEnd={(err) => {
+                    if (err) {
+                        console.error(err);
+                    }
+                }}
+                label="Upload a picture"
+                />
+        );
     }
-
-    fileSelectedHandler(event) {
-      this.setState({
-        selectedFile: event.target.files[0]
-      })
-    }
-
-    fileUploadHandler(event) {
-      const fd = new FormData();
-      fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
-      axios.post('',fd);
-    }
-
-  render(){
-    return(
-      <div>
-        <input 
-        style={{display: 'none'}} 
-        type="file" 
-        onChange={this.fileSelectedHandler}
-        ref={fileInput => this.fileInput = fileInput}/>
-        <button onClick={() => this.fileInput.click()}>Pick a File</button>
-        &nbsp;&nbsp;
-        <button onClick={this.fileUploadHandler}>Upload Pic!</button>
-      </div>
-    );
-  }
 }
-
-export default ImageUploader;

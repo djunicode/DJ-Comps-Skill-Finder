@@ -146,10 +146,11 @@ class Main extends Component {
               ))}
               </ul>
               </div>
+              
               &nbsp;&nbsp;&nbsp;&nbsp;
               <button className="add mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
               <i className="material-icons">add</i>
-              </button>
+              </button>   
 
               <br/><br/><br/><br/>
 

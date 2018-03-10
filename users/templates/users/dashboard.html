@@ -1,0 +1,32 @@
+{% load render_bundle from webpack_loader %}
+{% load static %}
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+
+
+<script type="text/javascript">
+    // var props = unescape({{prop|safe}})
+    var props = {{ prop|safe }}
+    var user = JSON.parse(props.user)
+    var mentor_requests_received = JSON.parse(props.mentor_requests_received)
+    var mentor_requests_sent = JSON.parse(props.mentor_requests_sent)
+    var hackathon_requests_received = JSON.parse(props.hackathon_requests_received)
+    var hackathon_requests_sent = JSON.parse(props.hackathon_requests_sent)
+    var project_requests_received = JSON.parse(props.project_requests_received)
+    var project_requests_sent = JSON.parse(props.project_requests_sent)
+    // var hackathons = JSON.parse(props.hackathons)
+    // var list_hack = JSON.parse(props.list_hack)
+    // var skills = JSON.parse(props.skills)
+    // var error = props.error
+    console.log(props)
+</script>
+
+<div id="react-app"></div>
+    {% render_bundle 'Dashboard' %}
+{% if error %}
+  <p>{{ error }}</p>
+{% endif %}
