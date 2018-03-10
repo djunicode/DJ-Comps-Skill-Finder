@@ -150,6 +150,11 @@ def view_teams_landing(request):
 
 
 @login_required(login_url='users:login')
+def view_dashboard(request):
+    return render(request, 'users/dashboard.html', {})
+
+
+@login_required(login_url='users:login')
 def mentor(request):
     user = request.user
     sap_id = user.sap_id
