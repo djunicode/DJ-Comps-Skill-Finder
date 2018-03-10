@@ -27,6 +27,7 @@ class Main extends Component {
         	<div>
         	<form>
         		<a href="#" className="back-button"><i className="material-icons">keyboard_arrow_left</i>Back</a>
+            <br/>
              <div>
              {/* <a href="{user.behance_url}"><img align="right" className= "images" src="/static/profile_display/beh.png" alt="behance_url"/></a>
             */}  <a href={user.stack_url}><img align="right" className= "images" src="/static/profile_display/sof.png" alt="stack_url"/></a>
@@ -43,19 +44,19 @@ class Main extends Component {
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col skills-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{props.skill1}</span>
+              <span style ={{"font-size":"30px"}} className="mdl-chip__text">{props.skill1}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col skills-chips ">
             <span className="mdl-chip">
             // I have no idea why this.state is not working. Someone else can figure it out
               // <span className="mdl-chip__text">{this.state.skill2}</span>
-              <span className="mdl-chip__text">{props.skill2}</span>
+              <span style ={{"font-size":"30px"}} className="mdl-chip__text">{props.skill2}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col skills-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{props.skill3}</span>
+              <span style ={{"font-size":"30px"}} className="mdl-chip__text">{props.skill3}</span>
             </span>
           </div>
        </div>
@@ -67,17 +68,17 @@ class Main extends Component {
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col interests-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{props.interest1}</span>
+              <span style ={{"font-size":"30px"}} className="mdl-chip__text">{props.interest1}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col interests-chips ">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{props.interest2}</span>
+              <span style ={{"font-size":"30px"}} className="mdl-chip__text">{props.interest2}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col interests-chips">
             <span className="mdl-chip">
-              <span className="mdl-chip__text">{props.interest3}</span>
+              <span style ={{"font-size":"30px"}} className="mdl-chip__text">{props.interest3}</span>
             </span>
           </div>
        </div>
