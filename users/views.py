@@ -328,6 +328,18 @@ def update_profile(request):
         return redirect('users:view_profile', sap_id=sap_id)
 
 
+@login_required(login_url='users:login')
+def image_upload(request):
+    print("Inside the view")
+    if request.method == 'POST':
+        print("Inside the post ", request.FILES)
+        request.user.photo = request.FILES.get('photo', None)
+        print("Request.User.Photo = ", request.user.photo)
+        request.user.save()
+        return redirect('users:update_profile')
+    return redirect('users:update_profile')
+
+
 def index(request):
     component = 'pages/index.js'
     return render(request, 'users/index.html', {'component': component})

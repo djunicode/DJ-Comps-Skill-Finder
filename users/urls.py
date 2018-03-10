@@ -5,6 +5,7 @@ app_name = 'users'
 urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
+    path('profile/image/upload/', views.image_upload, name='image_upload'),
     path('profile/update/', views.update_profile, name='update_profile'),
     path('profile/<str:sap_id>/', views.view_profile, name='view_profile'),
     path('index/', views.index, name='index'),
