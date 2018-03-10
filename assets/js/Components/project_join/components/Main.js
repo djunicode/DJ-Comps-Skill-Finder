@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import DjangoCSRFToken from 'django-react-csrftoken';
 
 class Main extends Component {
   constructor(props){
@@ -16,36 +17,36 @@ class Main extends Component {
                       ],*/
             sentRequests: sent || ['None'],
             receivedRequests: received || ['None'],
-            availableProjects:[
-                                {
-                                    teamName: "Test Project 1",
-                                    Hackathon: "SmartIndia",
-                                    teamMembers: [
-                                      'Member 1',
-                                      'Member 2'
-                                    ],
-                                    description:"Test description",
-                                    skillsRequired: [
-                                      'Skill 1',
-                                      'Skill 2'
-                                    ],
-                                },
-                                {
-                                    teamName: "Test Project 1",
-                                    Hackathon: "SmartIndia",
-                                    teamMembers: [
-                                      'Member 1',
-                                      'Member 2'
-                                    ],
-                                    description:"Test description",
-                                    skillsRequired: [
-                                      'Skill 1',
-                                      'Skill 2'
-                                    ],
-                                }
-
-                              ]
-
+            //availableProjects:[
+            //                    {
+            //                        teamName: "Test Project 1",
+            //                        Hackathon: "SmartIndia",
+            //                        teamMembers: [
+            //                          'Member 1',
+            //                          'Member 2'
+            //                        ],
+            //                        description:"Test description",
+            //                        skillsRequired: [
+            //                          'Skill 1',
+            //                          'Skill 2'
+            //                        ],
+            //                    },
+            //                    {
+            //                        teamName: "Test Project 1",
+            //                        Hackathon: "SmartIndia",
+            //                        teamMembers: [
+            //                          'Member 1',
+            //                          'Member 2'
+            //                        ],
+            //                        description:"Test description",
+            //                        skillsRequired: [
+            //                          'Skill 1',
+            //                          'Skill 2'
+            //                        ],
+            //                    }
+            //
+            //                  ]
+            availableProjects: teams
 
         };
     }
@@ -83,11 +84,11 @@ class Main extends Component {
                   {this.state.availableProjects.map(obj2 =>
                   <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp">
                     <div className = "mdl-card__title">
-                      <h1 className = "mdl-card__title-text">{obj2.teamName}</h1>
+                      <h1 className = "mdl-card__title-text">{obj2.name}</h1>
                     </div>
                     <div className="mdl-card__subtitle-text">
-                      <h5>{obj2.Hackathon}</h5>
-                      <p>{obj2.teamMembers}</p>
+                      <h5>{list_hack[obj2.project]}</h5>
+                      <p>{obj2.current_members}</p>
                     </div>
                     <div className = "mdl-card__supporting-text">
                       <div className="header">
@@ -96,14 +97,17 @@ class Main extends Component {
                       </div>
                       <div className="header">
                         <h5>Skills required</h5>
-                        <p>{obj2.skillsRequired}</p>
+                        <p>{obj2.skills_required}</p>
                       </div>
                     </div>
+                    <form action={"/site/projects/teams/" + obj2.id + "/request/"} method="post">
+                    <DjangoCSRFToken />
                     <div className = "mdl-card__actions">
-                       <a className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                       <button type="submit" className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Join
-                       </a>
+                       </button>
                     </div>
+                     </form>
                   </div>)}
 
                 </div>

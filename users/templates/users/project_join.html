@@ -12,8 +12,13 @@
 <script type="text/javascript">
     //var props = unescape({{prop|safe}})
     var props = {{ prop|safe }}
+    var user = JSON.parse(props.user)
+    var teams = JSON.parse(props.teams)
     var received = JSON.parse(props.received)
     var sent = JSON.parse(props.sent)
+    var skills_dict = JSON.parse(props.skills_dict)
+    var list_hack = JSON.parse(props.list_hack)
+
     console.log(props)
 </script>
 
