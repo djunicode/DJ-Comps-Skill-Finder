@@ -1,0 +1,532 @@
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+body {
+  margin: 0;
+  background-color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: scroll;
+}
+
+/* Disable ugly boxes around images in IE10 */
+a img{
+  border: 0px;
+}
+
+::-moz-selection {
+  background-color: #6ab344;
+  color: #fff;
+}
+
+::selection {
+  background-color: #6ab344;
+  color: #fff;
+}
+
+.page-search-box .mdl-textfield__input {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.page-header .mdl-menu__container {
+  z-index: 50;
+  margin: 0 !important;
+}
+
+
+.mdl-textfield--expandable {
+  width: auto;
+}
+
+.page-fab {
+  position: absolute;
+  right: 20%;
+  bottom: -26px;
+  z-index: 3;
+  background: #64ffda !important;
+  color: black !important;
+}
+
+.page-mobile-title {
+  display: none !important;
+}
+
+
+.page-logo-image {
+  height: 28px;
+  width: 140px;
+}
+
+
+.page-header {
+  overflow: visible;
+  background-color: white;
+  opacity: 0.75;
+}
+
+.page-header .material-icons {
+  color: #767777 !important;
+}
+
+.page-header .mdl-layout__drawer-button {
+  background: transparent;
+  color: #767777;
+}
+
+.page-header .mdl-navigation__link {
+  color: #757575;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.page-navigation-container {
+  /* Simple hack to make the overflow happen to the left instead... */
+  direction: rtl;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+  width: 500px;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+  width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-navigation {
+  /* ... and now make sure the content is actually LTR */
+  direction: ltr;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 800px;
+}
+
+.page-search-box.is-focused + .page-navigation-container {
+  opacity: 0;
+  width: 100px;
+}
+
+
+.page-navigation .mdl-navigation__link {
+  display: inline-block;
+  height: 60px;
+  line-height: 68px;
+  background-color: transparent !important;
+  border-bottom: 4px solid transparent;
+}
+
+.page-navigation .mdl-navigation__link:hover {
+  border-bottom: 4px solid #8bc34a;
+}
+
+.page-search-box {
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.page-more-button {
+  -webkit-order: 3;
+  -ms-flex-order: 3;
+  order: 3;
+}
+
+
+.page-drawer {
+  border-right: none;
+}
+
+.page-drawer-separator {
+  height: 1px;
+  background-color: #dcdcdc;
+  margin: 8px 0;
+}
+
+.page-drawer .mdl-navigation__link.mdl-navigation__link {
+  font-size: 14px;
+  color: #757575;
+}
+
+.page-drawer span.mdl-navigation__link.mdl-navigation__link {
+  color: #8bc34a;
+}
+
+.page-drawer .mdl-layout-title {
+  position: relative;
+  background: #6ab344;
+  height: 160px;
+}
+
+.page-drawer .page-logo-image {
+  position: absolute;
+  bottom: 16px;
+}
+
+.page-be-together-section {
+  position: relative;
+  height: 800px;
+  width: auto;
+  background-color: #f3f3f3;
+
+  background-size: cover;
+}
+
+.logo-font {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  line-height: 1;
+  color: #767777;
+  font-weight: 500;
+}
+
+.page-slogan {
+  font-size: 60px;
+  padding-top: 160px;
+}
+
+.page-sub-slogan {
+  font-size: 21px;
+  padding-top: 24px;
+}
+
+.page-create-character {
+  font-size: 21px;
+  padding-top: 400px;
+}
+
+.page-create-character a {
+  text-decoration: none;
+  color: #767777;
+  font-weight: 300;
+}
+
+.page-screen-section {
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+.page-screens {
+  text-align: right;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.page-screen {
+  text-align: center;
+}
+
+.page-screen .page-link {
+  margin-top: 16px;
+  display: block;
+  z-index: 2;
+}
+
+.page-image-link {
+  text-decoration: none;
+}
+
+.page-wear {
+  display: inline-block;
+  width: 160px;
+  margin-right: 32px;
+}
+
+.page-wear .page-screen-image {
+  width: 40%;
+  z-index: 1;
+}
+
+
+.page-phone {
+  display: inline-block;
+  width: 64px;
+  margin-right: 48px;
+}
+
+.page-phone .page-screen-image {
+  width: 100%;
+  z-index: 1;
+}
+
+
+.page-tablet {
+  display: inline-block;
+  width: 110px;
+  margin-right: 64px;
+}
+
+.page-tablet .page-screen-image {
+  width: 100%;
+  z-index: 1;
+}
+
+.page-tablet .page-link {
+  display: block;
+  z-index: 2;
+}
+
+
+.page-tv {
+  display: inline-block;
+  width: 300px;
+  margin-right: 80px;
+}
+
+.page-tv .page-screen-image {
+  width: 100%;
+  z-index: 1;
+}
+
+
+.page-auto {
+  display: inline-block;
+  width: 300px;
+  overflow: hidden;
+}
+
+.page-auto .page-screen-image {
+  display: block;
+  height: 300px;
+  z-index: 1;
+}
+
+
+
+
+
+.page-link {
+  text-decoration: none;
+  color: #8bc34a !important;
+}
+
+.page-link:hover {
+  color: #7cb342 !important;
+}
+
+.page-link .material-icons {
+  position: relative;
+  top: -1px;
+  vertical-align: middle;
+}
+
+.page-alt-link {
+  text-decoration: none;
+  color: #64ffda !important;
+  font-size: 16px;
+}
+
+.page-alt-link:hover {
+  color: #00bfa5 !important;
+}
+
+.page-alt-link .material-icons {
+  position: relative;
+  top: 6px;
+}
+
+.page-customized-section {
+  text-align: center;
+}
+
+.page-customized-section-text {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 80px 16px 0 16px;
+}
+
+.page-customized-section-text p {
+  padding-top: 16px;
+}
+
+.page-customized-section-image {
+
+  background-size: cover;
+  height: 400px;
+}
+
+.page-more-section {
+  padding: 80px 0;
+  max-width: 1044px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-more-section .page-section-title {
+  margin-left: 12px;
+  padding-bottom: 24px;
+}
+
+.page-card-container {
+}
+
+.page-card-container .mdl-card__media {
+  overflow: hidden;
+  background: transparent;
+}
+
+.page-card-container .mdl-card__media img {
+  width: 100%;
+}
+
+.page-card-container .mdl-card__title {
+  background: transparent;
+  height: auto;
+}
+
+.page-card-container .mdl-card__title-text {
+  color: black;
+  height: auto;
+}
+
+.page-card-container .mdl-card__supporting-text {
+  height: auto;
+  color: black;
+  padding-bottom: 56px;
+}
+
+.page-card-container .mdl-card__actions {
+  position: absolute;
+  bottom: 0;
+}
+
+.page-card-container .mdl-card__actions a {
+  border-top: none;
+  font-size: 16px;
+}
+
+.page-footer {
+  background-color: #fafafa;
+  opacity: 0.75;
+  position: relative;
+  box-shadow: -3px 1px 17px rgba(0,0,0,.14);
+}
+
+.page-footer a:hover {
+  color: #8bc34a;
+}
+
+.page-footer .mdl-mega-footer--top-section::after {
+  border-bottom: none;
+}
+
+.page-footer .mdl-mega-footer--middle-section::after {
+  border-bottom: none;
+}
+
+.page-footer .mdl-mega-footer--bottom-section {
+  position: relative;
+}
+
+.page-footer .mdl-mega-footer--bottom-section a {
+  margin-right: 2em;
+}
+
+.page-footer .mdl-mega-footer--right-section a .material-icons {
+  position: relative;
+  top: 6px;
+}
+
+
+.page-link-menu:hover {
+  cursor: pointer;
+}
+.footerimage{
+  position: relative;
+  left: 42%;
+  width: 20%;
+  margin-bottom: -4%;
+  z-index: 1;
+  filter: drop-shadow(1px -1px 1.5px rgba(0,0,0,.3));
+
+}
+
+@media (max-width: 900px) {
+  .page-navigation-container {
+    display: none;
+  }
+
+  .page-title {
+    display: none !important;
+  }
+
+  .page-mobile-title {
+    display: block !important;
+    position: absolute;
+    left: calc(50% - 70px);
+    top: 12px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* WebViews in iOS 9 break the "~" operator, and WebViews in OS X 10.10 break
+     consecutive "+" operators in some cases. Therefore, we need to use both
+     here to cover all the bases. */
+  .page.page-search-box.is-focused ~ .page-mobile-title,
+  .page-search-box.is-focused + .page-navigation-container + .page-mobile-title {
+    opacity: 0;
+  }
+
+  .page-more-button {
+    margin-left: 0px;
+  }
+
+  .page-search-box.is-focused {
+    width: calc(100% - 48px);
+  }
+
+  .page-search-box .mdl-textfield__expandable-holder {
+    width: 100%;
+  }
+
+  .page-be-together-section {
+    height: 350px;
+  }
+
+  .page-slogan {
+    font-size: 26px;
+    margin: 0 16px;
+    padding-top: 24px;
+  }
+
+  .page-sub-slogan {
+    font-size: 16px;
+    margin: 0 16px;
+    padding-top: 8px;
+  }
+
+  .page-create-character {
+    padding-top: 200px;
+    font-size: 16px;
+  }
+
+  .page-create-character img {
+    height: 12px;
+  }
+
+  .page-fab {
+    display: none;
+  }
+
+  .page-wear-band-text {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  .page-footer .mdl-mega-footer--bottom-section {
+    display: none;
+  }
+}

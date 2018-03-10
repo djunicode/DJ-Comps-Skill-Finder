@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-import './App.css';
+import '../App.css';
 class Header extends Component {
   render() {
     return (
@@ -43,21 +42,11 @@ class Header extends Component {
           </div>
         </div>
 
-
-        <br/><br/><br/><br/>
-        <form>
-          <label htmlFor="file" className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-            <i className="material-icons">+</i>
-          </label>
-          <center><input type="file" id="file" style={{display:'none'}}/></center>
-          <input type="submit" value="Upload" className="mdl-button mdl-js-button mdl-button--raised"/>
-        </form>
-
-
+        <br/><br/><br/><br/><br/>
         <div className="description">
-          <h1>{user.first_name}</h1>
+          <h1>Home</h1>
         </div>
-        <br/>
+        <br/><br/><br/>
       </div>
     );
   }

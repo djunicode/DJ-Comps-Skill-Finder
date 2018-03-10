@@ -150,6 +150,74 @@ def view_teams_landing(request):
 
 
 @login_required(login_url='users:login')
+def view_dashboard(request):
+    context = {}
+    user = request.user
+    context['user'] = json.dumps(process_user(request.user), indent=4, default=str)
+    received = []
+    sent = []
+    for r in user.requests_received.filter(accepted=False, rejected=False):
+        x = process_user(r.sender)
+        if r.skill:
+            x['skill'] = r.skill.skill
+        else:
+            x['skill'] = ''
+        x['request_id'] = r.id
+        received.append(x)
+    for r in user.requests_sent.filter(accepted=False, rejected=False):
+        x = process_user(r.receiver)
+        x['request_id'] = r.id
+        if r.skill:
+            x['skill'] = r.skill.skill
+        else:
+            x['skill'] = ''
+        sent.append(x)
+    received = json.dumps(received, indent=4, default=str)
+    sent = json.dumps(sent, indent=4, default=str)
+    context['mentor_requests_received'] = received
+    context['mentor_requests_sent'] = sent
+    received_hackathon_requests = []
+    for team in request.user.leader_teams.all():
+        for r in team.hack_requests_received.filter(accepted=False, rejected=False):
+            x = model_to_dict(r)
+            x['team_name'] = team.name
+            x['sender_name'] = r.sender.first_name
+            x['sender_sap'] = r.sender.sap_id
+            x['hackathon_name'] = team.hackathon.name
+            received_hackathon_requests.append(x)
+    sent_hackathon_requests = request.user.hack_requests_sent.filter(accepted=False, rejected=False)
+    temp = []
+    for r in sent_hackathon_requests:
+        x = model_to_dict(r)
+        x['team_name'] = r.team.name
+        x['leader_name'] = r.team.leader.first_name
+        x['hackathon_name'] = r.team.hackathon.name
+        temp.append(x)
+    context['hackathon_requests_received'] = json.dumps(received_hackathon_requests, indent=4, default=str)
+    context['hackathon_requests_sent'] = json.dumps(temp, indent=4, default=str)
+    received_project_requests = []
+    for team in request.user.project_leader_teams.all():
+        for r in team.project_requests_received.filter(accepted=False, rejected=False):
+            x = model_to_dict(r)
+            x['team_name'] = team.name
+            x['sender_name'] = r.sender.first_name
+            x['sender_sap'] = r.sender.sap_id
+            x['project_name'] = team.project.name
+            received_project_requests.append(x)
+    sent_project_requests = request.user.project_requests_sent.filter(accepted=False, rejected=False)
+    temp = []
+    for r in sent_project_requests:
+        x = model_to_dict(r)
+        x['team_name'] = r.team.name
+        x['leader_name'] = r.team.leader.first_name
+        x['project_name'] = r.team.project.name
+        temp.append(x)
+    context['project_requests_received'] = json.dumps(received_project_requests, indent=4, default=str)
+    context['project_requests_sent'] = json.dumps(temp, indent=4, default=str)
+    return render(request, 'users/dashboard.html', {'prop': context})
+
+
+@login_required(login_url='users:login')
 def mentor(request):
     user = request.user
     sap_id = user.sap_id
