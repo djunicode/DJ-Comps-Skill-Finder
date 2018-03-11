@@ -819,7 +819,7 @@ def add_project_team(request):
         # print(skills)
         context['skills'] = json.dumps(skills, indent=4, default=str)
         context['list_skills'] = json.dumps(list_skill, indent=4, default=str)
-        print(context['skills'])
+        # print(context['skills'])
     return render(request, 'users/add_project_team.html', {'prop': context})
 
 
