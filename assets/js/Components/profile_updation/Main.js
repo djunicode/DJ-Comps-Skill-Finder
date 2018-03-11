@@ -134,7 +134,7 @@ class Main extends Component {
            </div>
 
           <div className="mdl-textfield mdl-js-textfield">
-                  <textarea maxlength="" className="mdl-textfield__input" value={this.state.bio} onChange={this.handleBio} rows="3" type="text" id="bio" name='bio'></textarea>
+                  <textarea maxlength="500" className="mdl-textfield__input" value={this.state.bio} onChange={this.handleBio} rows="3" type="text" id="bio" name='bio'></textarea>
                   <label className="bio mdl-selectfield__label mdl-textfield__label" for="bio">Bio Description...</label>
           </div>
           
