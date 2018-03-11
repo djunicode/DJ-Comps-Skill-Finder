@@ -15,22 +15,22 @@ class Main extends Component {
 
     handleProjJoin(event){
       event.preventDefault();
-      window.location = '';
+      window.location.href = '/projects/teams/';
     }
 
     handleProjCreate(event){
       event.preventDefault();
-      window.location = '';
+      window.location.href = '/projects/teams/add/';
     }
 
     handleHackJoin(event){
       event.preventDefault();
-      window.location = '';
+      window.location.href = '/hackathons/teams/';
     }
 
     handleHackCreate(event){
       event.preventDefault();
-      window.location = '';
+      window.location.href = '/hackathons/teams/add/';
     }
 
     render() {

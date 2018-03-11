@@ -483,6 +483,7 @@ def f7(seq):
 def search(request):
     context = {}
     user = request.user
+    context['user'] = json.dumps(process_user(user), indent=4, default=str)
     qs = []
     queryset = CustomUser.objects.filter(is_mentor=True)
     received = []
@@ -596,6 +597,7 @@ def add_hackathon_team(request):
         print(request.POST)
         form = HackathonTeamForm(request.POST)
         if form.is_valid():
+            print("Valid form")
             team = form.save(commit=False)
             team.leader = request.user
             team.save()
@@ -818,7 +820,7 @@ def add_project_team(request):
         # print(skills)
         context['skills'] = json.dumps(skills, indent=4, default=str)
         context['list_skills'] = json.dumps(list_skill, indent=4, default=str)
-        print(context['skills'])
+        # print(context['skills'])
     return render(request, 'users/add_project_team.html', {'prop': context})
 
 

@@ -80,7 +80,7 @@ class Main extends Component {
       if (!this.state.expanded) {
       checkboxes.style.display = "block";
       this.setState({expanded : true});
-      } 
+      }
       else {
       checkboxes.style.display = "none";
       this.setState({expanded : false});
@@ -90,7 +90,7 @@ class Main extends Component {
 
     render() {
         return (
-        	<div> 
+        	<div>
         	 <form method = "POST">
                  <DjangoCSRFToken/>
         		<a href="#" className="back-button"><i className="material-icons">keyboard_arrow_left</i>Back</a>
@@ -174,22 +174,27 @@ class Main extends Component {
 
               <div className="multiselect">
                 <div className="selectBox" onClick={this.showCheckboxes}>
-                  <select>
-                    <option>Select an option</option>
+                  <select name="skills_required" id="id_skills_required">
+                    {/*<option>Select an option</option>*/}
                   </select>
                   <div className="overSelect"></div>
                 </div>
                 <div id="checkboxes" className="description">
+                {/*
                   <label for="one">
                   <input type="checkbox" name="skills_required" value="first" id="one" />First checkbox</label>
                   <label for="two">
                   <input type="checkbox" name="skills_required" value="second" id="two" />Second checkbox</label>
                   <label for="three">
-                  <input type="checkbox" name="skills_required" value="three" id="three" />Third checkbox</label>
+                  <input type="checkbox" name="skills_required" value="three" id="three" />Third checkbox</label>*/}
+                  {Object.values(skills).map(skill => (
+                      <label for={skill.id}>
+                      <input type="checkbox" name="skills_required" data-val={skill.id} value={skill.id} id={skill.id} />{skill.skill}</label>
+                  ))}
                 </div>
               </div>
-      
-              
+
+
 
 
 

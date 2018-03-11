@@ -20,11 +20,11 @@ class Header extends Component {
             </div>
             <div className="page-navigation-container">
               <nav className="page-navigation mdl-navigation">
-                <a className="mdl-navigation__link" href="">Home</a>
-                <a className="mdl-navigation__link" href="">Find a Mentor</a>
-                <a className="mdl-navigation__link" href="">Make a Team</a>
+                <a className="mdl-navigation__link" href="/dashboard/">Home</a>
+                <a className="mdl-navigation__link" href="/search/">Find a Mentor</a>
+                <a className="mdl-navigation__link" href="/teams/">Make a Team</a>
                 <a className="mdl-navigation__link" href="">Events</a>
-                <a className="mdl-navigation__link" href="">Snoopy<i className="material-icons">person</i></a>
+                <a className="mdl-navigation__link" href={"/profile/" + user.sap_id + "/"}>{user.first_name}<i className="material-icons">person</i></a>
               </nav>
             </div>
             <span className="page-mobile-title mdl-layout-title">
@@ -34,10 +34,11 @@ class Header extends Component {
               <i className="material-icons">more_vert</i>
             </button>
             <ul className="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" htmlFor="more-button">
-              <li className="mdl-menu__item">Home</li>
-              <li className="mdl-menu__item">Find A Mentor</li>
-              <li className="mdl-menu__item">Make a Team</li>
-              <li className="mdl-menu__item">Events</li>
+              <li className="mdl-menu__item"><a href="/dashboard/">Home</a></li>
+              <li className="mdl-menu__item"><a href="/search/">Find A Mentor</a></li>
+              <li className="mdl-menu__item"><a href="/teams/">Make a Team</a></li>
+              <li className="mdl-menu__item"><a href="/profile/update">Update Your Profile</a></li>
+              <li className="mdl-menu__item"><a href="/logout/">Logout</a></li>
             </ul>
           </div>
         </div>
