@@ -236,7 +236,7 @@ def mentor(request):
 @login_required(login_url='users:login')
 def update_profile(request):
     if request.method != 'POST':
-        skill_set = Skill.objects.all()
+        skill_set = Skill.objects.all().order_by('skill')
         skills = {}
         for skill in skill_set:
             skills[str(skill.pk)] = skill.skill
@@ -575,7 +575,7 @@ def add_hackathon_team(request):
         list_hack[h['id']] = h['name']
     context['hackathons'] = json.dumps(hackathons, indent=4, default=str)
     context['list_hack'] = json.dumps(list_hack, indent=4, default=str)
-    skill_set = Skill.objects.all()
+    skill_set = Skill.objects.all().order_by('skill')
     skills = []
 
     for skill in skill_set:
@@ -683,7 +683,7 @@ def all_hackathon_teams(request):
     context['list_hack'] = json.dumps(list_hack)
     context['teams'] = json.dumps(temp, indent=4, default=str)
     skills_dict = {}
-    for skill in Skill.objects.all():
+    for skill in Skill.objects.all().order_by('skill'):
         skills_dict[skill.id] = skill.skill
     context['skills_dict'] = json.dumps(skills_dict, indent=4, default=str)
     if request.method == 'POST':
@@ -792,7 +792,7 @@ def add_project_team(request):
         context['user'] = json.dumps(process_user(user), indent=4, default=str)
         context['projects'] = json.dumps(projects, indent=4, default=str)
         context['hack'] = json.dumps(hack, indent=4, default=str)
-        skills = Skill.objects.all()
+        skills = Skill.objects.all().order_by('skill')
         result = []
         r = {}
         for sk in skills:
@@ -931,7 +931,7 @@ def project_join_view(request):
     context['list_hack'] = json.dumps(list_hack)
     context['teams'] = json.dumps(teams, indent=4, default=str)
     skills_dict = {}
-    for skill in Skill.objects.all():
+    for skill in Skill.objects.all().order_by('skill'):
         skills_dict[skill.id] = skill.skill
     context['skills_dict'] = json.dumps(skills_dict, indent=4, default=str)
     if request.method != 'POST':
