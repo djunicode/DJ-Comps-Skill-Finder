@@ -251,7 +251,7 @@ class Main extends Component {
                       <form action={"/site/projects/teams/request/" + obj.id + "/cancel/"} method="post">
                       <DjangoCSRFToken />
                       <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
-                        Close
+                        Cancel
                       </button>
                       </form>
                     </div>
@@ -331,7 +331,7 @@ class Main extends Component {
                       <form action={"/site/hackathons/teams/request/" + obj.id + "/cancel/"} method="post">
                       <DjangoCSRFToken />
                       <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
-                        Close
+                        Cancel
                       </button>
                       </form>
                     </div>

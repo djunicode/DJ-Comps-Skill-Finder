@@ -17,6 +17,7 @@ from .models import Hackathon, HackathonTeam, HackathonTeamRequest
 from .models import ProjectTeam, ProjectTeamRequest
 from .forms import MentorRequestForm, HackathonTeamForm, HackathonTeamRequestForm
 from .forms import ProjectTeamForm, ProjectTeamRequestForm
+# from django.contrib import messages
 # from django.db.models import Q
 
 
@@ -236,15 +237,21 @@ def mentor(request):
 @login_required(login_url='users:login')
 def update_profile(request):
     if request.method != 'POST':
-        skill_set = Skill.objects.all()
-        skills = {}
+        skill_set = Skill.objects.all().order_by('skill')
+        list_skill = {}
+        skills = []
+        reverse_link = {}
+        # for skill in skill_set:
+        #     skills[str(skill.pk)] = skill.skill
+        # # skill_set = list(skill_set)
+        # # skill_set = serializers.serialize('json', skill_set)
+        # # print(skill_set)
+        # print(skills)
         for skill in skill_set:
-            skills[str(skill.pk)] = skill.skill
-        # skill_set = list(skill_set)
-        # skill_set = serializers.serialize('json', skill_set)
-        # print(skill_set)
-        print(skills)
-        skill_set = json.dumps(skills, indent=4)
+            skills.append({'id': skill.id, 'skill': skill.skill})
+            list_skill[skill.id] = skill.skill
+        skills = json.dumps(skills, indent=4, default=str)
+        list_skill = json.dumps(list_skill, indent=4, default=str)
         current_user = CustomUser.objects.get(sap_id=request.user.sap_id)
         # print(current_user.__dict__)
         current_user = model_to_dict(current_user)
@@ -257,7 +264,7 @@ def update_profile(request):
         current_user = json.dumps(current_user, indent=4, default=str)
         # current_user = dumps(current_user, indent=4, default=json_serial)
         # print(current_user)
-        context = {'user': current_user, 'skills': skill_set}
+        context = {'user': current_user, 'skills': skills, 'list_skills': list_skill}
         context = json.dumps(context)
         # print(context)
         return render(request, 'users/update_profile.html', {'prop': context})
@@ -286,29 +293,29 @@ def update_profile(request):
         else:
             request.user.is_mentor = True
         try:
-            request.user.skill_1 = Skill.objects.get(skill=request.POST.get('skill1'))
+            request.user.skill_1 = Skill.objects.get(id=request.POST.get('skill1'))
         except Skill.DoesNotExist:
             request.user.skill_1 = None
         try:
-            request.user.skill_2 = Skill.objects.get(skill=request.POST.get('skill2'))
+            request.user.skill_2 = Skill.objects.get(id=request.POST.get('skill2'))
             print(request.user.skill_2)
         except Skill.DoesNotExist:
             request.user.skill_2 = None
         print(request.POST.get('bio'))
         try:
-            request.user.skill_3 = Skill.objects.get(skill=request.POST.get('skill3'))
+            request.user.skill_3 = Skill.objects.get(id=request.POST.get('skill3'))
         except Skill.DoesNotExist:
             request.user.skill_3 = None
         try:
-            request.user.interest_1 = Skill.objects.get(skill=request.POST.get('interest1'))
+            request.user.interest_1 = Skill.objects.get(id=request.POST.get('interest1'))
         except Skill.DoesNotExist:
             request.user.interest_1 = None
         try:
-            request.user.interest_2 = Skill.objects.get(skill=request.POST.get('interest2'))
+            request.user.interest_2 = Skill.objects.get(id=request.POST.get('interest2'))
         except Skill.DoesNotExist:
             request.user.interest_2 = None
         try:
-            request.user.interest_3 = Skill.objects.get(skill=request.POST.get('interest3'))
+            request.user.interest_3 = Skill.objects.get(id=request.POST.get('interest3'))
         except Skill.DoesNotExist:
             request.user.interest_3 = None
         # Adding interests, currently 3
@@ -568,19 +575,23 @@ def search(request):
 def add_hackathon_team(request):
     context = {}
     list_hack = {}
+    list_skill = {}
     context['user'] = json.dumps(process_user(request.user), indent=4, default=str)
     hackathons = [model_to_dict(h) for h in Hackathon.objects.all()]
     for h in hackathons:
         list_hack[h['id']] = h['name']
     context['hackathons'] = json.dumps(hackathons, indent=4, default=str)
     context['list_hack'] = json.dumps(list_hack, indent=4, default=str)
-    skill_set = Skill.objects.all()
+    skill_set = Skill.objects.all().order_by('skill')
     skills = []
+
     for skill in skill_set:
         skills.append({'id': skill.id, 'skill': skill.skill})
+        list_skill[skill.id] = skill.skill
     skills = json.dumps(skills, indent=4, default=str)
     context['skills'] = skills
     context['error'] = ''
+    context['list_skills'] = json.dumps(list_skill, indent=4, default=str)
     if request.method == 'POST':
         print(request.POST)
         form = HackathonTeamForm(request.POST)
@@ -589,7 +600,7 @@ def add_hackathon_team(request):
             team.leader = request.user
             team.save()
             form.save_m2m()
-            return redirect('users:view_hackathon_team', pk=team.id)
+            return redirect('users:all_hackathon_teams')
         else:
             # [TODO] Convert the hackathon queryset to a smaller one according to date
             context['error'] = 'A team with the same name exists.'
@@ -659,15 +670,27 @@ def all_hackathon_teams(request):
     context['requests_received'] = json.dumps(requests_received, indent=4, default=str)
     context['requests_sent'] = json.dumps(temp, indent=4, default=str)
     # teams = HackathonTeam.objects.filter(closed=False).filter(~Q(leader=request.user))
-    teams = HackathonTeam.objects.filter(closed=False).exclude(leader=request.user)
-    teams = [model_to_dict(team) for team in teams]
+    # teams = HackathonTeam.objects.filter(closed=False).exclude(leader=request.user)
+    teams = HackathonTeam.objects.filter(closed=False).order_by('-id')
+    temp = []
+    for team in teams:
+        x = model_to_dict(team)
+        x['leader_name'] = team.leader.first_name
+        x['leader_sap'] = team.leader.sap_id
+        x['disabled'] = ''
+        if team.hack_requests_received.filter(sender=request.user, accepted=False, rejected=False):
+            x['disabled'] = 'disabled'
+        elif team in request.user.leader_teams.all() or team in request.user.member_teams.all():
+            x['disabled'] = 'disabled'
+        temp.append(x)
+    # teams = [model_to_dict(team) for team in teams]
     list_hack = {}
     for h in Hackathon.objects.all():
         list_hack[h.id] = h.name
     context['list_hack'] = json.dumps(list_hack)
-    context['teams'] = json.dumps(teams, indent=4, default=str)
+    context['teams'] = json.dumps(temp, indent=4, default=str)
     skills_dict = {}
-    for skill in Skill.objects.all():
+    for skill in Skill.objects.all().order_by('skill'):
         skills_dict[skill.id] = skill.skill
     context['skills_dict'] = json.dumps(skills_dict, indent=4, default=str)
     if request.method == 'POST':
@@ -682,12 +705,12 @@ def send_hackteam_request(request, pk):
     try:
         team = HackathonTeam.objects.get(id=pk)
     except HackathonTeam.DoesNotExist:  # redirecting to login as a placeholder
-        return redirect('users:login')
+        return redirect('users:all_hackathon_teams')
     if request.user in team.current_members.all() or request.user == team.leader:
-        return redirect('users:login')
+        return redirect('users:all_hackathon_teams')
     # Checking if a pending request exists
     if HackathonTeamRequest.objects.filter(team=team, sender=request.user, accepted=False, rejected=False).exists():
-        return redirect('users:login')
+        return redirect('users:all_hackathon_teams')
     r = HackathonTeamRequest(team=team, sender=request.user)
     r.save()
     return redirect('users:all_hackathon_teams')
@@ -709,8 +732,9 @@ def accept_hack_request(request, pk):
                 r.save()
         hack_request.team.add_member(hack_request.sender)
         hack_request.save()
-        return redirect('users:view_hackathon_team', pk=hack_request.team.id)
-    return redirect('users:login')
+        # return redirect('users:view_hackathon_team', pk=hack_request.team.id)
+        return redirect('users:all_hackathon_teams')
+    return redirect('users:all_hackathon_teams')
 
 
 @login_required(login_url='users:login')
@@ -719,8 +743,9 @@ def reject_hack_request(request, pk):
         hack_request = get_object_or_404(HackathonTeamRequest, id=pk)
         hack_request.rejected = True
         hack_request.save()
-        return redirect('users:view_profile', sap_id=request.user.sap_id)
-    return redirect('users:login')
+        # return redirect('users:view_profile', sap_id=request.user.sap_id)
+        return redirect('users:all_hackathon_teams')
+    return redirect('users:all_hackathon_teams')
 
 
 @login_required(login_url='users:login')
@@ -728,8 +753,9 @@ def cancel_hack_request(request, pk):
     if request.method == 'POST':
         hack_request = get_object_or_404(HackathonTeamRequest, id=pk)
         hack_request.delete()
-        return redirect('users:view_profile', sap_id=request.user.sap_id)
-    return redirect('users:login')
+        # return redirect('users:view_profile', sap_id=request.user.sap_id)
+        return redirect('users:all_hackathon_teams')
+    return redirect('users:all_hackathon_teams')
 
 
 @login_required(login_url='users:login')
@@ -738,6 +764,7 @@ def add_project_team(request):
     result = []
     p = {}
     hack = {}
+    list_skill = {}
     for project in projects:
         if not ProjectTeam.objects.filter(project=project).exists():
             p = {}
@@ -750,6 +777,7 @@ def add_project_team(request):
     if request.method == 'POST':
         project = Project.objects.get(id=int(request.POST.get('project')))
         if ProjectTeam.objects.filter(project=project).exists():
+            # [TODO] render an error
             return redirect('users:login')
         # if request.user != project.creator:
         #     return redirect('users:login')
@@ -761,7 +789,7 @@ def add_project_team(request):
             # team.project = project
             team.save()
             form.save_m2m()
-            return redirect('users:view_project_team', pk=team.id)
+            return redirect('users:project_team_join')
         else:
             print(request.POST)
             return redirect('users:add_project_team')
@@ -772,7 +800,7 @@ def add_project_team(request):
         context['user'] = json.dumps(process_user(user), indent=4, default=str)
         context['projects'] = json.dumps(projects, indent=4, default=str)
         context['hack'] = json.dumps(hack, indent=4, default=str)
-        skills = Skill.objects.all()
+        skills = Skill.objects.all().order_by('skill')
         result = []
         r = {}
         for sk in skills:
@@ -782,12 +810,14 @@ def add_project_team(request):
             # r = json.dumps(r, indent=4, default=str)
             # print(r)
             result.append(r)
+            list_skill[sk.id] = sk.skill
             # print(result)
         # skills = json.dumps(result, indent=4, default=str)
         # context['skills'] = skills
         skills = result
         # print(skills)
         context['skills'] = json.dumps(skills, indent=4, default=str)
+        context['list_skills'] = json.dumps(list_skill, indent=4, default=str)
         print(context['skills'])
     return render(request, 'users/add_project_team.html', {'prop': context})
 
@@ -826,19 +856,19 @@ def view_project_team(request, pk):
 @login_required(login_url='users:login')
 def send_project_team_request(request, pk):
     if request.method == 'GET':
-        return redirect('users:all_hackathon_teams')
+        return redirect('users:project_team_join')
     try:
         team = ProjectTeam.objects.get(id=pk)
     except ProjectTeam.DoesNotExist:  # redirecting to login as a placeholder
-        return redirect('users:login')
+        return redirect('users:project_team_join')
     if request.user in team.current_members.all() or request.user == team.leader:
-        return redirect('users:login')
+        return redirect('users:project_team_join')
     # Checking if a pending request exists
     if ProjectTeamRequest.objects.filter(team=team, sender=request.user, accepted=False, rejected=False).exists():
-        return redirect('users:login')
+        return redirect('users:project_team_join')
     r = ProjectTeamRequest(team=team, sender=request.user)
     r.save()
-    return redirect('users:all_hackathon_teams')
+    return redirect('users:project_team_join')
 
 
 @login_required(login_url='users:login')
@@ -857,8 +887,9 @@ def accept_project_request(request, pk):
                 r.save()
         project_request.team.add_member(project_request.sender)
         project_request.save()
-        return redirect('users:view_project_team', pk=project_request.team.id)
-    return redirect('users:login')
+        # return redirect('users:view_project_team', pk=project_request.team.id)
+        return redirect('users:project_team_join')
+    return redirect('users:project_team_join')
 
 
 @login_required(login_url='users:login')
@@ -867,8 +898,9 @@ def reject_project_request(request, pk):
         project_request = get_object_or_404(ProjectTeamRequest, id=pk)
         project_request.rejected = True
         project_request.save()
-        return redirect('users:view_profile', sap_id=request.user.sap_id)
-    return redirect('users:login')
+        # return redirect('users:view_profile', sap_id=request.user.sap_id)
+        return redirect('users:project_team_join')
+    return redirect('users:project_team_join')
 
 
 @login_required(login_url='users:login')
@@ -876,8 +908,9 @@ def cancel_project_request(request, pk):
     if request.method == 'POST':
         project_request = get_object_or_404(ProjectTeamRequest, id=pk)
         project_request.delete()
-        return redirect('users:view_profile', sap_id=request.user.sap_id)
-    return redirect('users:login')
+        # return redirect('users:view_profile', sap_id=request.user.sap_id)
+        return redirect('users:project_team_join')
+    return redirect('users:project_team_join')
 
 
 @login_required(login_url='users:login')
@@ -885,12 +918,20 @@ def project_join_view(request):
     context = {}
     user = process_user(request.user)
     context['user'] = json.dumps(user, indent=4, default=str)
-    teams = ProjectTeam.objects.filter(closed=False).exclude(leader=request.user)
+    # teams = ProjectTeam.objects.filter(closed=False).exclude(leader=request.user)
+    teams = ProjectTeam.objects.filter(closed=False).order_by('-id')
     result = []
     # teams = [model_to_dict(team) for team in teams]
     for team in teams:
-        if not team.project_requests_received.filter(sender=request.user).exists():
-            result.append(model_to_dict(team))
+        x = model_to_dict(team)
+        x['leader_name'] = team.leader.first_name
+        x['leader_sap'] = team.leader.sap_id
+        x['disabled'] = ''
+        if team.project_requests_received.filter(sender=request.user, accepted=False, rejected=False):
+            x['disabled'] = 'disabled'
+        elif team in request.user.project_leader_teams.all() or team in request.user.member_project_teams.all():
+            x['disabled'] = 'disabled'
+        result.append(x)
     teams = result
     list_hack = {}
     for p in Project.objects.all():
@@ -898,7 +939,7 @@ def project_join_view(request):
     context['list_hack'] = json.dumps(list_hack)
     context['teams'] = json.dumps(teams, indent=4, default=str)
     skills_dict = {}
-    for skill in Skill.objects.all():
+    for skill in Skill.objects.all().order_by('skill'):
         skills_dict[skill.id] = skill.skill
     context['skills_dict'] = json.dumps(skills_dict, indent=4, default=str)
     if request.method != 'POST':

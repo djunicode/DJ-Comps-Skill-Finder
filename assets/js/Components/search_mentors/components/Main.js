@@ -56,6 +56,7 @@ class Main extends Component {
       if (this.state.SEMentors == true) {
         Mentors =
         this.state.availableSEMentors.map(obj =>
+        <div>
         <div className="mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-shadow--2dp">
           <figure className="mdl-card__media">
             <img src={obj.photo} alt="profile photo" />
@@ -67,13 +68,14 @@ class Main extends Component {
             <p>Mentor Skills.</p>
           </div>
           <div className="mdl-card__actions mdl-card--border">
-            <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a>
-            <div className="mdl-layout-spacer"></div>
+            <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a> 
             <form action={"/site/requests/" + obj.sap_id + "/"} method="post">
             <DjangoCSRFToken />
             <button type="submit" className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</button>
             </form>
           </div>
+        </div>
+        <div className="mdl-layout-spacer"></div>
         </div>
       );
       }
@@ -92,7 +94,6 @@ class Main extends Component {
           </div>
           <div className="mdl-card__actions mdl-card--border">
             <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a>
-            <div className="mdl-layout-spacer"></div>
             <form action={"/site/requests/" + obj.sap_id + "/"} method="post">
             <DjangoCSRFToken />
             <button type="submit" className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</button>
@@ -116,7 +117,7 @@ class Main extends Component {
            <div className="mdl-cell--4-col">
            <form action={"/site/requests/" + obj.request_id + "/cancel/"} method="post">
            <DjangoCSRFToken />
-          <button className="requests-button mdl-button mdl-js-button">
+          <button className="cancel-button mdl-button mdl-js-button">
           Cancel
           </button>
           </form>
@@ -132,13 +133,15 @@ class Main extends Component {
             <div className="mdl-cell--4-col">
              <a className="mdl-navigation__link" href="">{obj.first_name}</a>
            </div>
-           <div className="requests mdl-cell--8-col">
+           <div className="requests mdl-cell--4-col">
            <form action={"/site/requests/" + obj.request_id + "/accept/"} method="post">
            <DjangoCSRFToken />
           <button className="accept-button mdl-button mdl-js-button">
             Accept
           </button>
           </form>
+          </div>
+          <div className="requests mdl-cell--4-col">
           <form action={"/site/requests/" + obj.request_id + "/reject/"} method="post">
           <DjangoCSRFToken />
           <button className="decline-button mdl-button mdl-js-button">
@@ -153,8 +156,6 @@ class Main extends Component {
 
 			<main className="mdl-layout__content">
 			<div className="page-content">
-
-
         <form method="get">
         <button type="submit" className="search-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
           SEARCH

@@ -26,7 +26,7 @@ class Header extends Component {
                 <a className="mdl-navigation__link" href="">Find a Mentor</a>
                 <a className="mdl-navigation__link" href="">Make a Team</a>
                 <a className="mdl-navigation__link" href="">Events</a>
-                <a className="mdl-navigation__link" href="">Snoopy<i className="material-icons">person</i></a>
+                <a className="mdl-navigation__link" href="">{user.first_name}<i className="material-icons">person</i></a>
               </nav>
             </div>
             <span className="page-mobile-title mdl-layout-title">
@@ -46,6 +46,7 @@ class Header extends Component {
 
 
         <br/><br/><br/><br/>
+      <img src={user.photo} className="img-circle" alt="User Profile"></img>
         <form action="/site/profile/image/upload/" method="post" enctype="multipart/form-data">
         <DjangoCSRFToken />
           <label htmlFor="file" className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">

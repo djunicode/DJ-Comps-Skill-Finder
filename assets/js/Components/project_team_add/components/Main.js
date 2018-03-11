@@ -12,6 +12,7 @@ class Main extends Component {
             vacancies: '',
             description: '',
             expanded: '',
+            skills_required: ''
         };
 
         // this.handleProjname= this.handleProjname.bind(this);
@@ -169,7 +170,7 @@ class Main extends Component {
 
               <span className="description diff">Skills you are looking for</span>
               <br/><br/>
-              
+
 
               <div className="multiselect">
                 <div className="selectBox" onClick={this.showCheckboxes}>
@@ -180,11 +181,11 @@ class Main extends Component {
                 </div>
                 <div id="checkboxes" className="description">
                   <label for="one">
-                  <input type="checkbox" name="skill" value="first" id="one" />First checkbox</label>
+                  <input type="checkbox" name="skills_required" value="first" id="one" />First checkbox</label>
                   <label for="two">
-                  <input type="checkbox" name="skill" value="second" id="two" />Second checkbox</label>
+                  <input type="checkbox" name="skills_required" value="second" id="two" />Second checkbox</label>
                   <label for="three">
-                  <input type="checkbox" name="skill" value="three" id="three" />Third checkbox</label>
+                  <input type="checkbox" name="skills_required" value="three" id="three" />Third checkbox</label>
                 </div>
               </div>
       

@@ -10,12 +10,12 @@ class Main extends Component {
             github: user.github_url || '',
             twitter: user.twitter_url || '',
             stack: user.stack_url || '',
-            interest1: skills[user.interest_1] || '',
-            interest2: skills[user.interest_2] || '',
-            interest3:skills[user.interest_3] || '',
-            skill1: skills[user.skill_1] || '',
-            skill2: skills[user.skill_2] || '',
-            skill3: skills[user.skill_3] || '',
+            interest1: user.interest_1 || '',
+            interest2: user.interest_2 || '',
+            interest3:user.interest_3 || '',
+            skill1: user.skill_1 || '',
+            skill2: user.skill_2 || '',
+            skill3: user.skill_3 || '',
             sapID: parseInt(user.sap_id)|| '',
             year: user.year || '',
             user: '',
@@ -45,22 +45,34 @@ class Main extends Component {
         this.setState({sapID: event.target.value});
     }
     handleSkill1(event) {
+        if(event.target.value!=this.state.skill2 || event.target.value!=this.state.skill3 || event.target.value!=this.state.interest1 || event.target.value!=this.state.interest2 || event.target.value!=this.state.interest3  ){
         this.setState({skill1: event.target.value});
+        }
     }
     handleSkill2(event) {
-        this.setState({skill2: event.target.value});
+        if(event.target.value!=this.state.skill3 || event.target.value!=this.state.skill1 || event.target.value!=this.state.interest1 || event.target.value!=this.state.interest2 || event.target.value!=this.state.interest3 ) {
+            this.setState({skill2: event.target.value});
+        }
     }
     handleSkill3(event) {
-        this.setState({skill3: event.target.value});
+        if(event.target.value!=this.state.skill2 || event.target.value!=this.state.skill1 || event.target.value!=this.state.interest1 || event.target.value!=this.state.interest2 || event.target.value!=this.state.interest3 ) {
+            this.setState({skill3: event.target.value});
+        }
     }
     handleInterest1(event) {
-        this.setState({interest1: event.target.value});
+        if(event.target.value!=this.state.skill2 || event.target.value!=this.state.skill3 || event.target.value!=this.state.skill1 || event.target.value!=this.state.interest2 || event.target.value!=this.state.interest3  ) {
+            this.setState({interest1: event.target.value});
+        }
     }
     handleInterest2(event) {
-        this.setState({interest2: event.target.value});
+        if(event.target.value!=this.state.skill2 || event.target.value!=this.state.skill3 || event.target.value!=this.state.skill1 || event.target.value!=this.state.interest1 || event.target.value!=this.state.interest3  ) {
+            this.setState({interest2: event.target.value});
+        }
     }
     handleInterest3(event) {
-        this.setState({interest3: event.target.value});
+        if(event.target.value!=this.state.skill2 || event.target.value!=this.state.skill3 || event.target.value!=this.state.skill1 || event.target.value!=this.state.interest2 || event.target.value!=this.state.interest1  ) {
+            this.setState({interest3: event.target.value});
+        }
     }
     handleGithub(event) {
         this.setState({github: event.target.value});
@@ -95,7 +107,7 @@ class Main extends Component {
             <DjangoCSRFToken/>
         		<a href="" className="profile-view">Profile View<i className="material-icons">keyboard_arrow_right</i></a>
         		<br/><br/>
-            
+
             <br/><br/>
             <div className="justify">
               <span className="mdl-selectfield mdl-js-selectfield">
@@ -137,7 +149,7 @@ class Main extends Component {
                   <textarea maxlength="500" className="mdl-textfield__input" value={this.state.bio} onChange={this.handleBio} rows="3" type="text" id="bio" name='bio'></textarea>
                   <label className="bio mdl-selectfield__label mdl-textfield__label" for="bio">Bio Description...</label>
           </div>
-          
+
     			<br/><br/><br/>
 				<div className="skills">
 					<h1>SKILLS</h1>
@@ -146,12 +158,12 @@ class Main extends Component {
           <center>
           <label className="skill-label mdl-selectfield__label" htmlFor="skill1">SKILL 1</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input type="text" className="mdl-textfield__input" id="skill1" value={this.state.skill1}  />
+              <input type="text" className="mdl-textfield__input" id="skill1" value={list_skill[this.state.skill1]}  />
               <input type="hidden" value={this.state.skill1} name="skill1" />
               <label htmlFor="skill1" className="mdl-textfield__label"></label>
               <ul htmlFor="skill1" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill1} >
                 {Object.values(skills).map(skill => (
-                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
+                  <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
               ))}
               {/* Todo solve warning*/}
 
@@ -160,26 +172,26 @@ class Main extends Component {
         <br/><br/><br/>
           <label className="skill-label mdl-selectfield__label" htmlFor="skill2">SKILL 2</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input type="text" className="mdl-textfield__input" id="skill2" value={this.state.skill2}  />
+              <input type="text" className="mdl-textfield__input" id="skill2" value={list_skill[this.state.skill2]}  />
               <input type="hidden" value={this.state.skill2} name="skill2" / >
               <label htmlFor="skill2" className="mdl-textfield__label"></label>
               <ul htmlFor="skill2" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill2}>
                 {Object.values(skills).map(skill => (
-                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
-                ))}
+                  <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
+              ))}
               {/* Todo solve warning*/}
               </ul>
           </div>
           <br/><br/><br/>
           <label className="skill-label mdl-selectfield__label" htmlFor="skill3">SKILL 3</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input type="text" className="mdl-textfield__input" id="skill3" value={this.state.skill3}  />
+              <input type="text" className="mdl-textfield__input" id="skill3" value={list_skill[this.state.skill3]}  />
               <input type="hidden" value={this.state.skill3} name="skill3" / >
               <label htmlFor="skill3" className="mdl-textfield__label"></label>
               <ul htmlFor="skill3" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill3} >
                 {Object.values(skills).map(skill => (
-                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
-                ))}
+                  <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
+              ))}
               {/* Todo solve warning*/}
               </ul>
           </div>
@@ -192,37 +204,37 @@ class Main extends Component {
       <center>
         <label className="interest-label mdl-selectfield__label" htmlFor="interest1">INTEREST 1</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div className="mdl-textfield mdl-js-textfield getmdl-select">
-            <input type="text" className="mdl-textfield__input" id="interest1" value={this.state.interest1} onClick={this.handleInterest1} />
+            <input type="text" className="mdl-textfield__input" id="interest1" value={list_skill[this.state.interest1]} onClick={this.handleInterest1} />
             <input type="hidden" value={this.state.interest1}   name="interest1" / >
             <label htmlFor="interest1" className="mdl-textfield__label"></label>
             <ul htmlFor="interest1" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleInterest1} >
               {Object.values(skills).map(skill => (
-                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
-                ))}
+                  <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
+              ))}
             </ul>
         </div>
       <br/><br/><br/>
         <label className="interest-label mdl-selectfield__label" htmlFor="interest2">INTEREST 2</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div className="mdl-textfield mdl-js-textfield getmdl-select">
-            <input className="mdl-textfield__input" id="interest2" value={this.state.interest2}  />
+            <input className="mdl-textfield__input" id="interest2" value={list_skill[this.state.interest2]}  />
             <input type="hidden" value={this.state.interest2} name="interest2" / >
             <label htmlFor="interest2" className="mdl-textfield__label"></label>
             <ul htmlFor="interest2" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleInterest2}>
               {Object.values(skills).map(skill => (
-                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
-                ))}
+                  <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
+              ))}
             </ul>
         </div>
         <br/><br/><br/>
           <label className="interest-label mdl-selectfield__label" htmlFor="interest3">INTEREST 3</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input className="mdl-textfield__input" id="interest3" value={this.state.interest3}  />
+              <input className="mdl-textfield__input" id="interest3" value={list_skill[this.state.interest3]}  />
               <input type="hidden" value={this.state.interest3} name="interest3" / >
               <label htmlFor="interest3" className="mdl-textfield__label"></label>
               <ul htmlFor="interest3" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleInterest3}>
                 {Object.values(skills).map(skill => (
-                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
-                ))}
+                  <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
+              ))}
               </ul>
           </div>
           <br/><br/><br/>
@@ -250,7 +262,7 @@ class Main extends Component {
         <br/>
         <br/>
         <br/>
-        
+
         <button type="submit" className="save-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
           SAVE
         </button>
