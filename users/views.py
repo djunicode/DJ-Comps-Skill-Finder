@@ -147,7 +147,9 @@ def view_profile(request, sap_id):
 
 @login_required(login_url='users:login')
 def view_teams_landing(request):
-    return render(request, 'users/teams_landing.html', {})
+    context = {}
+    context['user'] = json.dumps(process_user(request.user), indent=4, default=str)
+    return render(request, 'users/teams_landing.html', {'prop': context})
 
 
 @login_required(login_url='users:login')
@@ -155,6 +157,30 @@ def view_dashboard(request):
     context = {}
     user = request.user
     context['user'] = json.dumps(process_user(request.user), indent=4, default=str)
+    mentors = user.mentee.all()
+    temp = []
+    for m in mentors:
+        x = process_user(m.mentor)
+        x['relationship_id'] = m.id
+        if m.skill:
+            x['skill'] = m.skill.skill
+        else:
+            x['skill'] = ''
+        temp.append(x)
+    mentors = json.dumps(temp, indent=4, default=str)
+    temp = []
+    mentees = user.mentor.all()
+    for m in mentees:
+        x = process_user(m.mentee)
+        x['relationship_id'] = m.id
+        if m.skill:
+            x['skill'] = m.skill.skill
+        else:
+            x['skill'] = ''
+        temp.append(x)
+    mentees = json.dumps(temp, indent=4, default=str)
+    context['mentors'] = mentors
+    context['mentees'] = mentees
     received = []
     sent = []
     for r in user.requests_received.filter(accepted=False, rejected=False):
@@ -598,6 +624,7 @@ def add_hackathon_team(request):
         print(request.POST)
         form = HackathonTeamForm(request.POST)
         if form.is_valid():
+            print("Valid form")
             team = form.save(commit=False)
             team.leader = request.user
             team.save()
@@ -820,7 +847,7 @@ def add_project_team(request):
         # print(skills)
         context['skills'] = json.dumps(skills, indent=4, default=str)
         context['list_skills'] = json.dumps(list_skill, indent=4, default=str)
-        print(context['skills'])
+        # print(context['skills'])
     return render(request, 'users/add_project_team.html', {'prop': context})
 
 

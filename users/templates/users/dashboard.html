@@ -12,6 +12,8 @@
     // var props = unescape({{prop|safe}})
     var props = {{ prop|safe }}
     var user = JSON.parse(props.user)
+    var mentors = JSON.parse(props.mentors)
+    var mentees = JSON.parse(props.mentees)
     var mentor_requests_received = JSON.parse(props.mentor_requests_received)
     var mentor_requests_sent = JSON.parse(props.mentor_requests_sent)
     var hackathon_requests_received = JSON.parse(props.hackathon_requests_received)
