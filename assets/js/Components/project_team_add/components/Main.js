@@ -158,7 +158,7 @@ class Main extends Component {
                 <label className="mdl-selectfield__label" for="id_skills_required">Skill :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </span>
               <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input type="number" className="mdl-textfield__input" id="id_skills_required" value={this.state.skills_required} onChange={this.handleSkills_required}/>
+              <input type="text" className="mdl-textfield__input" id="id_skills_required" value={list_skill[this.state.skills_required]} onChange={this.handleSkills_required}/>
               <input type="hidden" value={this.state.skills_required} name="skills_required"/>
               <label for="id_skills_required" className="mdl-textfield__label"></label>
               <ul htmlFor="id_skills_required" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkills_required} >

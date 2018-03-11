@@ -568,6 +568,7 @@ def search(request):
 def add_hackathon_team(request):
     context = {}
     list_hack = {}
+    list_skill = {}
     context['user'] = json.dumps(process_user(request.user), indent=4, default=str)
     hackathons = [model_to_dict(h) for h in Hackathon.objects.all()]
     for h in hackathons:
@@ -576,11 +577,14 @@ def add_hackathon_team(request):
     context['list_hack'] = json.dumps(list_hack, indent=4, default=str)
     skill_set = Skill.objects.all()
     skills = []
+
     for skill in skill_set:
         skills.append({'id': skill.id, 'skill': skill.skill})
+        list_skill[skill.id] = skill.skill
     skills = json.dumps(skills, indent=4, default=str)
     context['skills'] = skills
     context['error'] = ''
+    context['list_skills'] = json.dumps(list_skill, indent=4, default=str)
     if request.method == 'POST':
         print(request.POST)
         form = HackathonTeamForm(request.POST)
@@ -753,6 +757,7 @@ def add_project_team(request):
     result = []
     p = {}
     hack = {}
+    list_skill = {}
     for project in projects:
         if not ProjectTeam.objects.filter(project=project).exists():
             p = {}
@@ -797,12 +802,14 @@ def add_project_team(request):
             # r = json.dumps(r, indent=4, default=str)
             # print(r)
             result.append(r)
+            list_skill[sk.id] = sk.skill
             # print(result)
         # skills = json.dumps(result, indent=4, default=str)
         # context['skills'] = skills
         skills = result
         # print(skills)
         context['skills'] = json.dumps(skills, indent=4, default=str)
+        context['list_skills'] = json.dumps(list_skill, indent=4, default=str)
         print(context['skills'])
     return render(request, 'users/add_project_team.html', {'prop': context})
 
