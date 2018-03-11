@@ -82,6 +82,8 @@ a img{
 }
 
 .search-button{
+  background-color: #FFDD87;
+  color: white; 
   left: 40px;
 }
 
