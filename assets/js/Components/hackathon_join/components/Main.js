@@ -98,7 +98,7 @@ class Main extends Component {
                       </div>
                       <div className="header">
                         <h5>Skills required</h5>
-                        <p>{obj2.skills_required}</p>
+                        <p>{obj2.skills_required} </p>
                       </div>
                     </div>
                     <form action={"/hackathons/teams/" + obj2.id + "/request/"} method="post">
