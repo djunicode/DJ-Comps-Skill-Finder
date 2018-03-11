@@ -237,14 +237,20 @@ def mentor(request):
 def update_profile(request):
     if request.method != 'POST':
         skill_set = Skill.objects.all().order_by('skill')
-        skills = {}
+        list_skill = {}
+        skills = []
+        reverse_link = {}
+        # for skill in skill_set:
+        #     skills[str(skill.pk)] = skill.skill
+        # # skill_set = list(skill_set)
+        # # skill_set = serializers.serialize('json', skill_set)
+        # # print(skill_set)
+        # print(skills)
         for skill in skill_set:
-            skills[str(skill.pk)] = skill.skill
-        # skill_set = list(skill_set)
-        # skill_set = serializers.serialize('json', skill_set)
-        # print(skill_set)
-        print(skills)
-        skill_set = json.dumps(skills, indent=4)
+            skills.append({'id': skill.id, 'skill': skill.skill})
+            list_skill[skill.id] = skill.skill
+        skills = json.dumps(skills, indent=4, default=str)
+        list_skill = json.dumps(list_skill, indent=4, default=str)
         current_user = CustomUser.objects.get(sap_id=request.user.sap_id)
         # print(current_user.__dict__)
         current_user = model_to_dict(current_user)
@@ -257,7 +263,7 @@ def update_profile(request):
         current_user = json.dumps(current_user, indent=4, default=str)
         # current_user = dumps(current_user, indent=4, default=json_serial)
         # print(current_user)
-        context = {'user': current_user, 'skills': skill_set}
+        context = {'user': current_user, 'skills': skills, 'list_skills': list_skill}
         context = json.dumps(context)
         # print(context)
         return render(request, 'users/update_profile.html', {'prop': context})
@@ -286,29 +292,29 @@ def update_profile(request):
         else:
             request.user.is_mentor = True
         try:
-            request.user.skill_1 = Skill.objects.get(skill=request.POST.get('skill1'))
+            request.user.skill_1 = Skill.objects.get(id=request.POST.get('skill1'))
         except Skill.DoesNotExist:
             request.user.skill_1 = None
         try:
-            request.user.skill_2 = Skill.objects.get(skill=request.POST.get('skill2'))
+            request.user.skill_2 = Skill.objects.get(id=request.POST.get('skill2'))
             print(request.user.skill_2)
         except Skill.DoesNotExist:
             request.user.skill_2 = None
         print(request.POST.get('bio'))
         try:
-            request.user.skill_3 = Skill.objects.get(skill=request.POST.get('skill3'))
+            request.user.skill_3 = Skill.objects.get(id=request.POST.get('skill3'))
         except Skill.DoesNotExist:
             request.user.skill_3 = None
         try:
-            request.user.interest_1 = Skill.objects.get(skill=request.POST.get('interest1'))
+            request.user.interest_1 = Skill.objects.get(id=request.POST.get('interest1'))
         except Skill.DoesNotExist:
             request.user.interest_1 = None
         try:
-            request.user.interest_2 = Skill.objects.get(skill=request.POST.get('interest2'))
+            request.user.interest_2 = Skill.objects.get(id=request.POST.get('interest2'))
         except Skill.DoesNotExist:
             request.user.interest_2 = None
         try:
-            request.user.interest_3 = Skill.objects.get(skill=request.POST.get('interest3'))
+            request.user.interest_3 = Skill.objects.get(id=request.POST.get('interest3'))
         except Skill.DoesNotExist:
             request.user.interest_3 = None
         # Adding interests, currently 3
