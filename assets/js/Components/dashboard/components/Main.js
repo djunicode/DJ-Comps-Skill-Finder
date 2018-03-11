@@ -6,104 +6,128 @@ class Main extends Component {
     constructor(props){
         super(props);
         this.state = {
-            // Rmr:[
-            //       {
-            //         name: "ikbal",
-            //         skill: "ml"
-            //       },
-            //       {
-            //         name: "aakash",
-            //         skill: "css"
-            //       }
-            //     ],
+            Mentee:[
+                      {
+                          first_name: "ikbal",
+                          skill: "python",
+                          contact: "9930035998"
+                      },
+                      {
+                          first_name: "aakash",
+                          skill : "c++",
+                          contact: "5955944555"
+                      }
+                   ],
+            Mentor:[
+                      {
+                          first_name: "ikbal",
+                          skill: "python",
+                          contact: "9930035998"
+                      },
+                      {
+                          first_name: "aakash",
+                          skill : "c++",
+                          contact: "5955944555"
+                      }
+                   ],
+/*              Rmr:[
+                    {
+                      first_name: "ikbal",
+                      skill: "ml"
+                    },
+                    {
+                      name: "aakash",
+                      skill: "css"
+                    }
+                  ],*/
             Rmr: mentor_requests_received,
-            // Smr:[
-            //       {
-            //         name: "vatsal",
-            //         skill: "ml"
-            //       },
-            //       {
-            //         name: "aakash",
-            //         skill: "css"
-            //       }
-            //     ],
+/*              Smr:[
+                    {
+                      name: "vatsal",
+                      skill: "ml"
+                    },
+                    {
+                      name: "aakash",
+                      skill: "css"
+                    }
+                  ],*/
             Smr: mentor_requests_sent,
-            // Prmr:[
-            //       {
-            //         project: "Smart India",
-            //         name: "ikbal",
-            //         skill: [
-            //           'python ',
-            //           'django'
-            //         ]
-            //       },
-            //       {
-            //         project: "Pythronz",
-            //         name: "aakash",
-            //         skill: [
-            //           'python ',
-            //           'django'
-            //         ]
-            //       }
-            //     ],
+/*              Prmr:[
+                    {
+                      project: "Smart India",
+                      name: "ikbal",
+                      skill: [
+                        'python ',
+                        'django'
+                      ]
+                    },
+                    {
+                      project: "Pythronz",
+                      name: "aakash",
+                      skill: [
+                        'python ',
+                        'django'
+                      ]
+                    }
+                  ],*/
             Prmr: project_requests_received,
-            // Psmr:[
-            //       {
-            //         project: "India",
-            //         name: "ikbal",
-            //         skill: [
-            //           'python ',
-            //           'django'
-            //         ]
-            //       },
-            //       {
-            //         project: "Pythronz",
-            //         name: "aakash",
-            //         skill: [
-            //           'python ',
-            //           'django'
-            //         ]
-            //       }
-            //     ],
+/*              Psmr:[
+                    {
+                      project: "India",
+                      name: "ikbal",
+                      skill: [
+                        'python ',
+                        'django'
+                      ]
+                    },
+                    {
+                      project: "Pythronz",
+                      name: "aakash",
+                      skill: [
+                        'python ',
+                        'django'
+                      ]
+                    }
+                  ],*/
             Psmr: project_requests_sent,
-            // Hrmr:[
-            //       {
-            //         project: "Smart",
-            //         name: "ikbal",
-            //         skill: [
-            //           'python ',
-            //           'django'
-            //         ]
-            //       },
-            //       {
-            //         project: "Pythronz",
-            //         name: "aakash",
-            //         skill: [
-            //           'python ',
-            //           'django'
-            //         ]
-            //       }
-            //     ],
-            Hrmr: hackathon_requests_received,
-            // Hsmr:[
-            //       {
-            //         project: "Smart India",
-            //         name: "ikbal",
-            //         skill: [
-            //           'python ',
-            //           'django'
-            //         ]
-            //       },
-            //       {
-            //         project: "Pythronzzzzzz",
-            //         name: "aakash",
-            //         skill: [
-            //           'python ',
-            //           'django'
-            //         ]
-            //       }
-            //     ]
-            Hsmr: hackathon_requests_sent,
+/*              Hrmr:[
+                    {
+                      project: "Smart",
+                      name: "ikbal",
+                      skill: [
+                        'python ',
+                        'django'
+                      ]
+                    },
+                    {
+                      project: "Pythronz",
+                      name: "aakash",
+                      skill: [
+                        'python ',
+                        'django'
+                      ]
+                    }
+                  ],*/
+           Hrmr: hackathon_requests_received,
+/*              Hsmr:[
+                    {
+                      project: "Smart India",
+                      name: "ikbal",
+                      skill: [
+                        'python ',
+                        'django'
+                      ]
+                    },
+                    {
+                      project: "Pythronzzzzzz",
+                      name: "aakash",
+                      skill: [
+                        'python ',
+                        'django'
+                      ]
+                    }
+                  ]*/
+           Hsmr: hackathon_requests_sent,
         };
     }
 
@@ -112,6 +136,76 @@ class Main extends Component {
         	<div>
         	 <form>
         		<center>
+
+              <h3 className="description title">Your Mentees</h3>
+
+              <div className="mdl-grid description">
+
+                {this.state.Mentee.map(obj =>
+
+                <div className="mdl-cell mdl-cell--3-col">
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">
+                      {obj.first_name}
+                    </h4>
+                    <div className="mdl-card__supporting-text">
+                      {obj.skill}
+                      <br/><br/>
+                      {obj.contact}
+                    </div>
+                    <div className="mdl-card__actions">
+                          <form action="" method="post">
+                            <DjangoCSRFToken />
+                            <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
+                              Profile
+                            </button>
+                          </form>
+                    </div>
+                  </div>
+                </div>
+                )}
+              </div>
+
+              <br/><br/>
+
+              <hr/>
+
+              <br/>
+
+              <h3 className="description title">Your Mentors</h3>
+
+              <div className="mdl-grid description">
+
+                {this.state.Mentor.map(obj =>
+
+                <div className="mdl-cell mdl-cell--3-col">
+                  <div className="demo-card-square mdl-card mdl-shadow--6dp mdl-card--expand">
+                    <h4 className="name">
+                      {obj.first_name}
+                    </h4>
+                    <div className="mdl-card__supporting-text">
+                      {obj.skill}
+                      <br/><br/>
+                      {obj.contact}
+                    </div>
+                    <div className="mdl-card__actions">
+                          <form action="" method="post">
+                            <DjangoCSRFToken />
+                            <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
+                              Profile
+                            </button>
+                          </form>
+                    </div>
+                  </div>
+                </div>
+                )}
+              </div>
+
+              <br/><br/>
+
+              <hr/>
+
+              <br/>
 
               <h3 className="description title">Received mentor requests</h3>
 
@@ -128,18 +222,24 @@ class Main extends Component {
                       {obj.skill}
                     </div>
                     <div className="mdl-card__actions">
-                    <form action={"/site/requests/" + obj.request_id + "/accept/"} method="post">
-                    <DjangoCSRFToken />
-                      <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
-                        Accept
-                      </button>
-                      </form>
-                      <form action={"/site/requests/" + obj.request_id + "/reject/"} method="post">
-                      <DjangoCSRFToken />
-                      <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
-                        Decline
-                      </button>
-                      </form>
+                      <div className="mdl-grid">
+                        <div className="mdl-cell mdl-cell--6-col">
+                          <form action={"/site/requests/" + obj.request_id + "/accept/"} method="post">
+                            <DjangoCSRFToken />
+                            <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
+                              Accept
+                            </button>
+                          </form>
+                        </div>
+                        <div className="mdl-cell mdl-cell--6-col">
+                          <form action={"/site/requests/" + obj.request_id + "/reject/"} method="post">
+                            <DjangoCSRFToken />
+                            <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                              Decline
+                            </button>
+                          </form>
+                        </div>
+                      </div> 
                     </div>
                   </div>
                 </div>
@@ -166,15 +266,24 @@ class Main extends Component {
                       {obj.skill}
                     </div>
                     <div className="mdl-card__actions">
-                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
-                        Pending
-                      </a>
-                      <form action={"/site/requests/" + obj.request_id + "/cancel/"} method="post">
-                      <DjangoCSRFToken />
-                      <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
-                        Close
-                      </button>
-                      </form>
+                      <div className="mdl-grid">
+                        <div className="mdl-cell mdl-cell--6-col">
+                          <form action="" method="">
+                          <DjangoCSRFToken />
+                            <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                              Pending
+                            </a>
+                          </form>
+                        </div>
+                        <div className="mdl-cell mdl-cell--6-col">
+                          <form action={"/site/requests/" + obj.request_id + "/cancel/"} method="post">
+                            <DjangoCSRFToken />
+                            <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                              Close
+                            </button>
+                          </form>
+                        </div>
+                      </div> 
                     </div>
                   </div>
                 </div>
@@ -207,18 +316,24 @@ class Main extends Component {
                       {obj.skills}
                     </div>
                     <div className="mdl-card__actions">
-                    <form action={"/site/projects/teams/request/" + obj.id + "/accept/"} method="post">
-                    <DjangoCSRFToken />
-                      <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
-                        Accept
-                      </button>
-                      </form>
-                      <form action={"/site/projects/teams/request/" + obj.id + "/reject/"} method="post">
-                      <DjangoCSRFToken />
-                      <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
-                        Decline
-                      </button>
-                      </form>
+                      <div className="mdl-grid">
+                        <div className="mdl-cell mdl-cell--6-col">
+                          <form action={"/site/requests/" + obj.request_id + "/accept/"} method="post">
+                            <DjangoCSRFToken />
+                            <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
+                              Accept
+                            </button>
+                          </form>
+                        </div>
+                        <div className="mdl-cell mdl-cell--6-col">
+                          <form action={"/site/requests/" + obj.request_id + "/reject/"} method="post">
+                            <DjangoCSRFToken />
+                            <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                              Decline
+                            </button>
+                          </form>
+                        </div>
+                      </div> 
                     </div>
                   </div>
                 </div>
@@ -245,15 +360,24 @@ class Main extends Component {
                       {obj.skills}
                     </div>
                     <div className="mdl-card__actions">
-                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
-                        Pending
-                      </a>
-                      <form action={"/site/projects/teams/request/" + obj.id + "/cancel/"} method="post">
-                      <DjangoCSRFToken />
-                      <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
-                        Cancel
-                      </button>
-                      </form>
+                      <div className="mdl-grid">
+                        <div className="mdl-cell mdl-cell--6-col">
+                          <form action="" method="">
+                          <DjangoCSRFToken />
+                            <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                              Pending
+                            </a>
+                          </form>
+                        </div>
+                        <div className="mdl-cell mdl-cell--6-col">
+                          <form action={"/site/requests/" + obj.request_id + "/cancel/"} method="post">
+                            <DjangoCSRFToken />
+                            <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                              Close
+                            </button>
+                          </form>
+                        </div>
+                      </div> 
                     </div>
                   </div>
                 </div>
@@ -286,18 +410,24 @@ class Main extends Component {
                       {obj.skills}
                     </div>
                     <div className="mdl-card__actions">
-                    <form action={"/site/hackathons/teams/request/" + obj.id + "/accept/"} method="post">
-                    <DjangoCSRFToken />
-                      <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
-                        Accept
-                      </button>
-                      </form>
-                      <form action={"/site/hackathons/teams/request/" + obj.id + "/reject/"} method="post">
-                      <DjangoCSRFToken />
-                      <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
-                        Decline
-                      </button>
-                      </form>
+                    <div className="mdl-grid">
+                        <div className="mdl-cell mdl-cell--6-col">
+                          <form action={"/site/requests/" + obj.request_id + "/accept/"} method="post">
+                            <DjangoCSRFToken />
+                            <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
+                              Accept
+                            </button>
+                          </form>
+                        </div>
+                        <div className="mdl-cell mdl-cell--6-col">
+                          <form action={"/site/requests/" + obj.request_id + "/reject/"} method="post">
+                            <DjangoCSRFToken />
+                            <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                              Decline
+                            </button>
+                          </form>
+                        </div>
+                      </div> 
                     </div>
                   </div>
                 </div>
@@ -324,16 +454,24 @@ class Main extends Component {
                       {obj.skills}
                     </div>
                     <div className="mdl-card__actions">
-
-                      <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
-                        Pending
-                      </a>
-                      <form action={"/site/hackathons/teams/request/" + obj.id + "/cancel/"} method="post">
-                      <DjangoCSRFToken />
-                      <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
-                        Cancel
-                      </button>
-                      </form>
+                      <div className="mdl-grid">
+                        <div className="mdl-cell mdl-cell--6-col">
+                          <form action="" method="">
+                          <DjangoCSRFToken />
+                            <a className="mdl-button mdl-js-button mdl-js-ripple-effect pending">
+                              Pending
+                            </a>
+                          </form>
+                        </div>
+                        <div className="mdl-cell mdl-cell--6-col">
+                          <form action={"/site/requests/" + obj.request_id + "/cancel/"} method="post">
+                            <DjangoCSRFToken />
+                            <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
+                              Close
+                            </button>
+                          </form>
+                        </div>
+                      </div> 
                     </div>
                   </div>
                 </div>
