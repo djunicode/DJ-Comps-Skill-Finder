@@ -597,6 +597,7 @@ def add_hackathon_team(request):
         print(request.POST)
         form = HackathonTeamForm(request.POST)
         if form.is_valid():
+            print("Valid form")
             team = form.save(commit=False)
             team.leader = request.user
             team.save()
