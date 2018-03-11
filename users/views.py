@@ -483,6 +483,7 @@ def f7(seq):
 def search(request):
     context = {}
     user = request.user
+    context['user'] = json.dumps(process_user(user), indent=4, default=str)
     qs = []
     queryset = CustomUser.objects.filter(is_mentor=True)
     received = []
