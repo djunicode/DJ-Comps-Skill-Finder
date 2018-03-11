@@ -537,11 +537,12 @@ def search(request):
     second = []
     third = []
     for u in qs:
-        current_user = process_user(u)
-        if u.year == 'SE':
-            second.append(current_user)
-        elif u.year == 'TE':
-            third.append(current_user)
+        if Relationship.objects.filter(mentor=u).count < 4:
+            current_user = process_user(u)
+            if u.year == 'SE':
+                second.append(current_user)
+            elif u.year == 'TE':
+                third.append(current_user)
     second = json.dumps(second, indent=4, default=str)
     third = json.dumps(third, indent=4, default=str)
     context['second'] = second
