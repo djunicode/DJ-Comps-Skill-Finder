@@ -6,7 +6,8 @@
 <script type="text/javascript">
     var next;
     {% if request.GET.next %}
-        next = encodeURI({{ request.GET.next }});
+        // next = encodeURI({{ request.GET.next }});
+        next = "{{ request.GET.next }}";
     {% else %}
         next = '';
     {% endif %}
