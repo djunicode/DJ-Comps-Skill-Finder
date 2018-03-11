@@ -95,7 +95,7 @@ class Main extends Component {
             <DjangoCSRFToken/>
         		<a href="" className="profile-view">Profile View<i className="material-icons">keyboard_arrow_right</i></a>
         		<br/><br/>
-            
+
             <br/><br/>
             <div className="justify">
               <span className="mdl-selectfield mdl-js-selectfield">
@@ -137,7 +137,7 @@ class Main extends Component {
                   <textarea maxlength="" className="mdl-textfield__input" value={this.state.bio} onChange={this.handleBio} rows="3" type="text" id="bio" name='bio'></textarea>
                   <label className="bio mdl-selectfield__label mdl-textfield__label" for="bio">Bio Description...</label>
           </div>
-          
+
     			<br/><br/><br/>
 				<div className="skills">
 					<h1>SKILLS</h1>
@@ -165,7 +165,10 @@ class Main extends Component {
               <label htmlFor="skill2" className="mdl-textfield__label"></label>
               <ul htmlFor="skill2" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill2}>
                 {Object.values(skills).map(skill => (
-                  <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
+
+                      <option className="mdl-menu__item" data-val={skill} value={skill}>{skill}</option>
+          
+
                 ))}
               {/* Todo solve warning*/}
               </ul>
@@ -250,7 +253,7 @@ class Main extends Component {
         <br/>
         <br/>
         <br/>
-        
+
         <button type="submit" className="save-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
           SAVE
         </button>
