@@ -45,22 +45,34 @@ class Main extends Component {
         this.setState({sapID: event.target.value});
     }
     handleSkill1(event) {
+        if(event.target.value!=this.state.skill2 || event.target.value!=this.state.skill3 || event.target.value!=this.state.interest1 || event.target.value!=this.state.interest2 || event.target.value!=this.state.interest3  ){
         this.setState({skill1: event.target.value});
+        }
     }
     handleSkill2(event) {
-        this.setState({skill2: event.target.value});
+        if(event.target.value!=this.state.skill3 || event.target.value!=this.state.skill1 || event.target.value!=this.state.interest1 || event.target.value!=this.state.interest2 || event.target.value!=this.state.interest3 ) {
+            this.setState({skill2: event.target.value});
+        }
     }
     handleSkill3(event) {
-        this.setState({skill3: event.target.value});
+        if(event.target.value!=this.state.skill2 || event.target.value!=this.state.skill1 || event.target.value!=this.state.interest1 || event.target.value!=this.state.interest2 || event.target.value!=this.state.interest3 ) {
+            this.setState({skill3: event.target.value});
+        }
     }
     handleInterest1(event) {
-        this.setState({interest1: event.target.value});
+        if(event.target.value!=this.state.skill2 || event.target.value!=this.state.skill3 || event.target.value!=this.state.skill1 || event.target.value!=this.state.interest2 || event.target.value!=this.state.interest3  ) {
+            this.setState({interest1: event.target.value});
+        }
     }
     handleInterest2(event) {
-        this.setState({interest2: event.target.value});
+        if(event.target.value!=this.state.skill2 || event.target.value!=this.state.skill3 || event.target.value!=this.state.skill1 || event.target.value!=this.state.interest1 || event.target.value!=this.state.interest3  ) {
+            this.setState({interest2: event.target.value});
+        }
     }
     handleInterest3(event) {
-        this.setState({interest3: event.target.value});
+        if(event.target.value!=this.state.skill2 || event.target.value!=this.state.skill3 || event.target.value!=this.state.skill1 || event.target.value!=this.state.interest2 || event.target.value!=this.state.interest1  ) {
+            this.setState({interest3: event.target.value});
+        }
     }
     handleGithub(event) {
         this.setState({github: event.target.value});
