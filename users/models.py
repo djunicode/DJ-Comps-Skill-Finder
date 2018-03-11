@@ -282,7 +282,7 @@ class Relationship(models.Model):
     objects = RelationshipManager()
 
     class Meta:
-        unique_together = ('mentor', 'mentee')
+        unique_together = ('mentor', 'mentee', 'skill')
 
     def __str__(self):
         return '%s mentors %s for %s' % (self.mentor, self.mentee, self.skill)
