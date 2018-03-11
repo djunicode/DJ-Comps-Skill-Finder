@@ -24,6 +24,7 @@ class Main extends Component {
 
 
         };
+        this.handleSkill = this.handleSkill.bind(this);
         this.findCurrentMentor = this.findCurrentMentor.bind(this);
         this.handleSEMentor = this.handleSEMentor.bind(this);
         this.handleTEMentor = this.handleTEMentor.bind(this);
@@ -49,7 +50,11 @@ class Main extends Component {
       });
 
     }
-
+    handleSkill(event){
+      this.setState({
+        skill: event.target.value
+      });
+    }
 
     render() {
       let Mentors = null;
@@ -66,6 +71,20 @@ class Main extends Component {
           </div>
           <div className="mdl-card__supporting-text">
             <p>Mentor Skills.</p>
+          </div>
+          <div className="mdl-card__subtitle-text">
+
+          <div className="mdl-selectfield mdl-js-selectfield">
+            <label className="mdl-selectfield__label" htmlFor="skill">Choose Skill</label>
+            &nbsp;&nbsp;&nbsp;
+            <select className="mdl-selectfield__select" id="skill" name="professsion">
+              <option data-val="" value=""></option>
+              <option data-val="HTML" value="HTML">HTML</option>
+              <option data-val="CSS" value="CSS">CSS</option>
+              <option data-val="JavaScript" value="JavaScript">JavaScript</option>
+            </select>
+          </div>
+          <br/>
           </div>
           <div className="mdl-card__actions mdl-card--border">
             <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a> 
@@ -92,6 +111,19 @@ class Main extends Component {
           <div className="mdl-card__supporting-text">
             <p>Mentor Skills.</p>
           </div>
+          <div className="mdl-card__subtitle-text">
+          <div className="mdl-selectfield mdl-js-selectfield">
+            <label className="mdl-selectfield__label" htmlFor="skill">Choose Skill</label>
+            &nbsp;&nbsp;&nbsp;
+            <select className="mdl-selectfield__select" id="skill" name="professsion">
+              <option data-val="" value=""></option>
+              <option data-val="HTML" value="HTML">HTML</option>
+              <option data-val="CSS" value="CSS">CSS</option>
+              <option data-val="JavaScript" value="JavaScript">JavaScript</option>
+            </select>
+          </div>
+          </div>
+          <br/>          
           <div className="mdl-card__actions mdl-card--border">
             <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a>
             <form action={"/requests/" + obj.sap_id + "/"} method="post">

@@ -124,15 +124,25 @@ a img{
   color: #f2994a;
 }
 
+.skill{
+  width: auto; 
+}
+
+select#skill{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.mdl-card__subtitle-text{
+  text-align: center;
+}
+
 .mdl-layout .page-header .mdl-layout__header-row .page-navigation-container .mdl-navigation a{
     font-family: Raleway;
     font-size: 18px;
     color: #757575;
     font-weight: 700;
-}
-
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
-  
 }
 
 .Ellipse h1{
@@ -147,21 +157,22 @@ a img{
 
 .mdl-card{
   width: auto;
+  height: auto;
   box-shadow: 3px 4px 13px 0 rgba(189, 189, 189, 0.33);
 }
 
 .mdl-card__media {
+  justify-content: center;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0;
   max-width: 100%;
   background-color: white;
 }
 
 .mdl-card__media img {
-  max-width: 100%;
-  max-height: 100%;
+  width: 200px;
+  height: 150px;
   margin-left: auto;
   margin-right: auto;
 }
