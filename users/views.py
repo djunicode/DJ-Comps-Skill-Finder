@@ -17,6 +17,7 @@ from .models import Hackathon, HackathonTeam, HackathonTeamRequest
 from .models import ProjectTeam, ProjectTeamRequest
 from .forms import MentorRequestForm, HackathonTeamForm, HackathonTeamRequestForm
 from .forms import ProjectTeamForm, ProjectTeamRequestForm
+# from django.contrib import messages
 # from django.db.models import Q
 
 
@@ -593,7 +594,7 @@ def add_hackathon_team(request):
             team.leader = request.user
             team.save()
             form.save_m2m()
-            return redirect('users:view_hackathon_team', pk=team.id)
+            return redirect('users:all_hackathon_teams')
         else:
             # [TODO] Convert the hackathon queryset to a smaller one according to date
             context['error'] = 'A team with the same name exists.'
@@ -698,12 +699,12 @@ def send_hackteam_request(request, pk):
     try:
         team = HackathonTeam.objects.get(id=pk)
     except HackathonTeam.DoesNotExist:  # redirecting to login as a placeholder
-        return redirect('users:login')
+        return redirect('users:all_hackathon_teams')
     if request.user in team.current_members.all() or request.user == team.leader:
-        return redirect('users:login')
+        return redirect('users:all_hackathon_teams')
     # Checking if a pending request exists
     if HackathonTeamRequest.objects.filter(team=team, sender=request.user, accepted=False, rejected=False).exists():
-        return redirect('users:login')
+        return redirect('users:all_hackathon_teams')
     r = HackathonTeamRequest(team=team, sender=request.user)
     r.save()
     return redirect('users:all_hackathon_teams')
@@ -770,6 +771,7 @@ def add_project_team(request):
     if request.method == 'POST':
         project = Project.objects.get(id=int(request.POST.get('project')))
         if ProjectTeam.objects.filter(project=project).exists():
+            # [TODO] render an error
             return redirect('users:login')
         # if request.user != project.creator:
         #     return redirect('users:login')
@@ -781,7 +783,7 @@ def add_project_team(request):
             # team.project = project
             team.save()
             form.save_m2m()
-            return redirect('users:view_project_team', pk=team.id)
+            return redirect('users:project_team_join')
         else:
             print(request.POST)
             return redirect('users:add_project_team')
@@ -848,16 +850,16 @@ def view_project_team(request, pk):
 @login_required(login_url='users:login')
 def send_project_team_request(request, pk):
     if request.method == 'GET':
-        return redirect('users:all_hackathon_teams')
+        return redirect('users:project_team_join')
     try:
         team = ProjectTeam.objects.get(id=pk)
     except ProjectTeam.DoesNotExist:  # redirecting to login as a placeholder
-        return redirect('users:login')
+        return redirect('users:project_team_join')
     if request.user in team.current_members.all() or request.user == team.leader:
-        return redirect('users:login')
+        return redirect('users:project_team_join')
     # Checking if a pending request exists
     if ProjectTeamRequest.objects.filter(team=team, sender=request.user, accepted=False, rejected=False).exists():
-        return redirect('users:login')
+        return redirect('users:project_team_join')
     r = ProjectTeamRequest(team=team, sender=request.user)
     r.save()
     return redirect('users:project_team_join')
