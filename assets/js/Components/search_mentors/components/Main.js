@@ -139,6 +139,7 @@ class Main extends Component {
 
           </div>
           </form>
+          <div className="mdl-layout-spacer"></div>
         </div>
       );
 
