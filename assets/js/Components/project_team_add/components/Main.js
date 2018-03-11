@@ -11,7 +11,8 @@ class Main extends Component {
             leader: user.first_name || '',
             vacancies: '',
             description: '',
-            skills_required:'',
+            expanded: '',
+            skills_required: ''
         };
 
         // this.handleProjname= this.handleProjname.bind(this);
@@ -25,6 +26,8 @@ class Main extends Component {
         //this.handleProjdesc= this.handleProjdesc.bind(this);
         this.handleDescription= this.handleDescription.bind(this);
         this.handleSkills_required= this.handleSkills_required.bind(this);
+        this.showCheckboxes=this.showCheckboxes.bind(this);
+
     }
 
     //handleProjname(event) {
@@ -69,6 +72,19 @@ class Main extends Component {
 
     handleSkills_required(event) {
         this.setState({skills_required: event.target.value});
+    }
+
+    showCheckboxes(){
+      event.preventDefault();
+      var checkboxes = document.getElementById('checkboxes');
+      if (!this.state.expanded) {
+      checkboxes.style.display = "block";
+      this.setState({expanded : true});
+      }
+      else {
+      checkboxes.style.display = "none";
+      this.setState({expanded : false});
+      }
     }
 
 
@@ -154,23 +170,33 @@ class Main extends Component {
 
               <span className="description diff">Skills you are looking for</span>
               <br/><br/>
-              <span className="description mdl-selectfield mdl-js-selectfield">
-                <label className="mdl-selectfield__label" for="id_skills_required">Skill :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </span>
-              <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input type="number" className="mdl-textfield__input" id="id_skills_required" value={this.state.skills_required} onChange={this.handleSkills_required}/>
-              <input type="hidden" value={this.state.skills_required} name="skills_required"/>
-              <label for="id_skills_required" className="mdl-textfield__label"></label>
-              <ul htmlFor="id_skills_required" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkills_required} >
-                {Object.values(skills).map(skill => (
-                  <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
-              ))}
-              </ul>
+
+
+              <div className="multiselect">
+                <div className="selectBox" onClick={this.showCheckboxes}>
+                  <select name="skills_required" id="id_skills_required">
+                    {/*<option>Select an option</option>*/}
+                  </select>
+                  <div className="overSelect"></div>
+                </div>
+                <div id="checkboxes" className="description">
+                {/*
+                  <label for="one">
+                  <input type="checkbox" name="skills_required" value="first" id="one" />First checkbox</label>
+                  <label for="two">
+                  <input type="checkbox" name="skills_required" value="second" id="two" />Second checkbox</label>
+                  <label for="three">
+                  <input type="checkbox" name="skills_required" value="three" id="three" />Third checkbox</label>*/}
+                  {Object.values(skills).map(skill => (
+                      <label for={skill.id}>
+                      <input type="checkbox" name="skills_required" data-val={skill.id} value={skill.id} id={skill.id} />{skill.skill}</label>
+                  ))}
+                </div>
               </div>
-                {/*&nbsp;&nbsp;&nbsp;&nbsp;
-              <button className="add mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
-              <i className="material-icons">add</i>
-              </button>*/}
+
+
+
+
 
               <br/><br/><br/><br/><br/>
 

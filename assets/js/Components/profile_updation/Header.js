@@ -22,11 +22,11 @@ class Header extends Component {
             </div>
             <div className="page-navigation-container">
               <nav className="page-navigation mdl-navigation">
-                <a className="mdl-navigation__link" href="">Home</a>
-                <a className="mdl-navigation__link" href="">Find a Mentor</a>
-                <a className="mdl-navigation__link" href="">Make a Team</a>
+                <a className="mdl-navigation__link" href="/dashboard/">Home</a>
+                <a className="mdl-navigation__link" href="/search/">Find a Mentor</a>
+                <a className="mdl-navigation__link" href="/teams/">Make a Team</a>
                 <a className="mdl-navigation__link" href="">Events</a>
-                <a className="mdl-navigation__link" href="">Snoopy<i className="material-icons">person</i></a>
+                <a className="mdl-navigation__link" href={"/profile/" + user.sap_id + "/"}>{user.first_name}<i className="material-icons">person</i></a>
               </nav>
             </div>
             <span className="page-mobile-title mdl-layout-title">
@@ -39,13 +39,14 @@ class Header extends Component {
               <li className="mdl-menu__item">PlaceHolder</li>
               <li className="mdl-menu__item">PlaceHolder</li>
               <li disabled className="mdl-menu__item">PlaceHolder</li>
-              <li className="mdl-menu__item">PlaceHolder</li>
+              <li className="mdl-menu__item"><a href="/logout/">Logout</a></li>
             </ul>
           </div>
         </div>
 
 
         <br/><br/><br/><br/>
+      <img src={user.photo} className="img-circle" alt="User Profile"></img>
         <form action="/site/profile/image/upload/" method="post" enctype="multipart/form-data">
         <DjangoCSRFToken />
           <label htmlFor="file" className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">

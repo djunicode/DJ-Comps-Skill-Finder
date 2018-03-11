@@ -5,6 +5,13 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
+<script type="text/javascript">
+    var props = {{ prop|safe }}
+    var user = JSON.parse(props.user)
+    console.log(props)
+</script>
+
+
 <div id="react-app"></div>
     {% render_bundle 'Teams_Landing' %}
 {% if error %}

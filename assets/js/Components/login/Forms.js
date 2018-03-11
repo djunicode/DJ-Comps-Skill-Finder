@@ -162,6 +162,7 @@ class Form extends Component{
                     </div>
 
                     <center>
+                    <input type="hidden" name="next" value={next}/>
                     <div id="login1">
                         <button className="btn btn-info btn-block login" name="login" type="submit" disabled={!this.state.formValid && this.state.isRegister} value="login" >
                             Login

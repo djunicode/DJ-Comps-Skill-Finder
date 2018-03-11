@@ -21,11 +21,11 @@ class Header extends Component {
             </div>
             <div className="page-navigation-container">
               <nav className="page-navigation mdl-navigation">
-                <a className="mdl-navigation__link" href="">Home</a>
-                <a className="mdl-navigation__link" href="">Find a Mentor</a>
-                <a className="mdl-navigation__link" href="">Make a Team</a>
+                <a className="mdl-navigation__link" href="/dashboard/">Home</a>
+                <a className="mdl-navigation__link" href="/search/">Find a Mentor</a>
+                <a className="mdl-navigation__link" href="/teams/">Make a Team</a>
                 <a className="mdl-navigation__link" href="">Events</a>
-                <a className="mdl-navigation__link" href="">{user.first_name}<i className="material-icons">person</i></a>
+                <a className="mdl-navigation__link" href={"/profile/" + user.sap_id + "/"}>{user.first_name}<i className="material-icons">person</i></a>
               </nav>
             </div>
             <span className="page-mobile-title mdl-layout-title">
@@ -38,7 +38,7 @@ class Header extends Component {
               <li className="mdl-menu__item">PlaceHolder</li>
               <li className="mdl-menu__item">PlaceHolder</li>
               <li disabled className="mdl-menu__item">PlaceHolder</li>
-              <li className="mdl-menu__item">PlaceHolder</li>
+              <li className="mdl-menu__item"><a href="/logout/">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -46,7 +46,7 @@ class Header extends Component {
         <br/><br/><br/><br/>
         <img src={user.photo} className="img-circle" alt="User Profile"/>
         <div className="description">
-          <h1>{user.first_name}<a href="#" className="mdl-badge" data-badge={user.year}></a></h1>
+          <h1>{user.first_name}<a className="mdl-badge" data-badge={user.year}></a></h1>
           <h5 style={{"word-wrap": "break-word"}}>{user.bio}</h5>
         </div>
         <br/>

@@ -88,7 +88,7 @@ class Main extends Component {
           </div>
           <div className="mdl-card__actions mdl-card--border">
             <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a> 
-            <form action={"/site/requests/" + obj.sap_id + "/"} method="post">
+            <form action={"/requests/" + obj.sap_id + "/"} method="post">
             <DjangoCSRFToken />
             <button type="submit" className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</button>
             </form>
@@ -126,7 +126,7 @@ class Main extends Component {
           <br/>          
           <div className="mdl-card__actions mdl-card--border">
             <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a>
-            <form action={"/site/requests/" + obj.sap_id + "/"} method="post">
+            <form action={"/requests/" + obj.sap_id + "/"} method="post">
             <DjangoCSRFToken />
             <button type="submit" className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</button>
             </form>
@@ -147,7 +147,7 @@ class Main extends Component {
            <a className=" mdl-navigation__link" href="">{obj.first_name}</a>
            </div>
            <div className="mdl-cell--4-col">
-           <form action={"/site/requests/" + obj.request_id + "/cancel/"} method="post">
+           <form action={"/requests/" + obj.request_id + "/cancel/"} method="post">
            <DjangoCSRFToken />
           <button className="cancel-button mdl-button mdl-js-button">
           Cancel
@@ -166,7 +166,7 @@ class Main extends Component {
              <a className="mdl-navigation__link" href="">{obj.first_name}</a>
            </div>
            <div className="requests mdl-cell--4-col">
-           <form action={"/site/requests/" + obj.request_id + "/accept/"} method="post">
+           <form action={"requests/" + obj.request_id + "/accept/"} method="post">
            <DjangoCSRFToken />
           <button className="accept-button mdl-button mdl-js-button">
             Accept
@@ -174,7 +174,7 @@ class Main extends Component {
           </form>
           </div>
           <div className="requests mdl-cell--4-col">
-          <form action={"/site/requests/" + obj.request_id + "/reject/"} method="post">
+          <form action={"/requests/" + obj.request_id + "/reject/"} method="post">
           <DjangoCSRFToken />
           <button className="decline-button mdl-button mdl-js-button">
             Decline
