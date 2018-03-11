@@ -46,7 +46,7 @@ class Header extends Component {
         <br/><br/><br/><br/>
         <img src={user.photo} className="img-circle" alt="User Profile"/>
         <div className="description">
-          <h1>{user.first_name}<a href="#" className="mdl-badge" data-badge={user.year}></a></h1>
+          <h1>{user.first_name}<a className="mdl-badge" data-badge={user.year}></a></h1>
           <h5 style={{"word-wrap": "break-word"}}>{user.bio}</h5>
         </div>
         <br/>
