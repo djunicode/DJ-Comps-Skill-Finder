@@ -157,6 +157,30 @@ def view_dashboard(request):
     context = {}
     user = request.user
     context['user'] = json.dumps(process_user(request.user), indent=4, default=str)
+    mentors = user.mentee.all()
+    temp = []
+    for m in mentors:
+        x = process_user(m.mentor)
+        x['relationship_id'] = m.id
+        if m.skill:
+            x['skill'] = m.skill.skill
+        else:
+            x['skill'] = ''
+        temp.append(x)
+    mentors = json.dumps(temp, indent=4, default=str)
+    temp = []
+    mentees = user.mentor.all()
+    for m in mentees:
+        x = process_user(m.mentee)
+        x['relationship_id'] = m.id
+        if m.skill:
+            x['skill'] = m.skill.skill
+        else:
+            x['skill'] = ''
+        temp.append(x)
+    mentees = json.dumps(temp, indent=4, default=str)
+    context['mentors'] = mentors
+    context['mentees'] = mentees
     received = []
     sent = []
     for r in user.requests_received.filter(accepted=False, rejected=False):

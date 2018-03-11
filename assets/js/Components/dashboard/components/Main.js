@@ -6,30 +6,32 @@ class Main extends Component {
     constructor(props){
         super(props);
         this.state = {
-            Mentee:[
-                      {
-                          first_name: "ikbal",
-                          skill: "python",
-                          contact: "9930035998"
-                      },
-                      {
-                          first_name: "aakash",
-                          skill : "c++",
-                          contact: "5955944555"
-                      }
-                   ],
-            Mentor:[
-                      {
-                          first_name: "ikbal",
-                          skill: "python",
-                          contact: "9930035998"
-                      },
-                      {
-                          first_name: "aakash",
-                          skill : "c++",
-                          contact: "5955944555"
-                      }
-                   ],
+            // Mentee:[
+            //           {
+            //               first_name: "ikbal",
+            //               skill: "python",
+            //               contact: "9930035998"
+            //           },
+            //           {
+            //               first_name: "aakash",
+            //               skill : "c++",
+            //               contact: "5955944555"
+            //           }
+            //        ],
+            Mentee: mentees,
+            // Mentor:[
+            //           {
+            //               first_name: "ikbal",
+            //               skill: "python",
+            //               contact: "9930035998"
+            //           },
+            //           {
+            //               first_name: "aakash",
+            //               skill : "c++",
+            //               contact: "5955944555"
+            //           }
+            //        ],
+            Mentor: mentors,
 /*              Rmr:[
                     {
                       first_name: "ikbal",
@@ -151,10 +153,10 @@ class Main extends Component {
                     <div className="mdl-card__supporting-text">
                       {obj.skill}
                       <br/><br/>
-                      {obj.contact}
+                      {obj.email}
                     </div>
                     <div className="mdl-card__actions">
-                          <form action="" method="post">
+                          <form action={"/profile/" + obj.sap_id + "/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
                               Profile
@@ -186,10 +188,10 @@ class Main extends Component {
                     <div className="mdl-card__supporting-text">
                       {obj.skill}
                       <br/><br/>
-                      {obj.contact}
+                      {obj.email}
                     </div>
                     <div className="mdl-card__actions">
-                          <form action="" method="post">
+                          <form action={"/profile/" + obj.sap_id + "/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
                               Profile
@@ -224,7 +226,7 @@ class Main extends Component {
                     <div className="mdl-card__actions">
                       <div className="mdl-grid">
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/site/requests/" + obj.request_id + "/accept/"} method="post">
+                          <form action={"/requests/" + obj.request_id + "/accept/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
                               Accept
@@ -232,14 +234,14 @@ class Main extends Component {
                           </form>
                         </div>
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/site/requests/" + obj.request_id + "/reject/"} method="post">
+                          <form action={"/requests/" + obj.request_id + "/reject/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
                               Decline
                             </button>
                           </form>
                         </div>
-                      </div> 
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -276,14 +278,14 @@ class Main extends Component {
                           </form>
                         </div>
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/site/requests/" + obj.request_id + "/cancel/"} method="post">
+                          <form action={"/requests/" + obj.request_id + "/cancel/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
                               Close
                             </button>
                           </form>
                         </div>
-                      </div> 
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -318,7 +320,7 @@ class Main extends Component {
                     <div className="mdl-card__actions">
                       <div className="mdl-grid">
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/site/requests/" + obj.request_id + "/accept/"} method="post">
+                          <form action={"/requests/" + obj.request_id + "/accept/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
                               Accept
@@ -326,14 +328,14 @@ class Main extends Component {
                           </form>
                         </div>
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/site/requests/" + obj.request_id + "/reject/"} method="post">
+                          <form action={"/requests/" + obj.request_id + "/reject/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
                               Decline
                             </button>
                           </form>
                         </div>
-                      </div> 
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -370,14 +372,14 @@ class Main extends Component {
                           </form>
                         </div>
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/site/requests/" + obj.request_id + "/cancel/"} method="post">
+                          <form action={"/requests/" + obj.request_id + "/cancel/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
                               Close
                             </button>
                           </form>
                         </div>
-                      </div> 
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -412,7 +414,7 @@ class Main extends Component {
                     <div className="mdl-card__actions">
                     <div className="mdl-grid">
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/site/requests/" + obj.request_id + "/accept/"} method="post">
+                          <form action={"/requests/" + obj.request_id + "/accept/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
                               Accept
@@ -420,14 +422,14 @@ class Main extends Component {
                           </form>
                         </div>
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/site/requests/" + obj.request_id + "/reject/"} method="post">
+                          <form action={"/requests/" + obj.request_id + "/reject/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
                               Decline
                             </button>
                           </form>
                         </div>
-                      </div> 
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -464,14 +466,14 @@ class Main extends Component {
                           </form>
                         </div>
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/site/requests/" + obj.request_id + "/cancel/"} method="post">
+                          <form action={"/requests/" + obj.request_id + "/cancel/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
                               Close
                             </button>
                           </form>
                         </div>
-                      </div> 
+                      </div>
                     </div>
                   </div>
                 </div>
