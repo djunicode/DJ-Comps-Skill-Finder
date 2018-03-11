@@ -147,7 +147,9 @@ def view_profile(request, sap_id):
 
 @login_required(login_url='users:login')
 def view_teams_landing(request):
-    return render(request, 'users/teams_landing.html', {})
+    context = {}
+    context['user'] = json.dumps(process_user(request.user), indent=4, default=str)
+    return render(request, 'users/teams_landing.html', {'prop': context})
 
 
 @login_required(login_url='users:login')
