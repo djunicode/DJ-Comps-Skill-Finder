@@ -47,7 +47,7 @@ class Header extends Component {
 
         <br/><br/><br/><br/>
       <img src={user.photo} className="img-circle" alt="User Profile"></img>
-        <form action="/site/profile/image/upload/" method="post" enctype="multipart/form-data">
+        <form action="/profile/image/upload/" method="post" enctype="multipart/form-data">
         <DjangoCSRFToken />
           <label htmlFor="file" className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
             <i className="material-icons">+</i>

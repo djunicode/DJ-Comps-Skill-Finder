@@ -385,6 +385,7 @@ def send_request(request, sap_id):
         if request.user.id == receiver.id:
             return redirect('users:search')
         # [TODO] To be used when we have a skill dropdown
+        print(request.POST)
         skill_id = request.POST.get('skill_set_select')
         try:
             skill = Skill.objects.get(id=skill_id)
@@ -572,7 +573,7 @@ def search(request):
     third = []
     for u in qs:
         current_user = process_user(u)
-        user_skills = {}
+        user_skills = []
         if u.skill_1:
             user_skills.append({'id': str(u.skill_1.id), 'skill': u.skill_1.skill})
         if u.skill_2:
