@@ -26,7 +26,7 @@ class Header extends Component {
                 <a className="mdl-navigation__link" href="">Find a Mentor</a>
                 <a className="mdl-navigation__link" href="">Make a Team</a>
                 <a className="mdl-navigation__link" href="">Events</a>
-                <a className="mdl-navigation__link" href="">Snoopy<i className="material-icons">person</i></a>
+                <a className="mdl-navigation__link" href="">{user.first_name}<i className="material-icons">person</i></a>
               </nav>
             </div>
             <span className="page-mobile-title mdl-layout-title">
