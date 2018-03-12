@@ -558,10 +558,11 @@ def search(request):
             if u.skill_3:
                 user_skills.append({'id': str(u.skill_3.id), 'skill': u.skill_3.skill})
             current_user['user_skills'] = user_skills
-            if u.year == 'SE':
-                second.append(current_user)
-            elif u.year == 'TE':
-                third.append(current_user)
+            if Relationship.objects.filter(mentor=u).count() < 4:
+                if u.year == 'SE':
+                    second.append(current_user)
+                elif u.year == 'TE':
+                    third.append(current_user)
         second = json.dumps(second, indent=4, default=str)
         third = json.dumps(third, indent=4, default=str)
         context['second'] = second
