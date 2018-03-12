@@ -77,7 +77,7 @@ class Main extends Component {
           <div className="mdl-selectfield mdl-js-selectfield">
             <label className="mdl-selectfield__label" htmlFor="skill">Choose Skill</label>
             &nbsp;&nbsp;&nbsp;
-            <select className="mdl-selectfield__select" id="skill" name="professsion">
+            <select className="mdl-selectfield__select" id="skill" name="skill_set_select">
               <option data-val="" value=""></option>
               <option data-val="HTML" value="HTML">HTML</option>
               <option data-val="CSS" value="CSS">CSS</option>
@@ -115,7 +115,7 @@ class Main extends Component {
           <div className="mdl-selectfield mdl-js-selectfield">
             <label className="mdl-selectfield__label" htmlFor="skill">Choose Skill</label>
             &nbsp;&nbsp;&nbsp;
-            <select className="mdl-selectfield__select" id="skill" name="professsion">
+            <select className="mdl-selectfield__select" id="skill" name="skill_set_select">
               <option data-val="" value=""></option>
               <option data-val="HTML" value="HTML">HTML</option>
               <option data-val="CSS" value="CSS">CSS</option>

@@ -563,7 +563,7 @@ def search(request):
     second = []
     third = []
     for u in qs:
-        if Relationship.objects.filter(mentor=u).count < 4:
+        if Relationship.objects.filter(mentor=u).count() < 4:
             current_user = process_user(u)
             if u.year == 'SE':
                 second.append(current_user)
