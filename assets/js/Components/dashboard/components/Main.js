@@ -320,7 +320,7 @@ class Main extends Component {
                     <div className="mdl-card__actions">
                       <div className="mdl-grid">
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/requests/" + obj.id + "/accept/"} method="post">
+                          <form action={"/projects/teams/request/" + obj.id + "/accept/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
                               Accept
@@ -328,7 +328,7 @@ class Main extends Component {
                           </form>
                         </div>
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/requests/" + obj.id + "/reject/"} method="post">
+                          <form action={"/projects/teams/request/" + obj.id + "/reject/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
                               Decline
@@ -372,7 +372,7 @@ class Main extends Component {
                           </form>
                         </div>
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/requests/" + obj.id + "/cancel/"} method="post">
+                          <form action={"/projects/teams/request/" + obj.id + "/cancel/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
                               Close
@@ -414,7 +414,7 @@ class Main extends Component {
                     <div className="mdl-card__actions">
                     <div className="mdl-grid">
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/requests/" + obj.id + "/accept/"} method="post">
+                          <form action={"/hackathons/teams/request/" + obj.id + "/accept/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect accept">
                               Accept
@@ -422,7 +422,7 @@ class Main extends Component {
                           </form>
                         </div>
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/requests/" + obj.id + "/reject/"} method="post">
+                          <form action={"/hackathons/teams/request/" + obj.id + "/reject/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
                               Decline
@@ -466,7 +466,7 @@ class Main extends Component {
                           </form>
                         </div>
                         <div className="mdl-cell mdl-cell--6-col">
-                          <form action={"/requests/" + obj.id + "/cancel/"} method="post">
+                          <form action={"/hackathons/teams/request/" + obj.id + "/cancel/"} method="post">
                             <DjangoCSRFToken />
                             <button className="mdl-button mdl-js-button mdl-js-ripple-effect decline">
                               Close
