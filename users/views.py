@@ -391,9 +391,9 @@ def send_request(request, sap_id):
             skill = Skill.objects.get(id=skill_id)
         except Skill.DoesNotExist:
             skill = None
-        if Relationship.objects.filter(sender=request.user, receiver=receiver, skill=skill).exists():
+        if Relationship.objects.filter(mentor=request.user, mentee=receiver, skill=skill).exists():
             return redirect('users:search')  # As a placeholder till I figure out alerts
-        if request.user.requests_sent.filter(receiver=receiver, accepted=False, rejected=False):
+        if request.user.requests_sent.filter(receiver=receiver, accepted=False, rejected=False, skill=skill):
             return redirect('users:search')
         MentorRequest.create_request(sender=request.user, receiver=receiver, skill=skill,
                                      message=request.POST.get('messsage', ''))
