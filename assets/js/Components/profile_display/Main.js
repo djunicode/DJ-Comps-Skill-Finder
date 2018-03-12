@@ -85,7 +85,7 @@ class Main extends Component {
 
         <br/><br/><br/><br/>
 
-				<div className="header">
+                {/*<div className="header">
 					<h2>PROJECT LINKS</h2>
 				</div>
 				<br/>
@@ -104,7 +104,7 @@ class Main extends Component {
             <br/>
             <a href="">https:/wwwfigmacom/file/aQlFq3vEmQo1B70zBf1031k</a>
           </div>
-        </div>
+        </div>*/}
 
 				</center>
 			</form>

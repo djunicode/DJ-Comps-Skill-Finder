@@ -129,8 +129,8 @@ def view_profile(request, sap_id):
     # interests = [i.interest.skill for i in interests]
     # context['interests'] = json.dumps(interests, indent=4, default=str)
     projects = Project.objects.filter(creator__sap_id=sap_id)
-    projects = [json.dumps(p, indent=4, default=str) for p in projects]
-    context['projects'] = projects
+    projects = [model_to_dict(p) for p in projects]
+    context['projects'] = json.dumps(projects, indent=4, default=str)
     # context = {'user': user, 'requests_sent': requests_sent, 'requests_received': requests_received,
     #            'current_mentors': current_mentors, 'current_mentees': current_mentees, 'interests': interests,
     #            'projects': projects}
@@ -586,7 +586,6 @@ def search(request):
             user_skills.append({'id': str(u.skill_3.id), 'skill': u.skill_3.skill})
         current_user['user_skills'] = user_skills
         if Relationship.objects.filter(mentor=u).count() < 4:
-            current_user = process_user(u)
             if u.year == 'SE':
                 second.append(current_user)
             elif u.year == 'TE':
