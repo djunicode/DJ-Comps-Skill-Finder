@@ -87,7 +87,7 @@ class Main extends Component {
           <br/>
           </div>
           <div className="mdl-card__actions mdl-card--border">
-            <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a>
+            <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href={'/profile/' + obj.sap_id + '/'}>Profile</a>
 
             <button type="submit" className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</button>
 
@@ -132,7 +132,7 @@ class Main extends Component {
           </div>
           <br/>
           <div className="mdl-card__actions mdl-card--border">
-            <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a>
+            <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href={'/profile/' + obj.sap_id + '/'}>Profile</a>
 
 
             <button type="submit" className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</button>

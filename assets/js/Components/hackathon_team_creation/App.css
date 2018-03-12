@@ -74,6 +74,15 @@ a {
   color: #fff2c9;
 }
 
+.scroll{
+    text-align: center;
+    height:auto;
+    overflow-y :scroll;
+    overflow-x: auto;
+    position:relative;
+    width:300px;
+}
+
 .multiselect {
   width: 200px;
 }

@@ -13,7 +13,7 @@ class App extends Component {
           <br/><br/><br/><br/><br/><br/>
           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           <Main />
-          <br/><br/><br/><br/>
+          <br/><br/><br/>
           <Footer />
         </div>
     );

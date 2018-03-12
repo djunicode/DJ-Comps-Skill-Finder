@@ -3,6 +3,12 @@ import DjangoCSRFToken from 'django-react-csrftoken';
 
 import './App.css';
 class Header extends Component {
+    constructor(props){
+    super(props);
+    this.state={
+        pic: user.photo || "/static/profile_updation/profile.png"
+    };
+}
   render() {
     return (
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header Ellipse">
@@ -47,7 +53,7 @@ class Header extends Component {
 
 
         <br/><br/><br/><br/>
-      <img src={user.photo} className="img-circle" alt="User Profile"></img>
+      <img src={this.state.pic} className="img-circle" alt="User Profile"></img>
         <form action="/profile/image/upload/" method="post" enctype="multipart/form-data">
         <DjangoCSRFToken />
           <label htmlFor="file" className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">

@@ -26,7 +26,7 @@ class Main extends Component {
         return (
         	<div>
         	<form>
-        		<a href="#" className="back-button"><i className="material-icons">keyboard_arrow_left</i>Back</a>
+            {/*	<a href="#" className="back-button"><i className="material-icons">keyboard_arrow_left</i>Back</a> */}
             <br/>
              <div>
              {/* <a href="{user.behance_url}"><img align="right" className= "images" src="/static/profile_display/beh.png" alt="behance_url"/></a>
@@ -44,7 +44,7 @@ class Main extends Component {
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col skills-chips">
             <span className="mdl-chip">
-              <span style ={{"font-size":"30px"}} className="mdl-chip__text">{props.skill1}</span>
+              <span  style ={{"font-size":"30px"}} className="mdl-chip__text">{props.skill1}</span>
             </span>
           </div>
           <div className="mdl-cell mdl-cell--4-col skills-chips ">

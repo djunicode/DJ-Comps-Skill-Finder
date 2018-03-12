@@ -106,7 +106,7 @@ class Main extends Component {
             <form method="POST">
             <center>
             <DjangoCSRFToken/>
-        		<a href="" className="profile-view">Profile View<i className="material-icons">keyboard_arrow_right</i></a>
+        		<a href={"/profile/" + user.sap_id + "/"} className="profile-view">Profile View<i className="material-icons">keyboard_arrow_right</i></a>
         		<br/><br/>
 
             <br/><br/>
@@ -173,13 +173,13 @@ class Main extends Component {
               <input type="text" className="mdl-textfield__input" id="skill1" value={list_skill[this.state.skill1]}  />
               <input type="hidden" value={this.state.skill1} name="skill1" />
               <label htmlFor="skill1" className="mdl-textfield__label"></label>
-              <ul htmlFor="skill1" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill1} >
+              <select className="scroll" size="5" htmlFor="skill1" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill1} >
                 {Object.values(skills).map(skill => (
                   <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
               ))}
               {/* Todo solve warning*/}
 
-              </ul>
+              </select>
           </div>
         <br/><br/><br/>
           <label className="skill-label mdl-selectfield__label" htmlFor="skill2">SKILL 2</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -187,12 +187,12 @@ class Main extends Component {
               <input type="text" className="mdl-textfield__input" id="skill2" value={list_skill[this.state.skill2]}  />
               <input type="hidden" value={this.state.skill2} name="skill2" / >
               <label htmlFor="skill2" className="mdl-textfield__label"></label>
-              <ul htmlFor="skill2" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill2}>
+              <select className="scroll" size="5" htmlFor="skill2" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill2}>
                 {Object.values(skills).map(skill => (
                   <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
               ))}
               {/* Todo solve warning*/}
-              </ul>
+              </select>
           </div>
           <br/><br/><br/>
           <label className="skill-label mdl-selectfield__label" htmlFor="skill3">SKILL 3</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -200,12 +200,12 @@ class Main extends Component {
               <input type="text" className="mdl-textfield__input" id="skill3" value={list_skill[this.state.skill3]}  />
               <input type="hidden" value={this.state.skill3} name="skill3" / >
               <label htmlFor="skill3" className="mdl-textfield__label"></label>
-              <ul htmlFor="skill3" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill3} >
+              <select className="scroll" size="5" htmlFor="skill3" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleSkill3} >
                 {Object.values(skills).map(skill => (
                   <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
               ))}
               {/* Todo solve warning*/}
-              </ul>
+              </select>
           </div>
 			    </center>
 				<br/><br/><br/><br/><br/>
@@ -219,11 +219,11 @@ class Main extends Component {
             <input type="text" className="mdl-textfield__input" id="interest1" value={list_skill[this.state.interest1]} onClick={this.handleInterest1} />
             <input type="hidden" value={this.state.interest1}   name="interest1" / >
             <label htmlFor="interest1" className="mdl-textfield__label"></label>
-            <ul htmlFor="interest1" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleInterest1} >
+            <select className="scroll" size="5" htmlFor="interest1" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleInterest1} >
               {Object.values(skills).map(skill => (
                   <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
               ))}
-            </ul>
+            </select>
         </div>
       <br/><br/><br/>
         <label className="interest-label mdl-selectfield__label" htmlFor="interest2">INTEREST 2</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -231,11 +231,11 @@ class Main extends Component {
             <input className="mdl-textfield__input" id="interest2" value={list_skill[this.state.interest2]}  />
             <input type="hidden" value={this.state.interest2} name="interest2" / >
             <label htmlFor="interest2" className="mdl-textfield__label"></label>
-            <ul htmlFor="interest2" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleInterest2}>
+            <select className="scroll" size="5" htmlFor="interest2" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleInterest2}>
               {Object.values(skills).map(skill => (
                   <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
               ))}
-            </ul>
+            </select>
         </div>
         <br/><br/><br/>
           <label className="interest-label mdl-selectfield__label" htmlFor="interest3">INTEREST 3</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -243,11 +243,11 @@ class Main extends Component {
               <input className="mdl-textfield__input" id="interest3" value={list_skill[this.state.interest3]}  />
               <input type="hidden" value={this.state.interest3} name="interest3" / >
               <label htmlFor="interest3" className="mdl-textfield__label"></label>
-              <ul htmlFor="interest3" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleInterest3}>
+              <select className="scroll" size="5" htmlFor="interest3" className="mdl-menu mdl-menu--bottom-left mdl-js-menu" onClick={this.handleInterest3}>
                 {Object.values(skills).map(skill => (
                   <option className="mdl-menu__item" data-val={skill.id} value={skill.id}>{skill.skill}</option>
               ))}
-              </ul>
+              </select>
           </div>
           <br/><br/><br/>
 

@@ -599,7 +599,8 @@ a img{
 .img-circle{
   margin-right: auto;
   margin-left: auto;
-  max-width: 25%;
+  width:200px;
+  height:200px;
   border-radius: 250px;
   background-color: #ffffff;
   border: solid 3px #ffebad;
@@ -618,9 +619,8 @@ a img{
 .upload{
   background-color: white;
 }
-/*
-select id="scroll" size=""*/
-#scroll{
+
+.scroll{
     text-align: center;
     height:auto; 
     overflow-y :scroll; 

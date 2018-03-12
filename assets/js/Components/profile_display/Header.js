@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 class Header extends Component {
+    constructor(props){
+    super(props);
+    this.state={
+        pic: user.photo || "/static/profile_updation/profile.png"
+    };
+}
   render() {
     return (
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header Ellipse">
@@ -45,7 +51,7 @@ class Header extends Component {
         </div>
 
         <br/><br/><br/><br/>
-        <img src={user.photo} className="img-circle" alt="User Profile"/>
+        <img src={this.state.pic} className="img-circle" alt="User Profile"/>
         <div className="description">
           <h1>{user.first_name}<a className="mdl-badge" data-badge={user.year}></a></h1>
           <h5 style={{"word-wrap": "break-word"}}>{user.bio}</h5>
