@@ -72,27 +72,27 @@ class Main extends Component {
           <div className="mdl-card__supporting-text">
             <p>Mentor Skills.</p>
           </div>
+          <form action={"/requests/" + obj.sap_id + "/"} method="post">
+          <DjangoCSRFToken />
           <div className="mdl-card__subtitle-text">
-
           <div className="mdl-selectfield mdl-js-selectfield">
             <label className="mdl-selectfield__label" htmlFor="skill">Choose Skill</label>
             &nbsp;&nbsp;&nbsp;
             <select className="mdl-selectfield__select" id="skill" name="skill_set_select">
-              <option data-val="" value=""></option>
-              <option data-val="HTML" value="HTML">HTML</option>
-              <option data-val="CSS" value="CSS">CSS</option>
-              <option data-val="JavaScript" value="JavaScript">JavaScript</option>
+                 {obj.user_skills.map(s =>
+                    <option data-val={s.id} value={s.id}>{s.skill}</option>
+                )}
             </select>
           </div>
           <br/>
           </div>
           <div className="mdl-card__actions mdl-card--border">
-            <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a> 
-            <form action={"/requests/" + obj.sap_id + "/"} method="post">
-            <DjangoCSRFToken />
+            <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a>
+
             <button type="submit" className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</button>
-            </form>
+
           </div>
+          </form>
         </div>
         <div className="mdl-layout-spacer"></div>
         </div>
@@ -111,26 +111,35 @@ class Main extends Component {
           <div className="mdl-card__supporting-text">
             <p>Mentor Skills.</p>
           </div>
+          <form action={"/requests/" + obj.sap_id + "/"} method="post">
+          <DjangoCSRFToken />
           <div className="mdl-card__subtitle-text">
+
           <div className="mdl-selectfield mdl-js-selectfield">
             <label className="mdl-selectfield__label" htmlFor="skill">Choose Skill</label>
             &nbsp;&nbsp;&nbsp;
             <select className="mdl-selectfield__select" id="skill" name="skill_set_select">
+                 {obj.user_skills.map(s =>
+                    <option data-val={s.id} value={s.id}>{s.skill}</option>
+                )}
+                {/*
               <option data-val="" value=""></option>
               <option data-val="HTML" value="HTML">HTML</option>
               <option data-val="CSS" value="CSS">CSS</option>
-              <option data-val="JavaScript" value="JavaScript">JavaScript</option>
+              <option data-val="JavaScript" value="JavaScript">JavaScript</option>*/}
             </select>
           </div>
           </div>
-          <br/>          
+          <br/>
           <div className="mdl-card__actions mdl-card--border">
             <a className="profile-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Profile</a>
-            <form action={"/requests/" + obj.sap_id + "/"} method="post">
-            <DjangoCSRFToken />
+
+
             <button type="submit" className="request-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Send Request</button>
-            </form>
+
           </div>
+          </form>
+          <div className="mdl-layout-spacer"></div>
         </div>
       );
 
@@ -166,7 +175,7 @@ class Main extends Component {
              <a className="mdl-navigation__link" href="">{obj.first_name}</a>
            </div>
            <div className="requests mdl-cell--4-col">
-           <form action={"requests/" + obj.request_id + "/accept/"} method="post">
+           <form action={"/requests/" + obj.request_id + "/accept/"} method="post">
            <DjangoCSRFToken />
           <button className="accept-button mdl-button mdl-js-button">
             Accept

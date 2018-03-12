@@ -104,12 +104,15 @@ class Main extends Component {
         return (
         	<div>
             <form method="POST">
+            <center>
             <DjangoCSRFToken/>
         		<a href="" className="profile-view">Profile View<i className="material-icons">keyboard_arrow_right</i></a>
         		<br/><br/>
 
             <br/><br/>
-            <div className="justify">
+            <div className="mdl-grid">
+  <div className="mdl-cell mdl-cell--6-col">
+  <div className="justify">
               <span className="mdl-selectfield mdl-js-selectfield">
                 <label className="mdl-selectfield__label" htmlFor="year">YEAR</label>
               </span><br/>
@@ -125,30 +128,39 @@ class Main extends Component {
             <option className="mdl-menu__item" data-val="AL" value="AL">Alumni</option>
         </ul>
     </div>
+    </div></div>
+  <div className="mdl-cell mdl-cell--6-col"><span className="justify mdl-selectfield mdl-js-selectfield">
+                <label className="mdl-selectfield__label" htmlFor="sap-id">SAP ID</label><br/><br/>
+            <input className="mdl-selectfield__select" name="sap_id" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sap-id" value={this.state.sapID} onChange={this.handleSAP}/>
+            <span className="mdl-textfield__error">Input is not a number!</span>
+          </span></div>
+  
+</div>
+            
 
 			        <br/><br/><br/>
 
-			        <span className="mdl-selectfield mdl-js-selectfield">
-			        	<label className="mdl-selectfield__label" htmlFor="sap-id">SAP ID</label><br/><br/>
-						<input className="mdl-selectfield__select" name="sap_id" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sap-id" value={this.state.sapID} onChange={this.handleSAP}/>
-						<span className="mdl-textfield__error">Input is not a number!</span>
-					</span>
-
-          <br/><br/><br/><br/>
-
-          <span className="mdl-selectfield mdl-js-selectfield">
+			   <div className="mdl-grid">
+         <div className="mdl-cell mdl-cell--6-col"><span className="justify mdl-selectfield mdl-js-selectfield"><br/>
             <label className="mdl-selectfield__label" htmlFor="mob">Mobile No.</label><br/><br/>
             <input className="mdl-selectfield__select" name="mob" type="text" pattern="\d{10}" id="mob" value={this.state.mob} onChange={this.handleMob}/>
             <span className="mdl-textfield__error">Enter a 10 digit no.!</span>
-          </span>
+          </span></div>
 
-          <br/><br/><br/>
-           </div>
 
-          <div className="mdl-textfield mdl-js-textfield">
+         <div className="mdl-cell mdl-cell--6-col"><div className="justify mdl-textfield mdl-js-textfield">
                   <textarea maxlength="500" className="mdl-textfield__input" value={this.state.bio} onChange={this.handleBio} rows="3" type="text" id="bio" name='bio'></textarea>
                   <label className="bio mdl-selectfield__label mdl-textfield__label" for="bio">Bio Description...</label>
-          </div>
+          </div></div>
+         </div>
+
+
+          
+
+          <br/><br/><br/>
+           
+
+          
 
     			<br/><br/><br/>
 				<div className="skills">
@@ -266,6 +278,7 @@ class Main extends Component {
         <button type="submit" className="save-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
           SAVE
         </button>
+        </center>
       </form>
         	</div>
        	);

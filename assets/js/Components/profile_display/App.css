@@ -38,6 +38,10 @@ a img{
   border: 0px;
 }
 
+a {
+  text-decoration: none;
+}
+
 ::-moz-selection {
   background-color: #6ab344;
   color: #fff;
@@ -144,7 +148,7 @@ form{
 .interests-chips .mdl-chip {
   width: 200px;
   height: 200px;
-  border-radius: 100px;
+  border-radius: 50%;
   background-color: #ffac91;
 }
 
@@ -152,13 +156,13 @@ form{
   background-color: #ff9e99;
   width: 220px;
   height: 220px;
-  border-radius: 125px;
+  border-radius: 50%;
 }
 
 .skills-chips .mdl-chip {
   width: 200px;
   height: 200px;
-  border-radius: 100px;
+  border-radius: 50%;
   background-color: #ffc797;
 }
 
@@ -166,7 +170,7 @@ form{
   background-color: #ffac91;
   width: 220px;
   height: 220px;
-  border-radius: 125px;
+  border-radius: 50%;
 }
 
 .mdl-chip .mdl-chip__text{

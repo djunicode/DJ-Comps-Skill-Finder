@@ -36,10 +36,11 @@ class Header extends Component {
               <i className="material-icons">more_vert</i>
             </button>
             <ul className="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" htmlFor="more-button">
-              <li className="mdl-menu__item">PlaceHolder</li>
-              <li className="mdl-menu__item">PlaceHolder</li>
-              <li disabled className="mdl-menu__item">PlaceHolder</li>
-              <li className="mdl-menu__item"><a href="/logout/">Logout</a></li>
+              <a href="/dashboard/"><li className="mdl-menu__item">Home</li></a>
+              <a href="/search/"><li className="mdl-menu__item">Find A Mentor</li></a>
+              <a href="/teams/"><li className="mdl-menu__item">Make a Team</li></a>
+              <a href="/profile/update"><li className="mdl-menu__item">Update Your Profile</li></a>
+              <a href="/logout/"><li className="mdl-menu__item">Logout</li></a>
             </ul>
           </div>
         </div>
@@ -47,7 +48,7 @@ class Header extends Component {
 
         <br/><br/><br/><br/>
       <img src={user.photo} className="img-circle" alt="User Profile"></img>
-        <form action="/site/profile/image/upload/" method="post" enctype="multipart/form-data">
+        <form action="/profile/image/upload/" method="post" enctype="multipart/form-data">
         <DjangoCSRFToken />
           <label htmlFor="file" className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
             <i className="material-icons">+</i>

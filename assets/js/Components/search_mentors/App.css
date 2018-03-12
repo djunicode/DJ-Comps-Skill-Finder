@@ -45,6 +45,10 @@ a img{
   height: auto;
 }
 
+a {
+  text-decoration: none;
+}
+
 .page-content .mdl-textfield .mdl-textfield__expandable-holder input{
   width: 100px;
   font-family: Raleway;
@@ -82,6 +86,8 @@ a img{
 }
 
 .search-button{
+  background-color: #FFDD87;
+  color: white; 
   left: 40px;
 }
 
@@ -146,7 +152,7 @@ select#skill{
 }
 
 .Ellipse h1{
-  font-family: PlayfairDisplay;
+  font-family: Raleway;
   text-align: center;
   color: #ffffff;
 }
@@ -198,6 +204,7 @@ select#skill{
 .mdl-card__actions .profile-button{
   font-family: Raleway;
   font-size: 14px;
+  top: 8px;
   font-weight: 600;
   color: #6fcf97;
 }

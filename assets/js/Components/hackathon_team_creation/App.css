@@ -29,6 +29,11 @@ a img{
   border: 0px;
 }
 
+a {
+  text-decoration: none;
+}
+
+
 ::-moz-selection {
   background-color: #6ab344;
   color: #fff;
@@ -106,7 +111,6 @@ a img{
 #checkboxes label:hover {
   background-color: #1e90ff;
 }
-
 .title{
   font-size: 72px;
   font-weight: 500;

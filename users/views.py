@@ -385,15 +385,20 @@ def send_request(request, sap_id):
         if request.user.id == receiver.id:
             return redirect('users:search')
         # [TODO] To be used when we have a skill dropdown
-        # skill_id = request.POST.get('skill_set_select')
-        # try:
-        #     skill = Skill.objects.get(id=skill_id)
-        # except Skill.DoesNotExist:
-        #     skill = None
-        # MentorRequest.create_request(sender=request.user, receiver=receiver, skill=skill,
-        #                              message=request.POST.get('messsage', ''))
-        r = MentorRequest(sender=request.user, receiver=receiver)
-        r.save()
+        print(request.POST)
+        skill_id = request.POST.get('skill_set_select')
+        try:
+            skill = Skill.objects.get(id=skill_id)
+        except Skill.DoesNotExist:
+            skill = None
+        if Relationship.objects.filter(sender=request.user, receiver=receiver, skill=skill).exists():
+            return redirect('users:search')  # As a placeholder till I figure out alerts
+        if request.user.requests_sent.filter(receiver=receiver, accepted=False, rejected=False):
+            return redirect('users:search')
+        MentorRequest.create_request(sender=request.user, receiver=receiver, skill=skill,
+                                     message=request.POST.get('messsage', ''))
+        # r = MentorRequest(sender=request.user, receiver=receiver)
+        # r.save()
         return redirect('users:search')
     return redirect('users:search')
 
@@ -545,6 +550,14 @@ def search(request):
         third = []
         for u in qs:
             current_user = process_user(u)
+            user_skills = []
+            if u.skill_1:
+                user_skills.append({'id': str(u.skill_1.id), 'skill': u.skill_1.skill})
+            if u.skill_2:
+                user_skills.append({'id': str(u.skill_2.id), 'skill': u.skill_2.skill})
+            if u.skill_3:
+                user_skills.append({'id': str(u.skill_3.id), 'skill': u.skill_3.skill})
+            current_user['user_skills'] = user_skills
             if u.year == 'SE':
                 second.append(current_user)
             elif u.year == 'TE':
@@ -563,6 +576,15 @@ def search(request):
     second = []
     third = []
     for u in qs:
+        current_user = process_user(u)
+        user_skills = []
+        if u.skill_1:
+            user_skills.append({'id': str(u.skill_1.id), 'skill': u.skill_1.skill})
+        if u.skill_2:
+            user_skills.append({'id': str(u.skill_2.id), 'skill': u.skill_2.skill})
+        if u.skill_3:
+            user_skills.append({'id': str(u.skill_3.id), 'skill': u.skill_3.skill})
+        current_user['user_skills'] = user_skills
         if Relationship.objects.filter(mentor=u).count() < 4:
             current_user = process_user(u)
             if u.year == 'SE':

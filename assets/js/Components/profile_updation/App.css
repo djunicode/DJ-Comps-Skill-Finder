@@ -53,6 +53,10 @@ a img{
   border: 0px;
 }
 
+a {
+  text-decoration: none;
+}
+
 ::-moz-selection {
   background-color: #6ab344;
   color: #fff;
