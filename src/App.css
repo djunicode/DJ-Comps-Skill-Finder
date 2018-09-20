@@ -69,6 +69,49 @@ a img{
   color: #fff2c9;
 }
 
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+  color: #bdbdbd;
+
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+  text-align: left;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+.diff{
+  font-size: 24px;
+  color: #ffb675;
+}
+
 .title{
   font-size: 72px;
   font-weight: 500;
@@ -133,7 +176,6 @@ a img{
 form{
   text-align: center;
   padding: 20px;
-  display:
 }
 
 

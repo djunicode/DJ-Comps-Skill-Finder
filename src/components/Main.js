@@ -5,90 +5,126 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hackathon_name: '',
-      hackathon_date: '',
-      hackathon_desc: '',
-      hackathon_url: ''
+      project_name: '',
+      project_desc: '',
+      skills_required: '',
+      project_url: ''
     };
 
-    this.handleHackathon_name = this.handleHackathon_name.bind(this);
-    this.handleHackathon_date = this.handleHackathon_date.bind(this);
-    this.handleHackathon_desc = this.handleHackathon_desc.bind(this);
-    this.handleHackathon_url = this.handleHackathon_url.bind(this);
+    this.handleProject_name = this.handleProject_name.bind(this);
+    this.handleProject_desc = this.handleProject_desc.bind(this);
+    this.handleSkills_required = this.handleSkills_required.bind(this);
+    this.showCheckboxes = this.showCheckboxes.bind(this);
+    this.handleProject_url = this.handleProject_url.bind(this);
   }
 
-  handleHackathon_name(event) {
-    this.setState({ hackathon_name: event.target.value });
+  handleProject_name(event) {
+    this.setState({ project_name: event.target.value });
   }
 
-  handleHackathon_date(event) {
-    this.setState({ hackathon_date: event.target.value });
+  handleProject_desc(event) {
+    this.setState({ project_desc: event.target.value });
   }
 
-  handleHackathon_desc(event) {
-    this.setState({ hackathon_desc: event.target.value });
+  handleSkills_required(event) {
+    this.setState({ skills_required: event.target.value });
   }
 
-  handleHackathon_url(event) {
-    this.setState({ hackathon_url: event.target.value });
+  showCheckboxes(event) {
+    event.preventDefault();
+    var checkboxes = document.getElementById('checkboxes');
+    if (!this.state.expanded) {
+      checkboxes.style.display = "block";
+      this.setState({ expanded: true });
+    }
+    else {
+      checkboxes.style.display = "none";
+      this.setState({ expanded: false });
+    }
+  }
+
+  handleProject_url(event) {
+    this.setState({ project_url: event.target.value });
   }
 
   render() {
     return (
       <div>
         <form method="POST">
-        {/* <DjangoCSRFToken/> */}
+          {/* <DjangoCSRFToken/> */}
           <a href="#" className="back-button"><i className="material-icons">keyboard_arrow_left</i>Back</a>
           <br /><br /><br /><br />
           <center>
-            <span className="description title">Add a Hackathon</span>
+            <span className="description title">Add a new Project</span>
             <br /><br /><br /><br />
 
             <span className="description mdl-selectfield mdl-js-selectfield">
-              <label className="mdl-selectfield__label" for="hackathon_name">Hackathon name</label>&nbsp;&nbsp;&nbsp;
+              <label className="mdl-selectfield__label" for="project_name">Project name</label>&nbsp;&nbsp;&nbsp;
               </span>
             <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input type="text" className="mdl-textfield__input" id="hackathon_name" value={this.state.hackathon_name} onChange={this.handleHackathon_name} />
-              <input type="hidden" name="hackathon_name" />
-              <label for="hackathon_name" className="mdl-textfield__label"></label>
+              <input type="text" className="mdl-textfield__input" id="project_name" value={this.state.project_name} onChange={this.handleProject_name} />
+              <input type="hidden" name="project_name" />
+              <label for="project_name" className="mdl-textfield__label"></label>
             </div>
 
             <br /><br />
 
             <span className="description mdl-selectfield mdl-js-selectfield">
-              <label className="mdl-selectfield__label" for="hackathon_date">Hackathon date</label>&nbsp;&nbsp;&nbsp;
+              <label className="mdl-selectfield__label" for="project_url">Project URL</label>&nbsp;&nbsp;&nbsp;
               </span>
             <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input type="date" className="mdl-textfield__input" id="hackathon_date" value={this.state.hackathon_date} onChange={this.handleHackathon_date} />
+              <input type="text" className="mdl-textfield__input" id="project_url" value={this.state.project_url} onChange={this.handleProject_url} />
+              <input type="hidden" name="project_url" />
+              <label for="project_url" className="mdl-textfield__label"></label>
             </div>
 
-            <br /><br /><br />
+            <br /><br /><br/>
 
             <span className="description mdl-selectfield mdl-js-selectfield">
-              <label className="mdl-selectfield__label" for="hackathon_desc">Hackathon description</label>
+              <label className="mdl-selectfield__label" for="project_desc">Project description</label>
             </span>
             <br />
             <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <textarea className="mdl-textfield__input" value={this.state.hackathon_desc} onChange={this.handleHackathon_desc} type="text" rows="8" id="hackathon_desc" placeHolder="This is what applicants will see as your hackathon description. Keep it updated and clearly state your requirements."></textarea>
-              <input type="hidden" name="hackathon_desc" />
-              <label className="mdl-textfield__label" for="hackathon_desc"></label>
+              <textarea className="mdl-textfield__input" value={this.state.project_desc} onChange={this.handleProject_desc} type="text" rows="5" id="project_desc" placeHolder="This is what applicants will see as your hackathon description. Keep it updated and clearly state your requirements."></textarea>
+              <input type="hidden" name="project_desc" />
+              <label className="mdl-textfield__label" for="project_desc"></label>
             </div>
 
             <br /><br />
 
-            <span className="description mdl-selectfield mdl-js-selectfield">
-              <label className="mdl-selectfield__label" for="hackathon_url">Hackathon URL</label>&nbsp;&nbsp;&nbsp;
-              </span>
-            <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input type="text" className="mdl-textfield__input" id="hackathon_url" value={this.state.hackathon_url} onChange={this.handleHackathon_url} />
-              <input type="hidden" name="hackathon_url" />
-              <label for="hackathon_url" className="mdl-textfield__label"></label>
+            <span className="description diff">Skills you are looking for</span>
+            <br /><br />
+
+            <div className="multiselect">
+              <div className="selectBox" onClick={this.showCheckboxes}>
+                <select name="skills_required" id="id_skills_required">
+                  {/* <option>Select an option</option> */}
+                </select>
+                <div className="overSelect"></div>
+              </div>
+              <div id="checkboxes" className="description">
+
+                <label for="one">
+                  <input type="checkbox" name="skills_required" value="first" id="one" />First checkbox</label>
+                <label for="two">
+                  <input type="checkbox" name="skills_required" value="second" id="two" />Second checkbox</label>
+                <label for="three">
+                  <input type="checkbox" name="skills_required" value="three" id="three" />Third checkbox</label>
+
+                {/* {Object.values(skills).map(skill => (
+                  <label for={skill.id}>
+                    <input type="checkbox" name="skills_required" data-val={skill.id} value={skill.id} id={skill.id} />{skill.skill}</label>
+                ))} */}
+
+              </div>
             </div>
 
-            <br /><br /><br /><br />
+            <br /><br />
+
+            <br /><br />
 
             <button type="submit" className="search mdl-button mdl-js-button mdl-js-ripple-effect">
-              Add Hackathon
+              Add Project
               </button>
 
           </center>
