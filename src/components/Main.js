@@ -62,7 +62,18 @@ class Main extends Component {
               <input type="date" className="mdl-textfield__input" id="hackathon_date" value={this.state.hackathon_date} onChange={this.handleHackathon_date} />
             </div>
 
-            <br /><br /><br />
+            <br /><br />
+
+            <span className="description mdl-selectfield mdl-js-selectfield">
+              <label className="mdl-selectfield__label" for="hackathon_url">Hackathon URL</label>&nbsp;&nbsp;&nbsp;
+              </span>
+            <div className="mdl-textfield mdl-js-textfield getmdl-select">
+              <input type="text" className="mdl-textfield__input" id="hackathon_url" value={this.state.hackathon_url} onChange={this.handleHackathon_url} />
+              <input type="hidden" name="hackathon_url" />
+              <label for="hackathon_url" className="mdl-textfield__label"></label>
+            </div>
+
+            <br /><br /><br/>
 
             <span className="description mdl-selectfield mdl-js-selectfield">
               <label className="mdl-selectfield__label" for="hackathon_desc">Hackathon description</label>
@@ -76,16 +87,7 @@ class Main extends Component {
 
             <br /><br />
 
-            <span className="description mdl-selectfield mdl-js-selectfield">
-              <label className="mdl-selectfield__label" for="hackathon_url">Hackathon URL</label>&nbsp;&nbsp;&nbsp;
-              </span>
-            <div className="mdl-textfield mdl-js-textfield getmdl-select">
-              <input type="text" className="mdl-textfield__input" id="hackathon_url" value={this.state.hackathon_url} onChange={this.handleHackathon_url} />
-              <input type="hidden" name="hackathon_url" />
-              <label for="hackathon_url" className="mdl-textfield__label"></label>
-            </div>
-
-            <br /><br /><br /><br />
+            <br /><br />
 
             <button type="submit" className="search mdl-button mdl-js-button mdl-js-ripple-effect">
               Add Hackathon
