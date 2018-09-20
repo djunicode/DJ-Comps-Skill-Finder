@@ -10,14 +10,6 @@ class Header extends Component {
               <img className="page-logo-image" src="../UNCLetters.png" alt="page-logo" />
             </span>
             <div className="page-header-spacer mdl-layout-spacer"></div>
-            <div className="page-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
-              <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="search-field">
-                <i className="material-icons">search</i>
-              </label>
-              <div className="mdl-textfield__expandable-holder">
-                <input className="mdl-textfield__input" type="text" id="search-field" />
-              </div>
-            </div>
             <div className="page-navigation-container">
               <nav className="page-navigation mdl-navigation">
                 <a className="mdl-navigation__link" href="">Home</a>
@@ -34,18 +26,19 @@ class Header extends Component {
               <i className="material-icons">more_vert</i>
             </button>
             <ul className="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" htmlFor="more-button">
-              <li className="mdl-menu__item">PlaceHolder</li>
-              <li className="mdl-menu__item">PlaceHolder</li>
-              <li disabled className="mdl-menu__item">PlaceHolder</li>
-              <li className="mdl-menu__item">PlaceHolder</li>
+              <a href="#"><li className="mdl-menu__item">Home</li></a>
+              <a href="#"><li className="mdl-menu__item">Find A Mentor</li></a>
+              <a href="#"><li className="mdl-menu__item">Make a Team</li></a>
+              <a href="#"><li className="mdl-menu__item">Update Your Profile</li></a>
+              <a href="#"><li className="mdl-menu__item">Logout</li></a>
             </ul>
           </div>
         </div>
 
         <br/><br/><br/><br/><br/><br/><br/><br/>
         <div className="description">
-          <h1>Teams</h1>
-          <h3>Make a team or join one!</h3>
+          <h1>Hackathons</h1>
+          <h3>List of all the upcoming Hackathons</h3>
         </div>
         <br/><br/><br/><br/><br/>
       </div>

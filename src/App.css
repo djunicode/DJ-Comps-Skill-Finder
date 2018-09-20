@@ -29,6 +29,10 @@ a img{
   border: 0px;
 }
 
+a {
+  text-decoration: none;
+}
+
 ::-moz-selection {
   background-color: #6ab344;
   color: #fff;
@@ -46,24 +50,29 @@ a img{
   background-image: linear-gradient(to top, #ff5ca0 19%, #ff744f);
 }
 
-.mdl-layout__drawer{
-  text-align: left;
-  height: 100%;
-  background-color: #ffffff;
-}
-
-.mdl-layout__drawer .mdl-layout-title{
+.button-1 {
   font-family: Raleway;
+  border-radius: 11px;
+  margin: 5%;
+  color: #ffad63;
+  border: solid 1px #ffad63; 
   font-size: 20px;
-  font-weight: 600;
-  color: #000000;
 }
 
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link{
+.button-2 {
   font-family: Raleway;
+  border-radius: 11px;
+  margin: 5%;
+  font-size: 20px;
+  color: #ff5ca0;
+  border: solid 1px #ff5ca0;
+}
+
+.details {
+  font-family: Raleway;
+  color: #ffae7a;
+  border-bottom: 1px solid #ffae7a; 
   font-size: 18px;
-  font-weight: normal;
-  color: #666666;
 }
 
 .title{
@@ -140,7 +149,7 @@ a img{
 
 .mdl-card__supporting-text .header p{
   font-family: Raleway;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: #828282;
 }
@@ -154,7 +163,7 @@ a img{
 
 .mdl-card__actions .mdl-button{
   color: #ffffff;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .description h1{

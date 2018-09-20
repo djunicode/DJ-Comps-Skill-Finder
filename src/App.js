@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
         <div>
-          <a name="top"></a>
+          <a name="top" />
           <Header />
           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -15,9 +15,7 @@ class App extends Component {
           <Main />
           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          <br/><br/><br/><br/><br/><br/><br/><br/>
+          <br/><br/><br/><br/>
           <Footer />
         </div>
     );
