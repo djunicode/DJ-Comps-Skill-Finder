@@ -52,7 +52,7 @@ class Main extends Component {
         this.setState({skills_required: event.target.value});
     }
 
-    showCheckboxes(){
+    showCheckboxes(event){
       event.preventDefault();
       var checkboxes = document.getElementById('checkboxes');
       if (!this.state.expanded) {
@@ -151,7 +151,7 @@ class Main extends Component {
               <div className="multiselect">
                 <div className="selectBox" onClick={this.showCheckboxes}>
                   <select name="skills_required" id="id_skills_required">
-                    {/*<option>Select an option</option>*/}
+                    {/* <option>Select an option</option> */}
                   </select>
                   <div className="overSelect"></div>
                 </div>
