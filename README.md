@@ -58,6 +58,9 @@ Similarly, a student may choose to mentor others in whichever skills he is profi
 ![Joining Hackathon team](https://github.com/djunicode/DJ-Comps-Skill-Finder/blob/integrate/join-hackathon-team.png)
 ![Mentors](https://github.com/djunicode/DJ-Comps-Skill-Finder/blob/integrate/mentors.png)
 
+## Relational Schema
+![Relational Schema](https://github.com/djunicode/DJ-Comps-Skill-Finder/blob/integrate/relationalschema.png)
+
 ## Our Team
 
 ### Team Leader
