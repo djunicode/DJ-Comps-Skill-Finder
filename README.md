@@ -51,6 +51,12 @@ Similarly, a student may choose to mentor others in whichever skills he is profi
 - Chat Room System to serve as a in-platform communication between seniors who are currently mentoring juniors, and for discussions within peer groups based on skills/interests.
 - Integrate with Information portal and android app
 
+## Screenshots
+
+![Adding Skills](https://github.com/djunicode/DJ-Comps-Skill-Finder/blob/integrate/skills.png)
+![Hackathon Teams](https://github.com/djunicode/DJ-Comps-Skill-Finder/blob/integrate/hackathon-teams.png)
+![Joining Hackathon team](https://github.com/djunicode/DJ-Comps-Skill-Finder/blob/integrate/join-hackathon-team.png)
+![Mentors](https://github.com/djunicode/DJ-Comps-Skill-Finder/blob/integrate/mentors.png)
 
 ## Our Team
 
