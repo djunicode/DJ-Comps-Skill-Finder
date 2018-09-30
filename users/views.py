@@ -621,6 +621,24 @@ def search(request):
 #     return render(request, 'users/view_hackathon.html', {'hackathon': hackathon})
 
 # if HackathonTeam.objects.filter(name__iexact=name, hackathon=hackathon).exists():
+
+@login_required(login_url='users:login')
+def add_hackathon(request):
+    context = {}
+    context['user'] = json.dumps(process_user(request.user), indent=4, default=str)
+    context['error'] = ''
+    if request.method == 'POST':
+        name = request.POST.get('hackathon_name', '')
+        date = request.POST.get('hackathon_date', '')
+        description = request.POST.get('hackathon_desc', '')
+        url = request.POST.get('hackathon_url', '')
+        hackathon = Hackathon(name=name, url=url, description=description, date=date, creator=request.user)
+        hackathon.save()
+        return redirect('users:view_dashboard')
+    return render(request, 'users/add_hackathon.html', {'prop': context})
+
+
+
 @login_required(login_url='users:login')
 def add_hackathon_team(request):
     context = {}
