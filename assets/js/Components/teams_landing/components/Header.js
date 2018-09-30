@@ -10,14 +10,7 @@ class Header extends Component {
               <img className="page-logo-image" src="/static/profile_updation/UNCLetters.png" alt="page-logo" />
             </span>
             <div className="page-header-spacer mdl-layout-spacer"></div>
-            <div className="page-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
-              <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="search-field">
-                <i className="material-icons">search</i>
-              </label>
-              <div className="mdl-textfield__expandable-holder">
-                <input className="mdl-textfield__input" type="text" id="search-field" />
-              </div>
-            </div>
+
             <div className="page-navigation-container">
                 <nav className="page-navigation mdl-navigation">
                   <a className="mdl-navigation__link" href="/dashboard/">Home</a>

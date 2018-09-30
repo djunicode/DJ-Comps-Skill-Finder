@@ -76,11 +76,6 @@ class Main extends Component {
               </div>
               <main className="mdl-layout__content">
               <div className="page-content">
-                <span>
-                  <a href="" className="filter-link"><i className="filter-link material-icons">filter_list</i></a>
-                  <a className="clear-tag mdl-navigation__link" href="">Hackathon<i className="material-icons">clear</i></a>
-                </span>
-                <br/><br/><br/><br/><br/><br/><br/>
                 <div className="mdl-grid">
                   {this.state.availableProjects.map(obj2 =>
                   <div className="medium-card mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp">
@@ -89,7 +84,7 @@ class Main extends Component {
                     </div>
                     <div className="mdl-card__subtitle-text">
                       <h5>{list_hack[obj2.hackathon]}</h5>
-                      <p>{obj2.current_members}</p>
+                      <p>{obj2.current_members.map(member => <span>{member} </span> )}</p>
                     </div>
                     <div className = "mdl-card__supporting-text">
                       <div className="header">
@@ -98,7 +93,7 @@ class Main extends Component {
                       </div>
                       <div className="header">
                         <h5>Skills required</h5>
-                        <p>{obj2.skills_required} </p>
+                        <p>{obj2.skills_required.map(skill => <span>{skill} </span> )}</p>
                       </div>
                     </div>
                     <form action={"/hackathons/teams/" + obj2.id + "/request/"} method="post">
