@@ -21,6 +21,7 @@ urlpatterns = [
     # path('project/<int:pk>/update', views.update_project, name='project_update'),
     path('project/<int:pk>/update', views.UpdateProject.as_view(), name='project_update'),
     path('project/<int:pk>/delete', views.delete_project, name='project_delete'),
+    path('hackathons/', views.display_hackathons, name='display_hackathons'),
     path('hackathons/add/',views.add_hackathon , name='add_hackathon'),
     path('hackathons/teams/<int:pk>/', views.view_hackathon_team, name='view_hackathon_team'),
     path('hackathons/teams/add/', views.add_hackathon_team, name='add_hackathon_team'),

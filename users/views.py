@@ -17,6 +17,7 @@ from .models import Hackathon, HackathonTeam, HackathonTeamRequest
 from .models import ProjectTeam, ProjectTeamRequest
 from .forms import MentorRequestForm, HackathonTeamForm, HackathonTeamRequestForm
 from .forms import ProjectTeamForm, ProjectTeamRequestForm
+import datetime
 # from django.contrib import messages
 # from django.db.models import Q
 
@@ -632,10 +633,24 @@ def add_hackathon(request):
         date = request.POST.get('hackathon_date', '')
         description = request.POST.get('hackathon_desc', '')
         url = request.POST.get('hackathon_url', '')
+        if(url[0:4] == 'http'):
+            url=url[url.index('//')+2:]
         hackathon = Hackathon(name=name, url=url, description=description, date=date, creator=request.user)
         hackathon.save()
         return redirect('users:view_dashboard')
     return render(request, 'users/add_hackathon.html', {'prop': context})
+
+
+@login_required(login_url='users:login')
+def display_hackathons(request):
+    context = {}
+    context['user'] = json.dumps(process_user(request.user), indent=4, default=str)
+    hackathons = list(Hackathon.objects.filter(date__gte=datetime.date.today()).order_by('date')) + list(Hackathon.objects.filter(date__lt=datetime.date.today()).order_by('-date'))
+    hackathons = [model_to_dict(h) for h in hackathons]
+    context['hackathons'] = json.dumps(hackathons, indent=4, default=str)
+    if request.method == 'POST':
+        print("post request bouncing off of the same url")
+    return render(request, 'users/display_hackathon.html', {'prop': context})
 
 
 
